@@ -22,7 +22,6 @@
 			<view class="logo3"></view>
 			<text class="kuaijie">快捷登录</text>
 			<view class="logo3"></view>
-			</image>
 		</view>
 		<view>
 			<image class="logo5" @click="wxLogin()" src="/static/register/iocn-weixin.png"></image>
