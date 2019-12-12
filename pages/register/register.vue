@@ -15,7 +15,7 @@
 			<view class="denglu" @tap="denglu1">登录</view>
 			<view class="title4">
 				<text @tap="zhuce">注册新用户</text>
-				<text @tap="mima">忘记大密码</text>
+				<text @tap="mima">忘记超级密码</text>
 			</view>
 		</view>
 		<view class="bottom">
