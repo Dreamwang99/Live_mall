@@ -1,5 +1,5 @@
 <template>
-	<view style="width: 100%;">
+	<view style="width: 100%;" class="wrap">
 		<view class="beijing" :style="{ backgroundImage: 'url(' + '/static/shangchenggrzx/bg-50-top.png' + ')' }">
 			<view class="heng">
 				<view style="display: flex;margin-top: 40rpx;">
