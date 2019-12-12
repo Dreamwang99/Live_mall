@@ -1,0 +1,312 @@
+
+cover-view,
+cover-image {
+	display: inline-block;
+}
+
+/* 选择银行卡弹窗 */
+.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 750rpx;
+	height: 100vh;
+	z-index: 1;
+}
+.maskB {
+	background-color: rgba(0, 0, 0, .3);
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	top: 0;
+	height: 900rpx;
+}
+.mask {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	width: 750rpx;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .3);
+}
+.maskBox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	position: absolute;
+	bottom: 0;
+	background-color: #fff;
+	width: 750rpx;
+	max-height: 888rpx;
+	border-top-right-radius: 20rpx;
+	border-top-left-radius: 20rpx;
+}
+.maskBox1 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	position: absolute;
+	bottom: 0;
+	background-color: #FFFFFF;
+	width: 750rpx;
+	height: 312rpx;
+	border-top-right-radius: 20rpx;
+	border-top-left-radius: 20rpx;
+}
+.Share {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	width: 385rpx;
+	margin-bottom: 40rpx;
+}
+.options {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+}
+.cancel {
+	text-align: center;
+	height: 92rpx;
+	line-height: 92rpx;
+	width: 750rpx;
+	position: absolute;
+	bottom: 0;
+	border-top: 1rpx #e5e5e5 solid;
+}
+.makcard {
+	text-align: center;
+	height: 112rpx;
+	width: 690rpx;
+	line-height: 112rpx;
+	font-size: 34rpx;
+	color: #232323;
+}
+.makimg {
+	position: absolute;
+	top: 20rpx;
+	left: 700rpx;
+	width: 30rpx;
+	height: 30rpx;
+}
+.makfor {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-flow: row;
+	        flex-flow: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	width: 690rpx;
+	height: 110rpx;
+	line-height: 110rpx;
+	border-top: 1rpx #F6F6F6 solid;
+}
+.cradimg {
+	width: 36rpx;
+	height: 36rpx;
+}
+.cardname {
+	position: absolute;
+	left: 110rpx;
+	color: #5e5e5e;
+	font-size: 30rpx;
+}
+.cardid {
+	position: absolute;
+	left: 230rpx;
+	color: #5e5e5e;
+	font-size: 30rpx;
+}
+
+/* 主体部分 */
+.beijing {
+	width: 750rpx;
+	height: 1350rpx;
+	position: relative;
+}
+.backimage {
+	width: 100%;
+	height: 100%;
+}
+.tx {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	/* position: absolute;
+	left: 640rpx;
+	top: 547rpx; */
+	background-size: cover;
+	margin-left: 640rpx;
+	margin-top: 547rpx;
+	padding-top: 540rpx;
+	padding-left: 600rpx;
+}
+.portrait {
+	height: 88rpx;
+	width: 88rpx;
+	z-index: 9999999;
+}
+.heng {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.touxiang {
+	height: 75rpx;
+	width: 75rpx;
+	margin-left: 20rpx;
+	margin-top: 15rpx;
+}
+.quxiao {
+	text-align: center;
+	font-size: 25rpx;
+}
+.jia {
+	height: 27rpx;
+	width: 27rpx;
+	margin-left: 32rpx;
+	z-index: 999999999;
+}
+.zan {
+	height: 70rpx;
+	width: 68rpx;
+	margin-top: 85rpx;
+	margin-left: 17rpx;
+}
+.pl {
+	height: 68rpx;
+	width: 70rpx;
+	margin-top: 47rpx;
+	margin-left: 17rpx;
+}
+.xj {
+	height: 80rpx;
+	width: 80rpx;
+	margin-bottom: 20rpx;
+}
+.zi {
+	color: #FFFFFF;
+	font-size: 21rpx;
+	margin-left: 28rpx;
+	margin-top: 15rpx;
+}
+.zi1 {
+	position: fixed;
+	bottom: 65rpx;
+	left: 20rpx;
+	color: #FFFFFF;
+	font-size: 24rpx;
+	font-weight: 100;
+}
+.zi2 {
+	font-size: 32rpx;
+	color: #FFFFFF;
+	margin-bottom: 23rpx;
+}
+.xiangcexq {
+	font-size: 22rpx;
+}
+.xiangjips {
+	margin-top: 22rpx;
+	margin-left: 180rpx;
+	font-size: 22rpx;
+}
+.pinglun1 {
+	height: 890rpx;
+	width: 750rpx;
+	background-color: rgba(243, 229, 229, 0.76);
+}
+.cha {
+	margin-top: 20rpx;
+	height: 23rpx;
+	width: 23rpx;
+	margin-left: 700rpx;
+}
+.zhanghu {
+	font-size: 24rpx;
+	margin-left: 20rpx;
+	margin-top: 15rpx;
+	color: #7b7b7b;
+}
+.pingjia {
+	font-size: 24rpx;
+	margin-left: 20rpx;
+	margin-top: 23rpx;
+	color: #7b7b7b;
+}
+.shuodian {
+	background-color: #dedede;
+	width: 750rpx;
+	line-height: 82rpx;
+	position: fixed;
+	bottom: 0rpx;
+}
+.shuru1 {
+	margin-top: 28rpx;
+	margin-left: 40rpx;
+}
+.shuru {
+	font-size: 23rpx;
+}
+.aite {
+	margin-top: 5rpx;
+	margin-left: 400rpx;
+	font-size: 24rpx;
+	color: #949494;
+}
+.xiao {
+	height: 40rpx;
+	width: 40rpx;
+	margin-top: 25rpx;
+	margin-left: 30rpx;
+}
+

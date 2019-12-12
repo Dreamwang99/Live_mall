@@ -1,0 +1,167 @@
+{
+  "@platforms": [
+    "android",
+    "iPhone",
+    "iPad"
+  ],
+  "id": "__UNI__09FDFD1",
+  "name": "classify2",
+  "version": {
+    "name": "1.0.0",
+    "code": "100"
+  },
+  "description": "",
+  "launch_path": "__uniappview.html",
+  "developer": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "permissions": {
+    "Share": {},
+    "Payment": {},
+    "OAuth": {},
+    "UniNView": {
+      "description": "UniNView原生渲染"
+    }
+  },
+  "plus": {
+    "useragent": {
+      "value": "uni-app",
+      "concatenate": true
+    },
+    "splashscreen": {
+      "target": "id:1",
+      "autoclose": true,
+      "waiting": true,
+      "delay": 0
+    },
+    "popGesture": "close",
+    "launchwebview": {
+      "id": "1",
+      "kernel": "WKWebview",
+      "uni-app": "auto"
+    },
+    "statusbar": {
+      "immersed": "supportedDevice",
+      "style": "dark",
+      "background": "#F8F8F8"
+    },
+    "usingComponents": true,
+    "nvueCompiler": "uni-app",
+    "distribute": {
+      "google": {
+        "permissions": [
+          "<uses-feature android:name=\"android.hardware.camera\"/>",
+          "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+          "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+          "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+          "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+          "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+          "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+          "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+          "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+          "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+        ]
+      },
+      "apple": {},
+      "plugins": {
+        "oauth": {
+          "weixin": {
+            "appid": "wx96498c259e704ec3",
+            "appsecret": "cb5b295c92de6fd3a318efc946d783bb",
+            "UniversalLinks": ""
+          }
+        },
+        "share": {
+          "weixin": {
+            "appid": "wx96498c259e704ec3",
+            "UniversalLinks": ""
+          }
+        },
+        "payment": {
+          "weixin": {
+            "appid": "wx96498c259e704ec3",
+            "UniversalLinks": ""
+          },
+          "alipay": {}
+        },
+        "push": {},
+        "audio": {
+          "mp3": {
+            "description": "Android平台录音支持MP3格式文件"
+          }
+        }
+      }
+    },
+    "allowsInlineMediaPlayback": true,
+    "safearea": {
+      "background": "#ffffff",
+      "bottom": {
+        "offset": "auto"
+      }
+    },
+    "uni-app": {
+      "compilerVersion": "2.4.6",
+      "control": "v8",
+      "nvueCompiler": "uni-app",
+      "renderer": "auto",
+      "nvue": {
+        "flex-direction": "column"
+      }
+    },
+    "tabBar": {
+      "color": "#B2B2B2",
+      "selectedColor": "#FF212C",
+      "borderStyle": "rgba(255,255,255,0.4)",
+      "backgroundColor": "#ffffff",
+      "list": [
+        {
+          "pagePath": "pages/shouye/shouye",
+          "iconPath": "static/gouwuche/iocn-sy_75.png",
+          "selectedIconPath": "static/gouwuche/iocn-sy.png",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/zhiboshouye/zhiboshouye",
+          "iconPath": "static/gouwuche/iocn-zhibo.png",
+          "selectedIconPath": "static/gouwuche/iocn-zhibo_68.png",
+          "text": "直播"
+        },
+        {
+          "pagePath": "pages/fenlei/fenlei",
+          "iconPath": "static/gouwuche/iocn-fenlei.png",
+          "selectedIconPath": "static/gouwuche/iocn-fenlei_32.png",
+          "text": "分类"
+        },
+        {
+          "pagePath": "pages/gouwuche1/gouwuche1",
+          "iconPath": "static/gouwuche/iocn-gwc.png",
+          "selectedIconPath": "static/gouwuche/iocn-gwc_22.png",
+          "text": "购物车"
+        },
+        {
+          "pagePath": "pages/gerenzhongxin/gerenzhongxin",
+          "iconPath": "static/gouwuche/iocn-grzx.png",
+          "selectedIconPath": "static/gouwuche/iocn-grzx_66.png",
+          "text": "个人中心"
+        }
+      ],
+      "height": "50px"
+    }
+  }
+}

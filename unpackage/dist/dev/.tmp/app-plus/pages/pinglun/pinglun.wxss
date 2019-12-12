@@ -1,0 +1,150 @@
+
+page {
+	background-color: #F5F5F5;
+}
+.heng {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.heng1 {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	padding: 20rpx 0;
+	border-top: 2px solid #eee;
+}
+.back {
+	height: 45rpx;
+	width: 35rpx;
+}
+.xian {
+	height: 10rpx;
+}
+.touxiang {
+	height: 100rpx;
+	width: 100rpx;
+	margin-left: 29rpx;
+	margin-top: 22rpx;
+}
+.delete {
+	height: 40rpx;
+	width: 25rpx;
+	margin-top: 28rpx;
+	margin-right: 30rpx;
+}
+.pinglun {
+	width: 100%;
+	background: #fff;
+	border-top: 10rpx solid #eee;
+	padding-bottom: 20rpx;
+}
+.li {
+	margin-left: 50rpx;
+	margin-right: auto;
+	font-size: 27rpx;
+	margin-top: 57rpx;
+	margin-left: 37rpx;
+}
+.tupian {
+	height: 163rpx;
+	width: 227rpx;
+	margin: 23rpx 5rpx 5rpx 5rpx;
+}
+.logo1 {
+	height: 120rpx;
+	width: 165rpx;
+	margin-top: 20rpx;
+	margin-left: 29rpx;
+	margin-right: 25rpx;
+}
+.middle {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	padding-bottom: 40rpx;
+}
+.xiaomi {
+	margin-top: 25rpx;
+	font-size: 22rpx;
+	margin-bottom: 20rpx;
+}
+.haokan {
+	margin-left: 29rpx;
+	font-size: 25rpx;
+}
+.time {
+	margin-left: 29rpx;
+	line-height: 62rpx;
+	font-size: 20rpx;
+	color: #999999;
+}
+.pop {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	border-top: 1px solid #eee;
+}
+.prise {
+	color: red;
+	font-size: 19rpx;
+	margin-top: 40rpx;
+}
+.confirm {
+	line-height: 170rpx;
+	text-align: center;
+	font-size: 30rpx;
+}
+.kanjia {
+	height: 300rpx;
+	width: 530rpx;
+	border-radius: 20rpx;
+	background-color: #FFFFFF;
+}
+.dibu {
+	height: 151rpx;
+	width: 537rpx;
+	background-size: cover;
+}
+.gongxi {
+	position: absolute;
+	margin-top: -20rpx;
+	height: 174rpx;
+	width: 290rpx;
+	text-align: center;
+	margin-left: 120rpx;
+}
+.bangkan {
+	text-align: center;
+	line-height: 140rpx;
+	font-size: 32rpx;
+	color: #ff212c;
+}
+.quxiao {
+	width: 265rpx;
+	text-align: center;
+	line-height: 130rpx;
+	font-size: 30rpx;
+}
+.queding {
+	border-left: 1px solid #eee;
+	color: red;
+}
+.ping_tu {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-left: 29rpx;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+

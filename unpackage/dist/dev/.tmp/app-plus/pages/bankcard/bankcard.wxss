@@ -1,0 +1,46 @@
+
+page{
+		background-color: #F5F5F5;
+}
+.flex_row{
+		height: 86rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: row;
+		        flex-direction: row;
+		background-color: #fff;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		        align-items: center;
+		border-bottom: 1px solid #eee;
+}
+.bank{
+		height: 21rpx;
+		width: 30rpx;
+		margin:0 30rpx;
+}
+.safe{
+	line-height: 70rpx;
+	font-size: 20rpx;
+	margin-left: 30rpx;
+	color: #C4C4C4;
+}
+.account{
+	font-size: 27rpx;
+	width: 70%;
+}
+.confirm{
+	height:69rpx ;
+	width:690rpx;
+	background-color: #f1301f;
+	border-radius: 35rpx;
+	color: #FFFFFF;
+	line-height: 69rpx;
+	text-align: center;
+	font-size: 30rpx;
+	margin:132rpx auto;
+}
+

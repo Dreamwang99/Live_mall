@@ -1,0 +1,35 @@
+
+page {
+	background-color: #fff !important;
+}
+.concent{
+	width: 100%;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+.logo {
+	height: 850rpx;
+	width: 100%;
+	background-size: 100% 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.picture {
+	height: 219rpx;
+	width: 219rpx;
+	display: block;
+	margin: auto;
+	margin-top: 144rpx;
+	margin-bottom:182rpx;
+}
+.success {
+	font-size: 36rpx;
+	text-align: center;
+}
+

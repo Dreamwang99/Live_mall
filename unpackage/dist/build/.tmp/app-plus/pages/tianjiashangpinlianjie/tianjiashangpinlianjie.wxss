@@ -1,0 +1,68 @@
+
+.baidi{
+	height: 200rpx;
+	widows: 710rpx;
+	margin-left: 20rpx;
+	background-color: #FFFFFF;
+	margin-right:20rpx;
+}
+.heng{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.gou{
+	height: 35rpx;
+	width: 35rpx;
+	margin-left: 20rpx;
+	margin-top: 85rpx;
+}
+.tu{
+	height: 161rpx;
+	width: 172rpx;
+	margin-left: 20rpx;
+	margin-top: 20rpx;
+}
+.zhedie{
+	font-size: 23rpx;
+	margin-top: 21rpx;
+	margin-left: 12rpx;
+}
+.ziwaixian{
+	font-size: 20rpx;
+	margin-top: 21rpx;
+	margin-left: 12rpx;
+	color: #adadad;
+}
+.qian{
+	color:#FF0D2E;
+	font-size: 25rpx;
+	margin-top: 24rpx;
+	margin-left: 12rpx;
+}
+.dp{
+	margin-left: 12rpx;
+	height: 20rpx;
+	width: 18rpx;
+	margin-top: 21rpx;
+}
+.moumou{
+	font-size: 20rpx;
+	margin-top: 18rpx;
+	margin-left: 12rpx;
+	color: #494949;
+}
+.queding{
+	height: 74rpx;
+	width: 600rpx;
+	border-radius: 40rpx;
+	line-height: 74rpx;
+	background-color:#f14724 ;
+	margin-top: 138rpx;
+	font-size: 38rpx;
+}
+

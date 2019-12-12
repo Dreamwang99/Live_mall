@@ -1,0 +1,153 @@
+
+.heng.data-v-707d35bc {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.ershou_img.data-v-707d35bc {
+	width: 353rpx;
+	margin: 5rpx;
+}
+.sousuo_top.data-v-707d35bc {
+	background-color: #FFFFFF;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	padding: 30rpx 10rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.beijing.data-v-707d35bc {
+	background-color: #FFFFFF;
+	height: 70rpx;
+}
+.beijing2.data-v-707d35bc {
+	background-color: #F1F1F1;
+	height: 57rpx;
+	width: 609rpx;
+	margin-left: 20rpx;
+	border-radius: 50rpx;
+}
+.fangdajing.data-v-707d35bc {
+	height: 26rpx;
+	width: 26rpx;
+	margin-left: 35rpx;
+	margin-top: 16rpx;
+}
+.sousuo.data-v-707d35bc {
+	font-size: 24rpx;
+	height: 100%;
+	/* padding-top: 30rpx; */
+}
+.jl.data-v-707d35bc {
+	margin-top: 22rpx;
+	margin-left: 20rpx;
+	font-size: 26rpx;
+	color: #ff212c;
+}
+.xl.data-v-707d35bc {
+	margin-left: 40rpx;
+	color: black;
+}
+.sx.data-v-707d35bc {
+	margin-left: 70rpx;
+	color: black;
+}
+.sxtu.data-v-707d35bc {
+	height: 24rpx;
+	width: 24rpx;
+	margin-left: 20rpx;
+	margin-right: 21rpx;
+}
+.shai.data-v-707d35bc {
+	font-size: 26rpx;
+}
+.shafa.data-v-707d35bc {
+	height: 300rpx;
+	width: 353rpx;
+}
+.miewen.data-v-707d35bc {
+	height: auto;
+	width: 100%;
+	background-color: #FFFFFF;
+	padding-bottom: 10rpx;
+}
+.miewendeng.data-v-707d35bc {
+	font-size: 29rpx;
+	margin-left: 20rpx;
+	padding-top: 20rpx;
+}
+.ziwaixian.data-v-707d35bc {
+	font-size: 21rpx;
+	margin-top: 10rpx;
+	margin-left: 20rpx;
+	color: #949494;
+}
+.rmb.data-v-707d35bc {
+	color: #ff0d2e;
+	font-size: 32rpx;
+	margin-left: 20rpx;
+	margin-top: 10rpx;
+}
+.flex_wrap.data-v-707d35bc {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	margin: 10rpx 15rpx;
+}
+.ershou_right.data-v-707d35bc {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.title1.data-v-707d35bc {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	height: 79rpx;
+	line-height: 79rpx;
+	background: #fff;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	padding: 0 10rpx;
+	border-top: 10rpx solid #eee;
+}
+.sp.data-v-707d35bc {
+	margin-left: 20rpx;
+	color: red;
+	font-size: 26rpx;
+}
+.tj.data-v-707d35bc {
+	margin-left: 20rpx;
+	font-size: 26rpx;
+	/* font-size: 23rpx;
+	line-height: 57rpx;
+	margin-left: 60rpx;
+	margin-top: 12rpx; */
+}
+.sousuo_.data-v-707d35bc {
+	font-size: 30rpx;
+	margin-left: 30rpx;
+}
+

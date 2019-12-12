@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "收货地址",
+  "titleNView": {
+    "buttons": [
+      {
+        "fontSize": "23rpx",
+        "text": "新增地址 "
+      }
+    ]
+  },
+  "usingComponents": {}
+}

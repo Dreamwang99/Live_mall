@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "购物车",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "titleNView": {
+    "buttons": [
+      {
+        "fontSize": "23rpx",
+        "text": "完成 "
+      }
+    ]
+  },
+  "usingComponents": {}
+}

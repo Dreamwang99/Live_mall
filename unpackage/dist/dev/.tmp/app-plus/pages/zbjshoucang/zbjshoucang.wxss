@@ -1,0 +1,72 @@
+
+.dingbu {
+
+		background-color: #F5F5F5;
+		height: 1300rpx;
+}
+.zi {
+		font-size: 25rpx;
+		margin-top: 32rpx;
+		margin-left: 40rpx;
+		margin-right: 15rpx;
+}
+.zi1 {
+		font-size: 25rpx;
+		margin-top: 32rpx;
+		margin-left: 40rpx;
+		margin-right: 15rpx;
+		color: red;
+}
+.zi2 {
+		font-size: 25rpx;
+		margin-top: 32rpx;
+		margin-left: 45rpx;
+		margin-right: 15rpx;
+}
+.zi3 {
+		font-size: 25rpx;
+		margin-top: 32rpx;
+		margin-left: 65rpx;
+}
+.hxian {
+		height: 4rpx;
+		background-color: red;
+		width: 150rpx;
+		margin-left: 205rpx;
+		margin-top: 18rpx;
+		margin-bottom: 12rpx;
+}
+.beijing {
+		height: 500rpx;
+		width: 350rpx;
+		margin-left: 20rpx;
+		background-size: 100% 100%;
+		margin-right: 12rpx;
+}
+.beijing1 {
+		height: 500rpx;
+		width: 350rpx;
+		
+		background-size: 100% 100%;
+}
+.xh {
+		margin-left: 12rpx;
+		font-size: 22rpx;
+		color: #FFFFFF;
+}
+.xh1 {
+		margin-left: 12rpx;
+		font-size: 20rpx;
+		color: #FFFFFF;
+}
+.xh2 {
+		margin-left: 20rpx;
+		margin-top: 8rpx;
+		height: 18rpx;
+		width: 18rpx;
+}
+.xh3 {
+		font-size: 20rpx;
+		color: #FFFFFF;
+}
+

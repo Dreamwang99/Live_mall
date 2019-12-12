@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "",
+  "transparentTitle": "always",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "add": "/components/add"
+  }
+}

@@ -1,0 +1,53 @@
+
+.xiangqing {
+	color: #C0C0C0;
+	font-size: 22rpx;
+	margin-left: 10rpx;
+	margin-top: 10rpx;
+	padding-bottom: 30rpx;
+	height: 32%;
+}
+.logo1 {
+	height: 172rpx;
+	width:198rpx;
+}
+.list {
+	width: 100%;
+	border-top: 2rpx solid #eee;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	background: #fff;
+	height: 213rpx;
+	padding: 20rpx 30rpx 0 30rpx;
+}
+.list1 {
+	width:198rpx;
+	height: 172rpx;
+}
+.xiaomi {
+	font-size: 24rpx;
+}
+.bottom{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: stretch;
+	-webkit-align-items: stretch;
+	        align-items: stretch;
+}
+.prise {
+	color: #ff0d2e;
+	font-size: 32rpx;
+	margin-left: 10rpx;
+	margin-top: 10rpx;
+}
+

@@ -1,0 +1,62 @@
+
+.beijing{
+	margin-top: 9rpx;
+	height: 312rpx;
+	margin-left: 20rpx;
+	width: 710rpx;
+	background-size: cover;
+}
+.lining{
+	height: 66rpx;
+	width: 66rpx;
+	margin-top: 80rpx;
+	margin-left: 322rpx;
+}
+.heng{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.lnzi{
+	font-size: 28rpx;
+	margin-top: 10rpx;
+	text-align: center;
+	color: #FFFFFF;
+}
+.yunji{
+	font-size: 21rpx;
+	margin-top: 10rpx;
+	text-align: center;
+	color: #FFFFFF;
+}
+.hezi{
+	height: 165rpx;
+	width: 176rpx;
+	margin-left: 20rpx;
+	margin-top: 10rpx;
+}
+.yuan{
+	font-size:21rpx ;
+	color: #FF0D2E;
+	margin-left: 20rpx;
+	margin-top: 26rpx;
+}
+.yuan1{
+	font-size:14rpx ;
+	color: #ADADAD;
+	margin-left: 8rpx;
+	margin-top: 35rpx;
+}
+.xian{
+	position: absolute;
+	height: 1rpx;
+	width: 56rpx;
+	background-color:#ADADAD ;
+	margin-top: 44rpx;
+	margin-left:75rpx;
+}
+

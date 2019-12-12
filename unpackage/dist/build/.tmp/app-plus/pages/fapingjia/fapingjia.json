@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "发表评价",
+  "titleNView": {
+    "buttons": [
+      {
+        "color": "#FF0000",
+        "fontSize": "23rpx",
+        "text": "发布 "
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-rate": "/components/uni-rate/uni-rate"
+  }
+}

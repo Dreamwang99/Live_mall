@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "编辑",
+  "titleNView": {
+    "buttons": [
+      {
+        "fontSize": "23rpx",
+        "text": "保存 "
+      }
+    ]
+  },
+  "usingComponents": {
+    "w-picker": "/components/w-picker/w-picker"
+  }
+}

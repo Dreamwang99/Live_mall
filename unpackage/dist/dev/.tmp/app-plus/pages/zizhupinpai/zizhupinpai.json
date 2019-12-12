@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "自主品牌",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "",
+        "fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+        "fontSize": "30rpx"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "拼团详情",
+  "titleBarColor": "#FFFFFF",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "uni-countdown": "/components/linnian-CountDown/uni-countdown"
+  }
+}

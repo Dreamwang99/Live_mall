@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "二手好货",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "titleNView": {
+    "buttons": [
+      {
+        "color": "#FF0000",
+        "fontSize": "23rpx",
+        "text": "发布 "
+      }
+    ]
+  },
+  "usingComponents": {}
+}

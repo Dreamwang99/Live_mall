@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "我的积分",
+  "navigationBarTextStyle": "white",
+  "transparentTitle": "always",
+  "titleNView": {
+    "buttons": [
+      {
+        "color": "#FFFFFF",
+        "fontSize": "23rpx",
+        "text": "积分规则 "
+      }
+    ]
+  },
+  "usingComponents": {}
+}

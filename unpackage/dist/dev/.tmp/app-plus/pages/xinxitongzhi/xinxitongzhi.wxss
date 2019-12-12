@@ -1,0 +1,44 @@
+
+.heng {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	background: #fff;
+}
+.xian {
+	width: 100%;
+	border-top: 16rpx solid #eee;
+}
+.daohuo {
+	height: 40rpx;
+	width: 37rpx;
+	margin-top: 30rpx;
+}
+.yuan {
+	background-color: #ff212c;
+	height: 100rpx;
+	width: 100rpx;
+	border-radius: 50%;
+	margin-top: 35rpx;
+	margin-left: 20rpx;
+	text-align: center;
+	line-height: 100rpx;
+}
+.name1 {
+	font-size: 29rpx;
+	margin-left: 27rpx;
+	margin-top: 45rpx;
+}
+.name2 {
+	font-size: 26rpx;
+	margin-left: 27rpx;
+	color: #a0a0a0;
+	margin-top: 20rpx;
+	margin-bottom: 33rpx;
+}
+

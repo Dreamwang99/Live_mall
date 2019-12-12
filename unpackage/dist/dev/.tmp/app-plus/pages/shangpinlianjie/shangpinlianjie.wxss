@@ -1,0 +1,76 @@
+
+.beijing{
+	background-color: #F5F5F5;
+}
+.xian{
+	height: 10rpx;
+}
+.rmb{
+	color: red;
+	margin-top: 24rpx;
+	margin-left:11rpx ;
+	font-size: 25rpx;
+}
+.baidi{
+	background-color: #FFFFFF;
+	height: 200rpx;
+	width: 710rpx;
+	margin-left: 20rpx;
+}
+.zi1{
+	margin-top: 20rpx;
+	font-size:25rpx;
+	margin-left: 11rpx;
+}
+.zi2{
+	margin-top: 20rpx;
+	font-size: 18rpx;
+	margin-left: 11rpx;
+	color: #949494;
+}
+.heng{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.gou{
+	height: 33rpx;
+	width: 33rpx;
+	margin-top: 82rpx;
+	margin-left: 22rpx;
+}
+.tu{
+	height: 163rpx;
+	width: 175rpx;
+	margin-left: 20rpx;
+	margin-top: 20rpx;
+	margin-bottom: 20rpx;
+}
+.dp{
+	height: 20rpx;
+	width: 20rpx;
+	margin-top: 20rpx;
+	margin-left: 27rpx;
+}
+.dpzi{
+	font-size: 18rpx;
+	margin-left: 16rpx;
+	margin-top:18rpx;
+}
+.queding{
+	margin-top: 142rpx;
+	margin-bottom: 140rpx;
+	height: 74rpx;
+	width: 602rpx;
+	border-radius: 40rpx;
+	color: #FFFFFF;
+	background-color:#f13720 ;
+	line-height: 74rpx;
+	text-align: center;
+	margin-left:77rpx ;
+}
+

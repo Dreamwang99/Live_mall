@@ -1,0 +1,190 @@
+
+page.data-v-160f3b3e {
+	background-color: #F5F5F5;
+}
+.all.data-v-160f3b3e {
+	background-color: #ffffff;
+	width: 95%;
+	margin: auto;
+	height: 248rpx;
+}
+.beijing.data-v-160f3b3e {
+	background-size: 100% 100%;
+	height: 390rpx;
+	width: 100%;
+}
+.dingdan_bottom.data-v-160f3b3e {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.beijing1.data-v-160f3b3e {
+	position: absolute;
+	background-color: #f5f5f5;
+	margin-top: -73rpx;
+	height: 1090rpx;
+	width: 750rpx;
+}
+.heng.data-v-160f3b3e {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	padding: 8% 20rpx;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.shezhi.data-v-160f3b3e {
+	height: 45rpx;
+	width: 45rpx;
+}
+.heng1.data-v-160f3b3e {
+	width: 100%;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	        justify-content: flex-start;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.tup.data-v-160f3b3e {
+	height: 36rpx;
+	width: 43rpx;
+	margin-top: 20rpx;
+}
+.tx.data-v-160f3b3e {
+	height: 116rpx;
+	width: 116rpx;
+	border-radius: 50%;
+}
+.ergou.data-v-160f3b3e {
+	font-size: 32rpx;
+	color: #ffffff;
+	margin-left: 30rpx;
+	margin-top: 30rpx;
+}
+.hong.data-v-160f3b3e {
+	height: 75rpx;
+	width: 75rpx;
+	border-radius: 100%;
+	text-align: center;
+	line-height: 75rpx;
+	background-color: #ec1f25;
+	margin: auto;
+}
+.baidi.data-v-160f3b3e {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	padding: 20rpx 15rpx 20rpx 9rpx;
+	border-radius: 6px;
+}
+.baidi1.data-v-160f3b3e {
+	background-color: #ffffff;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	padding: 10rpx 20rpx 33rpx 20rpx;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	border-radius: 6px;
+}
+.baidi2.data-v-160f3b3e {
+	width: 95%;
+	height: 569rpx;
+	padding: 31rpx 12rpx 40rpx 9rpx;
+	margin: auto;
+	border-top: 30rpx solid #eee;
+	background-color: #ffffff;
+}
+.xian.data-v-160f3b3e {
+	background-color: #ff6f84;
+	height: 29rpx;
+	width: 10rpx;
+	border-radius: 10rpx;
+}
+.icont.data-v-160f3b3e {
+	width: 25%;
+	height: 115rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	margin-top: 30rpx;
+}
+.quan.data-v-160f3b3e {
+	font-size: 30rpx;
+	margin-left: 13rpx;
+}
+.bottom_title.data-v-160f3b3e {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.chakan.data-v-160f3b3e {
+	font-size: 26rpx;
+	color: #949494;
+}
+.jr.data-v-160f3b3e {
+	margin-left: 18rpx;
+	height: 28rpx;
+	width: 16rpx;
+	margin-top: 5rpx;
+}
+.tu.data-v-160f3b3e {
+	height: 50rpx;
+	width: 45rpx;
+	margin: auto;
+	/* margin-left: 15%; */
+}
+.tuzi.data-v-160f3b3e {
+	font-size: 27rpx;
+	margin: auto;
+}
+.tuzi1.data-v-160f3b3e {
+	font-size: 27rpx;
+	text-align: center;
+	margin-top: 17rpx;
+}
+.tijiao.data-v-160f3b3e {
+	background-color: #f13821;
+	height: 75rpx;
+	width: 707rpx;
+	line-height: 75rpx;
+	border-radius: 38px;
+	font-size: 34rpx;
+	text-align: center;
+	color: #fff;
+	margin: 40rpx auto;
+	/* margin: 142rpx auto; */
+}
+

@@ -1,0 +1,125 @@
+
+page {
+	background-color: #F5F5F5;
+}
+.content {
+	background: #fff;
+	width: 96%;
+	margin: auto;
+}
+.image_ {
+	width: 147rpx;
+	height: 143rpx;
+}
+.kanjia {
+	height: 350rpx;
+	width: 530rpx;
+	border-radius: 20rpx;
+	background-color: #FFFFFF;
+}
+.sells {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	padding: 61rpx 31rpx 30rpx 31rpx;
+	border-top: 15rpx solid #eee;
+}
+.flex_row {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.background {
+	background-color: #fff;
+	margin: 10rpx 20rpx -5rpx 20rpx;
+}
+.image {
+	height: 180rpx;
+	width: 25%;
+}
+.sell_right {
+	padding-left: 23rpx;
+}
+.iocn {
+	height: 25rpx;
+	width: 25rpx;
+	margin-right: 10rpx;
+}
+.wait {
+	font-size: 22rpx;
+}
+.titles {
+	font-size: 28rpx;
+}
+.cost {
+	line-height: 75rpx;
+	font-size: 31rpx;
+	color: #ff0d2e;
+}
+.sell_bottom {
+	border-top: 1px solid #eee;
+	padding: 30rpx 0;
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	        justify-content: flex-end;
+}
+.contact {
+	border-radius: 30rpx;
+	border: 1rpx solid #c4c4c4;
+	color: #C4C4C4;
+	font-size: 24rpx;
+	text-align: center;
+	line-height: 47rpx;
+	width:156rpx;
+	height: 47rpx;
+	margin-right: 31rpx;
+}
+.delivery {
+	background-color: #f13320;
+	color: #fff;
+	border: 1rpx solid #f13320;
+}
+.order {
+	font-size: 32rpx;
+	line-height: 91rpx;
+	margin-left: 200rpx;
+}
+.cancel {
+	height: 22rpx;
+	width: 22rpx;
+	margin: 30rpx 30rpx auto auto;
+}
+.form {
+	height: 40rpx;
+	width: 32rpx;
+	margin: 30rpx 34rpx 22rpx 25rpx;
+}
+.fill_in {
+	margin-top: 30rpx;
+}
+.number {
+	font-size: 30rpx;
+	color: #C4C4C4;
+}
+.confirm {
+	margin: 59rpx auto auto auto;
+	line-height: 65rpx;
+	text-align: center;
+	background-color: #F13620;
+	color: #fff;
+	width: 300rpx;
+	border-radius: 35rpx;
+}
+

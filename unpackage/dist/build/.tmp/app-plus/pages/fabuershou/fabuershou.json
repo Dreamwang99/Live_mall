@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "发布二手商品",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "titleNView": {
+    "buttons": [
+      {
+        "fontSize": "23rpx",
+        "text": "说明 "
+      }
+    ]
+  },
+  "usingComponents": {
+    "w-picker": "/components/w-picker/w-picker"
+  }
+}

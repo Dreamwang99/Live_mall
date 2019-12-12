@@ -1,0 +1,77 @@
+
+.xuanze {
+	font-size: 23rpx;
+	margin-top: 23rpx;
+	margin-left: 40rpx;
+	color: #d5d5d5;
+}
+.heng {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.kuang {
+	height: 102rpx;
+	width: 162rpx;
+	border: solid;
+	border-color: #ff212c;
+	margin-left: 40rpx;
+	margin-top: 22rpx;
+	margin-bottom: 25rpx;
+}
+.zs {
+	height: 20rpx;
+	width: 15rpx;
+	margin-left: 10rpx;
+	margin-top: 26rpx;
+}
+.shu {
+	margin-left: 39rpx;
+	margin-top: 21rpx;
+	font-size: 18rpx;
+}
+.yuan {
+	margin-left: 56rpx;
+	margin-top: 18rpx;
+	font-size: 18rpx;
+	color: #d5d5d5;
+}
+.zfb{
+	height: 32rpx;
+	width: 32rpx;
+	margin-top: 30rpx;
+	margin-left: 35rpx;
+}
+.wx{
+	height: 27rpx;
+	width: 30rpx;
+	margin-top: 28rpx;
+	margin-left: 35rpx;
+	margin-bottom: 40rpx;
+}
+.zi{
+	font-size: 23rpx;
+	margin-top: 32rpx;
+	margin-left: 10rpx;
+	
+	color: #494949;
+}
+.gou{
+	height: 30rpx;
+	width: 30rpx;
+	margin-top: 35rpx;
+	margin-left: auto;
+	margin-right: 45rpx;
+}
+.queren{
+	background-color: #f13720;
+	height: 75rpx;
+	width: 710rpx;
+	font-size: 33rpx;
+	border-radius: 40rpx;
+}
+

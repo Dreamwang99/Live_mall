@@ -1,0 +1,137 @@
+
+.beijing{
+	width: 750rpx;
+	height: 1200rpx;
+	background-size: 100% 100%;
+}
+.tx{
+	height: 88rpx;
+	width: 88rpx;
+	margin-left: 590rpx;
+    background-size: cover;
+}
+.heng{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+}
+.touxiang{
+	height: 75rpx;
+	width: 75rpx;
+	margin-left: 20rpx;
+	margin-top: 15rpx;
+}
+.quxiao{
+	text-align: center;
+	font-size: 25rpx;
+}
+.jia{
+	position: absolute;
+	height: 27rpx;
+	width: 27rpx;
+	margin-left: 627rpx;
+	margin-top: -10rpx;
+}
+.zan{
+	height: 70rpx;
+	width: 68rpx;
+	margin-top: 65rpx;
+	margin-left: 615rpx;
+}
+.pl{
+	height: 68rpx;
+	width: 70rpx;
+	margin-top: 52rpx;
+	margin-left: 615rpx;
+}
+.xj {
+	height: 80rpx;
+	width: 80rpx;
+	margin-top: 55rpx;
+	margin-left: 188rpx;
+}
+.zi{
+	color: #FFFFFF;
+	font-size: 21rpx;
+	margin-left:620rpx ;
+}
+.zi1{
+	color: #FFFFFF;
+	font-size: 21rpx;
+	margin-left:627rpx ;
+}
+.zi2{
+	font-size: 30rpx;
+	margin-left: 20rpx;
+	color: #FFFFFF;
+	margin-top: 50rpx;
+}
+.zi3{
+	font-size: 23rpx;
+	margin-left: 20rpx;
+	color: #FFFFFF;
+}
+.xiangcexq{
+	margin-top: 22rpx;
+	margin-left: 180rpx;
+	font-size: 22rpx;
+}
+.xiangjips{
+	margin-top: 22rpx;
+	margin-left: 180rpx;
+	font-size: 22rpx;
+}
+.pinglun1{
+	height: 890rpx;
+	width: 750rpx;
+	background-color:rgba(243,229,229,0.76) ;
+}
+.cha{
+	margin-top: 20rpx;
+	height: 23rpx;
+	width: 23rpx;
+	margin-left:700rpx;
+}
+.zhanghu{
+	font-size: 24rpx;
+	margin-left: 20rpx;
+	margin-top: 15rpx;
+	color: #7b7b7b;
+}
+.pingjia{
+	font-size: 24rpx;
+	margin-left: 20rpx;
+	margin-top: 23rpx;
+	color: #7b7b7b;
+}
+.shuodian{
+	background-color: #dedede;
+	width: 750rpx;
+	line-height: 82rpx;
+	position: fixed;
+	bottom: 0rpx;
+}
+.shuru1{
+	margin-top: 28rpx;
+	margin-left: 40rpx;
+}
+.shuru{
+	font-size: 23rpx;
+}
+.aite{
+	margin-top: 5rpx;
+	margin-left: 400rpx;
+	font-size: 24rpx;
+	color: #949494;
+}
+.xiao{
+	height: 40rpx;
+	width:40rpx;
+	margin-top: 25rpx;
+	margin-left:30rpx;
+}
+

@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "开播设置",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

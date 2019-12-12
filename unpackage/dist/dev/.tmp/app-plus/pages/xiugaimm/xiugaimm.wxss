@@ -1,0 +1,73 @@
+
+page{
+	background-color: #F5F5F5;
+}
+.content{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	border-top: 13rpx #F5F5F5 solid;
+}
+.hao {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	background-color: #FFFFFF;
+	width: 750rpx;
+}
+.phone{
+	margin-left: 75rpx; 
+	line-height: 99rpx;
+	font-size: 30rpx;
+	width: 200rpx;
+}
+.shuru{
+	font-size: 30rpx;
+	width: 300rpx;
+}
+.huoqu{
+	text-align: center;
+	background-color: red;
+	border-radius:30rpx ;
+	height: 55rpx;
+	line-height: 55rpx;
+	width: 150rpx;
+	font-size: 30rpx;
+	color: #FFFFFF;
+	margin-right: 25rpx;
+	font-weight: 100;
+}
+.qd{
+	font-size: 35rpx;
+	border-radius: 40rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	background-color: red;
+	color: #FFFFFF;
+	width: 600rpx;
+	text-align: center;
+	margin-top: 140rpx;
+}
+.xian{
+	width: 710rpx;
+	height: 2rpx;
+	background-color: #C4C4C4;
+}
+

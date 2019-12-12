@@ -1,0 +1,843 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/register/register",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/shouye/shouye",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/dianpu/dianpu",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/tixianjieguo/tixianjieguo",
+			"style": {
+				"navigationBarTitleText": "提现结果",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},
+		{
+		   "path": "pages/dsp/dsp",
+		   "style": {
+		    "navigationBarTitleText": "",
+		    "transparentTitle": "always",
+		    "navigationStyle": "custom"
+		   }
+		  },
+		  {
+		     "path": "pages/dsp/duanshipin",
+		     "style": {
+		      // "navigationBarTitleText": "短视频",
+		      // "navigationBarBackgroundColor": "#FFFFFF",
+		      "transparentTitle": "always"
+		     }
+		    },
+			{
+			   "path": "pages/zhibogeren/gerenzhuye",
+			   "style": {
+			    "navigationBarTitleText": "直播个人主页",
+			    "navigationBarBackgroundColor": "#FFFFFF",
+			    "navigationStyle":"custom"
+			   }
+			  },
+		{
+			"path": "pages/ruzhu/ruzhu",
+			"style": {
+				"navigationBarTitleText": "申请入驻",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/pinglun/pinglun",
+			"style": {
+				"navigationBarTitleText": "我的评论",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},
+		{
+		   "path": "pages/fenlei/fenleisousuo",
+		   "style": {
+		    "navigationBarTitleText": "分类详情",
+		    "navigationBarBackgroundColor": "#FFFFFF"
+		   }
+		  },
+		{
+		   "path": "pages/fenlei/sousuo",
+		   "style": {
+		    "navigationBarTitleText": "搜索",
+		    "transparentTitle": "always",
+		    "navigationStyle": "custom"
+		   }
+		  },
+
+		/* {
+		            "path" : "static/gengduo/gengduo",
+		            "style" : {}
+		        } */
+		{
+			"path": "pages/zhibo/zhibo",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		},
+		/* {
+		            "path" : "pages/ruzhu/center/center",
+		            "style" : {}
+		        } */
+		{
+			"path": "pages/changename/changename",
+			"style": {
+				"navigationBarTitleText": "更换名字",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+
+							"fontSize": "23rpx",
+							"text": "保存 "
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/fabu/fabu",
+			"style": {
+				"navigationBarTitleText": "我的发布",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/password/password",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		/* {
+		            "path" : "pages/pinglun/register2/register2",
+		            "style" : {}
+		        } */
+		{
+			"path": "pages/register2/register2",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		/* {
+		            "path" : "static/changename/changename",
+		            "style" : {}
+		        } */
+		{
+			"path": "pages/center/center",
+			"style": {
+				"navigationBarTitleText": "编辑资料",
+				"navigationBarBackgroundColor": "#FFFFFF"
+
+			}
+		}, {
+			"path": "pages/updatezhaopian/updatezhaopian",
+			"style": {
+				"navigationBarTitleText": "编辑资料"
+			}
+		},
+		{
+			"path": "pages/shouhuodizhi/shouhuodizhi",
+			"style": {
+				"navigationBarTitleText": "收货地址",
+
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+
+							"fontSize": "23rpx",
+							"text": "新增地址 "
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/kefu1/kefu1",
+			"style": {
+				"navigationBarTitleText": "联系客服"
+			}
+		}, {
+			"path": "pages/kefu2/kefu2",
+			"style": {
+				"navigationBarTitleText": "联系客服"
+			}
+		}, {
+			"path": "pages/bianji/bianji",
+			"style": {
+				"navigationBarTitleText": "编辑",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"fontSize": "23rpx",
+							"text": "保存 "
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/dingdan/dingdan",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"navigationBarBackgroundColor": "#FFFFFF"
+
+			}
+		}, {
+			"path": "pages/tuikuan/tuikuan",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/wancheng/wancheng",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/tuikuanz/tuikuanz",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/daiping/daiping",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/daishou/daishou",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/daifa/daifa",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/daifu/daifu",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+
+
+		}, {
+			"path": "pages/fapingjia/fapingjia",
+			"style": {
+				"navigationBarTitleText": "发表评价",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"color": "#FF0000",
+							"fontSize": "23rpx",
+							"text": "发布 "
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/kefu3/kefu3",
+			"style": {
+				"navigationBarTitleText": "联系客服"
+			}
+		}, {
+			"path": "pages/xxdp/xxdp",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+
+			}
+		}, {
+			"path": "pages/jifen/jifen",
+			"style": {
+				"navigationBarTitleText": "我的积分",
+				"navigationBarTextStyle": "white",
+				"transparentTitle": "always",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"color": "#FFFFFF",
+							"fontSize": "23rpx",
+							"text": "积分规则 "
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/jfgz/jfgz",
+			"style": {
+				"navigationBarTitleText": "积分规则"
+			}
+		}, {
+			"path": "pages/xiugaimm/xiugaimm",
+			"style": {
+				"navigationBarTitleText": "修改登录密码",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/xiugaihao/xiugaihao",
+			"style": {
+				"navigationBarTitleText": "修改手机号",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/anquan/anquan",
+			"style": {
+				"navigationBarTitleText": "账户与安全",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/dpshoucang/dpshoucang",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/spshoucang/spshoucang",
+			"style": {
+				"navigationBarTitleText": "我的收藏",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/dsp/dsp",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		}, {
+			"path": "pages/zbjshoucang/zbjshoucang",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		}, {
+			"path": "pages/dspshoucang/dspshoucang",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		}, {
+			"path": "pages/gouwuche/gouwuche",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+
+							"fontSize": "23rpx",
+							"text": "管理 "
+						}]
+					}
+				}
+
+			}
+		}, {
+			"path": "pages/ckwuliu/ckwuliu",
+			"style": {
+				"navigationBarTitleText": "查看物流"
+			}
+		}, {
+			"path": "pages/zhiboshezhi/zhiboshezhi",
+			"style": {
+				"navigationBarTitleText": "开播设置"
+			}
+		}, {
+			"path": "pages/shuoming/shuoming",
+			"style": {
+				"navigationBarTitleText": "说明",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/pintuanxq/pintuanxq",
+			"style": {
+				"navigationBarTitleText": "拼团详情",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}
+
+		,
+		{
+			"path": "pages/pintuan1/pintuan1",
+			"style": {
+				"navigationBarTitleText": "拼团详情",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/zhiboduanshipin/zhiboduanshipin",
+			"style": {
+				"navigationBarTitleText": "直播短视频",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},
+
+		{
+			"path": "pages/pintuan2/pintuan2",
+			"style": {
+				"navigationBarTitleText": "拼团详情",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},
+		{
+			"path": "pages/kanjia/kanjia",
+			"style": {
+				"navigationBarTitleText": "砍价",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}
+
+
+		, {
+			"path": "pages/gwcshanchu/gwcshanchu",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+
+							"fontSize": "23rpx",
+							"text": "完成 "
+						}]
+					}
+				}
+
+			}
+		}
+
+		, {
+			"path": "pages/fabuershou/fabuershou",
+			"style": {
+				"navigationBarTitleText": "发布二手商品",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+
+							"fontSize": "23rpx",
+							"text": "说明 "
+						}]
+					}
+				}
+
+			}
+		}
+
+		, {
+			"path": "pages/zhibojian/zhibojian",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/gerenzhuye/gerenzhuye",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		}, {
+			"path": "pages/xinxitongzhi/xinxitongzhi",
+			"style": {
+				"navigationBarTitleText": "信息通知",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}
+
+		, {
+			"path": "pages/sousuokuang/sousuokuang",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		},{
+			"path": "pages/sousuokuang/zhibosousuo"
+			// "style": {
+			// 	"navigationBarTitleText": "",
+			// 	"transparentTitle": "always"
+			// }
+		},
+		{
+			"path": "pages/ershouhaohuo/ershouhaohuo",
+			"style": {
+				"navigationBarTitleText": "二手好货",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"color": "#FF0000",
+							"fontSize": "23rpx",
+							"text": "发布 "
+						}]
+					}
+				}
+			}
+		}, 
+		//二手搜索
+		{
+			"path": "pages/ershouhaohuo/ershousousuo",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/pintuanxiangqingye/pintuanxiangqingye",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		}, {
+			"path": "pages/shouyeshipin/shouyeshipin",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/gerenshangjia/gerenshangjia",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		}
+
+		, {
+			"path": "pages/shangcheng/shangcheng",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		}, {
+			"path": "pages/meiribimiao/meiribimiao",
+			"style": {
+				"navigationBarTitleText": "每日必秒",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/wurenpintuan/wurenpintuan",
+			"style": {
+				"navigationBarTitleText": "拼团详情",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/barenpintuan/barenpintuan",
+			"style": {
+				"navigationBarTitleText": "拼团详情",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/tianjiashangpinlianjie/tianjiashangpinlianjie",
+			"style": {
+				"navigationBarTitleText": "商品链接",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/mizhihaohuo/mizhihaohuo",
+			"style": {
+				"navigationBarTitleText": "秘制好货",
+				"navigationBarTextStyle": "white",
+				"transparentTitle": "always",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "\ue658",
+							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+							"fontSize": "30rpx",
+							"color": "#FFFFFF"
+
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/xinpinshangshi/xinpinshangshi",
+			"style": {
+				"navigationBarTitleText": "新品上市",
+				"navigationBarTextStyle": "white",
+				"transparentTitle": "always",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "\ue658",
+							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+							"fontSize": "30rpx",
+							"color": "#FFFFFF"
+
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/guowaizhuanqu/guowaizhuanqu",
+			"style": {
+				"navigationBarTitleText": "国外专区",
+				"navigationBarTextStyle": "white",
+				"transparentTitle": "always",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "\ue658",
+							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+							"fontSize": "30rpx",
+							"color": "#FFFFFF"
+
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/shengqianzhuanqu/shengqianzhuanqu",
+			"style": {
+				"navigationBarTitleText": "国外专区",
+				"navigationBarTextStyle": "white",
+				"transparentTitle": "always",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "\ue658",
+							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+							"fontSize": "30rpx",
+							"color": "#FFFFFF"
+
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/zizhupinpai/zizhupinpai",
+			"style": {
+				"navigationBarTitleText": "自主品牌",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "\ue658",
+							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+							"fontSize": "30rpx"
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/chongzhi/chongzhi",
+			"style": {
+				"navigationBarTitleText": "充值",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}
+
+		, {
+			"path": "pages/tousubaocuo/tousubaocuo",
+			"style": {
+				"navigationBarTitleText": "投诉报错",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/gerenzhongxin/gerenzhongxin",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+
+			}
+		}, {
+			"path": "pages/dingdantijiao/dingdantijiao",
+			"style": {
+				"navigationBarTitleText": "订单提交",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/fenlei/fenlei",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/nav/nav",
+			"style": {}
+		}, {
+			"path": "pages/shaixuan/shaixuan",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/shangpinxiangqing/shangpinxiangqing",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/zhiboshouye/zhiboshouye",
+			"style": {
+				"transparentTitle": "always",
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/quanbupinglun/quanbupinglun",
+			"style": {
+				"navigationBarTitleText": "全部评论",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/maijiaxiu/maijiaxiu",
+			"style": {
+				"navigationBarTitleText": "买家秀",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		},  {
+			"path": "pages/shangpinlianjie/shangpinlianjie",
+			"style": {
+				"navigationBarTitleText": "商品链接",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#F5F5F5"
+			}
+		}, {
+			"path": "pages/dianputuijian/dianputuijian",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "\ue658",
+							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+							"fontSize": "30rpx",
+							"color": "#FFFFFF"
+
+						}]
+					}
+				}
+			}
+		}, {
+			"path": "pages/chakanwuliu/chakanwuliu",
+			"style": {
+				"navigationBarTitleText": "查看物流",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/swiper/swiper",
+			"style": {}
+		}, {
+			"path": "pages/fenlei2/fenlei2",
+			"style": {}
+		}, {
+			"path": "pages/xuanzetouxiang/xuanzetouxiang",
+			"style": {
+				"navigationBarTitleText": "选择头像",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}
+
+		, {
+			"path": "pages/gouwuche1/gouwuche1",
+			"style": {
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false //禁用原生导航栏
+				}
+			}
+		}, {
+			"path": "pages/tijiaodingdan/tijiaodingdan",
+			"style": {}
+		}
+
+		, {
+			"path": "pages/userAgreement/userAgreement",
+			"style": {
+				"navigationBarTitleText": "用户协议",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}, {
+			"path": "pages/goToSell/goToSell",
+			"style": {
+				"navigationBarTitleText": "我的售出",
+				"navigationBarBackgroundColor": "#FFFFFF"
+			}
+		}
+
+		, {
+			"path": "pages/verify/verify",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		}, {
+			"path": "pages/second_hand/second_hand",
+			"style": {
+				"navigationBarTitleText": "",
+				"transparentTitle": "always"
+			}
+		}, {
+			"path": "pages/wallet/wallet",
+			"style": {
+				"navigationBarTitleText": "钱包",
+				"navigationBarTextStyle": "white",
+				"transparentTitle": "always"
+			}
+		}, {
+			"path": "pages/bankcard/bankcard",
+			"style": {
+				"navigationBarTitleText": "提现到银行卡"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#B2B2B2",
+		"selectedColor": "#FF212C",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/shouye/shouye",
+				"iconPath": "static/gouwuche/iocn-sy_75.png",
+				"selectedIconPath": "static/gouwuche/iocn-sy.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/zhiboshouye/zhiboshouye",
+				"iconPath": "static/gouwuche/iocn-zhibo.png",
+				"selectedIconPath": "static/gouwuche/iocn-zhibo_68.png",
+				"text": "直播"
+			},
+			{
+				"pagePath": "pages/fenlei/fenlei",
+				"iconPath": "static/gouwuche/iocn-fenlei.png",
+				"selectedIconPath": "static/gouwuche/iocn-fenlei_32.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/gouwuche1/gouwuche1",
+				"iconPath": "static/gouwuche/iocn-gwc.png",
+				"selectedIconPath": "static/gouwuche/iocn-gwc_22.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/gerenzhongxin/gerenzhongxin",
+				"iconPath": "static/gouwuche/iocn-grzx.png",
+				"selectedIconPath": "static/gouwuche/iocn-grzx_66.png",
+				"text": "个人中心"
+			}
+		]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}

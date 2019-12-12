@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "transparentTitle": "always",
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

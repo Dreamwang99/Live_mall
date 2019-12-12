@@ -1,0 +1,1 @@
+<view class="checkNumBox data-v-d4c5993a"><view data-event-opts="{{[['tap',[['minu',['$event']]]]]}}" class="minu btn data-v-d4c5993a" bindtap="__e">-</view><view class="checkNumVal data-v-d4c5993a">{{''+childNum+''}}</view><view data-event-opts="{{[['tap',[['plus',['$event']]]]]}}" class="plus btn data-v-d4c5993a" bindtap="__e">+</view></view>
