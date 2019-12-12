@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="wrap">
 		<view class="beijing1" :style="{ backgroundImage: 'url(' + '../../static/shouye/bg-top.png' + ')' }">
 			<view class="shouye_top">
 				<image class="mi" src="../../static/shouye/logo-84-wz.png" mode=""></image>

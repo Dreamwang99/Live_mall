@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="wrap">
 		<!-- 顶部 -->
 		<view class="status_bar">
 			<view class="top_view"></view>
