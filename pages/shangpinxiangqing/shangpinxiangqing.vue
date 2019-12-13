@@ -21,7 +21,7 @@
 			</view>
 			<view class="parameter" @tap="lookshopdetial()">
 				<view class="parametermsg">商品参数:品牌、尺码......</view>
-				<image src="../../static/iocn-2-jr.png" mo de="" class="nextimg"></image>
+				<image src="../../static/iocn-2-jr.png" mode="" class="nextimg"></image>
 			</view>
 			<!-- ///////////////////////////////////////////////////// -->
 			<view class="pepershow">
@@ -59,7 +59,7 @@
 				<view>————————</view>
 			</view>
 			<view class="bigimgbox">
-				<image src="../../static/1.jpg" mode="widthFix" class="bigimg"></image>
+				<image :src="goodsdata.logo" mode="widthFix" class="bigimg"></image>
 			</view>
 		</view>
 		<!-- 商品参数的弹框 -->
@@ -471,6 +471,7 @@
 				console.log(e)
 				console.log(id)
 				this.number= e
+				console.log(this.number)
 				// this.grtcarnumber(e,id)
 				// this.fixCost()
 			},
@@ -483,6 +484,7 @@
 			nowbuy(){//直接购买
 			console.log('直接购买')
 				this.showmsgdetial = true
+				this.judges = 0
 			},
 			bugcar(){
 				if(a.length*1 === this.colorbox.length*1){
@@ -494,7 +496,7 @@
 							})
 						}else if(this.judges*1 === 0 ){
 	uni.navigateTo({//goods_type=0普通商品 2秒杀商品 3砍价商品 4团购商品
-	url:`../dingdantijiao/dingdantijiao?id=${this.shopid}&goods_type=0&goods_spec=${this.goods_specs}&specid=${this.specid}&goodsid=${this.goods_idss}`
+	url:`../dingdantijiao/dingdantijiao?id=${this.shopid}&goods_type=0&goods_spec=${this.goods_specs}&specid=${this.specid}&goodsid=${this.goods_idss}&number=${this.number}`
 							})
 						}
 						else if(this.judges*1 === -1){
@@ -586,6 +588,11 @@
 							open_people: uni.getStorageSync('id')
 						}).then(res => {
 							console.log(res)
+							console.log(res.msg)
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
 							if(res.code == 1){
 								uni.navigateTo({
 									url:'../kanjia/kanjia?goods_id='+this.shopid + '&activid=' + res.data.activity_id + '&money=' + res.data.price
