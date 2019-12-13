@@ -2,7 +2,7 @@
 	<view class="dianpu">
 		<view class="heng">
 			<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-				<swiper-item v-for="(item,index) in swiplist" :key="index">
+				<swiper-item v-for="(item,index) in goodsInfo.image" :key="index">
 					<view class="swiper-item">
 						<image :src="item" mode="" class="tu"></image>
 					</view>
@@ -10,12 +10,13 @@
 			</swiper>
 		</view>
 		<view class="dangaozi">
-			蛋糕是一种古老的西点，一般是由烤箱制作的，蛋糕是用鸡蛋、白糖、小麦粉为主要原料。以牛奶、果汁、奶粉、香粉、色拉油、水，起酥油、打泡粉为辅料。经过搅拌、调制、烘焙后制成一种像海绵的点心。蛋糕是一种面食，通常是甜的，典型的蛋糕是以烤的方式制作出来。
+			<!-- 蛋糕是一种古老的西点，一般是由烤箱制作的，蛋糕是用鸡蛋、白糖、小麦粉为主要原料。以牛奶、果汁、奶粉、香粉、色拉油、水，起酥油、打泡粉为辅料。经过搅拌、调制、烘焙后制成一种像海绵的点心。蛋糕是一种面食，通常是甜的，典型的蛋糕是以烤的方式制作出来。 -->
+			{{goodsInfo.introduction}}
 		</view>
 		<view class="heng1">
 			<view class="pintuan_title">
 				<image class="im" src="../../static/zhuye/iocn-11-jg.png" mode=""></image>
-				<view class="xl">拼团销量xx</view>
+				<view class="xl">拼团销量：{{assembleInfo.number_sales}}</view>
 			</view>
 			<view class="pintuan_title">
 				<view class="cj">限成交时间</view>
@@ -28,12 +29,11 @@
 		<view class="heng2">
 			<view class="heng">
 				<image class="jg" src="../../static/zhuye/iocn-11-dw.png" mode=""></image>
-				<view class="xl">北京路万达广场3楼</view>
+				<view class="xl">{{adressInfo.address}}</view>
 			</view>
-			<view class="juli">距您步行200米，大约需要2分钟</view>
+			<!-- <view class="juli">距您步行200米，大约需要2分钟</view> -->
 		</view>
-		<view class="chengnuo">商家承诺</view>
-		<view class="pintuan_content">
+		<!-- <view class="pintuan_content">
 			<view>3人拼团</view>
 			<view class="tuan">
 				<view class="people">
@@ -68,17 +68,27 @@
 				</view>
 				<view class="cantuan" @tap="nowboy(2)">去参团（选规格）</view>
 			</view>
-		</view>
-		<view class="imageList">
-			<view class="image_content" v-for="(item,index) in imageLIst" :key="index">
-				<image :src="item.img" mode=""></image>
-				<!-- <view class="ysld">{{item.name}}</view> -->
+		</view> -->
+		<view class="pintuan_content" v-for="(n,n_idx) in assembleInfo.purchase" :key="n_idx">
+			<view>{{n.group_people_num}}人拼团</view>
+			<view class="tuan">
+				<view class="people">
+					还差<view style="color: red;">{{n.join_people_num}}人</view>拼成
+				</view>
+				<view class="cantuan" @tap="nowboy(2)">去参团（选规格）</view>
+				 <!-- @tap="sanren0" -->
 			</view>
 		</view>
-		<view class="guanggao">
+		<view class="imageList">
+			<view class="image_content" v-for="(item,index) in showVideoInfo" :key="index" @tap="videoTo(item.video_url)">
+				<image :src="item.video_img" mode=""></image>
+				<view class="ysld">{{item.clicks}}</view>
+			</view>
+		</view>
+		<!-- <view class="guanggao">
 			<view class="ggy">这是一个广告语大约十五个字</view>
 			<view class="ggtime">9/20 16:30</view>
-		</view>
+		</view> -->
 		<view class="pingjia">
 			<view class="baobei">宝贝评价（1234）</view>
 			<view class="pingjia_let" @tap="chakanpj">
@@ -185,6 +195,18 @@
 		},
 		data() {
 			return {
+				// 经度
+				longitude : 1,
+				// 纬度
+				latitude : 1,
+				// 商品信息
+				goodsInfo : "",
+				// 拼团信息(正在拼的团)
+				assembleInfo : "",
+				// 展示视频信息
+				showVideoInfo : "",
+				// 地址信息
+				adressInfo : "",
 				showmsgdetial: false,
 				shopmsg:'',
 				colorbox:'',
@@ -232,10 +254,55 @@
 		},
 		onLoad(options) {
 			this.goods_id = options.goods_id
-			this.getshopmsg()
-			this.getshopshow()
+			this.getLocation();
+			// this.getshopmsg();
+			this.getGoodsDetails();
+			// this.getshopshow()
 		},
 		methods: {
+			// 获取地址信息
+			getLocation(){
+				uni.getLocation({
+					type: 'wgs84',
+					geocode: 'true',
+					success: res => {
+						console.log('当前位置的经度：' + res.longitude);
+						console.log('当前位置的纬度：' + res.latitude);
+						console.log('当前国家：' + res.address);
+						console.log('当前省份：' + res.address.city);
+						this.longitude = res.longitude
+						this.latitude = res.latitude
+						this.city = res.address.city
+						this.getGoodsDetails();
+					}
+				});
+			},
+			// 获取商品信息
+			getGoodsDetails(){
+				this.request.details({
+					goods_id : this.goods_id,
+					longitude : this.longitude,
+					latitude : this.latitude
+				}).then(res=>{
+					console.log(res);
+					if(res.code === 1){
+						this.goodsInfo = res.data.goods
+						this.assembleInfo = res.data.assemble
+						this.showVideoInfo = res.data.video
+						this.adressInfo = res.data.business
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
+						})
+					}
+				})
+			},
+			videoTo(url){
+				uni.navigateTo({
+					url:'./videoPlay?urls='+url
+				})
+			},
 			nowboy(e){
 				console.log(e);
 				this.showmsgdetial = true
@@ -509,6 +576,7 @@
 		width: 243rpx;
 		height: 314rpx;
 		margin: 5rpx;
+		position: relative;
 	}
 
 	.image_content image {
@@ -671,14 +739,18 @@
 		background-color: red;
 		color: #ffffff;
 		line-height: 47rpx;
+		overflow: hidden;
 		font-size: 18rpx;
 	}
 
 	.ysld {
-		padding: 10rpx;
 		width: 100%;
-		font-size: 23rpx;
-		text-align: center;
+		height: 60rpx;
+		line-height: 30rpx;
+		overflow: hidden;
+		position: absolute;
+		bottom: 10rpx;
+		font-size: 24rpx;
 	}
 
 	.ggy {
