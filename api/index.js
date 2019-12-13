@@ -221,6 +221,8 @@ const getSearchLiveList = (params) => ajax(BASE_URL + '/index/getSearchLiveList'
 const attentRecommend = (params) => ajax(BASE_URL1 + 'Home.AttentRecommend', params)
 // 店铺查看拼团商品详情
 const details = (params) => ajax(BASE_URL + '/goods/Details', params)
+// 获取活动商品价格
+const getGoodsSpecDetails = (params) => ajax(BASE_URL + '/goods/getGoodsSpecDetails', params)
 
 
 //陈
@@ -350,6 +352,7 @@ export default {
 	getSearchLiveList,	// 根据分类搜索直播
 	attentRecommend,	// 获取我的关注
 	details,	// 店铺查看拼团商品详情
+	getGoodsSpecDetails, // 获取活动商品价格
 	
 	
 	//陈

@@ -142,14 +142,14 @@
 					<view class="colorbox" :class="tuan ==5 ? 'ac':''" @tap="jointuan(5)">五人团</view>
 				</view>
 			</view>
-			<view class="shopmsg3" v-for="(color,index) in colorbox" :key='index'>
+			<view class="shopmsg3" v-for="(color,index) in specifications" :key='index'>
 				<view class="forname">{{color.name}}</view>
 				<view class="forcontent">
 					<!-- 方法二 -->
 					<!-- <view class="colorbox" :class="col.aaa != -1? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(col.aaa,index,index1)">{{col.name}}</view>
 				</view> -->
 				<!-- 方法二 -->
-				<view class="colorbox" :class="color.aaa ==index1 ? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(index,index1,color.name,col.name)">{{col.name}}</view>
+				<view class="colorbox" :class="{'ac':col.isChose}" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(index,index1)">{{col.name}}</view>
 				</view>
 			</view>
 			<view class="shopmsg4">
@@ -207,6 +207,14 @@
 				showVideoInfo : "",
 				// 地址信息
 				adressInfo : "",
+				// 规格信息
+				specifications : [],
+				// 选中的颜色
+				isChoseColor : "",
+				// 选中的尺码
+				isChoseSize : "",
+				// 所有规格信息
+				allInfo : [],
 				showmsgdetial: false,
 				shopmsg:'',
 				colorbox:'',
@@ -244,7 +252,7 @@
 				goodslist:'',
 				nowboyor: 1,
 				
-				tuan: null,
+				tuan: 3,
 				token: uni.getStorageSync('token'),
 				goods_id:'',
 				number: 1,
@@ -255,7 +263,7 @@
 		onLoad(options) {
 			this.goods_id = options.goods_id
 			this.getLocation();
-			// this.getshopmsg();
+			this.getSpecifications();
 			this.getGoodsDetails();
 		},
 		methods: {
@@ -289,6 +297,14 @@
 						this.assembleInfo = res.data.assemble
 						this.showVideoInfo = res.data.video
 						this.adressInfo = res.data.business
+						this.allInfo = JSON.parse(res.data.goods.lists)
+						var getInfo = JSON.parse(res.data.goods.specs)
+						getInfo.forEach((item,index)=>{
+							item.list.forEach((i,idx)=>{
+								i.isChose = false
+							})
+						})
+						this.specifications = getInfo
 					}else{
 						uni.showToast({
 							title:res.msg,
@@ -304,8 +320,43 @@
 				})
 			},
 			// 商品规格
-			getSpecifications(){
-				
+			getSpecifications(color,size){
+				var spec;
+				this.allInfo.forEach((item,index)=>{
+					if(item[0].name === color && item[1].name === size){
+						spec = item[0].key
+					}
+				})
+				this.request.getGoodsSpecDetails({
+					goods_id : this.goods_id,
+					goods_spec : spec
+				}).then(res=>{
+					console.log(res);
+				})
+			},
+			choosecolor(idx_a,idx_b){
+				this.specifications.forEach((item,index)=>{
+					if(idx_a === index){
+						item.list.forEach((i,idx)=>{
+							if(idx === idx_b){
+								i.isChose = true
+								if(index === 0){
+									this.isChoseColor = i.name
+									if(!this.isChoseSize){}else{
+										this.getSpecifications(this.isChoseColor,this.isChoseSize);
+									}
+								}else{
+									this.isChoseSize = i.name
+									if(!this.isChoseColor){}else{
+										this.getSpecifications(this.isChoseColor,this.isChoseSize);
+									}
+								}
+							}else{
+								i.isChose = false
+							}
+						})
+					}
+				})
 			},
 			nowboy(e){
 				console.log(e);
