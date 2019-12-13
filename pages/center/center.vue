@@ -69,6 +69,7 @@
 <script>
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
 	import wPicker from "@/components/w-picker/w-picker.vue";
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
 			wPicker,
@@ -171,47 +172,61 @@
 				})
 			},
 			chooseimg(e){
-				let sourceType = e
-				uni.chooseImage({
-					sourceType:[sourceType],
-				    success: (chooseImageRes) => {
-						let fileimg = chooseImageRes.tempFiles[0]
-						// console.log(fileimg)
-						// if(fileimg.size >= 1048576) {
-						// 	uni.showToast({
-						// 		title: "图片大小不得超过1M",
-						// 		icon:"none"
-						// 	});
-						// 	return false;
-						// }
-						const tempFilePaths = chooseImageRes.tempFilePaths;
-						this.imgouter = tempFilePaths[0]
-						uni.showToast({
-							title: '上传中',
-							icon:"none"
-						});
-						uni.uploadFile({
-							url: 'http://zsybshop.yanggod.com/api/merchant/uploadQnImg',
-							filePath: tempFilePaths[0],
-							name: 'file',
-							formData: {
-								file:this.imgouter
-							},
-						success: (uploadFileRes) => {
-							console.log(uploadFileRes)
-							let imgdata = JSON.parse(uploadFileRes.data);
-							this.userinfo.avatar = imgdata.data.img_url
-							uni.hideToast()
-							uni.showToast({
-								title: imgdata.msg,
-								icon:"none"
-							});
-							this.$refs.album.close()
-							this.Modifyuser()
-						}
-						});
-					}
-				});
+				console.log(e);
+				if(e === 'camera'){
+					bridge.call('uploadByPhotograph', "拍摄上传头像");
+					bridge.register('uploadByPhotographCallback',function(res){
+						console.log(res);
+						this.userinfo.avatar = JSON.parse(res)
+					});
+				}else if(e === 'album'){
+					bridge.call('uploadImages', "相册上传头像");
+					bridge.register('uploadImagesCallback',function(res){
+						console.log(res);
+						this.userinfo.avatar = JSON.parse(res)
+					});
+				}
+				// let sourceType = e
+				// uni.chooseImage({
+				// 	sourceType:[sourceType],
+				//     success: (chooseImageRes) => {
+				// 		let fileimg = chooseImageRes.tempFiles[0]
+				// 		console.log(fileimg)
+				// 		if(fileimg.size >= 1048576) {
+				// 			uni.showToast({
+				// 				title: "图片大小不得超过1M",
+				// 				icon:"none"
+				// 			});
+				// 			return false;
+				// 		}
+				// 		const tempFilePaths = chooseImageRes.tempFilePaths;
+				// 		this.imgouter = tempFilePaths[0]
+				// 		uni.showToast({
+				// 			title: '上传中',
+				// 			icon:"none"
+				// 		});
+				// 		uni.uploadFile({
+				// 			url: 'http://zsybshop.yanggod.com/api/merchant/uploadQnImg',
+				// 			filePath: tempFilePaths[0],
+				// 			name: 'file',
+				// 			formData: {
+				// 				file:this.imgouter
+				// 			},
+				// 		success: (uploadFileRes) => {
+				// 			console.log(uploadFileRes)
+				// 			let imgdata = JSON.parse(uploadFileRes.data);
+				// 			this.userinfo.avatar = imgdata.data.img_url
+				// 			uni.hideToast()
+				// 			uni.showToast({
+				// 				title: imgdata.msg,
+				// 				icon:"none"
+				// 			});
+				// 			this.$refs.album.close()
+				// 			this.Modifyuser()
+				// 		}
+				// 		});
+				// 	}
+				// });
 			},
 			Modifyuser(){
 				console.log('确定');

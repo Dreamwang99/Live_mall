@@ -82,8 +82,7 @@
 		components: {
 			uniPopup,
 			wPicker,
-			luPopupWrapper,
-			bridge
+			luPopupWrapper
 		},
 
 		data() {
@@ -231,8 +230,10 @@
 			/* 点击上传身份证正面照片 */
 			updataPic() {
 				bridge.call('uploadImages', "上传身份证正面照片");
-				bridge.register('uploadImagesCallback',function(res){
-					this.frontImage = JSON.parse(res).data.img_url
+				bridge.register('uploadImagesCallback',(res)=>{
+					console.log(res);
+					console.log(JSON.parse(res))
+					this.frontImage = JSON.parse(res)
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -251,7 +252,7 @@
 			updata_back() {
 				bridge.call('uploadImages', "上传身份证背面照片");
 				bridge.register('uploadImagesCallback',function(res){
-					this.back_image = JSON.parse(res).data.img_url
+					this.back_image = res
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -312,7 +313,7 @@
 			updata_Peo() {
 				bridge.call('uploadImages', "上传手持身份证照片");
 				bridge.register('uploadImagesCallback',function(res){
-					this.peoson_image = JSON.parse(res).data.img_url
+					this.peoson_image = JSON.parse(res)
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -352,7 +353,7 @@
 			logo_pic() {
 				bridge.call('uploadImages', "上传店铺LOGO");
 				bridge.register('uploadImagesCallback',function(res){
-					this.logo = JSON.parse(res).data.img_url
+					this.logo = JSON.parse(res)
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -394,7 +395,7 @@
 			licens_pic() {
 				bridge.call('uploadImages', "上传营业执照");
 				bridge.register('uploadImagesCallback',function(res){
-					this.license = JSON.parse(res).data.img_url
+					this.license = JSON.parse(res)
 				});
 				// let _this = this
 				// uni.chooseImage({

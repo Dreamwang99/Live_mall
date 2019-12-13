@@ -15,13 +15,14 @@
 			<view class="denglu" @tap="denglu1">登录</view>
 			<view class="title4">
 				<text @tap="zhuce">注册新用户</text>
-				<text @tap="mima">忘记超级密码</text>
+				<text @tap="mima">忘记密码</text>
 			</view>
 		</view>
 		<view class="bottom">
 			<view class="logo3"></view>
 			<text class="kuaijie">快捷登录</text>
 			<view class="logo3"></view>
+			</image>
 		</view>
 		<view>
 			<image class="logo5" @click="wxLogin()" src="/static/register/iocn-weixin.png"></image>
@@ -30,15 +31,12 @@
 </template>
 
 <script>
-	// import bridge from '@/common/unfile/unfile.js';
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
-		components: {
-			// bridge
-		},
 		data() {
 			return {
-				phoneNumber: '19666666666',
-				passwd: '123456',
+				phoneNumber: '16696370624',
+				passwd: 'g123456',
 				weixinId: ""
 			}
 		},
@@ -89,7 +87,7 @@
 								uni.setStorageSync('token',res.data.data.info[0].token)
 								uni.setStorageSync('id',res.data.data.info[0].id)
 								var userInfor = res.data.data.info[0]
-								// bridge.call('login', userInfor);	
+								bridge.call('login', userInfor);
 								uni.setStorageSync('userInformation', userInfor)
 								const value = uni.getStorageSync('userInformation');
 								uni.switchTab({
@@ -172,33 +170,33 @@
 				// 	}
 				// })
 			},
-			getwechat(gender,nickName,avatarUrl,openid){
-				console.log(openid)
-				this.request.getwxlogin({
-					nickname: nickName,
-					gender: gender,
-					avatar: avatarUrl,
-					openid: openid,
-					type: "wechat",
-					source: "app"
-				}).then(res => {
-					console.log(res)
-					console.log(this.weixinId);
-					if (res.data.code == 0) {
-						setTimeout(function() {
-							uni.switchTab({
-								url: '../shouye/shouye'
-							})
-						}, 1000)
-					} else {
-						uni.showToast({
-							title: res.data.msg,
-							icon: "none"
-						});
-						console.log('登录失败');
-					}
-				})
-			},
+			// getwechat(gender,nickName,avatarUrl,openid){
+			// 	console.log(openid)
+			// 	this.request.getwxlogin({
+			// 		nickname: nickName,
+			// 		gender: gender,
+			// 		avatar: avatarUrl,
+			// 		openid: openid,
+			// 		type: "wechat",
+			// 		source: "app"
+			// 	}).then(res => {
+			// 		console.log(res)
+			// 		console.log(this.weixinId);
+			// 		if (res.data.code == 0) {
+			// 			setTimeout(function() {
+			// 				uni.switchTab({
+			// 					url: '../shouye/shouye'
+			// 				})
+			// 			}, 1000)
+			// 		} else {
+			// 			uni.showToast({
+			// 				title: res.data.msg,
+			// 				icon: "none"
+			// 			});
+			// 			console.log('登录失败');
+			// 		}
+			// 	})
+			// },
 			zhuce() {
 				uni.hideKeyboard()
 				uni.navigateTo({

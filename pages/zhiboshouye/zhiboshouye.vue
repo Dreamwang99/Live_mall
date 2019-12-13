@@ -1,5 +1,5 @@
 <template>
-	<view class="wrap">
+	<view>
 		<view class="status_bar">
 			<view class="top_view"></view>
 		</view>
@@ -22,9 +22,9 @@
 						 class="text">{{item.label}}</text></view>
 				</scroll-view>
 			</view>
-			<view class="zhibo_result" v-for="(l,l_idx) in liveList" :key='l_idx' @click="zhibo(l)">
+			<view class="zhibo_result" v-for="(l,l_idx) in liveList" :key='l_idx'>
 				<view class="beijing">
-					<image :src="l.thumb" mode="" class=""></image>
+					<image :src="l.avatar_thumb" mode="" class="" @click="zhibo(l)"></image>
 					<view class="fanaver">
 						<view class="xh">{{l.user_nicename}}</view>
 						<view class="lower">

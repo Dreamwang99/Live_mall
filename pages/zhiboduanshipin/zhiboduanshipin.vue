@@ -9,7 +9,7 @@
 		</view>
 		<view class="zhibo" v-show="list[0].a">
 			<view class="shipin" v-for="(item,index) in zhibos" :key="index">
-				<view class="beijing" :style="{ backgroundImage: 'url(' + item.avatar + ')' }">
+				<view class="beijing" :style="{ backgroundImage: 'url(' + item.avatar + ')' }" @tap="intoLiveRoom(item)">
 					<view>
 						<view class="xh">@{{item.user_nicename}}</view>
 						<view class="botttom_t">
@@ -25,14 +25,14 @@
 		</view>
 		<view class="zhibo" v-show="list[1].a">
 			<view class="shipin" v-for="(item,index) in shipin" :key="index">
-				<view class="beijing" :style="{ backgroundImage: 'url(' + item.avatar + ')' }">
+				<view class="beijing" :style="{ backgroundImage: 'url(' + item.thumb + ')' }" @tap="intoVideoPlay(item)">
 					<view>
-						<view class="xh">@{{item.user_nicename}}</view>
+						<view class="xh">@{{item.userinfo.user_nicename}}</view>
 						<view class="botttom_t">
 							<view class="xh1">{{item.title}}!</view>
 							<view class="bofang">
 								<image class="xh2" src="/static/dpshoucang/iocn-89-bf.png" mode=""></image>
-								<view class="xh3">{{item.number}}</view>
+								<view class="xh3">{{item.views}}</view>
 							</view>
 						</view>
 					</view>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		data() {
 			return {
@@ -73,16 +74,42 @@
 					token: uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res)
-					this.zhibos = res.data
+					if(res.code === 1){
+						this.zhibos = res.data
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none',
+						})
+					}
 				})
 			},
 			getRecom() {
 				this.request.getVideoList({
-					token: uni.getStorageSync('token')
+					uid: uni.getStorageSync('id')
 				}).then(res => {
 					console.log(res)
-					this.shipin = res.data
+					if(res.data.code === 0){
+						this.shipin = res.data.info
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none',
+						})
+					}
 				})
+			},
+			intoLiveRoom(info){
+				bridge.call('intoLiveRoom', info);
+				bridge.register('intoLiveRoomCallback',function(res){
+					console.log(res);
+				});
+			},
+			intoVideoPlay(info){
+				bridge.call('intoVideoPlay', info);
+				bridge.register('intoVideoPlayCallback',function(res){
+					console.log(res);
+				});	
 			},
 			cancel(index) {
 				for (let i = 0; i < this.list.length; i++) {

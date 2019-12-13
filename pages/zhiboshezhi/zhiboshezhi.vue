@@ -92,8 +92,7 @@
 	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
-			uniPopup,
-			bridge
+			uniPopup
 		},
 		data() {
 			return {
@@ -130,8 +129,9 @@
 		methods: {
 			choose(){
 				bridge.call('uploadImages', "开播设置上传封面");
-				bridge.register('uploadImagesCallback',function(r){
-					this.thumb = JSON.parse(r).data.img_url
+				bridge.register('uploadImagesCallback',(res)=>{
+					console.log(res);
+					this.thumb = JSON.parse(res)
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -235,7 +235,7 @@
 					goods_id : this.goodsId
 				}).then(res=>{
 					console.log(res);
-					if(r.data.code === 0){
+					if(res.data.code === 0){
 						uni.showToast({
 							title:"开播成功",
 							icon:'none'
