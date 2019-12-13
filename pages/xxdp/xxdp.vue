@@ -134,7 +134,7 @@
 					<view class="repertory">库存118件</view>
 				</view>
 			</view>
-			<view class="shopmsg2">【小米】新鲜水果啊大大啊ad </view>
+			<view class="shopmsg2">{{goodsInfo.title}}</view>
 			<view class="shopmsg3" v-show="nowboyor==0">
 				<view class="forname">团购规格</view>
 				<view class="forcontent">
