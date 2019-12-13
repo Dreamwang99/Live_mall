@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/xxdp/videoPlay",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/shouye/shouye",
 			"style": {
 				"transparentTitle": "always",

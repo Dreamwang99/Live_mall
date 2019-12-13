@@ -219,6 +219,8 @@ const initiateGroup = (params) => ajax(BASE_URL + '/group_purchase/initiateGroup
 const getSearchLiveList = (params) => ajax(BASE_URL + '/index/getSearchLiveList', params)
 // 获取我的关注
 const attentRecommend = (params) => ajax(BASE_URL1 + 'Home.AttentRecommend', params)
+// 店铺查看拼团商品详情
+const details = (params) => ajax(BASE_URL + '/goods/Details', params)
 
 
 //陈
@@ -347,6 +349,7 @@ export default {
 	initiateGroup,	// 开团 / 发起拼团
 	getSearchLiveList,	// 根据分类搜索直播
 	attentRecommend,	// 获取我的关注
+	details,	// 店铺查看拼团商品详情
 	
 	
 	//陈
