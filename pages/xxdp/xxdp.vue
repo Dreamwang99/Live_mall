@@ -257,7 +257,6 @@
 			this.getLocation();
 			// this.getshopmsg();
 			this.getGoodsDetails();
-			// this.getshopshow()
 		},
 		methods: {
 			// 获取地址信息
@@ -322,51 +321,6 @@
 			jointuan(e){
 				this.tuan = e
 			},
-			getshopshow(){
-				this.request.shopshow({
-					token:this.token,
-					shop_id:this.goods_id,
-					page:1,
-					size:5
-				}).then(res=>{
-					console.log(res)
-				})
-			},
-			choosecolor(index,index1,cname,name) {
-				console.log(index)
-				console.log(this.colorbox)
-				console.log(cname)
-				console.log(name)
-				console.log(this.colorbox[index])
-				this.color= this.colorbox[0].name
-				this.color1= this.colorbox[index].list[0].name
-				a[index] = this.colorbox[index].name+'::'+this.colorbox[index].list[index1].name
-				var bb = '';
-				for(var i = 0; i<a.length; i++){
-					bb += a[i]+';;'; 
-				}
-				this.goods_specs = bb.substr(0,bb.length-2)
-				if(this.colorbox[index].aaa == index1){
-					this.colorbox[index].aaa = -1
-				}else{
-					this.colorbox[index].aaa = index1
-				}
-				// 判断位数是否相等
-				if(a.length*1 === this.colorbox.length*1){
-					this.gitshopspecifications()
-				}else{
-					uni.showToast({
-						title:'请选择相应的商品类型',
-						icon:'none'
-					})
-				}
-				//方法二
-				// for(var i = 0 ; i<this.colorbox[index].list.length;i++){
-				// 	this.colorbox[index].list[i].aaa = -1
-				// }
-				// this.colorbox[index].list[index1].aaa = 1
-				//方法
-			},
 			//商品规格的请求
 			gitshopspecifications() {
 				this.request.gitshopspecification({
@@ -379,119 +333,6 @@
 					this.shoppricess = res.data.price_selling
 					this.status =res.data.status
 				})
-			},
-			//商品详情的请求
-			getshopmsg() {
-				this.request.gitshopdetial({
-					goods_id: this.goods_id
-				}).then(res => {
-					console.log(res)
-					this.swiplist = res.data.image
-					// this.lunboimg = res.data.image	
-					let arr = res.data.specs
-					//forEach循环
-					// arr.forEach(item => {
-					// 	item.list.forEach(i => {
-					// 		i.aaa = -1
-					// 	})
-					// 	console.log(item)
-					// })
-					for(var i in arr){
-						arr[i].aaa = -1
-					}
-					console.log(arr)
-					this.colorbox= arr
-					console.log(this.colorbox)
-					
-					//for循环
-					// for(let index in arr){
-					// 	console.log(arr)
-					// 	let newarr=arr[index].list
-					// 	console.log(newarr)
-			
-					// 	for(var i=0 ; i<newarr.length ; i++ ){
-					// 		newarr[i].aaa=-1
-					// 	}
-					// }
-			
-			
-				})
-			},
-			bugcar(){
-				if(a.length*1 === this.colorbox.length*1){
-					if(this.shoppricess !== '0.00' && this.status*1 !== 0){
-						this.request.addshopcar({
-							token:this.token,
-							goodsid:this.goods_id,
-							spec:this.goods_specs,
-							number:this.number
-						}).then(res=>{
-							console.log(res)
-							this.showmsgdetial = false
-							if(res.code*1 === 1){
-								uni.showToast({
-									title:'加入购物车成功',
-									icon:'none'
-								})
-							}else{
-								uni.showToast({
-									title:res.msg,
-									icon:'none'
-								})
-							}
-						})
-					}else{
-						uni.showToast({
-							title:'该规格已下架',
-							icon:'none'
-						})
-					}
-					
-				}else{
-					uni.showToast({
-						title:'请先选的商品规格',
-						icon:'none'
-					})
-				}
-				
-			},
-			bugcarr(){
-				if(a.length*1 === this.colorbox.length*1){
-					if(this.shoppricess !== '0.00' && this.status*1 !== 0){
-						this.request.addshopcar({
-							token:this.token,
-							goodsid:this.goods_id,
-							spec:this.goods_specs,
-							number:this.num
-						}).then(res=>{
-							console.log(res)
-							this.showmsgdetial = false
-							if(res.code*1 === 1){
-								uni.showToast({
-									title:'加入购物车成功',
-									icon:'none'
-								})
-							}else{
-								uni.showToast({
-									title:res.msg,
-									icon:'none'
-								})
-							}
-						})
-					}else{
-						uni.showToast({
-							title:'该规格已下架',
-							icon:'none'
-						})
-					}
-					
-				}else{
-					uni.showToast({
-						title:'请先选的商品规格',
-						icon:'none'
-					})
-				}
-				
 			},
 			togglePopup(type, open) {
 				this.type = type
