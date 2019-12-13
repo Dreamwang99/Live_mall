@@ -37,7 +37,7 @@
 		},
 		data() {
 			return {
-				phoneNumber: '19666666666',
+				phoneNumber: '15044444444',
 				passwd: '123456',
 				weixinId: ""
 			}
@@ -81,6 +81,7 @@
 						},
 						success: (res) => {
 							console.log(res)
+							console.log(res.data.data.msg)
 							if (res.data.data.code === 0) {
 								uni.showToast({
 									title: '登录成功',
@@ -97,7 +98,7 @@
 								})
 							} else {
 								uni.showToast({
-									title: res.data.msg,
+									title: res.data.data.msg,
 									icon: "none"
 								});
 							}
