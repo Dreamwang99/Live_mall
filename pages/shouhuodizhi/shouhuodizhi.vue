@@ -149,6 +149,7 @@
 
 	.address {
 		display: flex;
+		/* min-width: 400rpx; */
 		height: 90rpx;
 		flex-direction: row;
 		align-items: center;
@@ -177,7 +178,7 @@
 	.name {
 		margin: auto 40rpx auto 20rpx;
 		max-height: 90rpx;
-		width: 100rpx;
+		min-width: 100rpx;
 		font-size: 32rpx;
 	}
 

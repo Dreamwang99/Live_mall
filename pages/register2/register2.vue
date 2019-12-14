@@ -70,7 +70,21 @@
 					phone: this.phoneNumber
 				}).then(res => {
 					console.log(res)
-					this.getCode()
+					console.log(res.msg)
+					console.log(res.code)
+					if(res.code*1 === 1){
+						uni.showToast({
+							title:'发送成功',
+							icon:'none'
+						})
+						this.getCode()
+					}else{
+						uni.showToast({
+							title:'发送失败',
+							icon:'none'
+						})
+					}
+					
 				})
 			},
 			getCode() {
@@ -88,6 +102,7 @@
 						}
 					}, 1000)
 				}
+				
 			},
 			/* 注册 */
 			zhuce() {
@@ -98,6 +113,7 @@
 					user_pass2: this.twoPasswd
 				}).then(res => {
 					console.log(res)
+					console.log(res.data.code)
 					if (res.data.code == 0) {
 						uni.showToast({
 							title: '注册成功',
@@ -110,7 +126,7 @@
 						}, 1000)
 					} else {
 						uni.showToast({
-							title: '注册失败',
+							title:res.data.msg,
 							icon: "none"
 						});
 					}

@@ -59,7 +59,8 @@
 				<view>————————</view>
 			</view>
 			<view class="bigimgbox">
-				<image :src="goodsdata.logo" mode="widthFix" class="bigimg"></image>
+				<!-- <image :src="goodsdata.logo" mode="widthFix" class="bigimg"></image> -->
+				<rich-text :nodes="shopdetialimg"></rich-text>
 			</view>
 		</view>
 		<!-- 商品参数的弹框 -->
@@ -210,6 +211,7 @@
 				goodsparameter:'',
 				goodsdata:'',
 				choosetype:0,//购物车的选择弹出
+				shopdetialimg:''
 			}
 		},
 		onLoad(options) {
@@ -302,7 +304,7 @@
 				//取反开等于关  关等于开
 				this.bool = !this.bool
 			},
-			choosecolor(index,index1,cname,name) {
+			choosecolor(index,index1,cname,name) {//普通商品的选择规格
 				console.log(index)
 				console.log(this.colorbox)
 				console.log(cname)
@@ -325,7 +327,7 @@
 				if(this.judges *1 === 2){////////////////////////秒杀为2
 					// 判断位数是否相等
 					if(a.length*1 === this.colorbox.length*1){
-						this.seckillChoose()
+							this.seckillChoose()
 					}else{
 						uni.showToast({
 							title:'请选择相应的商品类型',
@@ -351,7 +353,7 @@
 				//方法
 			},
 			
-			choosecolors(index,index1,cname,name){
+			choosecolors(index,index1,cname,name){//砍价的选择规格
 				console.log(index)
 				console.log(this.colorbox)
 				console.log(cname)
@@ -372,7 +374,7 @@
 				}
 				// 判断位数是否相等
 				if(a.length*1 === this.colorbox.length*1){
-					this.gitshopspeci()
+						this.gitshopspeci()
 				}else{
 					uni.showToast({
 						title:'请选择相应的商品类型',
@@ -392,6 +394,7 @@
 					goods_spec: this.goods_specs
 				}).then(res => {
 					console.log(res)
+					console.log(11111)
 					console.log(res.data.price_selling)
 					this.shopmsg=res.data
 					this.shoppricess = res.data.price_selling
@@ -434,9 +437,15 @@
 					goods_id: this.shopid
 				}).then(res => {
 					console.log(res)
+					console.log(res.msg)
+					uni.showToast({
+						title:res.msg,
+						icon:'none'
+					})
 					this.goodsparameter = res.data.specs	//商品参数
 					this.goodsdata = res.data				//商品所有数据
 					this.lunboimg = res.data.image	
+					this.shopdetialimg = res.data.content
 					let arr = res.data.specs
 					//forEach循环
 					// arr.forEach(item => {
