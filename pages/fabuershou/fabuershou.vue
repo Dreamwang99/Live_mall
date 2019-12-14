@@ -121,8 +121,8 @@
 					name: "江苏徐州"
 				}, ],
 				typeid:'',
-				longitude: "",
-				latitude: "",
+				longitude: 1,
+				latitude: 1,
 				address:'',
 				type_top:''
 			}
@@ -253,9 +253,9 @@
 						console.log('当前位置的纬度：' + res.latitude);
 						console.log('当前国家：' + res.address);
 						console.log('当前省份：' + res.address.city);
-						// this.longitude = res.longitude,
-						// this.latitude = res.latitude,
-						// this.city = res.address.city
+						this.longitude = res.longitude,
+						this.latitude = res.latitude,
+						this.city = res.address.city
 						this.confirm(res)
 					}
 				});
@@ -298,10 +298,27 @@
 					mode: this.a,
 					degree: this.newold,
 					/* 新旧程度 */
-					longitude: '117.08360080468172',
-					latitude: '36.6841484793522'
+					longitude: this.longitude,
+					latitude: this.latitude
 				}).then(res => {
 					console.log(res)
+					if(res.code==1){
+						uni.showToast({
+							title: res.msg+'请等待审核',
+							icon: 'none',
+							duration: 1500
+						})
+						setTimeout(function(){
+							uni.navigateBack({
+								
+							})
+						},1500);
+					}else{
+						uni.showToast({
+							title: res.msg,
+							icon: 'none',
+						})
+					}
 				})
 			},
 			/* 选择配送方式 */

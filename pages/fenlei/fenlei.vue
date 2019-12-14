@@ -16,7 +16,7 @@
 				<image src="../../static/icon-fangdajing.png" mode="" class="hunt"></image>
 				<input type="text" placeholder="请输入要搜索的内容" value="" class="search_string" @tap="search()" />
 			</view>
-			<image src="../../static/icon-xinxi.png" mode="" class="toptext"></image>
+			<image src="../../static/icon-xinxi.png" mode="" class="toptext" @tap="goxinxi"></image>
 		</view>
 		<view class="top_nav">
 			<view class="V_line">
@@ -122,6 +122,11 @@
 				})
 				uni.navigateTo({
 					url: 'fenleisousuo?goods_id=' + this.goods_id
+				})
+			},
+			goxinxi() {
+				uni.navigateTo({
+					url: '../xinxitongzhi/xinxitongzhi'
 				})
 			}
 		},

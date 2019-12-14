@@ -42,7 +42,7 @@
 
 		data() {
 			return {
-				userinfo: uni.setStorageSync('userInformation'),
+				userinfo: uni.getStorageSync('userInformation'),
 				name: '铁柱',
 				number: 1231567890,
 				pages: 1,
@@ -98,9 +98,7 @@
 							icon: "none",
 						});
 					}
-					for (var i = 0; i < 6; i++) {
-						this.images = this.images.concat(res.data.info)
-					}
+					this.images = this.images.concat(res.data.info)
 					console.log(this.images)
 				})
 			}

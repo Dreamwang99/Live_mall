@@ -228,6 +228,12 @@ const getAllCommon = (params) => ajax(BASE_URL + '/Bargain/getAllCommon', params
 const getMyIntegral = (params) => ajax(BASE_URL + '/index/getMyIntegral', params)
 //积分规则
 const getIntegralRule = (params) => ajax(BASE_URL + '/index/getIntegralRule', params)
+//自主品牌
+const getSelfBrand = (params) => ajax(BASE_URL + '/index/getSelfBrand', params)
+//根据活动id展示活动商品
+const getActiviIdShop = (params) => ajax(BASE_URL + '/Bargain/getActiviIdShop', params)
+//砍价生成订单
+const createOrder = (params) => ajax(BASE_URL + '/Bargain/createOrder', params)
 
 
 export default {
@@ -353,4 +359,7 @@ export default {
 	getAllCommon, //获取商品评论 全部 以及好评 中评 差评
 	getMyIntegral, //我的积分
 	getIntegralRule, //积分规则
+	getSelfBrand, //自主品牌
+	getActiviIdShop, //根据活动id展示活动商品
+	createOrder, //砍价生成订单
 }

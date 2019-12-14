@@ -2,17 +2,16 @@
 	<view style="width: 100%;">
 		<view class="beijing" :style="{ backgroundImage: 'url(' + '/static/jifen/bg-43-top.png' + ')' }">
 			<view class="xian1"></view>
-			<view class="fen1">22000</view>
+			<view class="fen1">{{score}}</view>
 			<view class="fen2">积分余额</view>
 			<view class="xian"></view>
 			<view class="score">
 				<view class="tu" v-for="(item,index) in goods" :key="index">
-					<image class="biao" :src="item.img" mode=""></image>
+					<image class="biao" :src="item.logo" mode=""></image>
 					<view style="display: flex;align-items: center;">
 						<view class="zi">{{item.title}}</view>
-						<view class="fen">+{{item.score}}</view>
+						<view class="fen">{{item.integral}}</view>
 					</view>
-					
 				</view>
 			</view>
 		</view>
@@ -38,7 +37,9 @@
 						title: 'OliviaBurton女士手表小蜜蜂正品礼物石英腕表ob英...',
 						score: 27
 					}
-				]
+				],
+				userinfo:'',
+				score:'',
 			}
 		},
 		onNavigationBarButtonTap(e) {
@@ -49,12 +50,28 @@
 		onLoad() {
 			this.getjifen()
 		},
+		onShow() {
+			this.getBaseInfo()
+			console.log(this.userinfo);
+		},
 		methods: {
+			getBaseInfo() {
+				this.request.getBaseInfo({
+					uid: uni.getStorageSync('id'),
+					token: uni.getStorageSync('token')
+				}).then(res => {
+					console.log(res)
+					console.log(res.data.info)
+					this.userinfo = res.data.info[0]
+					this.score = res.data.info[0].coin
+				})
+			},
 			getjifen(){
 				this.request.getMyIntegral({
 					token: uni.getStorageSync('token')
 				}).then(res =>{
 					console.log(res);
+					this.goods = res.data
 				})
 			}
 		}

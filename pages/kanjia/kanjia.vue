@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="kanjia_top">
-			<image class="duorou" :src="goodslist.logo" mode=""></image>
+			<image class="duorou" :src="goodslist.image" mode=""></image>
 			<view class="kanjia_right">
 				<view class="duorouzi">{{goodslist.introduction}}</view>
 				<view>
@@ -11,13 +11,18 @@
 				</view>
 				<view class="right_bottom">
 					<view class="">
-						<view style="display: flex;">
-							<view class="dijia">底价{{money}}</view>
-							<view class="xianjia">现价{{goodslist.price_express}}</view>
+						<view style="display: flex; margin-bottom: 20rpx;">
+							<view class="dijia">底价{{goodslist.list.bargain_price}}</view>
+							<view class="xianjia">现价{{goodslist.price_selling}}</view>
 						</view>
-						<view class="yuji">预计需要5人砍价</view>
+						<!-- <view class="yuji">预计需要5人砍价</view> -->
+						<view v-if="status==2" class="succeed">砍价已成功</view>
+						
 					</view>
-					<view @tap="kaikan" class="kaikan">开砍</view>
+					<view @tap="fenxiang" v-if="openid==id&&status!=2" class="kaikan">分享帮砍</view>
+					<!-- <view @tap="kaikan" v-if="openid!=id" class="kaikan">帮砍</view> -->
+					<view @tap="bangkantap" v-if="openid!=id&&status!=2" class="kaikan">帮砍</view>
+					<view @tap="fukuan" v-if="openid==id&&status==2" class="kaikan">去付款</view>
 				</view>
 			</view>
 		</view>
@@ -26,10 +31,10 @@
 			<view class="tuan" v-for="(item,index) in kanjiaList" :key="index">
 
 				<view class="kanjia_box">
-					<image class="touxiang" :src="item.img" mode=""></image>
+					<image class="touxiang" :src="item.avatar_thumb" mode=""></image>
 					<view style="display: flex;flex-direction:column;">
-						<view class="mao">{{item.name}}</view>
-						<view class="qili">{{item.remark}}</view>
+						<view class="mao">{{item.user_nicename}}</view>
+						<view class="qili">{{item.bargain_yuyan}}</view>
 					</view>
 				</view>
 				<view style="display: flex;">
@@ -39,6 +44,7 @@
 
 			</view>
 		</view>
+		<!-- //帮砍弹出框 -->
 		<uni-popup ref="kanjia" :show="kanjia" type="center" :mask-click="false" :custom="true">
 			<view class="kanjia">
 				<view class="dibu" :style="{ backgroundImage: 'url(' + '/static/shangcheng/bg-73-kajia@2x_90.png' + ')' }">
@@ -50,6 +56,20 @@
 					<view class="quxiao queding" @tap="quxiao">确定</view>
 				</view>
 
+			</view>
+		</uni-popup>
+		<!-- //分享弹出框 -->
+		<uni-popup ref="share" type="bottom" :custom="true" @change="change">
+			<view class="uni-share">
+				<view class="uni-share-content">
+					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+						<view class="uni-share-content-image">
+							<image :src="item.icon" class="image" />
+						</view>
+						<view class="uni-share-content-text">{{ item.text}}</view>
+					</view>
+				</view>
+				<view class="uni-share-btn" @click="cancel('share')">取消</view>
 			</view>
 		</uni-popup>
 	</view>
@@ -68,41 +88,86 @@
 			return {
 				kanjia: false,
 				bangkan: '帮砍11.15元',
-				kanjiaList: [{
-					img: '../../static/img-50-touxiang.png',
-					name: '猫眼三姐妹',
-					remark: '七里咔擦一顿砍',
-					price: 50
-				}, {
-					img: '../../static/img-50-touxiang.png',
-					name: '猫眼三姐妹',
-					remark: '七里咔擦一顿砍',
-					price: 50
-				}],
+				bottomData: [{
+						icon: '/static/zhuye/icon_wx.png',
+						text: '微信好友'
+					},
+					{
+						icon: '/static/zhuye/icon-pyq.png',
+						text: '朋友圈'
+					}
+				],
+				kanjiaList: [],
 				goods_id:'',
+				bargain_id:'',
 				goodslist:'',
 				list:'',
 				bargain_id:'',
 				activeid:'',
-				money:''
+				money:'',
+				openid:'',
+				id:'',
+				//帮砍状态 1未成功 2成功
+				status: 1,
 			};
 		},
 		onLoad(options) {
-			this.goods_id = options.goods_id
-			this.bargain_id = options.bargain_id
+			// this.goods_id = options.goods_id
+			// this.bargain_id = options.bargain_id
+			
 			this.activeid = options.activid
 			this.money = options.money
-			this.getShopSetail()
+			this.openid = options.openid
+			this.id = uni.getStorageSync('id')
 			this.getBargain()
+			this.getAshop()
 		},
 		methods: {
+			
+			//帮砍点击事件
+			bangkantap() {
+				this.request.getStart({
+					token: uni.getStorageSync('token'),
+					type: 2,
+					bargain_id: this.bargain_id,
+					goods_id: this.goods_id,
+					activity_id: this.activeid,
+					open_people: this.openid,
+				}).then(res => {
+					console.log(res)
+					if(res.code==1){
+						this.bangkan = res.data
+						this.$refs.kanjia.open()
+					}
+				})
+			},
+			getAshop(){
+				this.request.getActiviIdShop({
+					token: uni.getStorageSync('token'),
+					activity_id: this.activeid,
+					open_people: this.openid
+				}).then(res =>{
+					console.log(res);
+					this.goodslist = res.data
+					this.status = res.data.status
+					this.goods_id = res.data.goods_id
+					this.bargain_id = res.data.list.bargain_id
+					this.bargain = res.data.list.goods_spec
+					let dd = new Date(res.data.activity_end_time)
+					var now = new Date();
+					let datelead = (dd.getTime()-now.getTime())/1000
+					console.log(datelead)
+					console.log(datelead/86400)
+					// this.getShopSetail()
+				})
+			},
 			getShopSetail(){
 				this.request.getShopSet({
 					token: uni.getStorageSync('token'),
 					shop_id:this.goods_id
 				}).then(res => {
 					console.log(res)
-					this.goodslist = res.data
+					// this.goodslist = res.data
 					this.list = res.data.lists[0]
 				})
 			},
@@ -112,6 +177,7 @@
 					activity_id:this.activeid
 				}).then(res => {
 					console.log(res)
+					this.kanjiaList = res.data
 				})
 			},
 			kaikan() {
@@ -119,6 +185,20 @@
 			},
 			quxiao() {
 				this.$refs.kanjia.close()
+				this.getBargain()
+			},
+			fenxiang() {
+				this.$refs.share.open()
+			},
+			change(e){
+				console.log(e.show);
+			},
+			fukuan() {
+				console.log(this.activeid);
+				console.log(this.activeid);
+				uni.navigateTo({
+					url: `../dingdantijiao/dingdantijiao?activeid=${this.activeid}&goods_type=3&goods_spec=${this.bargain}&id=${this.goods_id}`
+				})
 			}
 		}
 	};
@@ -144,6 +224,7 @@
 	.kanjia_right {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 		/* margin-left: 21rpx; */
 	}
 
@@ -304,5 +385,65 @@
 		border-top-right-radius: 40rpx;
 		border-bottom-right-radius: 40rpx;
 		background-color: #f3b940;
+	}
+	/* 底部分享 */
+	.uni-share {
+		background: #fff;
+	}
+	
+	.uni-share-title {
+		line-height: 60upx;
+		font-size: 24upx;
+		padding: 15upx 0;
+		text-align: center;
+	}
+	
+	.uni-share-content {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 15px;
+		width: 100%;
+		justify-content: space-around;
+	}
+	
+	.uni-share-content-box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 25%;
+		box-sizing: border-box;
+	}
+	
+	.uni-share-content-image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60upx;
+		height: 60upx;
+		overflow: hidden;
+		border-radius: 10upx;
+	}
+	
+	.uni-share-content-image .image {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.uni-share-content-text {
+		font-size: 26upx;
+		color: #333;
+		padding-top: 5px;
+		padding-bottom: 10px;
+	}
+	.uni-share-btn {
+		height: 90upx;
+		line-height: 90upx;
+		border-top: 1px #f5f5f5 solid;
+		text-align: center;
+		color: #666;
+	}
+	.succeed{
+		color: red;
+		font-size: 40rpx;
 	}
 </style>

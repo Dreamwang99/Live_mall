@@ -1,11 +1,20 @@
 <template>
 	<view>
-		<view class="xian" v-for="(item,index) in list" :key="index">
+		<!-- 顶部 -->
+		<view class="status_bar">
+			<view class="top_view"></view>
+		</view>
+		<view class="xian" v-for="(item,index) in list" :key="index" @tap="gogogo(item)">
 			<view class="heng">
 				<view class="yuan">
-					<image class="daohuo" v-if="item.check==1" src="../../static/tongzhi/icon-65-tx.png" mode=""></image>
+					<!-- <image class="daohuo" v-if="item.check==1" src="../../static/tongzhi/icon-65-tx.png" mode=""></image>
 					<image class="daohuo" v-if="item.check==2" src="../../static/tongzhi/iocn-65-zt.png" mode=""></image>
-					<image class="daohuo" v-if="item.check==3" src="../../static/tongzhi/iocn-65-xx.png" mode=""></image>
+					<image class="daohuo" v-if="item.check==3" src="../../static/tongzhi/iocn-65-xx.png" mode=""></image> -->
+					<image class="daohuo" v-if="item.type==1" src="../../static/tongzhi/iocn-65-xx.png" mode=""></image>
+					<image class="daohuo" v-if="item.type==2" src="../../static/tongzhi/icon-65-tx.png" mode=""></image>
+					<image class="daohuo" v-if="item.type==3" src="../../static/tongzhi/iocn-65-zt.png" mode=""></image>
+					<image class="daohuo" v-if="item.type==4" src="../../static/tongzhi/iocn-65-zt.png" mode=""></image>
+					<image class="daohuo" v-if="item.type==5" src="../../static/tongzhi/iocn-65-zt.png" mode=""></image>
 					<!-- <image class="daohuo" v-bind:src="item.urlimg" mode=""></image> -->
 				</view>
 				<view>
@@ -22,22 +31,7 @@
 		data() {
 			return {
 				token: uni.getStorageSync('token'),
-				list: [{
-						urlimg: '../../static/tongzhi/icon-65-tx.png',
-						name1: '到货提醒',
-						name2: '您关注的宝贝已到货!'
-					},
-					{
-						urlimg: '../../static/tongzhi/iocn-65-zt.png',
-						name1: '状态变更',
-						name2: '您的订单已发货'
-					},
-					{
-						urlimg: '../../static/tongzhi/iocn-65-xx.png',
-						name1: '系统通知',
-						name2: '您的搬运工将于2019年8月15日飞韩国，需要...'
-					}
-				]
+				list: []
 			}
 		},
 		onLoad() {
@@ -51,12 +45,37 @@
 					this.list = res.data
 					console.log(res);
 				})
+			},
+			gogogo(e){
+				console.log(e);
+				switch(e.type){
+					case 5:
+						uni.navigateTo({
+							url: '../kanjia/kanjia?activid='+e.other_id+'&openid='+uni.getStorageSync('id')
+						})
+				}
 			}
 		}
 	}
 </script>
 
 <style>
+	/* 顶部 */
+	.status_bar {
+	  height: var(--status-bar-height);
+	  width: 100%;
+	  background-color: #FFFFFF;
+	 }
+	
+	 .top_view {
+	  height: var(--status-bar-height);
+	  width: 100%;
+	  position: fixed;
+	  background: -webkit-gradient(linear, 0 0, 100% 100%, from(#fff), to(#fff));
+	  top: 0;
+	  z-index: 999;
+	 }
+	
 	.heng {
 		width: 100%;
 		display: flex;

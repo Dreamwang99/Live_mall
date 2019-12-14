@@ -41,13 +41,13 @@
 					</view>
 				</view>
 				<view v-if="type=== 3" class="shou_top1">
-					<view class="goods_box" v-for="(item,index) in goodsList" :key="index">
+					<view class="goods_box" v-for="(item,index) in goodsList" :key="index" @tap="godetails(item.content.id)">
 						<view class="goods">
-							<image class="tu" :src="item.img" mode=""></image>
+							<image class="tu" :src="item.content.logo" mode=""></image>
 							<view class="goods_right">
-								<view class="xm3">{{item.title}}</view>
-								<view class="xm4">颜色：{{item.color}}尺码：{{item.size}}</view>
-								<view class="xm5">￥{{item.price}}</view>
+								<view class="xm3">{{item.content.title}}</view>
+								<!-- <view class="xm4">颜色：{{item.color}}尺码：{{item.size}}</view> -->
+								<view class="xm5">￥{{item.content.price_selling}}</view>
 							</view>
 						</view>
 					</view>
@@ -133,6 +133,7 @@
 				})
 			},
 			cancel(index) {
+				console.log(index);
 				for (let i = 0; i < this.list.length; i++) {
 					if (index == i) {
 						this.list[i].a = true;
@@ -146,6 +147,11 @@
 			jindain() {
 				uni.navigateTo({
 					url: '../dianpu/dianpu'
+				})
+			},
+			godetails(id) {
+				uni.navigateTo({
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+id
 				})
 			}
 		}

@@ -15,7 +15,7 @@
 				<view v-for="(item,index) in titles" :key="index" :class="item.status?'chooose':'nochoose'" @tap="choose(index)">{{item.name}}</view>
 			</view>
 		</view>
-		<view v-if="pages==1" class="beijing2" :style="{ backgroundImage: 'url(' + selectList.business_logo + ')' }">
+		<view v-if="pages==1" class="beijing1" :style="{ backgroundImage: 'url(' + selectList.business_logo + ')' }">
 			<view class="dianpu_top">
 				<image src="../../static/gerenshangjia/20_back.png" @tap="fanhui"></image>
 				<view class="top_right" @tap="getinput()">{{isShouCang}}</view>
@@ -30,7 +30,7 @@
 				<view v-for="(item,index) in titles" :key="index" :class="item.status?'chooose':'nochoose'" @tap="choose(index)">{{item.name}}</view>
 			</view>
 			<view class="all">
-				<view class="all_goods" v-for="(g_list,index) in goods" :key="index" @tap="godetail(g_list)">
+				<view class="all_goods" v-for="(g_list,index) in allgoods" :key="index" @tap="godetail(g_list)">
 					<image :src="g_list.logo"></image>
 					<view class="name">{{g_list.title}}</view>
 					<view class="detail">{{g_list.introduction}}</view>
@@ -64,6 +64,7 @@
 		data() {
 			return {
 				pages:0,
+				allgoods: '',
 				goods:[{
 					img:'../../static/gerenshangjia/21_img_sp.png',
 					name:'石墨烯智能温控发热鹅绒马甲',
@@ -122,14 +123,30 @@
 			this.getStoreColle()
 			this.getPersons()
 			this.getStoreAdver()
+			this.getallgoods()
 		},
 		methods: {
-			getPersons(){
+			getallgoods(){
 				this.request.getPerson({
 					token: uni.getStorageSync('token'),
 					type: 2,
 					page: 1,
-					size:1,
+					size:3,
+					business_id: this.shop_id
+				}).then(res => {
+					console.log(res)
+					if (res.code === 1) {
+						this.allgoods = res.data
+						// this.images = res.data
+					}
+				})
+			},
+			getPersons(){
+				this.request.getPerson({
+					token: uni.getStorageSync('token'),
+					type: 1,
+					page: 1,
+					size:3,
 					business_id: this.shop_id
 				}).then(res => {
 					console.log(res)
@@ -325,9 +342,10 @@
 	.all{
 		display: flex;
 		flex-wrap: wrap;
-		padding: 10rpx;	
+		padding: 30rpx 10rpx;	
 		/* height:100%; */
 		width: 100%;
+		justify-content: space-between;
 	}
 	.all_goods{
 		width: 48%;

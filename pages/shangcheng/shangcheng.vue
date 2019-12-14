@@ -91,7 +91,7 @@ export default {
 		},
 		goSousuo() {
 			uni.navigateTo({
-				url: '../sousuokuang/sousuokuang'
+				url: '../fenlei/sousuo'
 			})
 		},
 		xinxi() {

@@ -32,9 +32,9 @@
 				</view>
 			</view>
 		</view>
-		<view>
+		<!-- <view>
 			<view class="denglu" @tap="Modifyuser()">确认</view>
-		</view>
+		</view> -->
 		<uni-popup ref="album" :custom="true" :type="type">
 			<view class="uni-share">
 				<view class="uni-share-content">

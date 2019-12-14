@@ -18,11 +18,11 @@
 				<image src="../../static/sousuo/iocn-58-sc.png" mode="" class="hisdelet" @tap="del_sear()"></image>
 			</view>
 			<view class="hSearch">
-				<view class="hs-item" v-if="h.search_content" v-for="(h,h_idx) in hisSearchInfo" :key="h_idx" @tap="hSearch(h.search_content)">{{h.search_content}}</view>
+				<view class="hs-item" v-if="h.search_content&&h.search_content!='undefined'" v-for="(h,h_idx) in hisSearchInfo" :key="h_idx" @tap="hSearch(h.search_content)">{{h.search_content}}</view>
 			</view>
 			<view class="history">热门搜索</view>
 			<view class="hSearch">
-				<view class="hs-item" v-for="(r,h_idx) in remenSearchInfo" :key="h_idx" @tap="hSearch(r.search_content)">{{r.search_content}}</view>
+				<view class="hs-item" v-if="r.search_content&&r.search_content!='undefined'" v-for="(r,h_idx) in remenSearchInfo" :key="h_idx" @tap="hSearch(r.search_content)">{{r.search_content}}</view>
 			</view>
 		</view>
 		<view class="tax_control" v-show="sear">
@@ -194,7 +194,7 @@
 			cart(idx) {
 				console.log(idx)
 				uni.navigateTo({
-					url: '../shangpinxiangqing/shangpinxiangqing?goods_id='+idx
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+idx
 				})
 			}
 		}
