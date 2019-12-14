@@ -433,13 +433,33 @@
 					},
 				],
 				order: 'distance',
-				longitude: '',
-				latitude: '',
+				longitude: 1,
+				latitude: 1,
 				pages: 1,
 			}
 		},
 		onReachBottom(){
 			this.pages ++
+			let type = null
+			for (var i = 0; i < this.list.length; i++) {
+				if(this.list[i].a){
+					type = i
+				}
+			}
+			switch(type){
+				case 0: this.getList()
+						console.log(0);
+						break;
+				case 1: this.getMerchantsshoplist(this.order)
+						console.log(1);
+						break;
+				case 2: this.getvideolist()
+						console.log(2);
+						break;
+				case 3: this.getMerchantsshoplist(this.order)
+						console.log(3);
+						break;
+			}
 			// this.getMerchantsshoplist(this.order)
 		},
 		onLoad() {
@@ -463,22 +483,22 @@
 					this.remaisc = res.data
 				})
 			},
-			
+			//个人商家
 			getMerchantsshoplist(order){
 				this.request.getMerchantsList({
 					page: this.pages,
 					num: 4,
-					// longitude: this.longitude,
-					// latitude: this.latitude,
-					longitude: 1,
-					latitude: 1,
+					longitude: this.longitude,
+					latitude: this.latitude,
+					// longitude: 1,
+					// latitude: 1,
 					order: order,
 				}).then(res => {
 					if(this.pages == 1){
 						this.jindian = []
 					}
 					if(res.data.length==0){
-						if(this.page>1){
+						if(this.pages>1){
 							this.pages--
 						}
 						uni.showToast({

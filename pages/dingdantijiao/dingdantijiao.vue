@@ -163,6 +163,7 @@
 				esdetial: '',
 				tPeopleNums : "",
 				addnumber:1,//直接购买的数量
+				activeid:'',
 			}
 		},
 		onLoad(options) {
@@ -176,6 +177,7 @@
 			this.addnumber = options.number
 			this.tPeopleNums = options.tPeopleNums
 			this.activityid = options.activityid
+			this.activeid = options.activeid
 			this.types = options.types
 			console.log(this.id)
 			// console.log(this.goods_id)
@@ -751,7 +753,64 @@
 							console.log(33)
 						}
 					})
-				}
+				}else if(this.goods_types*1 === 3){
+						if(this.addressbox_id == ''){
+							uni.showToast({
+								title:'请选择地址',
+								icon:'none'
+							})
+							return
+						}else if (this.paytype == ''){
+							uni.showToast({
+								title:'请选择支付方式',
+								icon:'none'
+							})
+							return
+						}
+						this.request.createOrder({
+							token:uni.getStorageSync('token'),
+							activity_id: this.activeid,
+							address_id:this.addressbox.id,
+							pay_type:this.paytype
+						}).then(res=>{
+							console.log(res)
+							console.log(res.data.ordersn)
+							console.log(res.data.paydata)
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+							if(this.paytype == 'alipay'){
+								console.log(11)
+								// this.paydata = res.data.paydata.split('&amp;').join('&')
+								// this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
+								bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
+								bridge.register('alipaycallback', function(result) {
+								})
+							}else if(this.paytype == 'wechat'){
+								console.log(22)
+								// this.paydata = res.data.paydata
+								// this.wxPay(res.data.paydata)
+								console.log(res.data.paydata)
+								bridge.call('wxpay', res.data.paydata)//微信
+								bridge.register('wxpaycallback', function(result) {
+								})
+								// uni.requestPayment({
+								//     provider: 'wxpay',
+								//     orderInfo: res.data.paydata, //微信、支付宝订单数据 
+								//     success: function (res) {
+								// 		console.log(444)
+								//         console.log('success:' + JSON.stringify(res));
+								//     },
+								//     fail: function (err) {
+								// 		console.log(555)
+								//         console.log('fail:' + JSON.stringify(err));
+								//     }
+								// });
+								// console.log(33)
+							}
+						})
+					}
 			},
 			//微信支付
 			wxPay(orderInfo) {

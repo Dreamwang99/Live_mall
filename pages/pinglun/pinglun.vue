@@ -96,9 +96,9 @@
 			},
 
 		},
-		onReachBottom() {
-			this.getMyConmon(this.page + 1, this.size);
-		}
+		// onReachBottom() {
+		// 	this.getMyConmon(this.page + 1, this.size);
+		// }
 
 	}
 </script>

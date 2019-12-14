@@ -2,11 +2,11 @@
 	<view style="width: 100%;border-top: 10rpx solid #eee;">
 		<view class="list" v-for="(item,index) in goodsList" :key="index">
 			<view class="list1">
-				<image class="logo1" :src="item.img"></image>
+				<image class="logo1" :src="item.image[0]"></image>
 			</view>
 			<view class="bottom">
-				<view class="xiaomi">{{item.title}}</view>
-				<view class="xiangqing">{{item.remark}}</view>
+				<view class="xiaomi">{{item.keyword}}</view>
+				<view class="xiangqing">{{item.title}}</view>
 				<view class="prise">￥{{item.price}}</view>
 			</view>
 		</view>
@@ -18,24 +18,7 @@
 	export default {
 		data() {
 			return {
-				goodsList: [{
-						img: '../../static/dpshoucang/img-49-sp.png',
-						title: '【小米】新鲜水果特价榨汁机',
-						remark: '小米原生水果特价榨汁机，三种颜色任你...',
-						price: 128
-					},
-					{
-						img: '../../static/dpshoucang/img-49-sp.png',
-						title: '【小米】新鲜水果特价榨汁机、三种颜色',
-						remark: '小米原生水果特价榨汁机，三种颜色任你...',
-						price: 128
-					}, {
-						img: '../../static/dpshoucang/img-49-sp.png',
-						title: '【小米】新鲜水果特价榨汁机、三种颜色',
-						remark: '小米原生水果特价榨汁机，三种颜色任你...',
-						price: 128
-					},
-				],
+				goodsList: [],
 			}
 		},
 		onLoad() {
@@ -49,7 +32,7 @@
 					is_success: 0
 				}).then(res => {
 					if(res.code==1){
-						
+						this.goodsList = res.data
 					}else{
 						uni.showToast({
 							title: res.msg,

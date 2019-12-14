@@ -68,11 +68,11 @@
 					token: uni.getStorageSync('token'),
 					is_success: 1
 				}).then(res => {
-					if(res.data.length > 0){
+					if(res.code==1){
 						
 					}else{
 						uni.showToast({
-							title: "您还没有售出商品",
+							title: res.msg,
 							icon: "none",
 						});
 					}

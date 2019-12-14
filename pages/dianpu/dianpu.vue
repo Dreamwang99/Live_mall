@@ -15,7 +15,7 @@
 				<view v-for="(item,index) in titles" :key="index" :class="item.status?'chooose':'nochoose'" @tap="choose(index)">{{item.name}}</view>
 			</view>
 		</view>
-		<view v-if="pages==1" class="beijing2" :style="{ backgroundImage: 'url(' + selectList.business_logo + ')' }">
+		<view v-if="pages==1" class="beijing1" :style="{ backgroundImage: 'url(' + selectList.business_logo + ')' }">
 			<view class="dianpu_top">
 				<image src="../../static/gerenshangjia/20_back.png" @tap="fanhui"></image>
 				<view class="top_right" @tap="getinput()">{{isShouCang}}</view>
@@ -342,7 +342,7 @@
 	.all{
 		display: flex;
 		flex-wrap: wrap;
-		padding: 10rpx;	
+		padding: 30rpx 10rpx;	
 		/* height:100%; */
 		width: 100%;
 		justify-content: space-between;

@@ -85,7 +85,7 @@
 					<view class="repertory">库存118件</view>
 				</view>
 			</view>
-			<view class="shopmsg2">【小米】新鲜水果啊大大啊ad </view>
+			<view class="shopmsg2">{{goodsdata.title}}</view>
 			<view class="shopmsg3" v-for="(color,index) in colorbox" :key='index'>
 				<view class="forname">{{color.name}}</view>
 				<view class="forcontent">
@@ -117,7 +117,7 @@
 					<view class="repertory">库存118件</view>
 				</view>
 			</view>
-			<view class="shopmsg2">【小米】新鲜水果啊大大啊ad </view>
+			<view class="shopmsg2">{{goodsdata.title}}</view>
 			<view class="shopmsg3" v-for="(color,index) in colorbox" :key='index'>
 				<view class="forname">{{color.name}}</view>
 				<view class="forcontent">
@@ -604,7 +604,12 @@
 							})
 							if(res.code == 1){
 								uni.navigateTo({
-									url:'../kanjia/kanjia?goods_id='+this.shopid + '&activid=' + res.data.activity_id + '&money=' + res.data.price
+									url:'../kanjia/kanjia?activid=' + res.data.activity_id + '&openid='+uni.getStorageSync('id')
+								})
+							}else{
+								uni.showToast({
+									title:res.msg,
+									icon:'none'
 								})
 							}
 						})

@@ -5,10 +5,11 @@
 		<view class="heng">
 			<view class="hp" :class="type-1==index?'re':''" v-for="( item,index ) in list" :key="index" @tap="typesee(index)">{{item.name}}({{item.count}})</view>
 		</view>
+		<view class="baobei">
+			宝贝评价（{{list[0].count}}）
+		</view>
 		<view class="common" v-for="(item,index) in clist" :key="index">
-			<!-- <view class="baobei">
-				宝贝评价（1234）
-			</view> -->
+			
 			<view class="heng">
 				<image class="tx" :src="item.avatar"></image>
 				<view class="xh">
@@ -42,7 +43,7 @@
 			}
 		},
 		onReachBottom(){
-			this.page+=10
+			this.page++
 			this.getdata(this.type)
 		},
 		onLoad(o) {
@@ -68,11 +69,12 @@
 					size: this.size,
 				}).then(res =>{
 					console.log(res);
-					if(res.data.common.length<1){
-						this.page--
-					}
 					if(this.page==1){
 						this.clist = []
+					}else{
+						if(res.data.common.length<1){
+							this.page--
+						}
 					}
 					this.clist = this.clist.concat(res.data.common)
 					this.cdata = res.data
