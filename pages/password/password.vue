@@ -71,7 +71,18 @@
 					phone: this.phoneNumber
 				}).then(res => {
 					console.log(res)
-					this.getCode()
+					if(res.code*1 === 1){
+						uni.showToast({
+							title:'发送成功',
+							icon:'none'
+						})
+						this.getCode()
+					}else{
+						uni.showToast({
+							title:'发送失败',
+							icon:'none'
+						})
+					}
 				})
 			},
 			getCode() {
@@ -99,7 +110,7 @@
 					newspass: this.passwd1
 				}).then(res => {
 					console.log(res)
-					if (res.data.code == 0) {
+					if (res.code == 0) {
 						uni.showToast({
 							title: '修改成功',
 							icon: "none"
@@ -111,7 +122,7 @@
 						}, 1000)
 					} else {
 						uni.showToast({
-							title: '修改失败',
+							title:res.msg,
 							icon: "none"
 						});
 					}

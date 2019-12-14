@@ -194,7 +194,7 @@
 			cart(idx) {
 				console.log(idx)
 				uni.navigateTo({
-					url: '../shangpinxiangqing/shangpinxiangqing?goods_id='+idx
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+idx
 				})
 			}
 		}
