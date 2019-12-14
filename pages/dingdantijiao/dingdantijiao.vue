@@ -172,6 +172,7 @@
 			this.specids = options.specid
 			this.ershouids = options.ershouid
 			this.addnumber = options.number
+			this.tPeopleNums = options.tPeopleNums
 			console.log(this.id)
 			// console.log(this.goods_id)
 			console.log(this.goods_types)
@@ -184,6 +185,8 @@
 				this.getshopdetial()
 			} else if (this.goods_types * 1 === 6) {
 				this.getershoudetial()
+			}else if(this.goods_types * 1 === 4){
+				this.getTuanInfo();
 			} else {
 				this.getseckilldetial()
 			}
@@ -248,7 +251,7 @@
 							console.log(11)
 							// this.paydata = res.data.paydata.split('&amp;').join('&')
 							// this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
-							支付宝
+							// 支付宝
 							bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
 							bridge.register('alipaycallback', function(result) {
 							})
@@ -394,6 +397,65 @@
 						}
 					})
 				} else if (this.goods_types * 1 === 6) {
+					if (this.addressbox_id == '') {
+						uni.showToast({
+							title: '请选择地址',
+							icon: 'none'
+						})
+						return
+					} else if (this.paytype == '') {
+						uni.showToast({
+							title: '请选择支付方式',
+							icon: 'none'
+						})
+						return
+					}
+					this.request.ershoucenter({
+						token: uni.getStorageSync('token'),
+						activity_goods_id: this.id,
+						goods_spec: this.goods_specs,
+						pay_type: this.paytype,
+						address_id : this.addressbox.id,
+						group_people_num : this.tPeopleNums
+					}).then(res => {
+						console.log(res)
+						console.log(res.data.ordersn)
+						console.log(res.data.paydata)
+						uni.showToast({//提示当前状态
+							title:res.msg,
+							icon:'none'
+						})
+						if (this.paytype == 'alipay') {
+							console.log(11)
+							// this.paydata = res.data.paydata.split('&amp;').join('&')
+							// this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
+							bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
+							bridge.register('alipaycallback', function(result) {
+							})
+						} else if (this.paytype == 'wechat') {
+							console.log(22)
+							// this.paydata = res.data.paydata
+							// this.wxPay(res.data.paydata)
+							console.log(res.data.paydata)
+							bridge.call('wxpay', res.data.paydata)//微信
+							bridge.register('wxpaycallback', function(result) {
+							})
+							// uni.requestPayment({
+							// 	provider: 'wxpay',
+							// 	orderInfo: res.data.paydata, //微信、支付宝订单数据 
+							// 	success: function(res) {
+							// 		console.log(444)
+							// 		console.log('success:' + JSON.stringify(res));
+							// 	},
+							// 	fail: function(err) {
+							// 		console.log(555)
+							// 		console.log('fail:' + JSON.stringify(err));
+							// 	}
+							// });
+							console.log(33)
+						}
+					})
+				}else if(this.goods_types * 1 === 4){
 					if (this.addressbox_id == '') {
 						uni.showToast({
 							title: '请选择地址',
@@ -600,6 +662,20 @@
 				goods_id: this.id,
 				goods_spec: this.goods_specs,
 				number: 1
+			}).then(res => {
+				console.log(res)
+				this.ass = res.data.cartList
+			})
+		},
+		// 获取开团商品信息
+		getTuanInfo(){
+			this.request.seckillbuy({
+				token: uni.getStorageSync('token'),
+				goods_type: this.goods_types,
+				goods_id: this.id,
+				goods_spec: this.goods_specs,
+				number: 1,
+				group_people_num : this.tPeopleNums
 			}).then(res => {
 				console.log(res)
 				this.ass = res.data.cartList

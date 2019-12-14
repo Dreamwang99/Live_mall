@@ -130,7 +130,7 @@
 			<view class="shopmsg1">
 				<image src="../../static/11.png" mode="" class="shopmsg1img"></image>
 				<view class="shoppircebox">
-					<view class="pricetitle" v-if="shopmsg.price_selling != ''">￥{{shopmsg.price_selling}}</view>
+					<view class="pricetitle">￥{{getPrice}}</view>
 					<view class="repertory">库存118件</view>
 				</view>
 			</view>
@@ -138,17 +138,16 @@
 			<view class="shopmsg3" v-show="nowboyor==0">
 				<view class="forname">团购规格</view>
 				<view class="forcontent">
-					<view class="colorbox" :class="tuan ==3 ? 'ac':''" @tap="jointuan(3)">三人团</view>
-					<view class="colorbox" :class="tuan ==5 ? 'ac':''" @tap="jointuan(5)">五人团</view>
+					<view class="colorbox" v-for="(j,j_idx) in tuanList" :key="j_idx" :class="[current_j === j_idx ? 'ac' : '']" @tap="choseTType(j_idx)">
+						{{j.name}}
+					</view>
+					<!-- <view class="colorbox" :class="tuan ==3 ? 'ac':''" @tap="jointuan(3)">三人团</view>
+					<view class="colorbox" :class="tuan ==5 ? 'ac':''" @tap="jointuan(5)">五人团</view> -->
 				</view>
 			</view>
 			<view class="shopmsg3" v-for="(color,index) in specifications" :key='index'>
 				<view class="forname">{{color.name}}</view>
 				<view class="forcontent">
-					<!-- 方法二 -->
-					<!-- <view class="colorbox" :class="col.aaa != -1? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(col.aaa,index,index1)">{{col.name}}</view>
-				</view> -->
-				<!-- 方法二 -->
 				<view class="colorbox" :class="{'ac':col.isChose}" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(index,index1)">{{col.name}}</view>
 				</view>
 			</view>
@@ -163,8 +162,8 @@
 				<view class="postagename">配送费</view>
 				<view class="postagecontent">快递免邮</view>
 			</view>
-			<view class="center" @tap="bugcar()" v-show="nowboyor==1">确定购买</view>
-			<view class="center" @tap="bugcarr()" v-show="nowboyor==0">确定开团</view>
+			<view class="center" @tap="sureBuy()" v-show="nowboyor==1">确定购买</view>
+			<view class="center" @tap="sureOpenT()" v-show="nowboyor==0">确定开团</view>
 			<view class="center" @tap="bugcarr()" v-show="nowboyor==2">确定参团</view>
 		</view>
 		<uni-popup ref="share" :type="type" :custom="true" @change="change">
@@ -215,6 +214,17 @@
 				isChoseSize : "",
 				// 所有规格信息
 				allInfo : [],
+				// 
+				tuanList : [
+					{
+						name : "三人团"
+					},
+					{
+						name : "五人团"
+					}
+				],
+				current_j : -1,
+				getPrice : "",
 				showmsgdetial: false,
 				shopmsg:'',
 				colorbox:'',
@@ -225,6 +235,7 @@
 				swiplist:['../../static/zhuye/img-11-sp_81.png'],
 				show: false,
 				type: '',
+				tPeopleNums : 0,
 				bottomData: [{
 						icon: '/static/zhuye/icon_wx.png',
 						text: '微信好友'
@@ -250,21 +261,20 @@
 				price_selling:'',
 				goods_specs:'',
 				goodslist:'',
-				nowboyor: 1,
-				
+				nowboyor: -1,
+				spec : "",
 				tuan: 3,
 				token: uni.getStorageSync('token'),
 				goods_id:'',
 				number: 1,
 				num: 1,
-				
 			};
 		},
 		onLoad(options) {
 			this.goods_id = options.goods_id
 			this.getLocation();
-			this.getSpecifications();
 			this.getGoodsDetails();
+			this.getComments();
 		},
 		methods: {
 			// 获取地址信息
@@ -321,18 +331,48 @@
 			},
 			// 商品规格
 			getSpecifications(color,size){
-				var spec;
-				this.allInfo.forEach((item,index)=>{
-					if(item[0].name === color && item[1].name === size){
-						spec = item[0].key
+				if(!color || !size){}else{
+					this.allInfo.forEach((item,index)=>{
+						if(item[0].name === color && item[1].name === size){
+							this.spec = item[0].key
+						}
+					})
+					if(this.nowboyor === 0){
+						this.request.getGoodsSpecDetails({
+							goods_id : this.assembleInfo.id,
+							goods_spec : this.spec
+						}).then(res=>{
+							console.log(res);
+							if(res.code === 1){
+								if(this.current_j === 0){
+									this.getPrice = res.data.group_price_three
+								}else if(this.current_j === 1){
+									this.getPrice = res.data.group_price_five
+								}
+							}else{
+								uni.showToast({
+									title:res.msg,
+									icon:'none'
+								})
+							}
+						})
+					}else if(this.nowboyor === 1){
+						this.request.gitshopspecification({
+							goods_id : this.goods_id,
+							goods_spec : this.spec
+						}).then(res=>{
+							console.log(res);
+							if(res.code === 1){
+								this.getPrice = res.data.price_selling
+							}else{
+								uni.showToast({
+									title:res.msg,
+									icon:'none'
+								})
+							}
+						})
 					}
-				})
-				this.request.getGoodsSpecDetails({
-					goods_id : this.goods_id,
-					goods_spec : spec
-				}).then(res=>{
-					console.log(res);
-				})
+				}
 			},
 			choosecolor(idx_a,idx_b){
 				this.specifications.forEach((item,index)=>{
@@ -358,6 +398,25 @@
 					}
 				})
 			},
+			sureOpenT(){
+				uni.navigateTo({
+					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'4'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&tPeopleNums="+this.tPeopleNums
+				})
+			},
+			sureBuy(){
+				uni.navigateTo({
+					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'0'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&number="+this.number
+				})
+			},
+			choseTType(idx){
+				this.current_j = idx
+				if(idx === 0){
+					this.tPeopleNums = 3
+				}else if(idx === 1){
+					this.tPeopleNums = 5
+				}
+				this.getSpecifications(this.isChoseColor,this.isChoseSize);
+			},
 			nowboy(e){
 				console.log(e);
 				this.showmsgdetial = true
@@ -365,30 +424,32 @@
 			},
 			closeshopdetial(){
 				this.showmsgdetial = false
+				this.current_j = -1
+				this.nowboyor = -1
+				this.getPrice = ""
+				this.specifications.forEach((item,index)=>{
+					item.list.forEach((i,idx)=>{
+						i.isChose = false
+					})
+				})
+			},
+			// 商品评论
+			getComments(){
+				this.request.getShopCommon({
+					token : uni.getStorageSync('token'),
+					shop_id : this.goods_id
+				}).then(res=>{
+					console.log(res);
+				})
 			},
 			//加减计算
 			fixNum(e, id) {
 				console.log(e)
 				console.log(id)
 				this.number= e
-				// this.grtcarnumber(e,id)
-				// this.fixCost()
 			},
 			jointuan(e){
 				this.tuan = e
-			},
-			//商品规格的请求
-			gitshopspecifications() {
-				this.request.gitshopspecification({
-					goods_id: this.goods_id,
-					goods_spec: this.goods_specs
-				}).then(res => {
-					console.log(res)
-					console.log(res.data.price_selling)
-					this.shopmsg=res.data
-					this.shoppricess = res.data.price_selling
-					this.status =res.data.status
-				})
 			},
 			togglePopup(type, open) {
 				this.type = type
