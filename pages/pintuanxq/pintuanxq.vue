@@ -3,53 +3,53 @@
 		<view style="background-color: #f5f5f5;height: 8rpx;"></view>
 		<view class="dian">
 			<image class="dp" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>
-			<view class="zi">李二狗的店铺</view>
+			<view class="zi">{{getInfo.business_name}}</view>
 		</view>
 		<view class="shangpin">
 			<view class="biao_img">
-				<image class="img_t" src="../../static/dingdan/img-28-sp.png" mode=""></image>
+				<image class="img_t" :src="getInfo.logo" mode=""></image>
 			</view>
 			<view class="xiangqing" @tap="goxiangqing()">
-				<view class="biaozi">OliviaBurton女士手表小蜜蜂正品礼物石英腕表ob英...</view>
-				<view class="biaozi1">X1</view>
-				<view class="biaozi2">颜色：绿豆沙</view>
+				<view class="biaozi">{{getInfo.title}}</view>
+				<!-- <view class="biaozi1">X{{getInfo.}}</view> -->
+				<view class="biaozi2">{{getInfo.activity_goods_spec}}</view>
 				<view style="display: flex;flex-direction: row;">
-					<view class="biaozi4">3人团</view>
-					<view class="biaozi3">￥2080.00</view>
+					<view class="biaozi4">{{getInfo.group_people_num}}人团</view>
+					<view class="biaozi3">￥{{price}}</view>
 				</view>
 			</view>
 		</view>
 		<view class="people_list">
-			<view class="tuanzhang" v-for="(item,index) in peopleList" :key="index">
-				<image class="ktx" :src="item.img" mode=""></image>
-				<view class="hdi" v-if="item.status">团长</view>
+			<view class="tuanzhang" v-for="(item,index) in getInfo.join_user_list" :key="index">
+				<image class="ktx" :src="item.avatar" mode=""></image>
+				<!-- <view class="hdi" v-if="item.status">团长</view> -->
 			</view>
 		</view>
 		<view class="list_middle">
-			还差 <view style="color: red;font-size: 36rpx;">2</view>
+			还差 <view style="color: red;font-size: 36rpx;">{{peopleNums}}</view>
 			人成团，快来一起拼团吧~
 		</view>
-		<view class="time_">
+		<view class="time_" v-if="isShowTime">
 			<view class="line"></view>
 			<view class="shengyu">剩余</view>
 			<uni-countdown class="daojishi" background-color="#ff212c" border-color="#ff212c" color="#ffffff" :show-day="false"
-			 :hour="2" :minute="0" :second="0" :reset="true">
+			 :hour="getHours" :minute="getMinutes" :second="getSeconds" :reset="true">
 			</uni-countdown>
 			<view class="shengyu">结束</view>
 			<view class="line"></view>
 		</view>
-		<view class="pin_bottom" v-for="(item,index) in pinList" :key="index">
-			<image style="height: 93rpx;width: 93rpx;" :src="item.img" mode=""></image>
+		<view class="pin_bottom" v-for="(item,index) in getInfo.join_user_list" :key="index">
+			<image style="height: 93rpx;width: 93rpx;" :src="item.avatar" mode=""></image>
 			<view class="pin_right">
-				<view class="lier">{{item.name}}</view>
-				<view class="time1">{{item.time}}</view>
+				<view class="lier">{{item.user_nicename}}</view>
+				<view class="time1">{{item.create_at}}</view>
 			</view>
 		</view>
 		<button class="yaoqing" @click="togglePopup('bottom', 'share')">邀请好友拼团</button>
 		<uni-popup ref="share" :type="type" :custom="true" @change="change">
 			<view class="uni-share">
 				<view class="uni-share-content">
-					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box" @tap="choseShareStyle(item.text)">
 						<view class="uni-share-content-image">
 							<image :src="item.icon" class="image" />
 						</view>
@@ -65,6 +65,7 @@
 <script>
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
 	import uniCountdown from '../../components/linnian-CountDown/uni-countdown.vue';
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
 			uniPopup,
@@ -74,6 +75,13 @@
 			return {
 				show: false,
 				type: '',
+				getInfo : "",
+				peopleNums : 0,
+				price : "",
+				getHours : 0,
+				getMinutes : 0,
+				getSeconds : 0,
+				isShowTime : false,
 				peopleList: [{
 						img: '../../static/pintuan/img-50-touxiang.png',
 						status: true
@@ -99,7 +107,7 @@
 				],
 				pinList: [{
 					img: '../../static/img-50-touxiang.png',
-					name: '李二狗',
+					name: '李yi狗',
 					time: '2019--09-20 02-31-25'
 				}, {
 					img: '../../static/img-50-touxiang.png',
@@ -108,14 +116,50 @@
 				}],
 			};
 		},
-		onload() {
+		onLoad(options) {
+			this.activityId = options.activityid
+			this.getOpenTInfo();
 			//我的项目中只赋值一次, 所以直接设为true了
 			this.reset = !this.reset;
 			//如果还要设置天, 时, 秒, 在上面声明绑定后, 在这里赋值即可
 			this.minute = 30;
-
+			
 		},
 		methods: {
+			getOpenTInfo(){
+				this.request.getGroupPurchase({
+					token : uni.getStorageSync('token'),
+					activity_id : this.activityId
+				}).then(res=>{
+					console.log(res);
+					if(res.code === 1){
+						this.getInfo = res.data
+						this.peopleNums = res.data.group_people_num - res.data.join_people_num
+						if(res.data.group_people_num === 3){
+							this.price = res.data.group_price_three
+						}else{
+							this.price = res.data.group_price_five
+						}
+						var getTimeStamp = new Date(res.data.end_time).getTime() - new Date().getTime()
+						this.getHours = parseInt(this.changeTimeStamp(getTimeStamp)[1])
+						this.getMinutes = parseInt(this.changeTimeStamp(getTimeStamp)[2])
+						this.getSeconds = parseInt(this.changeTimeStamp(getTimeStamp)[3])
+						this.isShowTime = true
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
+						})
+					}
+				})
+			},
+			changeTimeStamp(timeStamp){
+				var days = parseInt(timeStamp / (1000 * 60 * 60 * 24));
+				var hours = parseInt((timeStamp % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = parseInt((timeStamp % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = parseInt((timeStamp % (1000 * 60)) / 1000);
+				return [days,hours,minutes,seconds]
+			},
 			togglePopup(type, open) {
 				this.type = type
 				this.$refs[open].open()
@@ -131,7 +175,20 @@
 					url: '../pintuanxiangqingye/pintuanxiangqingye'
 				})
 			},
-
+			choseShareStyle(types){
+				var shareInfo = "?goodsId="+this.getInfo.goods_id+"&activityId="+this.getInfo.id
+				if(types === "微信好友"){
+					bridge.call('shareWeChatFriends', shareInfo);
+					bridge.register('shareWeChatFriendsCallback',(res)=>{
+						console.log(res);
+					});
+				}else{
+					bridge.call('shareWeChatCircle', shareInfo);
+					bridge.register('shareWeChatCircleCallback',(res)=>{
+						console.log(res);
+					});
+				}
+			}
 		}
 	};
 </script>

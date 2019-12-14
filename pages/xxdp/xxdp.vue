@@ -73,9 +73,9 @@
 			<view>{{n.group_people_num}}人拼团</view>
 			<view class="tuan">
 				<view class="people">
-					还差<view style="color: red;">{{n.join_people_num}}人</view>拼成
+					还差<view style="color: red;">{{n.surplus_num}}人</view>拼成
 				</view>
-				<view class="cantuan" @tap="nowboy(2)">去参团（选规格）</view>
+				<view class="cantuan" @tap="nowboy(2,n.group_people_num,n.id)">去参团（选规格）</view>
 				 <!-- @tap="sanren0" -->
 			</view>
 		</view>
@@ -128,7 +128,7 @@
 		<view class="blackbox" v-show="showmsgdetial == true" @tap="closeshopdetial()"></view>
 		<view class="shopdetialmsgbox" v-show="showmsgdetial == true">
 			<view class="shopmsg1">
-				<image src="../../static/11.png" mode="" class="shopmsg1img"></image>
+				<image :src="goodsInfo.logo" mode="" class="shopmsg1img"></image>
 				<view class="shoppircebox">
 					<view class="pricetitle">￥{{getPrice}}</view>
 					<view class="repertory">库存118件</view>
@@ -164,7 +164,7 @@
 			</view>
 			<view class="center" @tap="sureBuy()" v-show="nowboyor==1">确定购买</view>
 			<view class="center" @tap="sureOpenT()" v-show="nowboyor==0">确定开团</view>
-			<view class="center" @tap="bugcarr()" v-show="nowboyor==2">确定参团</view>
+			<view class="center" @tap="sureCanT()" v-show="nowboyor==2">确定参团</view>
 		</view>
 		<uni-popup ref="share" :type="type" :custom="true" @change="change">
 			<view class="uni-share">
@@ -223,6 +223,7 @@
 						name : "五人团"
 					}
 				],
+				cTid : 0,
 				current_j : -1,
 				getPrice : "",
 				showmsgdetial: false,
@@ -337,7 +338,7 @@
 							this.spec = item[0].key
 						}
 					})
-					if(this.nowboyor === 0){
+					if(this.nowboyor === 0 || this.nowboyor === 2){
 						this.request.getGoodsSpecDetails({
 							goods_id : this.assembleInfo.id,
 							goods_spec : this.spec
@@ -400,12 +401,17 @@
 			},
 			sureOpenT(){
 				uni.navigateTo({
-					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'4'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&tPeopleNums="+this.tPeopleNums
+					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'4'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&tPeopleNums="+this.tPeopleNums+"&activityid="+this.assembleInfo.id+"&types="+"开团"
 				})
 			},
 			sureBuy(){
 				uni.navigateTo({
 					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'0'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&number="+this.number
+				})
+			},
+			sureCanT(){
+				uni.navigateTo({
+					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'4'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&activityid="+this.cTid+"&tPeopleNums="+this.tPeopleNums+"&types="+"参团"
 				})
 			},
 			choseTType(idx){
@@ -417,10 +423,19 @@
 				}
 				this.getSpecifications(this.isChoseColor,this.isChoseSize);
 			},
-			nowboy(e){
+			nowboy(e,nums,idx){
 				console.log(e);
 				this.showmsgdetial = true
 				this.nowboyor = e
+				if(e === 2){
+					this.cTid = idx
+					this.tPeopleNums = nums
+					if(nums === 3){
+						this.current_j = 0
+					}else if(nums === 5){
+						this.current_j = 1
+					}
+				}
 			},
 			closeshopdetial(){
 				this.showmsgdetial = false

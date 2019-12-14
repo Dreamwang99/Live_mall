@@ -223,6 +223,10 @@ const attentRecommend = (params) => ajax(BASE_URL1 + 'Home.AttentRecommend', par
 const details = (params) => ajax(BASE_URL + '/goods/Details', params)
 // 获取活动商品价格
 const getGoodsSpecDetails = (params) => ajax(BASE_URL + '/goods/getGoodsSpecDetails', params)
+// 参团
+const participationGroup = (params) => ajax(BASE_URL + '/group_purchase/participationGroup', params)
+// 团购活动详情页
+const getGroupPurchase = (params) => ajax(BASE_URL + '/group_purchase/getGroupPurchase', params)
 
 
 //陈
@@ -353,6 +357,8 @@ export default {
 	attentRecommend,	// 获取我的关注
 	details,	// 店铺查看拼团商品详情
 	getGoodsSpecDetails, // 获取活动商品价格
+	participationGroup,	//参团
+	getGroupPurchase,	//团购活动详情页
 	
 	
 	//陈

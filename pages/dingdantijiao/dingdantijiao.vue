@@ -73,6 +73,7 @@
 								<view>{{ass.goods_spec}}</view>
 							</view>
 							<view class="jia">￥{{ass.price_selling}}</view>
+							<view class="tuanNums" v-if="tPeopleNums">{{tPeopleNums}}人团</view>
 						</view>
 					</view>
 				</view>
@@ -160,6 +161,7 @@
 				specids: '',
 				ershouids: '',
 				esdetial: '',
+				tPeopleNums : "",
 				addnumber:1,//直接购买的数量
 			}
 		},
@@ -173,6 +175,8 @@
 			this.ershouids = options.ershouid
 			this.addnumber = options.number
 			this.tPeopleNums = options.tPeopleNums
+			this.activityid = options.activityid
+			this.types = options.types
 			console.log(this.id)
 			// console.log(this.goods_id)
 			console.log(this.goods_types)
@@ -412,11 +416,9 @@
 					}
 					this.request.ershoucenter({
 						token: uni.getStorageSync('token'),
-						activity_goods_id: this.id,
-						goods_spec: this.goods_specs,
-						pay_type: this.paytype,
-						address_id : this.addressbox.id,
-						group_people_num : this.tPeopleNums
+						goodsid: this.ershouids,
+						address_id: this.addressbox.id,
+						pay_type: this.paytype
 					}).then(res => {
 						console.log(res)
 						console.log(res.data.ordersn)
@@ -455,7 +457,7 @@
 							console.log(33)
 						}
 					})
-				}else if(this.goods_types * 1 === 4){
+				}else if(this.goods_types * 1 === 4 && this.types === "开团"){
 					if (this.addressbox_id == '') {
 						uni.showToast({
 							title: '请选择地址',
@@ -469,15 +471,15 @@
 						})
 						return
 					}
-					this.request.ershoucenter({
+					this.request.initiateGroup({
 						token: uni.getStorageSync('token'),
-						goodsid: this.ershouids,
+						activity_goods_id: this.activityid,
+						goods_spec : this.goods_specs,
 						address_id: this.addressbox.id,
 						pay_type: this.paytype,
+						group_people_num : this.tPeopleNums
 					}).then(res => {
 						console.log(res)
-						console.log(res.data.ordersn)
-						console.log(res.data.paydata)
 						uni.showToast({//提示当前状态
 							title:res.msg,
 							icon:'none'
@@ -488,6 +490,23 @@
 							// this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
 							bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
 							bridge.register('alipaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url:'/pages/pintuanxq/pintuanxq'
+										});
+									},1500)
+								}
 							})
 						} else if (this.paytype == 'wechat') {
 							console.log(22)
@@ -496,6 +515,109 @@
 							console.log(res.data.paydata)
 							bridge.call('wxpay', res.data.paydata)//微信
 							bridge.register('wxpaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url:'/pages/pintuanxq/pintuanxq'
+										});
+									},1500)
+								}
+							})
+							// uni.requestPayment({
+							// 	provider: 'wxpay',
+							// 	orderInfo: res.data.paydata, //微信、支付宝订单数据 
+							// 	success: function(res) {
+							// 		console.log(444)
+							// 		console.log('success:' + JSON.stringify(res));
+							// 	},
+							// 	fail: function(err) {
+							// 		console.log(555)
+							// 		console.log('fail:' + JSON.stringify(err));
+							// 	}
+							// });
+							console.log(33)
+						}
+					})
+				}else if(this.goods_types * 1 === 4 && this.types === "参团"){
+					if (this.addressbox_id == '') {
+						uni.showToast({
+							title: '请选择地址',
+							icon: 'none'
+						})
+						return
+					} else if (this.paytype == '') {
+						uni.showToast({
+							title: '请选择支付方式',
+							icon: 'none'
+						})
+						return
+					}
+					this.request.participationGroup({
+						token: uni.getStorageSync('token'),
+						activity_id: this.activityid,
+						goods_spec : this.goods_specs,
+						address_id: this.addressbox.id,
+						pay_type: this.paytype,
+					}).then(res => {
+						console.log(res)
+						uni.showToast({//提示当前状态
+							title:res.msg,
+							icon:'none'
+						})
+						if (this.paytype == 'alipay') {
+							console.log(11)
+							bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
+							bridge.register('alipaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url: '../dingdan/dingdan'
+										});
+									},1500)
+								}
+							})
+						} else if (this.paytype == 'wechat') {
+							console.log(22)
+							console.log(res.data.paydata)
+							bridge.call('wxpay', res.data.paydata)//微信
+							bridge.register('wxpaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url: '../dingdan/dingdan'
+										});
+									},1500)
+								}
 							})
 							// uni.requestPayment({
 							// 	provider: 'wxpay',
@@ -725,6 +847,10 @@
 		width: 710rpx;
 		margin-left: 20rpx;
 		background-color: #FFFFFF;
+	}
+	.tuanNums{
+		height: 50rpx;
+		width: 100%;
 	}
 
 	.heng {
