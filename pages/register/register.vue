@@ -36,8 +36,8 @@
 		data() {
 			return {
 
-				phoneNumber: '19666666666',
-				passwd: '111111',
+				phoneNumber: '15044444444',
+				passwd: '123456',
 				weixinId: ""
 			}
 		},

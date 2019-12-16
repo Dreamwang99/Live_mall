@@ -958,6 +958,7 @@
 			}).then(res => {
 				console.log(res)
 				this.ass = res.data.cartList
+				this.postage = res.data.cartList.price_express//邮费
 			})
 		},
 		getershoudetial() { //二手好货的详情显示

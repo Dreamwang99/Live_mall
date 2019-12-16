@@ -22,8 +22,8 @@
 					<view @tap="fenxiang" v-if="openid==id&&status!=2" class="kaikan">分享帮砍</view>
 					<!-- <view @tap="kaikan" v-if="openid!=id" class="kaikan">帮砍</view> -->
 					<view @tap="bangkantap" v-if="openid!=id&&status!=2" class="kaikan">帮砍</view>
-					<view @tap="fukuan" class="kaikan">去付款</view>
-					<!-- <view @tap="fukuan" v-if="openid==id&&status==2" class="kaikan">去付款</view> -->
+					<!-- <view @tap="fukuan" class="kaikan">去付款</view> -->
+					<view @tap="fukuan" v-if="openid==id&&status==2" class="kaikan">去付款</view>
 				</view>
 			</view>
 		</view>
@@ -96,6 +96,8 @@
 					{
 						icon: '/static/zhuye/icon-pyq.png',
 						text: '朋友圈'
+					
+					
 					}
 				],
 				kanjiaList: [],
@@ -103,7 +105,6 @@
 				bargain_id:'',
 				goodslist:'',
 				list:'',
-				bargain_id:'',
 				activeid:'',
 				money:'',
 				openid:'',
