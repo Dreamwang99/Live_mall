@@ -198,14 +198,12 @@
 			choose() {
 				bridge.call('uploadImages', "上传二手商品照片");
 				bridge.register('uploadImagesCallback',(res)=>{
+					console.log(res);
 					let serverList = res
 					this.returnList[this.returnList.length] = serverList
 					this.userChoseImgList[this.userChoseImgList.length] = serverList
 					this.isUpload = false
 					this.isUpload = true
-					// console.log(res);
-					// console.log(JSON.parse(res))
-					// this.frontImage = JSON.parse(res)
 				});
 				// uni.chooseImage({
 				// 	sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有

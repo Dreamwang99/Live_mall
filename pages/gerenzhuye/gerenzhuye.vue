@@ -49,6 +49,7 @@
 </template>
 
 <script>
+	import bridge from '../../common/unfile/unfile.js'
 	export default {
 		data() {
 			return {
@@ -68,19 +69,32 @@
 				arr:[],
 				detalis:[],
 				goodslist:'',
-				userlist:''
+				userlist:'',
+				token:''
 			};
 		},
 		onLoad(options) {
-			this.uid = options.uid
+			this.getpersonalhomepage()//获取移动端返回信息
+			// this.uid = options.uid
 			this.getvideolist()
 			this.getMyfans()
 			this.getLiverecord()
 		},
 		methods: {
+			getpersonalhomepage(){//获取移动端返回信息
+				bridge.call('personalHomePage',)
+				bridge.register('personalHomePageCallback', function(result) {
+					console.log(result)
+					console.log(JSON.parse(result))
+					console.log(JSON.parse(result).token)
+					this.token =JSON.parse(result).token
+					console.log(JSON.parse(result).uid)
+					this.UIDS = JSON.parse(result).uid
+				})
+			},
 			getvideolist() {
 				this.request.getVideoList({
-					uid: this.uid
+					uid: this.UIDS
 				}).then(res => {
 					console.log(res);
 					this.detalis = res.data.info
@@ -91,7 +105,7 @@
 			},
 			getLiverecord(){
 				this.request.getLivere({
-					touid: this.uid
+					touid: this.UIDS
 				}).then(res => {
 					console.log(res);
 					this.arr = res.data.info
@@ -102,7 +116,7 @@
 			},
 			getMyfans(){
 				this.request.getMyFans({
-					token:uni.getStorageSync('token')
+					token:this.token
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
@@ -111,7 +125,7 @@
 			cancel1() {
 				this.request.getAttent({
 					uid: uni.getStorageSync('id'),
-					touid: this.uid
+					touid: this.UDI
 				}).then(res => {
 					console.log(res);
 				})

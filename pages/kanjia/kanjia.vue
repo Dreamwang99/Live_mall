@@ -96,6 +96,8 @@
 					{
 						icon: '/static/zhuye/icon-pyq.png',
 						text: '朋友圈'
+					
+					
 					}
 				],
 				kanjiaList: [],
@@ -103,7 +105,6 @@
 				bargain_id:'',
 				goodslist:'',
 				list:'',
-				bargain_id:'',
 				activeid:'',
 				money:'',
 				openid:'',

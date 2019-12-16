@@ -4,7 +4,7 @@
 			<view class="headimg">
 				<text class="touxiang">头像</text>
 				<view style="display: flex;" @tap="togglePopup('bottom', 'album')">
-					<image class="logo1" :src="userinfo.avatar"></image>
+					<image v-if="showHeader" class="logo1" :src="userinfo.avatar"></image>
 					<view class="jr"><img style="height: 32rpx;width: 16rpx;" src="/static/center/iocn-jinru.png" /></view>
 				</view>
 			</view>
@@ -82,6 +82,7 @@
 				userHeader: "",
 				show: false,
 				type: '',
+				showHeader : true,
 				bottomData: [{
 						icon: '../../static/center/iocn-20-nan.png',
 						text: '男'
@@ -176,14 +177,16 @@
 				if(e === 'camera'){
 					bridge.call('uploadByPhotograph', "拍摄上传头像");
 					bridge.register('uploadByPhotographCallback',function(res){
-						console.log(res);
-						this.userinfo.avatar = JSON.parse(res)
+						this.userinfo.avatar = res
+						this.showHeader = false
+						this.showHeader = true
 					});
 				}else if(e === 'album'){
 					bridge.call('uploadImages', "相册上传头像");
 					bridge.register('uploadImagesCallback',function(res){
-						console.log(res);
-						this.userinfo.avatar = JSON.parse(res)
+						this.userinfo.avatar = res
+						this.showHeader = false
+						this.showHeader = true
 					});
 				}
 				// let sourceType = e
