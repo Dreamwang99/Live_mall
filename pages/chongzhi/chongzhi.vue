@@ -45,12 +45,17 @@
 </template>
 
 <script>
-export default {
-	data() {
-		return {};
-	},
-	methods: {}
-};
+	import bridge from '@/common/unfile/unfile.js';
+	export default {
+		data() {
+			return {};
+		},
+		onBackPress() {
+			bridge.call('navBack', "页面返回");
+			return true;
+		},
+		methods: {}
+	};
 </script>
 
 <style>

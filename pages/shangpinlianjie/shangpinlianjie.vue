@@ -5,7 +5,7 @@
 			<view class="baidi heng">
 				<image class="gou" :src="g.show ? '../../static/center/iocn-gou.png':'../../static/center/iocn-20-yuan.png'" mode="" @click="xuanze(g_idx)"></image>
 				<image class="tu" :src="g.logo" mode="aspectFit"></image>
-			<view >
+			<view @tap="navToDetails(g.id)">
 				<view class="zi1">{{g.title}}</view>
 				<view class="zi2">{{g.title}}</view>
 				<view class="rmb">￥{{g.price}}</view>
@@ -57,6 +57,11 @@
 					}
 				})
 			},
+			navToDetails(idx){
+				uni.navigateTo({
+					url:'/pages/shangpinxiangqing/shangpinxiangqing?id='+idx
+				})
+			},
 			xuanze(idx){
 				this.getGoodsListInfo.forEach((i,i_idx)=>{
 					if(idx === i_idx){
@@ -92,7 +97,7 @@
 }
 .baidi{
 	background-color: #FFFFFF;
-	height: 200rpx;
+	min-height: 200rpx;
 	width: 710rpx;
 	margin-left: 20rpx;
 	

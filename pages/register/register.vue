@@ -35,9 +35,8 @@
 	export default {
 		data() {
 			return {
-
-				phoneNumber: '19666666666',
-				passwd: '111111',
+				phoneNumber: '17710610000',
+				passwd: '123456',
 				weixinId: ""
 			}
 		},
@@ -62,8 +61,6 @@
 					});
 					return false;
 				}
-
-
 				//模板示例比对本地储存的用户信息，实际使用中请替换为上传服务器比对。
 				setTimeout(() => {
 					uni.request({
