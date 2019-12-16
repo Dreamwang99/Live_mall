@@ -168,7 +168,7 @@
 			product(goods_id) {
 				console.log(goods_id)
 				uni.navigateTo({
-					url: '../dingdantijiao/dingdantijiao?goods_id=' + goods_id
+					url: '../shangpinxiangqing/shangpinxiangqing?id=' + goods_id
 				})
 			},
 			//编辑购物车
@@ -382,7 +382,7 @@
 		justify-content: center;
 		align-items: center;
 		margin-bottom: 100rpx;
-		margin-top: 85rpx;
+		/* margin-top: 85rpx; */
 	}
 
 	.mdltop {

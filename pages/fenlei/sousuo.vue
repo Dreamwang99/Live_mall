@@ -59,9 +59,11 @@
 				id:''
 			}
 		},
+		onShow() {
+			this.getHistory()
+		},
 		onLoad() {
 			this.values = uni.getStorageSync('token');
-			this.getHistory()
 			this.getcacheGet()
 		},
 		onReachBottom() {
@@ -98,7 +100,7 @@
 							this.grabble = false
 							this.sear = true
 							setTimeout(function() {
-
+								
 							}, 1000)
 						} else {
 							uni.showToast({
@@ -107,6 +109,7 @@
 							});
 						}
 					})
+					this.getHistory()
 				} else {
 					this.switch1 = false
 					uni.showToast({
@@ -148,6 +151,7 @@
 							title: '没有该类型商品',
 							icon: "none",
 						});
+						this.getHistory()
 					}
 				})
 			},
@@ -184,6 +188,7 @@
 					id: this.id
 				}).then(res => {
 					console.log(res)
+					this.getHistory()
 				})
 			},
 			backtrack() {
@@ -438,6 +443,9 @@
 		margin-left: 10rpx;
 		font-size: 28rpx;
 		font-weight: 600;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
 	.searchmoney {

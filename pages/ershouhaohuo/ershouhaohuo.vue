@@ -22,8 +22,8 @@
 			<view class="ershou_img" v-for="(item,index) in list" :key="index" @click="shop(item)">
 				<image class="shafa" :src="item.image[0]" mode=""></image>
 				<view class="miewen">
-					<view class="miewendeng">{{item.keyword}}</view>
-					<view class="ziwaixian">{{item.title}}</view>
+					<view class="miewendeng">{{item.title}}</view>
+					<view class="ziwaixian">{{item.keyword}}</view>
 					<view class="rmb">￥{{item.price}}</view>
 				</view>
 			</view>

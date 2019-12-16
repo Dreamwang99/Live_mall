@@ -6,7 +6,7 @@
 			<view class="moren">设为默认地址</view>
 		</view>
 		<input class="zi" v-model="name" type="text" placeholder="请输入姓名">
-		<input class="zi" v-model="phone" type="text" placeholder="请输入联系方式">
+		<input class="zi" v-model="phone" maxlength="11" type="text" placeholder="请输入联系方式">
 		<view class="heng" v-for="(item,index) in tabList" :key="index" @tap="toggleTab(item,index)">
 			<view class="zi" style="font-size: 30rpx;">{{resultInfo.result}}</view>
 
@@ -101,7 +101,7 @@
 							})
 						} else {
 							uni.showToast({
-								title: "添加地址失败",
+								title: res.msg,
 								icon: "none",
 							})
 							console.log("失败")
@@ -209,6 +209,9 @@
 		line-height: 94rpx;
 		margin-left: 20rpx;
 		font-size: 26rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
 	.zi2 {

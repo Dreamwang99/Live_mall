@@ -16,7 +16,7 @@
 				<view class="shopmsg">
 					<view class="sales">月销:{{goodsdata.number_sales}}</view>
 					<view class="inventory">库存:{{goodsdata.number_stock-goodsdata.number_sales}}</view>
-					<view class="freight">运费:0.00元</view>
+					<view class="freight">运费:{{postage}}元</view>
 				</view>
 			</view>
 			<view class="parameter" @tap="lookshopdetial()">
@@ -102,7 +102,8 @@
 			</view>
 			<view class="shopmsg5">
 				<view class="postagename">配送费</view>
-				<view class="postagecontent">快递免邮</view>
+				<view class="postagecontent" v-if="postage == '0.00'">快递免邮</view>
+				<view class="postagecontent" v-else>邮费:{{postage}}元</view>
 			</view>
 			<view class="center" @tap="bugcar()">确定</view>
 		</view>
@@ -134,7 +135,8 @@
 			</view>
 			<view class="shopmsg5">
 				<view class="postagename">配送费</view>
-				<view class="postagecontent">快递免邮</view>
+				<view class="postagecontent" v-if="postage == '0.00'">快递免邮</view>
+				<view class="postagecontent" v-else>邮费:{{postage}}元</view>
 			</view>
 			<view class="center" @tap="bargainmit()">确定</view>
 		</view>
@@ -211,7 +213,8 @@
 				goodsparameter:'',
 				goodsdata:'',
 				choosetype:0,//购物车的选择弹出
-				shopdetialimg:''
+				shopdetialimg:'',
+				postage:'',//邮费
 			}
 		},
 		onLoad(options) {
@@ -330,7 +333,7 @@
 							this.seckillChoose()
 					}else{
 						uni.showToast({
-							title:'请选择相应的商品类型',
+							title:'继续选择其他商品类型',
 							icon:'none'
 						})
 					}
@@ -340,7 +343,7 @@
 						this.gitshopspecifications()
 					}else{
 						uni.showToast({
-							title:'请选择相应的商品类型',
+							title:'继续选择其他商品类型',
 							icon:'none'
 						})
 					}
@@ -377,7 +380,7 @@
 						this.gitshopspeci()
 				}else{
 					uni.showToast({
-						title:'请选择相应的商品类型',
+						title:'继续选择其他商品类型',
 						icon:'none'
 					})
 				}
@@ -446,6 +449,7 @@
 					this.goodsdata = res.data				//商品所有数据
 					this.lunboimg = res.data.image	
 					this.shopdetialimg = res.data.content
+					this.postage = res.data.price_express
 					let arr = res.data.specs
 					//forEach循环
 					// arr.forEach(item => {
@@ -572,6 +576,9 @@
 				this.showimg1 = 3
 				this.showimg2 = 4
 				this.showimg3 = 6
+				uni.navigateTo({
+					url:'../kefu2/kefu2'
+				})
 			},
 			group() {
 				this.showimg = 0

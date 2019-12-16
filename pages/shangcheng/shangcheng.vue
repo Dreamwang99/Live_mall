@@ -29,10 +29,7 @@
 					<view class="zzpp">自主品牌</view>
 					<view class="ppth" :style="{ backgroundImage: 'url(' + '/static/shangcheng/bg-85-ppth.png' + ')' }">品牌特惠</view>
 				</view>
-				<view class="kuang"><image class="tu1" src="../../static/shangcheng/iocn-85-pp.png" mode=""></image></view>
-				<view class="kuang"><image class="tu1" src="../../static/shangcheng/iocn-85-pp2.png" mode=""></image></view>
-				<view class="kuang"><image class="tu1" src="../../static/shangcheng/iocn-85-pp3.png" mode=""></image></view>
-				<view class="kuang"><image class="tu1" src="../../static/shangcheng/iocno-85-pp4.png" mode=""></image></view>
+				<view class="kuang" v-for="(item,index) in pinpai" :key="index"><image class="tu1" :src="item.brand_logo" mode=""></image></view>
 			</view>
 			<view class="baidi">
 				<view class="heng">
@@ -45,7 +42,7 @@
 						<view class="heng">
 							<view class="rmb">￥{{item.price_selling}}</view>
 							<view class="rmb1">￥{{item.price_market}}</view>
-							<view class="xian"></view>
+							<!-- <view class="xian"></view> -->
 						</view>
 					</view>
 				</view>
@@ -71,19 +68,34 @@ export default {
 		return {
 			goods:[],
 			ptztlist:[],
+			pinpai:[],
 			id:"",
 			pages: 1,
+			num: 4,
+			token: uni.getStorageSync('token'),
 		};
 	},
 	onReachBottom(){
-		// this.pages ++
-		// this.geGoodList()
+		this.pages ++
+		this.geGoodList()
 	},
 	onLoad() {
 		this.geGoodList()
 		this.getptztList()
+		this.getpinpai()
 	},
 	methods: {
+		//获取自主品牌
+		getpinpai(){
+			this.request.getSelfBrand({
+				token: this.token,
+				page: this.pages,
+				size: 4
+			}).then(res =>{
+				console.log(res);
+				this.pinpai = res.data
+			})
+		},
 		goDetail(item){
 			uni.navigateTo({
 				url:'../shangpinxiangqing/shangpinxiangqing?id='+item.id
@@ -91,7 +103,7 @@ export default {
 		},
 		goSousuo() {
 			uni.navigateTo({
-				url: '../fenlei/sousuo'
+				url: '../sousuokuang/sousuokuang'
 			})
 		},
 		xinxi() {
@@ -102,17 +114,29 @@ export default {
 		/* 获取商品列表 */
 		geGoodList(){
 			this.request.indexGoodsList({
-				
+				token: this.token,
+				page: this.pages,
+				num: this.num
 			}).then(res =>{
-				console.log(res)
-				if(res.code===1){
-					this.goods=res.data
+				if(this.pages == 1){
+					this.goods = []
 				}
+				if(res.data.length==0){
+					if(this.pages>1){
+						this.pages--
+					}
+					uni.showToast({
+						title: "没有更多了",
+						icon: "none",
+					});
+				}
+				this.goods = this.goods.concat(res.data)
+				console.log(res.data)
 			})
 		},
 		getptztList(){
 			this.request.getShopFourList({
-				token: uni.getStorageSync('token'),
+				token: this.token,
 				page: this.pages,
 				size: 4,
 				type: 1
@@ -169,6 +193,7 @@ export default {
 	width: 750rpx;
 	height: 425rpx;
 	background-size: cover;
+	/* padding-top: 32rpx; */
 }
 .heng {
 	display: flex;
@@ -241,10 +266,13 @@ export default {
 	margin-right: 45rpx;
 }
 .tuzi {
+	min-width: 100rpx;
+	max-width: 100rpx;
 	font-size: 20rpx;
-	margin-left: 48rpx;
+	margin-left: 45rpx;
 	margin-top: 22rpx;
-	margin-right: 50rpx;
+	margin-right: 45rpx;
+	text-align: center;
 }
 .di {
 	height: 145rpx;
@@ -314,6 +342,7 @@ export default {
 	margin-top: 32rpx;
 	margin-left: 21rpx;
 	color: #949494;
+	text-decoration:line-through;
 }
 .xian {
 	position: absolute;
@@ -347,14 +376,19 @@ export default {
 }
 .deng {
 	font-size: 23rpx;
-	
 	margin-left: 20rpx;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .ziwaixian {
 	font-size: 17rpx;
 	margin-top: 15rpx;
 	margin-left: 20rpx;
 	color: #949494;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .rmb2 {
 	font-size: 24rpx;
