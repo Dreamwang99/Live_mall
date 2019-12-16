@@ -52,6 +52,12 @@ const  gostrightbuy = (params) => ajax(baseUrl + '/order/purchase', params)
 const  ershoudetial = (params) => ajax(baseUrl + '/second_hand/PlaceOrder', params)
 //二手好货订单支付
 const  ershoucenter = (params) => ajax(baseUrl + '/second_hand/addOrder', params)
+//我要发货
+const  workOFF = (params) => ajax(baseUrl + '/second_hand/Deliver', params)
+
+
+
+
 
 
 
@@ -257,7 +263,7 @@ export default {
 	
 	
 	
-	
+	workOFF,//我要发货
 	ershoucenter,//////////////////二手好货订单支付
 	ershoudetial,//////////////////二手好货订单详情
 	gostrightbuy,//直接购买的支付

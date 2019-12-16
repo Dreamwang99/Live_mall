@@ -27,7 +27,7 @@
 		methods: {
 			getUser(){
 				this.request.getUserGoods({
-					id: uni.getStorageSync('id'),
+					// id: uni.getStorageSync('id'),
 					token: uni.getStorageSync('token'),
 					is_success: 0
 				}).then(res => {
