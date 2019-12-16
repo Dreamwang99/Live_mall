@@ -1,34 +1,22 @@
 <template>
 	<view class="beijing">
-		<view class="xian"></view>
-		<view class="baidi heng">
-			<image class="gou" :src="show ? '../../static/center/iocn-20-yuan.png':'../../static/center/iocn-gou.png'" mode="" @click="xuanze"></image>
-			<image class="tu" src="../../static/gouwuche/img-22-sp.png" mode="aspectFit"></image>
-		<view >
-			<view class="zi1">Snoppa折叠手机三轴稳定器 黑色</view>
-			<view class="zi2">紫外线光精准诱蚊，高灭杀杀毒...</view>
-			<view class="rmb">￥128</view>
-			<view class="heng">
-				<image class="dp" src="../../static/gouwuche/iocn-22-dp.png" mode="aspectFit"></image>
-			<view class="dpzi">{{dianpuming}}</view>
+		<view class="ms" v-for="(g,g_idx) in getGoodsListInfo" :key="g_idx">
+			<view class="xian"></view>
+			<view class="baidi heng">
+				<image class="gou" :src="g.show ? '../../static/center/iocn-gou.png':'../../static/center/iocn-20-yuan.png'" mode="" @click="xuanze(g_idx)"></image>
+				<image class="tu" :src="g.logo" mode="aspectFit"></image>
+			<view >
+				<view class="zi1">{{g.title}}</view>
+				<view class="zi2">{{g.title}}</view>
+				<view class="rmb">￥{{g.price}}</view>
+				<view class="heng">
+					<image class="dp" src="../../static/gouwuche/iocn-22-dp.png" mode="aspectFit"></image>
+				<view class="dpzi">{{g.business_name}}</view>
+				</view>
+			</view>
 			</view>
 		</view>
-		</view>
-		<view class="xian"></view>
-		<view class="baidi heng">
-			<image class="gou" :src="show ? '../../static/center/iocn-20-yuan.png':'../../static/center/iocn-gou.png'" mode="" @click="xuanze"></image>
-			<image class="tu" src="../../static/gouwuche/img-22-sp.png" mode="aspectFit"></image>
-		<view >
-			<view class="zi1">Snoppa折叠手机三轴稳定器 黑色</view>
-			<view class="zi2">紫外线光精准诱蚊，高灭杀杀毒...</view>
-			<view class="rmb">￥128</view>
-			<view class="heng">
-				<image class="dp" src="../../static/gouwuche/iocn-22-dp.png" mode="aspectFit"></image>
-			<view class="dpzi">{{dianpuming}}</view>
-			</view>
-		</view>
-		</view>
-		<view class="queding">确定</view>
+		<view class="queding" @tap="makeSure()">确定</view>
 		<view class="xian"></view>
 	</view>
 </template>
@@ -37,14 +25,54 @@
 	export default {
 		data() {
 			return {
-				show:false,
-				dianpuming:'某某店铺'
+				dianpuming:'某某店铺',
+				getGoodsListInfo : [],
+				choseGoodsId : 0
 			}
 		},
+		onLoad() {
+			this.getGoodsList();
+		},
 		methods: {
-			xuanze(){
-				this.show=!this.show
+			getGoodsList(){
+				this.request.getLiveBusinessShopList({
+					token : uni.getStorageSync('token')
+				}).then(res=>{
+					console.log(res);
+					if(res.code === 1){
+						res.data.forEach((i,idx)=>{
+							if(idx === 0){
+								i.show = true
+								this.choseGoodsId = i.id
+							}else{
+								i.show = false
+							}
+						})
+						this.getGoodsListInfo = res.data
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
+						})
+					}
+				})
 			},
+			xuanze(idx){
+				this.getGoodsListInfo.forEach((i,i_idx)=>{
+					if(idx === i_idx){
+						i.show = true
+						this.choseGoodsId = i.id
+					}else{
+						i.show = false
+					}
+				})
+			},
+			makeSure(){
+				uni.setStorageSync("choseGoodsId",this.choseGoodsId);
+				uni.redirectTo({
+					url:'/pages/zhiboshezhi/zhiboshezhi'
+				})
+			}
 		}
 	}
 </script>

@@ -6,22 +6,22 @@
 				反馈类型
 			</view>
 			<view class="heng">
-
-				<view class="kuang" v-for="( item,index) in pj" :key="index">{{item.name}}</view>
+				<view class="kuang" :class="[current === index ? 'ac' : '']" v-for="(item,index) in pj" :key="index" @tap="chose(index,item.name)">{{item.name}}</view>
 			</view>
 		</view>
 		<view class="middle">
-			<textarea class="yijian" type="text" placeholder="说说您的意见吧!" value=""></textarea>
-			<image class="zhaopian" src="../../static/fabu/img_12-tianjia.png" mode=""></image>
+			<textarea class="yijian" v-model="content" type="text" placeholder="说说您的意见吧!" value=""></textarea>
+			<image class="zhaopian" :src="imagesUrl" @tap="choseImages()" mode=""></image>
 		</view>
 		<view class="beijing2">
-			<button class="tijiao" type="primary">提交</button>
+			<button class="tijiao" type="primary" @tap="submit()">提交</button>
 		</view>
 
 	</view>
 </template>
 
 <script>
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		data() {
 			return {
@@ -43,11 +43,51 @@
 					{
 						name: '其他'
 					},
-				]
+				],
+				current : 0,
+				choseType : "",
+				content : "",
+				imagesUrl : '../../static/fabu/img_12-tianjia.png'
 			}
 		},
 		methods: {
-
+			chose(idx,types){
+				this.current = idx
+				this.choseType = types
+			},
+			choseImages(){
+				bridge.call('uploadImages', "上传投诉照片");
+				bridge.register('uploadImagesCallback',(res)=>{
+					console.log(res);
+					this.imagesUrl = JSON.parse(res)
+				});
+			},
+			submit(){
+				this.request.getUserComplain({
+					token : uni.getStorageSync('token'),
+					title : this.choseType,
+					content : this.content,
+					image : this.imagesUrl
+				}).then(res=>{
+					console.log(res);
+					if(res.code === 1){
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
+						})
+						setTimeout(()=>{
+							uni.reLaunch({
+								url:'/pages/shouye/shouye'
+							})
+						},2000)
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
+						})
+					}
+				})
+			}
 		}
 	}
 </script>
@@ -96,6 +136,7 @@
 		border-bottom: 1px solid #CCCCCC;
 		padding-bottom: 20rpx;
 	}
+	
 
 	.kuang {
 		margin-top: 20rpx;
@@ -108,6 +149,10 @@
 		color: #7e7e7e;
 		text-align: center;
 		margin-left: 40rpx;
+	}
+	.ac{
+		border: 1rpx solid #FF0000;
+		color: #FF0000;
 	}
 
 	.zhaopian {

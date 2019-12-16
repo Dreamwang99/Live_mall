@@ -176,7 +176,10 @@
 				})
 			},
 			choseShareStyle(types){
-				var shareInfo = "?goodsId="+this.getInfo.goods_id+"&activityId="+this.getInfo.id
+				var shareInfo = new Object();
+				shareInfo.title = "拼团分享";
+				shareInfo.describe = "快来参加我的团";
+				shareInfo.linkUrl = "http://pintuan.a2w0m.cn?goodsId="+this.getInfo.goods_id+"&activityId="+this.getInfo.id
 				if(types === "微信好友"){
 					bridge.call('shareWeChatFriends', shareInfo);
 					bridge.register('shareWeChatFriendsCallback',(res)=>{

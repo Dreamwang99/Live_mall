@@ -20,7 +20,7 @@
 		<input type="text" value="" placeholder="详细地址" class="mingcheng" v-model="address"/>
 		<w-picker mode="region" :defaultVal="['浙江省','杭州市','滨江区']" :areaCode="['33','3301','330108']" :hideArea="false"
 		 @confirm="onConfirm" ref="region"></w-picker>
-		<input v-model="price" class="mingcheng" placeholder="价格" type="text" value="" />
+		<input v-model="price" class="mingcheng" placeholder="价格" type="number" value="" />
 		<input v-model="oldprice" class="mingcheng" placeholder="入手价" type="text" value="" />
 		<input v-model="newold" class="mingcheng" placeholder="新旧程度" type="text" value="" />
 		<input v-model="phone" class="mingcheng" placeholder="联系方式" type="text" value="" />
@@ -70,6 +70,7 @@
 <script>
 	import wPicker from "@/components/w-picker/w-picker.vue";
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
 			wPicker,
@@ -194,54 +195,64 @@
 			},
 			//上传图片
 			choose() {
-				uni.chooseImage({
-					sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['camera', 'album'], //从相册选择
-					success: (chooseImageRes) => {
-						const tempFilePaths = chooseImageRes.tempFilePaths;
-						console.log(chooseImageRes.tempFilePaths)
-						let choseImg = tempFilePaths[0]
-						uni.uploadFile({
-							url: this.getimgaddress + '/merchant/uploadQnImg',
-							method: 'POST',
-							filePath: choseImg,
-							name: 'file',
-							formData: {
-								num: 0,
-								token: uni.getStorageSync('token') //自定义请求头信息
-							},
-							success: (res) => {
-								// let locaList = res.tempFilePaths[0]
-								console.log(res.data);
-								console.log(JSON.parse(res.data).data)
-								if (res.statusCode === 200) {
-									if (this.returnList.length < 9) {
-										let serverList = JSON.parse(res.data).data.img_url
-										this.returnList[this.returnList.length] = serverList
-										this.userChoseImgList[this.userChoseImgList.length] = choseImg
-										this.isUpload = false
-										this.isUpload = true
-										console.log(serverList)
-										console.log(this.returnList)
-									} else {
-										uni.showToast({
-											title: "最多上传9张图片哦~",
-											icon: 'none',
-											duration: 1500
-										})
-									}
-								} else {
-									uni.showToast({
-										title: res.errMsg,
-										icon: 'none',
-										duration: 1500
-									})
-								}
-							}
-						});
-					}
+				bridge.call('uploadImages', "上传二手商品照片");
+				bridge.register('uploadImagesCallback',(res)=>{
+					let serverList = res
+					this.returnList[this.returnList.length] = serverList
+					this.userChoseImgList[this.userChoseImgList.length] = serverList
+					this.isUpload = false
+					this.isUpload = true
+					// console.log(res);
+					// console.log(JSON.parse(res))
+					// this.frontImage = JSON.parse(res)
 				});
-			
+				// uni.chooseImage({
+				// 	sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				// 	sourceType: ['camera', 'album'], //从相册选择
+				// 	success: (chooseImageRes) => {
+				// 		const tempFilePaths = chooseImageRes.tempFilePaths;
+				// 		console.log(chooseImageRes.tempFilePaths)
+				// 		let choseImg = tempFilePaths[0]
+				// 		uni.uploadFile({
+				// 			url: this.getimgaddress + '/merchant/uploadQnImg',
+				// 			method: 'POST',
+				// 			filePath: choseImg,
+				// 			name: 'file',
+				// 			formData: {
+				// 				num: 0,
+				// 				token: uni.getStorageSync('token') //自定义请求头信息
+				// 			},
+				// 			success: (res) => {
+				// 				// let locaList = res.tempFilePaths[0]
+				// 				console.log(res.data);
+				// 				console.log(JSON.parse(res.data).data)
+				// 				if (res.statusCode === 200) {
+				// 					if (this.returnList.length < 9) {
+				// 						let serverList = JSON.parse(res.data).data.img_url
+				// 						this.returnList[this.returnList.length] = serverList
+				// 						this.userChoseImgList[this.userChoseImgList.length] = choseImg
+				// 						this.isUpload = false
+				// 						this.isUpload = true
+				// 						console.log(serverList)
+				// 						console.log(this.returnList)
+				// 					} else {
+				// 						uni.showToast({
+				// 							title: "最多上传9张图片哦~",
+				// 							icon: 'none',
+				// 							duration: 1500
+				// 						})
+				// 					}
+				// 				} else {
+				// 					uni.showToast({
+				// 						title: res.errMsg,
+				// 						icon: 'none',
+				// 						duration: 1500
+				// 					})
+				// 				}
+				// 			}
+				// 		});
+				// 	}
+				// });
 			},
 			/* 获取位置 */
 			getplace() {

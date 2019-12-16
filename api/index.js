@@ -227,7 +227,10 @@ const getGoodsSpecDetails = (params) => ajax(BASE_URL + '/goods/getGoodsSpecDeta
 const participationGroup = (params) => ajax(BASE_URL + '/group_purchase/participationGroup', params)
 // 团购活动详情页
 const getGroupPurchase = (params) => ajax(BASE_URL + '/group_purchase/getGroupPurchase', params)
-
+// 开播 --- 获取商品列表
+const getLiveBusinessShopList = (params) => ajax(BASE_URL + '/index/getLiveBusinessShopList', params)
+// 用户投诉建议
+const getUserComplain = (params) => ajax(BASE_URL + '/index/getUserComplain', params)
 
 //陈
 //获取商品评论 全部 以及好评 中评 差评
@@ -365,6 +368,8 @@ export default {
 	getGoodsSpecDetails, // 获取活动商品价格
 	participationGroup,	//参团
 	getGroupPurchase,	//团购活动详情页
+	getLiveBusinessShopList,	// 开播 --- 获取商品列表
+	getUserComplain,	// 用户投诉建议
 	
 	
 	//陈

@@ -160,7 +160,7 @@
 			</view>
 			<view class="shopmsg5">
 				<view class="postagename">配送费</view>
-				<view class="postagecontent">快递免邮</view>
+				<view class="postagecontent">{{goodsInfo.price_express}}</view>
 			</view>
 			<view class="center" @tap="sureBuy()" v-show="nowboyor==1">确定购买</view>
 			<view class="center" @tap="sureOpenT()" v-show="nowboyor==0">确定开团</view>
@@ -483,8 +483,7 @@
 			},
 			chakanpj(e) {
 				uni.navigateTo({
-					url: '../quanbupinglun/quanbupinglun',
-
+					url: '../quanbupinglun/quanbupinglun?id='+this.goods_id,
 				})
 			},
 

@@ -29,7 +29,7 @@
 			<view class="title_left">允许互关商家下载本次直播</view>
 			<switch :checked="download" color="#f1301f" @change="downloadset" style="transform:scale(0.7)" />
 		</view> -->
-		<view class="box">
+		<view class="box" @tap="goList()">
 			<view class="title_left">选择商品列表</view>
 			<image class="jr1" src="../../static/center/iocn-jinru.png" mode=""></image>
 		</view>
@@ -72,7 +72,7 @@
 			<view class="xiugai">
 				<view class="xiugai1">禁用词语</view>
 				<view class="xiugai2">
-					<view class="" v-for="(item,idx) in jinyong" :key="idx"><text>{{item}}</text>,</view>
+					<view class=""><text>{{unSendWords}}</text></view>
 				</view>
 				<view class="kuang heng">
 					<input placeholder="请输入禁用词汇" v-model="jinyongg" placeholder-class="chihuo1" style="height: 80rpx;"> </input>
@@ -102,6 +102,7 @@
 				show: false,
 				jinyong: [],
 				jinyongg: '',
+				unSendWords : "",
 				type: '',
 				bottomData: [{
 						icon: '/static/zhuye/icon_wx.png',
@@ -125,6 +126,9 @@
 				download: true,
 				goodsId : ''
 			}
+		},
+		onLoad() {
+			this.choseGoodsId = uni.getStorageSync("choseGoodsId");
 		},
 		methods: {
 			choose(){
@@ -196,14 +200,23 @@
 				this.$refs.jinyong.open()
 			},
 			jinyongQD(){
-				this.jinyong.push(this.jinyongg)
-				this.jinyongg = ''
+				if(!this.jinyongg){
+					uni.showToast({
+						title:"禁用词汇不能为空",
+						icon:'none'
+					})
+					return false;
+				}
+				this.jinyong[this.jinyong.length] = this.jinyongg
+				this.unSendWords = this.jinyong.join(",");
+				this.jinyongg = ""
 				this.$refs.jinyong.close()
 			},
 			cancel3() {
 				this.$refs.jinyong.close()
 			},
 			jinyanset: function (e) {
+				console.log(e);
 				this.jinyan = e.target.value
 			},
 			allowshareset: function (e) {
@@ -217,36 +230,50 @@
 					url: '../wallet/wallet'
 				})
 			},
+			goList(){
+				uni.navigateTo({
+					url:'/pages/shangpinlianjie/shangpinlianjie'
+				})
+			},
 			startLive(){
-				var createLiveObject = {};
-				createLiveObject.title = this.chihuo;
-				createLiveObject.disable_word = this.jinyongg;
-				createLiveObject.isShare = this.allowshare;
-				createLiveObject.goods_id = this.goodsId;
-				bridge.call('startLive',createLiveObject);
-				this.request.createMyLive({
-					id : uni.getStorageSync("id"),
-					token : uni.getStorageSync('token'),
-					thumb : this.thumb,
-					title : this.chihuo,
-					disable_word : this.jinyongg,
-					banned : this.jinyan,
-					isShare : this.allowshare,
-					goods_id : this.goodsId
-				}).then(res=>{
-					console.log(res);
-					if(res.data.code === 0){
-						uni.showToast({
-							title:"开播成功",
-							icon:'none'
-						})
-					}else{
-						uni.showToast({
-							title:res.data.msg,
-							icon:'none'
-						})
-					}
-				});
+				if(!this.choseGoodsId){
+					uni.showToast({
+						title:"未选择商品列表",
+						icon:'none'
+					})
+					return false;
+				}else{
+					var createLiveObject = {};
+					createLiveObject.title = this.chihuo;
+					createLiveObject.disable_word = this.unSendWords;
+					createLiveObject.isShare = this.allowshare;
+					createLiveObject.banned = this.jinyan;
+					createLiveObject.goods_id = this.choseGoodsId;
+					bridge.call('startLive',createLiveObject);
+					this.request.createMyLive({
+						id : uni.getStorageSync("id"),
+						token : uni.getStorageSync('token'),
+						thumb : this.thumb,
+						title : this.chihuo,
+						disable_word : this.unSendWords,
+						banned : this.jinyan,
+						isShare : this.allowshare,
+						goods_id : this.choseGoodsId
+					}).then(res=>{
+						console.log(res);
+						if(res.data.code === 0){
+							uni.showToast({
+								title:"开播成功",
+								icon:'none'
+							})
+						}else{
+							uni.showToast({
+								title:res.data.msg,
+								icon:'none'
+							})
+						}
+					});
+				}
 			}
 		}
 	}
