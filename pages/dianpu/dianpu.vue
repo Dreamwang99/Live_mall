@@ -65,30 +65,7 @@
 			return {
 				pages:0,
 				allgoods: '',
-				goods:[{
-					img:'../../static/gerenshangjia/21_img_sp.png',
-					name:'石墨烯智能温控发热鹅绒马甲',
-					detail:'插电持续发热，90%白鹅绒可机手洗',
-					price:'200'
-				},
-				{
-					img:'../../static/gerenshangjia/img_sp2.png',
-					name:'石墨烯智能温控发热鹅绒马甲',
-					detail:'插电持续发热，90%白鹅绒可机手洗',
-					price:'200'
-				},
-				{
-					img:'../../static/gerenshangjia/21_img_sp.png',
-					name:'石墨烯智能温控发热鹅绒马甲',
-					detail:'插电持续发热，90%白鹅绒可机手洗',
-					price:'200'
-				},
-				{
-					img:'../../static/gerenshangjia/21_img_sp.png',
-					name:'石墨烯智能温控发热鹅绒马甲',
-					detail:'插电持续发热，90%白鹅绒可机手洗',
-					price:'200'
-				}],
+				goods:[],
 				titles: [{
 						name: '首页',
 						status: true
@@ -102,16 +79,7 @@
 						status: false
 					}
 				],
-				images: [{
-						img: '../../static/gerenshangjia/20_img_sp.png'
-					},
-					{
-						img: '../../static/gerenshangjia/20_img_sp3.png'
-					},
-					{
-						img: '../../static/gerenshangjia/20_img_sp_86.png'
-					}
-				],
+				images: [],
 				shop_id:'',
 				isShouCang: '关注',
 				bool: true,
@@ -186,6 +154,9 @@
 				})
 			},
 			choose(index) {
+				if(index==2){
+					
+				}
 				for (let i = 0; i < this.titles.length; i++) {
 					if (index == i) {
 						this.titles[i].status = true;
