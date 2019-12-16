@@ -93,7 +93,8 @@
 				</view>
 				<view class="heng">
 					<view class="se" style="margin-top: 43rpx;">配送费</view>
-					<view class="se mianyou">快递 免邮</view>
+					<view class="se mianyou" v-if="postage == '0.00'">快递免邮</view>
+					<view class="se mianyou" v-else>运费:{{postage}}元</view>
 				</view>
 				<view class="heng">
 					<view class="hengbox">
@@ -164,6 +165,8 @@
 				tPeopleNums : "",
 				addnumber:1,//直接购买的数量
 				activeid:'',
+				
+				postage:'',//邮费
 			}
 		},
 		onLoad(options) {
@@ -940,6 +943,7 @@
 			}).then(res => {
 				console.log(res)
 				this.ass = res.data.cartList
+				this.postage = res.data.cartList.price_express//邮费
 			})
 		},
 		// 获取开团商品信息

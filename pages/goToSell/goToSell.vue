@@ -3,19 +3,23 @@
 		<view class="content">
 			<view v-for="(item,index) in mySell" :key="index">
 				<view class="sells">
-					<image :src="item.url" class="image_" mode=""></image>
+					<image :src="item.image[0]" class="image_" mode=""></image>
 					<view class="sell_right">
 						<view class="titles">{{item.title}}</view>
 						<view class="cost">¥{{item.price}}</view>
 						<view class="flex_row">
 							<image class="iocn" src="../../static/mysell/icon_ddfh.png" mode=""></image>
-							<view class="wait">等待买家收货中</view>
+							<view class="wait" v-if="item.order.status*1 === 2">等待买家收货中</view>
+							<view class="wait" v-if="item.order.status*1 === 3">等待买家收货中</view>
+							<view class="wait" v-if="item.order.status*1 === 4">买家已收货</view>
 						</view>
 					</view>
 				</view>
 				<view class="sell_bottom">
-					<view class="contact">联系买家</view>
-					<view @click="sell" class="contact delivery">我要发货</view>
+					<view class="contact" @tap="relation()">联系买家</view>
+					<view @click="sell(item.order.business_order_no)" class="contact delivery" v-if="item.order.status*1 === 2">我要发货</view>
+					<view  class="contact delivery" v-if="item.order.status*1 === 3">已发货</view>
+					<view  class="contact delivery" v-if="item.order.status*1 === 4">已完成</view>
 				</view>
 			</view>
 		</view>
@@ -23,15 +27,15 @@
 		<uni-popup ref="kanjia" :show="kanjia" type="center" :mask-click="true" :custom="true">
 			<view class="kanjia">
 				<view class="flex_row">
-					<view class="order">订单编号</view>
+					<view class="order">物流编号</view>
 					<image @click="close()" class="cancel" src="../../static/mysell/icon_cha.png" mode=""></image>
 				</view>
 				<view class="flex_row">
 					<image class="form" src="../../static/mysell/icon_ddbh.png" mode=""></image>
-					<input class="fill_in" type="text" value="" placeholder="请填写订单编号" placeholder-class="number" />
+					<input class="fill_in" type="number" value="" placeholder="请填写物流编号" v-model="addtext"/>
 				</view>
 				<view style="height: 1rpx; background-color: #C4C4C4;"></view>
-				<view class="confirm">确定</view>
+				<view class="confirm" @tap="center()">确定</view>
 			</view>
 		</uni-popup>
 	</view>
@@ -55,21 +59,29 @@
 					url: '../../static/mysell/img_sp.png',
 					title: "【小米】新鲜水果特价榨汁机",
 					price: "128",
-				}]
+				}],
+				addtext:'',
+				orderdetial:''
 			}
 		},
 		onLoad() {
 			this.getUser()
 		},
 		methods: {
+			relation(){
+				uni.navigateTo({
+					url:'../kefu2/kefu2'
+				})
+			},
 			getUser(){
 				this.request.getUserGoods({
-					id: uni.getStorageSync('id'),
+					// id: uni.getStorageSync('id'),
 					token: uni.getStorageSync('token'),
 					is_success: 1
 				}).then(res => {
 					if(res.code==1){
-						
+						this.mySell = res.data
+						console.log(res.data.o)
 					}else{
 						uni.showToast({
 							title: res.msg,
@@ -78,7 +90,30 @@
 					}
 				})
 			},
-			sell() {
+			center(){
+				if(this.addtext == ''){
+					uni.showToast({
+						title:'请输入物流编号',
+						icon:'none'
+					})
+					return
+				}
+				this.request.workOFF({
+					token:uni.getStorageSync('token'),
+					express_send_no:this.addtext,
+					orderid:this.orderdetial
+				}).then(res=>{
+					console.log(res)
+					uni.showToast({
+						title:res.msg,
+						icon:'none'
+					})
+					this.$refs.kanjia.close()//关闭弹窗
+				})
+			},
+			sell(aa) {
+				console.log(aa)
+				this.orderdetial=aa
 				this.$refs.kanjia.open()
 			},
 			close() {
