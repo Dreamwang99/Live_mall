@@ -184,6 +184,7 @@
 			},
 			/* 弹窗 */
 			updatabigtype(){
+				this.getType()
 				this.maskShow = true
 			},
 			updatasmalltype() {

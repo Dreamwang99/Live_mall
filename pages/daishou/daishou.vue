@@ -101,7 +101,7 @@
 			},
 			goshop(id){
 				uni.navigateTo({
-					url: '../dianpu/dianpu?id='+id
+					url: '../dianpu/dianpu?shopid='+id
 				})
 			},
 			gogoods(id){

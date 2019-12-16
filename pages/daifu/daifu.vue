@@ -20,11 +20,11 @@
 		</view>
 		<view class="detail">
 			<view class="top_detail" v-for="(list,index) in arr" :key="index">
-				<view class="dian">
+				<view class="dian"  @tap="goshop(list.business_id)">
 					<image class="tu" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>
 					<text class="ergou">{{list.business_name}}</text>
 				</view>
-				<view class="shangpin" v-for="(item,idx) in list.goods_list" :key="idx">
+				<view class="shangpin" v-for="(item,idx) in list.goods_list" :key="idx" @tap="gogoods(item.goods_id)">
 					<image class="biao" :src="item.goods_logo" mode=""></image>
 					<view class="xiangqing">
 						<view class="biaozi">{{item.goods_title}}</view>
@@ -53,6 +53,15 @@
 					<image class="zhifu_img" mode="aspectFit" src="../../static/dingdan/icon_zfb.png"></image>
 					<view class="">
 						支付宝
+					</view>
+				</view>
+				<radio value="r2" color="#ff212c" style="transform:scale(0.7)"/>
+			</view>
+			<view class="zhifu">
+				<view class="Zhifu">
+					<image class="zhifu_img" mode="aspectFit" src="../../static/dingdan/icon_wx.png"></image>
+					<view class="">
+						微信
 					</view>
 				</view>
 				<radio value="r2" color="#ff212c" style="transform:scale(0.7)"/>
@@ -129,7 +138,17 @@
 						});
 					}
 				})
-			}
+			},
+			goshop(id){
+				uni.navigateTo({
+					url: '../dianpu/dianpu?shopid='+id
+				})
+			},
+			gogoods(id){
+				uni.navigateTo({
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+id
+				})
+			},
 		}
 	}
 </script>

@@ -464,7 +464,7 @@
 					console.log(arr)
 					this.colorbox= arr
 					console.log(this.colorbox)
-					this.bargain_id = res.data.bargain[0]
+					this.bargain_id = res.data.bargain
 					//for循环
 					// for(let index in arr){
 					// 	console.log(arr)

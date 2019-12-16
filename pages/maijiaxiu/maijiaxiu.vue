@@ -13,7 +13,7 @@
 							{{item.user_nicename}}
 						</view>
 						<view class="fen">
-							{{}}
+							{{item.create_time}}
 						</view>
 					</view>
 				</view>
@@ -32,7 +32,7 @@
 							{{item.user_nicename}}
 						</view>
 						<view class="fen">
-							{{}}
+							{{item.create_time}}
 						</view>
 					</view>
 				</view>
@@ -75,6 +75,9 @@
 					let list1 = []
 					let list2 = []
 					for (var i = 0; i < res.data.buy.length; i++) {
+						if(res.data.buy[i].create_time){
+							res.data.buy[i].create_time = res.data.buy[i].create_time.slice(0,10)
+						}
 						if(i%2==1){
 							list1 = list1.concat(res.data.buy[i])
 						}else{
@@ -138,7 +141,7 @@
 	margin-left: 12rpx;
 }
 .fen{
-	margin-left: 150rpx;
+	margin-left: 100rpx;
 	font-size: 13rpx;
 	color: #a5a5a5;
 }

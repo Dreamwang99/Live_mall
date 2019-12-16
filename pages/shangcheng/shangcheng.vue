@@ -29,7 +29,7 @@
 					<view class="zzpp">自主品牌</view>
 					<view class="ppth" :style="{ backgroundImage: 'url(' + '/static/shangcheng/bg-85-ppth.png' + ')' }">品牌特惠</view>
 				</view>
-				<view class="kuang" v-for="(item,index) in pinpai" :key="index"><image class="tu1" :src="item.brand_logo" mode=""></image></view>
+				<view class="kuang" v-for="(item,index) in pinpai" :key="index"><image class="tu1" :src="item.brand_logo" mode="" @tap="gobusinss(item.businssid)"></image></view>
 			</view>
 			<view class="baidi">
 				<view class="heng">
@@ -180,7 +180,11 @@ export default {
 				complete: () => {}
 			});
 		},
-		
+		gobusinss(id){
+			uni.navigateTo({
+				url: '../dianpu/dianpu?shopid='+id
+			})
+		}
 		
 		
 		

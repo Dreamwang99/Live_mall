@@ -100,12 +100,12 @@
 			},
 			goshop(id){
 				uni.navigateTo({
-					url: '../dianpu/dianpu?id='+id
+					url: '../dianpu/dianpu?shopid='+id
 				})
 			},
 			gogoods(id){
 				uni.navigateTo({
-					url: '../shangpinxiangqing/shangpinxiangqing?id'+id
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+id
 				})
 			},
 			cui(){
@@ -453,30 +453,5 @@
 	.biao {
 		width: 193rpx;
 		height: 193rpx;
-	}
-	.middle {
-		background: #fff;
-		padding: 30rpx;
-	}
-	.yijian {
-		width: 100%;
-		color: #666666;
-		font-size: 30rpx;
-		padding-bottom: 30rpx;
-	}
-	.beijing3 {
-		background-color: #eeeeee;
-		width: 90%;
-		margin: auto;
-		/* margin-top: 10%; */
-	}
-	.tijiao {
-		background-color: #f13821;
-		height: 81rpx;
-		line-height: 81rpx;
-		text-align: center;
-		width:100%;
-		border-radius: 40rpx;
-		font-size: 30rpx;
 	}
 </style>

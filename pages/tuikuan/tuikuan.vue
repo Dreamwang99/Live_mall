@@ -91,12 +91,12 @@
 			},
 			goshop(id){
 				uni.navigateTo({
-					url: '../dianpu/dianpu?id='+id
+					url: '../dianpu/dianpu?shopid='+id
 				})
 			},
 			gogoods(id){
 				uni.navigateTo({
-					url: '../shangpinxiangqing/shangpinxiangqing?id'+id
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+id
 				})
 			},
 

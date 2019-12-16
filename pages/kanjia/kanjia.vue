@@ -22,8 +22,8 @@
 					<view @tap="fenxiang" v-if="openid==id&&status!=2" class="kaikan">分享帮砍</view>
 					<!-- <view @tap="kaikan" v-if="openid!=id" class="kaikan">帮砍</view> -->
 					<view @tap="bangkantap" v-if="openid!=id&&status!=2" class="kaikan">帮砍</view>
-					<view @tap="fukuan" class="kaikan">去付款</view>
-					<!-- <view @tap="fukuan" v-if="openid==id&&status==2" class="kaikan">去付款</view> -->
+					<!-- <view @tap="fukuan" class="kaikan">去付款</view> -->
+					<view @tap="fukuan" v-if="openid==id&&status==2" class="kaikan">去付款</view>
 				</view>
 			</view>
 		</view>
@@ -32,7 +32,7 @@
 			<view class="tuan" v-for="(item,index) in kanjiaList" :key="index">
 
 				<view class="kanjia_box">
-					<image class="touxiang" :src="item.avatar_thumb" mode=""></image>
+					<image class="touxiang" :src="item.avatar" mode=""></image>
 					<view style="display: flex;flex-direction:column;">
 						<view class="mao">{{item.user_nicename}}</view>
 						<view class="qili">{{item.bargain_yuyan}}</view>
@@ -63,7 +63,7 @@
 		<uni-popup ref="share" type="bottom" :custom="true" @change="change">
 			<view class="uni-share">
 				<view class="uni-share-content">
-					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box" @tap="choseShareStyle(item.text)">
 						<view class="uni-share-content-image">
 							<image :src="item.icon" class="image" />
 						</view>
@@ -139,6 +139,11 @@
 					if(res.code==1){
 						this.bangkan = res.data
 						this.$refs.kanjia.open()
+					}else{
+						uni.showToast({
+							title: res.msg,
+							icon: 'none'
+						})
 					}
 				})
 			},
@@ -200,6 +205,23 @@
 				uni.navigateTo({
 					url: `../dingdantijiao/dingdantijiao?activeid=${this.activeid}&goods_type=3&goods_spec=${this.bargain}&id=${this.goods_id}`
 				})
+			},
+			choseShareStyle(types){
+				var shareInfo = new Object();
+				shareInfo.title = "砍价分享";
+				shareInfo.describe = "快来帮我砍价吧";
+				shareInfo.linkUrl = "http://kanjia.a2w0m.cn?activid="+this.activeid+"&openid="+this.openid
+				if(types === "微信好友"){
+					bridge.call('shareWeChatFriends', shareInfo);
+					bridge.register('shareWeChatFriendsCallback',(res)=>{
+						console.log(res);
+					});
+				}else{
+					bridge.call('shareWeChatCircle', shareInfo);
+					bridge.register('shareWeChatCircleCallback',(res)=>{
+						console.log(res);
+					});
+				}
 			}
 		}
 	};

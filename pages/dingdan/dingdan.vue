@@ -216,9 +216,11 @@
 							title: res.msg,
 							icon: 'none'
 						})
-						uni.navigateTo({
-							url: '../gouwuche/gouwuche'
-						})
+						setTimeout(function(){
+							uni.switchTab({
+								url: '../gouwuche1/gouwuche1'
+							})
+						},1500);
 					} else {
 
 					}
