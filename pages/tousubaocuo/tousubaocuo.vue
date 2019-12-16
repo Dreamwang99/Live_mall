@@ -11,7 +11,8 @@
 		</view>
 		<view class="middle">
 			<textarea class="yijian" v-model="content" type="text" placeholder="说说您的意见吧!" value=""></textarea>
-			<image class="zhaopian" :src="imagesUrl" @tap="choseImages()" mode=""></image>
+			<image class="zhaopian" src="../../static/fabu/img_12-tianjia.png" @tap="choseImages()" mode=""></image>
+			<image v-if="show" v-for="(i,i_idx) in imageList" :key="i_idx" class="zhaopian" :src="i" mode=""></image>
 		</view>
 		<view class="beijing2">
 			<button class="tijiao" type="primary" @tap="submit()">提交</button>
@@ -47,7 +48,9 @@
 				current : 0,
 				choseType : "",
 				content : "",
-				imagesUrl : '../../static/fabu/img_12-tianjia.png'
+				imagesUrl : '',
+				imageList : [],
+				show : true
 			}
 		},
 		methods: {
@@ -59,7 +62,9 @@
 				bridge.call('uploadImages', "上传投诉照片");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
-					this.imagesUrl = JSON.parse(res)
+					this.imageList[this.imageList.length] = res
+					this.show = false
+					this.show = true
 				});
 			},
 			submit(){

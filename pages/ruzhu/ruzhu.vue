@@ -11,15 +11,15 @@
 			<text class="shenfen">请上传身份证件</text>
 		</view>
 		<!-- 身份证正面上传前 -->
-		<view class="kuang1">
+		<view class="kuang1" v-if="showA">
 			<image class="kuang" @click="updataPic()" :src="frontImage"></image>
 		</view>
 		<!-- 身份证背面上传前 -->
-		<view class="kuang1">
+		<view class="kuang1" v-if="showB">
 			<image class="kuang" @click="updata_back()" :src="back_image"></image>
 		</view>
 		<!-- 手持身份证上传前 -->
-		<view class="kuang1">
+		<view class="kuang1" v-if="showC">
 			<image class="kuang" @click="updata_Peo()" :src="peoson_image"></image>
 		</view>
 		<view style="background-color: #FFF;">
@@ -32,7 +32,7 @@
 			<text class="shenfen">请上传logo</text>
 		</view>
 		<!-- 店铺logo 上传前-->
-		<view class="kuang1">
+		<view class="kuang1" v-if="showD">
 			<view class="kuang" :style="{ backgroundImage: 'url(' + logo + ')' }" @click="logo_pic()">
 				<image class="xiangji" style="height: 100rpx;" :src="a?'../../static/iocn-26-logo.png':''"></image>
 			</view>
@@ -48,7 +48,7 @@
 			<text class="shenfen">请上传营业执照</text>
 		</view>
 		<!-- 营业执照上传前 -->
-		<view class="kuang1">
+		<view class="kuang1" v-if="showE">
 			<view class="kuang" :style="{ backgroundImage: 'url(' + license + ')' }" @click="licens_pic()">
 				<image class="xiangji" style="height: 100rpx;" :src="b?'/static/ruzhu/iocn-26-scyezz.png':''"></image>
 			</view>
@@ -87,6 +87,11 @@
 
 		data() {
 			return {
+				showA : true,
+				showB : true,
+				showC : true,
+				showD : true,
+				showE : true,
 				d: '',
 				type: "bottom", // left right top bottom center
 				transition: "slider", //none slider fade
@@ -232,8 +237,9 @@
 				bridge.call('uploadImages', "上传身份证正面照片");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
-					console.log(JSON.parse(res))
-					this.frontImage = JSON.parse(res)
+					this.frontImage = res
+					this.showA = false
+					this.showA = true
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -253,6 +259,8 @@
 				bridge.call('uploadImages', "上传身份证背面照片");
 				bridge.register('uploadImagesCallback',function(res){
 					this.back_image = res
+					this.showB = false
+					this.showB = true
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -313,7 +321,9 @@
 			updata_Peo() {
 				bridge.call('uploadImages', "上传手持身份证照片");
 				bridge.register('uploadImagesCallback',function(res){
-					this.peoson_image = JSON.parse(res)
+					this.peoson_image = res
+					this.showC = false
+					this.showC = true
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -353,7 +363,10 @@
 			logo_pic() {
 				bridge.call('uploadImages', "上传店铺LOGO");
 				bridge.register('uploadImagesCallback',function(res){
-					this.logo = JSON.parse(res)
+					this.logo = res
+					this.a = false
+					this.showD = false
+					this.showD = true
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -395,7 +408,10 @@
 			licens_pic() {
 				bridge.call('uploadImages', "上传营业执照");
 				bridge.register('uploadImagesCallback',function(res){
-					this.license = JSON.parse(res)
+					this.license = res
+					this.b = false
+					this.showE = false
+					this.showE = true
 				});
 				// let _this = this
 				// uni.chooseImage({

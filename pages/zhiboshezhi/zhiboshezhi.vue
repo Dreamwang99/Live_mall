@@ -1,8 +1,8 @@
 <template>
 	<view style="background: #fff;width: 100%;">
-		<view class="fm" :style="{ backgroundImage: 'url(' + thumb + ')' }" @tap="choose">
+		<view class="fm" v-if="showAgain" :style="{ backgroundImage: 'url(' + thumb + ')' }" @tap="choose">
 			<view class="bg_img">
-				<image class="dibu" src="../../static/zhiboshezhi/icon_92-fengmian.png" mode=""></image>
+				<image class="dibu" :src="uploadIcon" mode=""></image>
 			</view>
 			<view class="bg_title">给你的作品设置一个吸引人的封面</view>
 		</view>
@@ -45,7 +45,7 @@
 		<uni-popup ref="share" :type="type" :custom="true" @change="change">
 			<view class="uni-share">
 				<view class="uni-share-content">
-					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+					<view v-for="(item, index) in bottomData" :key="index" @tap="shareTypes(item.text)" class="uni-share-content-box">
 						<view class="uni-share-content-image">
 							<image :src="item.icon" class="image" />
 						</view>
@@ -96,11 +96,13 @@
 		},
 		data() {
 			return {
+				uploadIcon : '../../static/zhiboshezhi/icon_92-fengmian.png',
 				kanjia: false,
 				fenxiang: false,
 				mingcheng: false,
 				show: false,
 				jinyong: [],
+				showAgain : true,
 				jinyongg: '',
 				unSendWords : "",
 				type: '',
@@ -135,7 +137,11 @@
 				bridge.call('uploadImages', "开播设置上传封面");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
-					this.thumb = JSON.parse(res)
+					this.thumb = res
+					this.uploadIcon = res
+					this.showAgain = false
+					this.showAgain = true
+					console.log("成功")
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -244,6 +250,7 @@
 					return false;
 				}else{
 					var createLiveObject = {};
+					createLiveObject.thumb = this.thumb;
 					createLiveObject.title = this.chihuo;
 					createLiveObject.disable_word = this.unSendWords;
 					createLiveObject.isShare = this.allowshare;
@@ -272,6 +279,23 @@
 								icon:'none'
 							})
 						}
+					});
+				}
+			},
+			shareTypes(types){
+				var shareInfo = new Object();
+				shareInfo.title = "直播分享";
+				shareInfo.describe = "快来观看我的直播";
+				shareInfo.linkUrl = "https//www.baidu.com"
+				if(types === "微信好友"){
+					bridge.call('shareWeChatFriends', shareInfo);
+					bridge.register('shareWeChatFriendsCallback',(res)=>{
+						console.log(res);
+					});
+				}else{
+					bridge.call('shareWeChatCircle', shareInfo);
+					bridge.register('shareWeChatCircleCallback',(res)=>{
+						console.log(res);
 					});
 				}
 			}

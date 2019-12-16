@@ -169,7 +169,7 @@
 		<uni-popup ref="share" :type="type" :custom="true" @change="change">
 			<view class="uni-share">
 				<view class="uni-share-content">
-					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+					<view v-for="(item, index) in bottomData" @tap="shareTypes(item.text)" :key="index" class="uni-share-content-box">
 						<view class="uni-share-content-image">
 							<image :src="item.icon" class="image" />
 						</view>
@@ -186,6 +186,7 @@
 	import uniCountdown from '../../components/linnian-CountDown/uni-countdown.vue';
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	import add from '@/components/add.vue'
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
 			uniCountdown,
@@ -400,16 +401,55 @@
 				})
 			},
 			sureOpenT(){
+				if(!this.isChoseColor){
+					uni.showToast({
+						title:"请选择要购买的颜色",
+						icon:'none'
+					})
+					return false
+				}else if(!this.isChoseSize){
+					uni.showToast({
+						title:"请选择要购买的尺寸",
+						icon:'none'
+					})
+					return false
+				}
 				uni.navigateTo({
 					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'4'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&tPeopleNums="+this.tPeopleNums+"&activityid="+this.assembleInfo.id+"&types="+"开团"
 				})
 			},
 			sureBuy(){
+				if(!this.isChoseColor){
+					uni.showToast({
+						title:"请选择要购买的颜色",
+						icon:'none'
+					})
+					return false
+				}else if(!this.isChoseSize){
+					uni.showToast({
+						title:"请选择要购买的尺寸",
+						icon:'none'
+					})
+					return false
+				}
 				uni.navigateTo({
 					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'0'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&number="+this.number
 				})
 			},
 			sureCanT(){
+				if(!this.isChoseColor){
+					uni.showToast({
+						title:"请选择要购买的颜色",
+						icon:'none'
+					})
+					return false
+				}else if(!this.isChoseSize){
+					uni.showToast({
+						title:"请选择要购买的尺寸",
+						icon:'none'
+					})
+					return false
+				}
 				uni.navigateTo({
 					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'4'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&activityid="+this.cTid+"&tPeopleNums="+this.tPeopleNums+"&types="+"参团"
 				})
@@ -442,6 +482,8 @@
 				this.current_j = -1
 				this.nowboyor = -1
 				this.getPrice = ""
+				this.isChoseColor = ""
+				this.isChoseSize = ""
 				this.specifications.forEach((item,index)=>{
 					item.list.forEach((i,idx)=>{
 						i.isChose = false
@@ -516,6 +558,23 @@
 					url: '../barenpintuan/barenpintuan',
 
 				})
+			},
+			shareTypes(types){
+				var shareInfo = new Object();
+				shareInfo.title = "快拼分享";
+				shareInfo.describe = "快来参加我的团";
+				shareInfo.linkUrl = "https//www.baidu.com"
+				if(types === "微信好友"){
+					bridge.call('shareWeChatFriends', shareInfo);
+					bridge.register('shareWeChatFriendsCallback',(res)=>{
+						console.log(res);
+					});
+				}else{
+					bridge.call('shareWeChatCircle', shareInfo);
+					bridge.register('shareWeChatCircleCallback',(res)=>{
+						console.log(res);
+					});
+				}
 			}
 		}
 	};
