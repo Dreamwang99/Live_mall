@@ -9,10 +9,10 @@
 						<image class="dingwei" src="../../static/dingdan/iocn-28-dw.png" mode=""></image>
 						<view class="dingwei3">
 							<view class="dingwei1">
-								<view class="ergou1">李二狗</view>
-								<view class="phone1">12345678910</view>
+								<view class="ergou1">{{detail.express_name}}</view>
+								<view class="phone1">{{detail.express_phone}}</view>
 							</view>
-							<view class="dingwei2">江苏省徐州市铜山区铜山万达5号楼18层1802室</view>
+							<view class="dingwei2">{{detail.express_province || '省'}}{{detail.express_city || '市'}}{{detail.express_area || '区'}}{{detail.express_address}}</view>
 						</view>
 					</view>
 				</view>
@@ -20,18 +20,18 @@
 		</view>
 		<view class="detail">
 			<view class="top_detail">
-				<view class="dian">
+				<view class="dian" @tap="goshop(detail.business_id)">
 					<image class="tu" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>
-					<text class="ergou">李二狗的店铺</text>
+					<text class="ergou">{{detail.business_name}}</text>
 				</view>
-				<view class="shangpin">
-					<image class="biao" src="../../static/dingdan/img-28-sp.png" mode=""></image>
+				<view class="shangpin" v-for="(item,index) in detail.goods_list" :key="index" @tap="gogoods(item.goods_id)">
+					<image class="biao" :src="item.goods_logo" mode=""></image>
 					<view class="xiangqing">
-						<view class="biaozi">OliviaBurton女士手表小蜜蜂正品礼物石英腕表ob英...</view>
-						<view class="biaozi2">颜色：绿豆沙</view>
-						<view class="biaozi3">￥2080.00</view>
+						<view class="biaozi">{{item.goods_title}}</view>
+						<view class="biaozi2">{{item.goods_spec}}</view>
+						<view class="biaozi3">￥{{item.price_selling}}</view>
 					</view>
-					<view class="biaozi1">X1</view>
+					<view class="biaozi1">X{{item.number_goods}}</view>
 				</view>
 			</view>
 			<view class="xinxi">
@@ -41,11 +41,11 @@
 				</view>
 				<view class="dingdan">
 					<view class="xinxi3">订单编号:</view>
-					<view>123456789101234567</view>
+					<view>{{detail.business_order_no}}</view>
 				</view>
 				<view class="dingdan" style="margin-top: 29rpx;">
 					<view class="xinxi3">订单时间:</view>
-					<view>2019-08-30 12：46：33</view>
+					<view>{{detail.create_at}}</view>
 				</view>
 			</view>
 			<view class="kefu">
@@ -58,10 +58,18 @@
 			</view>
 
 			<view class="anniu">
-				<view class="anniu1">查看物流</view>
-				<view class="anniu2">确认收货</view>
+				<view class="anniu1" @tap="chakanwuliu">查看物流</view>
+				<view class="anniu1" @tap="shenqingtk">申请退款</view>
+				<view class="anniu2" @tap="QRsh">确认收货</view>
 			</view>
-			<view class="xian2"></view>
+			<view class="xian2" v-show="shenqing==1">
+				<view class="middle">
+					<textarea class="yijian" type="text" v-model="refund_reason" placeholder="说说您的意见吧!" value=""></textarea>
+				</view>
+				<view class="beijing3">
+					<view class="tijiao" type="primary" @tap="TuiKuan">提交</view>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -70,12 +78,68 @@
 	export default {
 		data() {
 			return {
-
-
+				business_order_no: '',
+				token: uni.getStorageSync('token'),
+				detail: '',
+				shenqing: '',
+				refund_reason: '',
 			}
 		},
+		onLoad(o) {
+			this.business_order_no = o.business_order_no
+			this.getdatails()
+		},
 		methods: {
-
+			getdatails(){
+				this.request.orderDetails({
+					token: this.token,
+					business_order_no: this.business_order_no
+				}).then(res =>{
+					console.log(res);
+					this.detail = res.data
+				})
+			},
+			goshop(id){
+				uni.navigateTo({
+					url: '../dianpu/dianpu?id='+id
+				})
+			},
+			gogoods(id){
+				uni.navigateTo({
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+id
+				})
+			},
+			QRsh(){
+				this.request.confirmReceiving({
+					token: this.token,
+					business_order_no: this.business_order_no
+				}).then(res =>{
+					uni.showToast({
+						title:res.msg,
+						icon: 'none'
+					})
+				})
+			},
+			shenqingtk(){
+				this.shenqing = 1
+			},
+			TuiKuan(){
+				this.request.refundApply({
+					token: this.token,
+					business_order_no: this.business_order_no,
+					refund_reason: this.refund_reason
+				}).then(res =>{
+					uni.showToast({
+						title:res.msg,
+						icon: 'none'
+					})
+				})
+			},
+			chakanwuliu() {
+				uni.navigateTo({
+					url: '../chakanwuliu/chakanwuliu?business_order_no=' + this.business_order_no
+				})
+			}
 		}
 	}
 </script>
@@ -111,7 +175,7 @@
 
 	.xian2 {
 		height: 270rpx;
-		background-color: #f5f5f5;
+		background-color: #fff;
 	}
 
 	.anniu1 {
@@ -395,5 +459,30 @@
 	.biao {
 		width: 193rpx;
 		height: 193rpx;
+	}
+	.middle {
+		background: #fff;
+		padding: 30rpx;
+	}
+	.yijian {
+		width: 100%;
+		color: #666666;
+		font-size: 30rpx;
+		padding-bottom: 30rpx;
+	}
+	.beijing3 {
+		background-color: #eeeeee;
+		width: 90%;
+		margin: auto;
+		/* margin-top: 10%; */
+	}
+	.tijiao {
+		background-color: #f13821;
+		height: 81rpx;
+		line-height: 81rpx;
+		text-align: center;
+		width:100%;
+		border-radius: 40rpx;
+		font-size: 30rpx;
 	}
 </style>

@@ -1,18 +1,39 @@
 <template>
 	<view class="beijing uni-fle">
-		<view v-for="(item,index) in showlist" :key="index">
-			<image :class="index%2==0?'tu2':'tu'" :src="item.image" mode="aspectFill"></image>
-			<view class="baidi">
-				<view class="xjhao">
-					{{item.content}}
-				</view>
-				<view class="heng ">
-					<image class="tx" :src="item.avatar" mode=""></image>
-					<view class="fs">
-						{{item.user_nicename}}
+		<view class="left">
+			<view v-for="(item,index) in showlist1" :key="index">
+				<image :class="index%2==0?'tu2':'tu'" :src="item.image" mode="aspectFill"></image>
+				<view class="baidi">
+					<view class="xjhao">
+						{{item.content}}
 					</view>
-					<view class="fen">
-						{{}}
+					<view class="heng ">
+						<image class="tx" :src="item.avatar" mode=""></image>
+						<view class="fs">
+							{{item.user_nicename}}
+						</view>
+						<view class="fen">
+							{{}}
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="right">
+			<view v-for="(item,index) in showlist2" :key="index">
+				<image :class="index%2==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image>
+				<view class="baidi">
+					<view class="xjhao">
+						{{item.content}}
+					</view>
+					<view class="heng ">
+						<image class="tx" :src="item.avatar" mode=""></image>
+						<view class="fs">
+							{{item.user_nicename}}
+						</view>
+						<view class="fen">
+							{{}}
+						</view>
 					</view>
 				</view>
 			</view>
@@ -26,7 +47,8 @@
 			return {
 				shopid:'',
 				token: uni.getStorageSync('token'),
-				showlist: [],
+				showlist1: [],
+				showlist2: [],
 				page: 1,
 				size: 10,
 			}
@@ -50,7 +72,19 @@
 					if(this.page==1){
 						this.showlist = []
 					}
-					this.showlist = this.showlist.concat(res.data.buy)
+					let list1 = []
+					let list2 = []
+					for (var i = 0; i < res.data.buy.length; i++) {
+						if(i%2==1){
+							list1 = list1.concat(res.data.buy[i])
+						}else{
+							list2 = list2.concat(res.data.buy[i])
+						}
+					}
+					console.log(list1);
+					console.log(list2);
+					this.showlist1 = list1
+					this.showlist2 = list2
 				})
 			}
 		}
@@ -107,5 +141,13 @@
 	margin-left: 150rpx;
 	font-size: 13rpx;
 	color: #a5a5a5;
+}
+.left{
+	width: 50%;
+	height: 50px;
+}
+.right{
+	width: 50%;
+	height: 50px;
 }
 </style>

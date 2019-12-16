@@ -10,14 +10,14 @@
 			<view>
 				<view v-if="type ===1" class="zhibo">
 					<view class="shipin" v-for="(item,index) in goodsList" :key="index">
-						<view class="beijing" :style="{ backgroundImage: 'url(' + item.img + ')' }">
+						<view class="beijing" :style="{ backgroundImage: 'url(' + item.content.thumb + ')' }">
 							<view>
-								<view class="xh">@{{item.name}}</view>
+								<view class="xh">@{{item.content.user_nicename}}</view>
 								<view class="botttom_t">
-									<view class="xh1">{{item.title}}!</view>
+									<view class="xh1">{{item.content.title}}!</view>
 									<view class="bofang">
 										<image class="xh2" src="/static/dpshoucang/iocn-89-bf.png" mode=""></image>
-										<view class="xh3">{{item.number}}</view>
+										<view class="xh3">{{item.content.views}}</view>
 									</view>
 								</view>
 							</view>
@@ -26,14 +26,14 @@
 				</view>
 				<view v-if="type === 2" class="zhibo">
 					<view class="shipin" v-for="(item,index) in goodsList" :key="index">
-						<view class="beijing" :style="{ backgroundImage: 'url(' + item.img + ')' }">
+						<view class="beijing" :style="{ backgroundImage: 'url(' + item.content.image + ')' }">
 							<view>
-								<view class="xh">@{{item.name}}</view>
+								<view class="xh">@{{item.content.user_nicename}}</view>
 								<view class="botttom_t">
-									<view class="xh1">{{item.title}}!</view>
+									<view class="xh1">{{item.content.title}}!</view>
 									<view class="bofang">
 										<image class="xh2" src="/static/dpshoucang/iocn-89-bf.png" mode=""></image>
-										<view class="xh3">{{item.number}}</view>
+										<view class="xh3">{{item.content.views}}</view>
 									</view>
 								</view>
 							</view>
@@ -53,16 +53,16 @@
 					</view>
 				</view>
 				<view v-if="type==4" class="dianpu_box">
-					<view class="shops" v-for="(item,index) in shops" :key="index">
+					<view class="shops" v-for="(item,index) in goodsList" :key="index">
 						<view class="heng_dian">
 							<view style="display: flex;">
-								<image class="tx1" :src="item.logo" mode=""></image>
+								<image class="tx1" :src="item.content.business_logo" mode=""></image>
 								<view style="display: flex;flex-direction: column;">
 									<view>
-										<text class="dianpuname">{{item.name}}</text>
+										<text class="dianpuname">{{item.content.business_name}}</text>
 										<image class="jian" src="/static/dianputuijian/iocn-87-tuijian.png" mode="aspectFit"></image>
 									</view>
-									<text class="xm1">{{item.distance}}km|{{item.title}}|{{item.adress}}|{{item.number}}月销量</text>
+									<text class="xm1">{{item.content.distance}}km|{{item.title}}|{{item.adress}}|{{item.number}}月销量</text>
 								</view>
 							</view>
 							<view>
@@ -70,8 +70,8 @@
 							</view>
 						</view>
 						<view class="heng">
-							<view class="img1" v-for="(item,index) in images" :key="index">
-								<image class="tu1" :src="item.img"></image>
+							<view class="img1" v-for="(itemm,index) in item.content.goods_list" :key="index">
+								<image class="tu1" :src="itemm.logo"></image>
 							</view>
 						</view>
 					</view>
@@ -108,19 +108,41 @@
 						name: '店铺收藏',
 						a: false
 					}
-				]
+				],
+				longitude: 1,
+				latitude: 1,
 			};
 		},
 		onLoad() {
 			this.getcollectList(this.page, this.size, this.type)
+			this.location()
 		},
 		methods: {
+			//获取地址
+			location() {
+				uni.getLocation({
+					type: 'wgs84',
+					geocode: 'true',
+					success: res => {
+						console.log('当前位置的经度：' + res.longitude);
+						console.log('当前位置的纬度：' + res.latitude);
+						console.log('当前国家：' + res.address);
+						console.log('当前省份：' + res.address.city);
+						this.longitude = res.longitude
+						this.latitude = res.latitude
+						// this.city = res.address.city
+						// this.getlist(this.order)
+					}
+				});
+			},
 			getcollectList(page, size, type) {
 				this.request.getcollectList({
 					token: uni.getStorageSync('token'),
 					type: type,
 					page: page,
-					num: size
+					num: size,
+					longitude: this.longitude,
+					latitude: this.latitude
 				}).then(res => {
 					if (res.code === 1) {
 						this.goodsList = res.data
@@ -144,9 +166,9 @@
 					}
 				}
 			},
-			jindain() {
+			jindain(item) {
 				uni.navigateTo({
-					url: '../dianpu/dianpu'
+					url: '../dianpu/dianpu?shopid='+item.content.id
 				})
 			},
 			godetails(id) {

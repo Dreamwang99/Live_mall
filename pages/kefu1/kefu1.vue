@@ -1,38 +1,7 @@
 <template>
 	<view>
-		<!-- <view class="beijing">
-			<view class="time1"></view>
-			<view class="time">
-				<text class="zi4">9-4 13:41</text>
-			</view>
-			<view class="list">
-				<image class="ye" src="../../static/kefu/img-25-tx2.png" mode=""></image>
-				<view class="duihua" :style="{ backgroundImage: 'url(' + '../../static/kefu/img-25-xx2.png' + ')'} ">
-					<text class="zi3">你好，亲</text></view>
-			</view>
-			<view class="list">
-				<view class="duihua1" :style="{ backgroundImage: 'url(' + '../../static/kefu/img-25-xx.png' + ')'} ">
-					<text class="zi5">亲，在吗？</text></view>
-				<image class="ye1" src="../../static/kefu/img-25-tx.png" mode=""></image>
-			</view>
-			<view class="time">
-				<text class="zi4">9-4 14:06</text>
-			</view>
-			<view class="list">
-				<image class="ye" src="../../static/kefu/img-25-tx2.png" mode=""></image>
-				<view class="duihua" :style="{ backgroundImage: 'url(' + '../../static/kefu/img-25-xx2.png' + ')'} ">
-					<text class="zi3">在的，亲</text></view>
-			</view>
-		</view> -->
-		<view class="di">
-			<view><input class="di1"></input></view>
-			<view ><image class="di2" src="../../static/kefu/icon-25-xl.png" mode=""></image></view>
-			<view ><image class="di2" src="../../static/iocn-25-tj.png" mode=""></image></view>
-		</view>
-		<web-view v-if="kefu==true" src="https://chat-new.mqimg.com/widget/standalone.html?eid=179049"></web-view>
+		<web-view v-if="kefu==true" src="https://chat-new.mqimg.com/widget/standalone.html?eid=179049&agentid=79532d519e083eb18c0924d5542fcb07"></web-view>
 	</view>
-
-	
 </template>
 <script>
 	export default {

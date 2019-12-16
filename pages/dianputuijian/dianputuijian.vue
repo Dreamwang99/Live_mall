@@ -82,38 +82,8 @@
 					}
 				],
 				a: true,
-				goods: [{
-						img: '/static/dianputuijian/img-87-sp.png',
-						logo: '/static/dianputuijian/logo-87.png',
-						name: 'Yeelight',
-						title: '爆款直销',
-						remark: 'Yeelight特卖，爆款直卖',
-					},
-					{
-						img: '/static/dianputuijian/img-87-sp.png',
-						logo: '/static/dianputuijian/logo-87.png',
-						name: 'Yeelight',
-						title: '爆款直销',
-						remark: 'Yeelight特卖，爆款直卖',
-					},
-					{
-						img: '/static/dianputuijian/img-87-sp.png',
-						logo: '/static/dianputuijian/logo-87.png',
-						name: 'Yeelight',
-						title: '爆款直销',
-						remark: 'Yeelight特卖，爆款直卖',
-					}
-				],
-				images: [{
-						img: '../../static/img-23-tp.png'
-					},
-					{
-						img: '../../static/img-23-tp.png'
-					},
-					{
-						img: '../../static/img-23-tp.png'
-					}
-				],
+				goods: [],
+				images: [],
 				shops: [],
 
 				list: [{
@@ -199,6 +169,8 @@
 					if (index == i) {
 						this.list[i].a = true;
 						this.getlist(this.list[i].order)
+					}else{
+						this.list[i].a = false;
 					}
 				}
 			},

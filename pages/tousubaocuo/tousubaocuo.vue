@@ -7,7 +7,7 @@
 			</view>
 			<view class="heng">
 
-				<view class="kuang" v-for="( item,index) in pj" :key="index">{{item.name}}</view>
+				<view class="kuang":class="type==index?'red':''" v-for="( item,index) in pj" :key="index" @tap="fktype(index)">{{item.name}}</view>
 			</view>
 		</view>
 		<view class="middle">
@@ -43,11 +43,19 @@
 					{
 						name: '其他'
 					},
-				]
+				],
+				type: null,
 			}
 		},
 		methods: {
-
+			fktype(ty){
+				if(ty==this.type){
+					this.type = null
+				}else{
+					this.type = ty
+				}
+				console.log(this.type);
+			}
 		}
 	}
 </script>
@@ -66,13 +74,13 @@
 	}
 
 	.heng {
-		width: 100%;
+		width: 92%;
 		margin: auto;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		padding: 20rpx 10rpx 20rpx 40rpx;
-		justify-content: flex-start;
+		padding: 20rpx 40rpx 20rpx 0rpx;
+		justify-content: space-between;
 	}
 
 	.middle {
@@ -90,6 +98,7 @@
 	}
 
 	.fankui {
+		width: 92%;
 		margin-top: 18rpx;
 		font-size: 30rpx;
 		margin-left: 28rpx;
@@ -130,5 +139,9 @@
 		width:100%;
 		border-radius: 40rpx;
 		font-size: 30rpx;
+	}
+	.red{
+		color: #FE2E38;
+		border-color: #FE2E38;
 	}
 </style>

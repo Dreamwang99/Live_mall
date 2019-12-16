@@ -3,10 +3,10 @@
 		<view class="xian">
 		</view>
 		<view class="heng">
-			<view class="hp" :class="type-1==index?'re':''" v-for="( item,index ) in list" :key="index" @tap="typesee(index)">{{item.name}}({{item.count}})</view>
+			<view class="hp" :class="type-1==index?'re':''" v-for="( item,index ) in list" :key="index" @tap="typesee(index)">{{item.name}}({{item.count || 0}})</view>
 		</view>
 		<view class="baobei">
-			宝贝评价（{{list[0].count}}）
+			宝贝评价（{{list[0].count || 0}}）
 		</view>
 		<view class="common" v-for="(item,index) in clist" :key="index">
 			

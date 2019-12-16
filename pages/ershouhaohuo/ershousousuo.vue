@@ -23,11 +23,11 @@
 		</view>
 		<view class="tax_control" v-show="sear">
 			<view class="classify">
-				<view class="search_result" v-for="(list,index) in arr" :key='index' @tap="cart(list.goods_id)">
-					<image :src="list.logo" mode="" class="search_resultimg"></image>
+				<view class="search_result" v-for="(list,index) in arr" :key='index' @tap="cart(list.id)">
+					<image :src="list.image[0]" mode="" class="search_resultimg"></image>
 					<view class="searchtext">{{list.title}}</view>
-					<view class="searchcity">{{list.introduction}}</view>
-					<view class="searchmoney">{{list.price_selling}}</view>
+					<view class="searchcity">{{list.keyword}}</view>
+					<view class="searchmoney">￥{{list.price}}</view>
 					<!-- <view class="med">
 						<view class="mediumstext">{{list.number_sales}}人付款</view>
 						<view class="mediumsimg">...</view>
@@ -46,6 +46,8 @@
 				num: 0,
 				grabble: true,
 				sear: false,
+				longitude: 1,
+				latitude: 1,
 				searchs: '',
 				arr: [],
 				getimgaddress: '',
@@ -93,8 +95,8 @@
 				if (this.searchs != '') {
 					this.request.getSecond({
 						token: uni.getStorageSync('token'),
-						longitude: '117.08360080468172',
-						latitude: '36.6841484793522',
+						longitude: this.longitude,
+						latitude: this.latitude,
 						keywords: this.searchs
 					}).then(res => {
 						console.log(res)
@@ -120,7 +122,7 @@
 							}, 1000)
 						} else {
 							uni.showToast({
-								title: '没有该类型商品',
+								title: res.msg,
 								icon: "none",
 							});
 						}
@@ -212,7 +214,7 @@
 			cart(idx) {
 				console.log(idx)
 				uni.navigateTo({
-					url: `Product?goods_id=` + idx
+					url: '../second_hand/second_hand?id=' + idx,
 				})
 			}
 		}

@@ -456,7 +456,7 @@
 				case 2: this.getvideolist()
 						console.log(2);
 						break;
-				case 3: this.getMerchantsshoplist(this.order)
+				case 3: this.getbarngin()
 						console.log(3);
 						break;
 			}
@@ -515,20 +515,45 @@
 			getbarngin(){
 				this.request.getBargain({
 					token: uni.getStorageSync('token'),
-					page: 1,
-					size: 1
+					page: this.pages,
+					size: 4
 				}).then(res => {
 					console.log(res)
-					this.mianfeina = res.data
+					if(this.pages == 1){
+						this.mianfeina = []
+					}
+					if(res.data.length==0){
+						if(this.pages>1){
+							this.pages--
+						}
+						uni.showToast({
+							title: res.msg,
+							icon: "none",
+						});
+					}
+					this.mianfeina = this.mianfeina.concat(res.data)
 				})
 			},
 			//获取视频
 			getvideolist(){
 				this.request.getVideoList({
-					uid: uni.getStorageSync('id')
+					uid: uni.getStorageSync('id'),
+					p: this.pages
 				}).then(res => {
 					console.log(res)
-					this.shipin = res.data.info
+					if(this.pages == 1){
+						this.shipin = []
+					}
+					if(res.data.info.length==0){
+						if(this.pages>1){
+							this.pages--
+						}
+						uni.showToast({
+							title: "没有更多了",
+							icon: "none",
+						});
+					}
+					this.shipin = this.shipin.concat(res.data.info)
 				})
 			},
 			jindian1(id) {
