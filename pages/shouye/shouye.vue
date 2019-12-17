@@ -1,5 +1,5 @@
 <template>
-	<view >
+	<view>
 		<view class="beijing1" :style="{ backgroundImage: 'url(' + '../../static/shouye/bg-top.png' + ')' }">
 			<view class="shouye_top">
 				<image class="mi" src="../../static/shouye/logo-84-wz.png" mode=""></image>
@@ -28,7 +28,7 @@
 						</swiper-item>
 					</swiper>
 					<view class="lhd" :style="{ backgroundImage: 'url(' + '/static/shouye1/bg-lhd.png' + ')' }">
-						这是一个礼花弹！！！>
+						<uni-notice-bar scrollable="true" single="true" :text="annunciate"></uni-notice-bar>
 					</view>
 					<view class="heng">
 						<view class="hezi" v-for="(item,index) in shouye" :key="index" @tap="dianji(index)">
@@ -106,15 +106,15 @@
 						</scroll-view>
 					</view>
 					<view class="xian"></view>
-					<view class="baidis" @tap="dianji(0)">
-						<view class="pinkanzhuanqu">
+					<view class="baidis">
+						<view class="pinkanzhuanqu" @tap="dianji(0)">
 							<image class="pk" src="../../static/shouye1/iocn-sc.png" mode=""></image>
 							<view class="pkzq">热卖商城</view>
 						</view>
-						<image class="tupian" src="../../static/shouye1/img-sp.png"></image>
+						<image class="tupian" :src="advertarr.image" @tap="sp(advertarr.shop_id)"></image>
 					</view>
 					<view class="shangpin">
-						<view class="goods" v-for="(item,index) in remaisc" :key=index @tap="sp(item.id)">
+						<view class="goods" v-for="(item,index) in remaisc" :key='index' @tap="sp(item.id)">
 							<image class="hezi1" :src='item.logo'></image>
 							<view class="baidi1">
 								<view class="sp1">{{item.title}}</view>
@@ -154,7 +154,7 @@
 									<view class="jd" @click="jindian1(item.id)">进店</view>
 								</view>
 								<view class="heng">
-									<image v-for="(img,idx) in item.goods_list" :key="idx" class="tup" :src="img.logo" @tap="goodsdetails(img.id)"></image>
+									<image v-for="(img,idx) in item.goods_list" class="tup" :key='idx' :src="img.logo" @tap="goodsdetails(img.id)"></image>
 								</view>
 							</view>
 						</view>
@@ -198,9 +198,9 @@
 		</view>
 		<luPopupWrapper ref="luPopupWrapper" :type="type" :transition="transition" :backgroundColor="backgroundColor" :active="active"
 		 :height="height" :width="width" :popupId="popupId" :maskShow="maskShow" :maskClick="maskClick">
-		 <view class="status_bar">
-		 	<view class="top_view"></view>
-		 </view>
+			<view class="status_bar">
+				<view class="top_view"></view>
+			</view>
 			<view class="content_popup">
 				<view class="screen">筛选</view>
 				<view class="shaixuan_title">
@@ -228,11 +228,14 @@
 </template>
 
 <script>
+	// import io from '../../api/socket.io.js'
+	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
 	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
-			luPopupWrapper
+			luPopupWrapper,
+			uniNoticeBar
 		},
 		data() {
 			return {
@@ -437,33 +440,48 @@
 				longitude: 1,
 				latitude: 1,
 				pages: 1,
+				advertarr: '', //获取商城广告位
+				annunciate: '', //通告栏的走马灯
 			}
 		},
-		onReachBottom(){
-			this.pages ++
+		onReachBottom() {
+			this.pages++
 			let type = null
 			for (var i = 0; i < this.list.length; i++) {
-				if(this.list[i].a){
+				if (this.list[i].a) {
 					type = i
 				}
 			}
-			switch(type){
-				case 0: this.getList()
-						console.log(0);
-						break;
-				case 1: this.getMerchantsshoplist(this.order)
-						console.log(1);
-						break;
-				case 2: this.getvideolist()
-						console.log(2);
-						break;
-				case 3: this.getbarngin()
-						console.log(3);
-						break;
+			switch (type) {
+				case 0:
+					this.getList()
+					console.log(0);
+					break;
+				case 1:
+					this.getMerchantsshoplist(this.order)
+					console.log(1);
+					break;
+				case 2:
+					this.getvideolist()
+					console.log(2);
+					break;
+				case 3:
+					this.getbarngin()
+					console.log(3);
+					break;
 			}
 			// this.getMerchantsshoplist(this.order)
 		},
 		onLoad() {
+			// var soc = io.connect('http://zhibo.a2w0m.cn:19967');
+			// //向指定的服务器建立连接，地址可以省略
+			// soc.conn('msg', '你好服务器');
+			// //自定义msg事件，发送‘你好服务器’字符串向服务器
+			// soc.on('msg', (data) => {
+			// 	//监听浏览器通过msg事件发送的信息
+			// 	console.log(data); //你好浏览器
+			// });
+			this.getadvertising()
 			this.getList()
 			this.getvideolist()
 			this.getbarngin()
@@ -476,13 +494,21 @@
 					console.log(res);
 				});
 			},
+			getadvertising() { //获取首页广告位
+				this.request.getIndexA({
+					token: uni.getStorageSync('token')
+				}).then(res => {
+					console.log(res)
+					this.advertarr = res.data
+				})
+			},
 			//拼砍专区
-			Chopping(){
+			Chopping() {
 				this.list[0].a = false
 				this.list[3].a = true;
 				this.b = 3
 			},
-			getList(){
+			getList() {
 				this.request.getindexG({
 					token: uni.getStorageSync('token')
 				}).then(res => {
@@ -491,7 +517,7 @@
 				})
 			},
 			//个人商家
-			getMerchantsshoplist(order){
+			getMerchantsshoplist(order) {
 				this.request.getMerchantsList({
 					page: this.pages,
 					num: 4,
@@ -501,11 +527,11 @@
 					// latitude: 1,
 					order: order,
 				}).then(res => {
-					if(this.pages == 1){
+					if (this.pages == 1) {
 						this.jindian = []
 					}
-					if(res.data.length==0){
-						if(this.pages>1){
+					if (res.data.length == 0) {
+						if (this.pages > 1) {
 							this.pages--
 						}
 						uni.showToast({
@@ -513,24 +539,24 @@
 							icon: "none",
 						});
 					}
-					
+
 					this.jindian = this.jindian.concat(res.data)
 					console.log(res.data)
 				})
 			},
 			//免费拿
-			getbarngin(){
+			getbarngin() {
 				this.request.getBargain({
 					token: uni.getStorageSync('token'),
 					page: this.pages,
 					size: 4
 				}).then(res => {
 					console.log(res)
-					if(this.pages == 1){
+					if (this.pages == 1) {
 						this.mianfeina = []
 					}
-					if(res.data.length==0){
-						if(this.pages>1){
+					if (res.data.length == 0) {
+						if (this.pages > 1) {
 							this.pages--
 						}
 						uni.showToast({
@@ -542,17 +568,17 @@
 				})
 			},
 			//获取视频
-			getvideolist(){
+			getvideolist() {
 				this.request.getVideoList({
 					uid: uni.getStorageSync('id'),
 					p: this.pages
 				}).then(res => {
 					console.log(res)
-					if(this.pages == 1){
+					if (this.pages == 1) {
 						this.shipin = []
 					}
-					if(res.data.info.length==0){
-						if(this.pages>1){
+					if (res.data.info.length == 0) {
+						if (this.pages > 1) {
 							this.pages--
 						}
 						uni.showToast({
@@ -565,18 +591,18 @@
 			},
 			jindian1(id) {
 				uni.navigateTo({
-					url: '../dianpu/dianpu?shopid='+id
+					url: '../dianpu/dianpu?shopid=' + id
 				})
 			},
 			goSousuo() {
 				uni.navigateTo({
 					// url: '../sousuokuang/sousuokuang'
-					url:'../fenlei/sousuo'
+					url: '../fenlei/sousuo'
 				})
 			},
 			sp(id) {
 				uni.navigateTo({
-					url: '../shangpinxiangqing/shangpinxiangqing?id='+id
+					url: '../shangpinxiangqing/shangpinxiangqing?id=' + id
 				})
 				// switch (index) {
 				// 	case index:
@@ -650,7 +676,7 @@
 			},
 			gofree(item) {
 				uni.navigateTo({
-					url:'../shangpinxiangqing/shangpinxiangqing?id='+item.goods_id
+					url: '../shangpinxiangqing/shangpinxiangqing?id=' + item.goods_id
 					// url: '../kanjia/kanjia?goods_id='+item.goods_id
 				})
 			},
@@ -734,20 +760,22 @@
 		width: 100%;
 		justify-content: space-around;
 	}
+
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
 		background-color: #F8F8F8;
 	}
-	
+
 	.top_view {
 		height: var(--status-bar-height);
 		width: 100%;
 		position: fixed;
-		background:#fff;
+		background: #fff;
 		top: 0;
 		z-index: 999;
 	}
+
 	.paixu_title {
 		/* width: 35%; */
 		border: 1px solid red;
@@ -890,7 +918,7 @@
 	.beijing {
 		display: flex;
 		align-items: flex-end;
-		width:349rpx;
+		width: 349rpx;
 		height: 499rpx;
 		padding-bottom: 10rpx;
 		background-size: 100% 100%;
@@ -988,7 +1016,7 @@
 	.goods {
 		width: 335rpx;
 		background: #fff;
-		margin:5rpx;
+		margin: 5rpx;
 	}
 
 	.free_right {
@@ -1009,7 +1037,7 @@
 
 	.shangpin {
 		width: 690rpx;
-		margin:10rpx auto;
+		margin: 10rpx auto;
 		display: flex;
 		flex-wrap: wrap;
 		margin-bottom: 100rpx;
@@ -1078,7 +1106,7 @@
 		/* width:725rpx; */
 		height: 213rpx;
 		justify-content: space-around;
-		padding:20rpx 30rpx 0 30rpx;
+		padding: 20rpx 30rpx 0 30rpx;
 		border-bottom: 1px solid #eee;
 	}
 
@@ -1089,7 +1117,7 @@
 	}
 
 	.free_img {
-		width:198rpx;
+		width: 198rpx;
 		margin-right: 10rpx;
 		margin-bottom: 40rpx;
 	}
@@ -1133,7 +1161,7 @@
 
 	.logo1 {
 		height: 172rpx;
-		width:198rpx;
+		width: 198rpx;
 		margin-right: 10rpx;
 	}
 
@@ -1165,7 +1193,7 @@
 
 	.xiangqing {
 		width: 100%;
-		height:95rpx;
+		height: 95rpx;
 		padding-right: 10rpx;
 		color: #C0C0C0;
 		font-size: 22rpx;
