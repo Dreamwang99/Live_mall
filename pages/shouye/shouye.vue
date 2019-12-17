@@ -14,6 +14,7 @@
 					<text :class="item.a ? 'sp' : 'tj'">{{ item.name }}</text>
 				</view>
 			</view>
+			<view @tap="sendsocket()">aaaaaaaaaaaaaaaaaa</view>
 			<view class="beijing2" :style="{ backgroundImage: 'url(' + '/static/shouye/bg-84.png' + ')' }">
 				<view v-if="b === 0">
 					<swiper class="chufang" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
@@ -78,7 +79,7 @@
 							</view>
 						</view>
 					</view>
-					<view class="heng pinkanzhuanqu">
+					<view class="heng pinkanzhuanqu" >
 						<image class="pk" src="../../static/shouye1/icon-zb.png" mode=""></image>
 						<view class="pkzq">直播短视频</view>
 						<view class="gengduo" @tap="govideo">更多</view>
@@ -228,7 +229,7 @@
 </template>
 
 <script>
-	// import io from '../../api/socket.io.js'
+	import io from '../../common/weapp.socket.io/dist/weapp.socket.io.js'
 	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
 	export default {
@@ -440,7 +441,7 @@
 				latitude: 1,
 				pages: 1,
 				advertarr: '', //获取商城广告位
-				annunciate: '', //通告栏的走马灯
+				annunciate: '正在等待接收socket数据', //通告栏的走马灯
 			}
 		},
 		onReachBottom() {
@@ -472,14 +473,62 @@
 			// this.getMerchantsshoplist(this.order)
 		},
 		onLoad() {
-			// var soc = io.connect('http://zhibo.a2w0m.cn:19967');
-			// //向指定的服务器建立连接，地址可以省略
-			// soc.conn('msg', '你好服务器');
-			// //自定义msg事件，发送‘你好服务器’字符串向服务器
-			// soc.on('msg', (data) => {
-			// 	//监听浏览器通过msg事件发送的信息
-			// 	console.log(data); //你好浏览器
-			// });
+			// 建立一个socket连接
+			const socket = (this.socket = io('http://zhibo.a2w0m.cn:19967'));
+			//客户端socket.on()监听的事件：
+			// 连接成功
+			socket.on('connect', () => {
+				console.log('连接成功');
+			});
+			// 正在连接
+			socket.on('connecting', d => {
+				console.log('正在连接', d);
+			});
+			// 连接错误
+			socket.on('connect_error', d => {
+				console.log('连接失败', d);
+			});
+			// 连接超时
+			socket.on('connect_timeout', d => {
+				console.log('连接超时', d);
+			});
+			// 断开连接
+			socket.on('disconnect', reason => {
+				console.log('断开连接', reason);
+			});
+			// 重新连接
+			socket.on('reconnect', attemptNumber => {
+				console.log('成功重连', attemptNumber);
+			});
+			// 连接失败
+			socket.on('reconnect_failed', () => {
+				console.log('重连失败');
+			});
+			// 尝试重新连接
+			socket.on('reconnect_attempt', () => {
+				console.log('尝试重新重连');
+			});
+			// 错误发生，并且无法被其他事件类型所处理
+			socket.on('error', err => {
+				console.log('错误发生，并且无法被其他事件类型所处理', err);
+			});
+			socket.on('ping', (timeout) => {
+			  console.log(1111)
+			  console.log('ping')
+			});
+			socket.on('pong', (timeout) => {
+				console.log('pong',timeout)
+			});
+			// 接受到新消息
+			socket.on('systemfireworks', d => {
+				console.log('systemfireworks', d);
+			});
+			socket.on('superadminaction', d => {
+				console.log('superadminaction', d);
+			});
+			socket.on('new message', d => {
+				console.log('new message', d);
+			});
 			this.getadvertising()
 			this.getList()
 			this.getvideolist()
@@ -487,6 +536,11 @@
 			this.getMerchantsshoplist(this.order)
 		},
 		methods: {
+			sendsocket(){
+				// 发送消息
+				console.log(11111)
+				this.socket.emit('newmessage','发送消息') 
+			},
 			getadvertising() { //获取首页广告位
 				this.request.getIndexA({
 					token: uni.getStorageSync('token')
