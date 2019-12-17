@@ -41,7 +41,6 @@
 			}
 		},
 		onLoad() {
-			console.log(this.test.openId);
 			if(uni.getStorageSync('token')==''){
 				
 			}else{

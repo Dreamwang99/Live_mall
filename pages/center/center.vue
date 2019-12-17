@@ -175,15 +175,17 @@
 			chooseimg(e){
 				console.log(e);
 				if(e === 'camera'){
-					bridge.call('uploadByPhotograph', "拍摄上传头像");
+					bridge.call('uploadByPhotograph', "1");
 					bridge.register('uploadByPhotographCallback',function(res){
+						console.log(res);
 						this.userinfo.avatar = res
 						this.showHeader = false
 						this.showHeader = true
 					});
 				}else if(e === 'album'){
-					bridge.call('uploadImages', "相册上传头像");
+					bridge.call('uploadImages', "1");
 					bridge.register('uploadImagesCallback',function(res){
+						console.log(res);
 						this.userinfo.avatar = res
 						this.showHeader = false
 						this.showHeader = true

@@ -234,7 +234,7 @@
 			},
 			/* 点击上传身份证正面照片 */
 			updataPic() {
-				bridge.call('uploadImages', "上传身份证正面照片");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
 					this.frontImage = res
@@ -256,7 +256,7 @@
 			},
 			/* 点击上传身份证背面照片 */
 			updata_back() {
-				bridge.call('uploadImages', "上传身份证背面照片");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
 					this.back_image = res
 					this.showB = false
@@ -319,7 +319,7 @@
 			},
 			//上传手持身份证图片文件
 			updata_Peo() {
-				bridge.call('uploadImages', "上传手持身份证照片");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
 					this.peoson_image = res
 					this.showC = false
@@ -361,7 +361,7 @@
 			},
 			/* 上传logo */
 			logo_pic() {
-				bridge.call('uploadImages', "上传店铺LOGO");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
 					this.logo = res
 					this.a = false
@@ -406,7 +406,7 @@
 			},
 			/* 上传执照 */
 			licens_pic() {
-				bridge.call('uploadImages', "上传营业执照");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
 					this.license = res
 					this.b = false

@@ -931,6 +931,7 @@
 				console.log(res.data)
 				console.log(res.data.cartList)
 				this.arr = res.data.cartList
+				this.postage =res.data.price_express
 			})
 		},
 		getseckilldetial() { //直接购买的详情显示包括秒杀团购等都用这个接口

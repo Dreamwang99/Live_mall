@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<image src="../../static/back.png" mode="" class="navback" @tap="navback()"></image>
 		<view class="beijing" :style="{ backgroundImage: 'url(' + '/static/gerenzhongxin/bg-61-dingfu.png' + ')' }">
 			<view class="heng">
 				<image class="tx" :src="userlist.avatar" mode=""></image>
@@ -73,6 +74,11 @@
 				token:''
 			};
 		},
+		onBackPress() {//页面返回
+			bridge.register('navBack', function(result) {
+				console.log(result)
+			})
+		},
 		onLoad(options) {
 			this.getpersonalhomepage()//获取移动端返回信息
 			// this.uid = options.uid
@@ -82,14 +88,9 @@
 		},
 		methods: {
 			getpersonalhomepage(){//获取移动端返回信息
-				bridge.call('personalHomePage',)
 				bridge.register('personalHomePageCallback', function(result) {
 					console.log(result)
-					console.log(JSON.parse(result))
-					console.log(JSON.parse(result).token)
-					this.token =JSON.parse(result).token
-					console.log(JSON.parse(result).uid)
-					this.UIDS = JSON.parse(result).uid
+					this.UIDS =result.uid
 				})
 			},
 			getvideolist() {
@@ -116,7 +117,7 @@
 			},
 			getMyfans(){
 				this.request.getMyFans({
-					token:this.token
+					token:uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
@@ -125,7 +126,7 @@
 			cancel1() {
 				this.request.getAttent({
 					uid: uni.getStorageSync('id'),
-					touid: this.UDI
+					touid: this.UIDS
 				}).then(res => {
 					console.log(res);
 				})
@@ -279,5 +280,8 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+	}
+	.navback{
+		position: absolute;
 	}
 </style>

@@ -160,8 +160,10 @@ const getMessage = (params) => ajax(BASE_URL + '/index/getMessageList', params)
 const getcommodities = (params) => ajax(BASE_URL + '/Bargain/getShopList', params)
 //获取新品上市页面中间三种营销商品
 const getShopNew = (params) => ajax(BASE_URL + '/index/getShopNewThreeGoods', params)
-
-
+//获取用户信息的关注人数,粉丝数信息
+const getMyFans = (params) => ajax(BASE_URL + '/index/getMyFans', params)
+//用于获取用户的直播记录
+const getLivere = (params) => ajax(BASE_URL1 + 'User.GetLiverecord', params)
 
 
 //用于获取我发布的视频
@@ -237,6 +239,14 @@ const getGroupPurchase = (params) => ajax(BASE_URL + '/group_purchase/getGroupPu
 const getLiveBusinessShopList = (params) => ajax(BASE_URL + '/index/getLiveBusinessShopList', params)
 // 用户投诉建议
 const getUserComplain = (params) => ajax(BASE_URL + '/index/getUserComplain', params)
+// 获取充值积分
+const getBalance = (params) => ajax(BASE_URL1 + 'User.GetBalance', params)
+// 充值积分 --- 支付宝支付
+const getAliOrder = (params) => ajax(BASE_URL1 + 'Charge.GetAliOrder', params)
+// 充值积分 --- 微信支付
+const getWxOrder = (params) => ajax(BASE_URL1 + 'Charge.GetWxOrder', params)
+
+
 
 //陈
 //获取商品评论 全部 以及好评 中评 差评
@@ -349,6 +359,10 @@ export default {
 	getMessage,//获取消息列表
 	getcommodities,//获取分类商品列表
 	getShopNew,//获取新品上市页面中间三种营销商品
+	getMyFans,//获取用户信息的关注人数,粉丝数信息
+	getLivere,//用于获取用户的直播记录
+
+
 
 
 	getvideo, //获取视频详情
@@ -379,6 +393,9 @@ export default {
 	getGroupPurchase,	//团购活动详情页
 	getLiveBusinessShopList,	// 开播 --- 获取商品列表
 	getUserComplain,	// 用户投诉建议
+	getBalance,	// 获取守护列表
+	getAliOrder,	// 充值积分 --- 支付宝支付
+	getWxOrder,		// 充值积分 --- 微信支付
 	
 	
 	//陈

@@ -3,44 +3,30 @@
 		<view style="height: 10rpx;background-color: #F5F5F5;"></view>
 		<view class="xuanze">选择数量</view>
 		<view class="heng">
-			<view class="kuang">
+			<view class="kuang" :class="[current === i_idx ? 'ac' : '']" v-for="(i,i_idx) in list" :key="i_idx" @tap="chose(i_idx,i)">
 				<view class="heng">
-					<view class="shu">3000</view>
+					<view class="shu">{{i.coin}}</view>
 					<image class="zs" src="../../static/zhibo/iocn-105-zs.png" mode=""></image>
 				</view>
-				<view class="yuan">30元</view>
+				<view class="yuan">{{i.money}}元</view>
 			</view>
-			<view class="kuang" style="border-color: #d5d5d5 ; margin-left: 90rpx;">
-				<view class="heng">
-					<view class="shu">3000</view>
-					<image class="zs" src="../../static/zhibo/iocn-105-zs.png" mode=""></image>
-				</view>
-				<view class="yuan">30元</view>
-			</view>
-			<view class="kuang" style="border-color: #d5d5d5 ; margin-left: 90rpx;">
-				<view class="heng">
-					<view class="shu">3000</view>
-					<image class="zs" src="../../static/zhibo/iocn-105-zs.png" mode=""></image>
-				</view>
-				<view class="yuan">30元</view>
-			</view>
-			</view>
-			<view style="height: 10rpx;background-color: #F5F5F5;"></view>
-			<view class="xuanze">支付方式</view>
-			<view class="heng">
-				<image class="zfb" src="../../static/zhibo/iocn-105-zfb.png" mode=""></image>
-				<view class="zi">支付宝</view>
-				<image class="gou" src="../../static/shouhuodizhi/iocn-27-gou.png" mode=""></image>
-			</view>
-			<view class="heng">
-				<image class="wx" src="../../static/zhibo/iocn-105-wx.png" mode=""></image>
-				<view class="zi">微信</view>
-				<image class="gou" src="../../static/zhibo/iocn-105-wx2.png" mode=""></image>
-			</view>
+		</view>
+		<view style="height: 10rpx;background-color: #F5F5F5;"></view>
+		<view class="xuanze">支付方式</view>
+		<view class="heng" v-for="(p,p_idx) in payWays" :key="p_idx">
+			<image class="zfb" :src="p.icon" mode=""></image>
+			<view class="zi">{{p.name}}</view>
+			<image class="gou" @tap="chosePay(p_idx)" :src="p.isChose ? '../../static/shouhuodizhi/iocn-27-gou.png' : '../../static/zhibo/iocn-105-wx2.png'" mode=""></image>
+		</view>
+		<!-- <view class="heng">
+			<image class="wx" src="../../static/zhibo/iocn-105-wx.png" mode=""></image>
+			<view class="zi">微信</view>
+			
+		</view> -->
 		<view style="height: 264rpx;background-color: #F5F5F5;"></view>
 		<view style="height: 555rpx;background-color: #F5F5F5;">
-			<button class="queren" type="primary">确认</button>
-			</view>
+			<button class="queren" @tap="sure()" type="primary">确认</button>
+		</view>
 	</view>
 </template>
 
@@ -48,85 +34,214 @@
 	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		data() {
-			return {};
+			return {
+				list: [],
+				current: 0,
+				payWays : [
+					{
+						icon : '../../static/zhibo/iocn-105-zfb.png',
+						name : '支付宝',
+						isChose : true
+					},
+					{
+						icon : '../../static/zhibo/iocn-105-wx.png',
+						name : '微信',
+						isChose : false
+					}
+				],
+				payTypes : "支付宝",
+				buyTypes : ""
+			};
 		},
 		onBackPress() {
 			bridge.call('navBack', "页面返回");
 			return true;
 		},
-		methods: {}
+		onLoad() {
+			this.getList();
+		},
+		methods: {
+			getList() {
+				this.request.getBalance({
+					uid: uni.getStorageSync('id'),
+					token: uni.getStorageSync('token')
+				}).then(res => {
+					console.log(res);
+					if (res.data.code === 0) {
+						this.list = res.data.info[0].rules
+					}
+				})
+			},
+			sure(){
+				console.log(this.payTypes);
+				if(this.payTypes === "支付宝"){
+					this.request.getAliOrder({
+						uid : uni.getStorageSync('id'),
+						changeid : this.buyTypes.id,
+						coin : this.buyTypes.coin,
+						money : this.buyTypes.money
+					}).then(res=>{
+						console.log(res);
+						if(res.data.code === 0){
+							// 支付宝
+							bridge.call('alipay', res.data.info[0].orderid)
+							bridge.register('alipaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url: '../dingdan/dingdan'
+										});
+									},1500)
+								}
+							})
+						}
+					})
+				}else{
+					this.request.getWxOrder({
+						uid : uni.getStorageSync('id'),
+						changeid : this.buyTypes.id,
+						coin : this.buyTypes.coin,
+						money : this.buyTypes.money
+					}).then(res=>{
+						console.log(res);
+						if(res.data.code === 0){
+							// 支付宝
+							bridge.call('wxpay', res.data.info[0])
+							bridge.register('wxpaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url: '../dingdan/dingdan'
+										});
+									},1500)
+								}
+							})
+						}
+					})
+				}
+			},
+			chose(idx,info) {
+				this.current = idx
+				this.buyTypes = info
+			},
+			chosePay(idx){
+				this.payWays.forEach((i,i_idx)=>{
+					if(i_idx === idx){
+						i.isChose = true
+						this.payTypes = i.name
+					}else{
+						i.isChose = false
+					}
+				})
+			}
+		}
 	};
 </script>
 
 <style>
-.xuanze {
-	font-size: 23rpx;
-	margin-top: 23rpx;
-	margin-left: 40rpx;
-	color: #d5d5d5;
-}
-.heng {
-	display: flex;
-	flex-direction: row;
-}
-.kuang {
-	height: 102rpx;
-	width: 162rpx;
-	border: solid;
-	border-color: #ff212c;
-	margin-left: 40rpx;
-	margin-top: 22rpx;
-	margin-bottom: 25rpx;
-}
-.zs {
-	height: 20rpx;
-	width: 15rpx;
-	margin-left: 10rpx;
-	margin-top: 26rpx;
-}
-.shu {
-	margin-left: 39rpx;
-	margin-top: 21rpx;
-	font-size: 18rpx;
-}
-.yuan {
-	margin-left: 56rpx;
-	margin-top: 18rpx;
-	font-size: 18rpx;
-	color: #d5d5d5;
-}
-.zfb{
-	height: 32rpx;
-	width: 32rpx;
-	margin-top: 30rpx;
-	margin-left: 35rpx;
-}
-.wx{
-	height: 27rpx;
-	width: 30rpx;
-	margin-top: 28rpx;
-	margin-left: 35rpx;
-	margin-bottom: 40rpx;
-}
-.zi{
-	font-size: 23rpx;
-	margin-top: 32rpx;
-	margin-left: 10rpx;
-	
-	color: #494949;
-}
-.gou{
-	height: 30rpx;
-	width: 30rpx;
-	margin-top: 35rpx;
-	margin-left: auto;
-	margin-right: 45rpx;
-}
-.queren{
-	background-color: #f13720;
-	height: 75rpx;
-	width: 710rpx;
-	font-size: 33rpx;
-	border-radius: 40rpx;
-}
+	.xuanze {
+		font-size: 23rpx;
+		margin-top: 23rpx;
+		margin-left: 40rpx;
+		color: #d5d5d5;
+	}
+
+	.heng {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.kuang {
+		min-height: 102rpx;
+		width: 162rpx;
+		border: solid;
+		border-color: #d5d5d5;
+		margin-left: 40rpx;
+		margin-top: 22rpx;
+		margin-bottom: 25rpx;
+	}
+
+	.ac {
+		border-color: #ff212c;
+	}
+
+	.zs {
+		height: 20rpx;
+		width: 15rpx;
+		margin-left: 10rpx;
+		margin-top: 26rpx;
+	}
+
+	.shu {
+		margin-left: 39rpx;
+		margin-top: 21rpx;
+		font-size: 18rpx;
+	}
+
+	.yuan {
+		margin-left: 56rpx;
+		margin-top: 18rpx;
+		font-size: 18rpx;
+		color: #d5d5d5;
+	}
+
+	.zfb {
+		height: 32rpx;
+		width: 32rpx;
+		margin-top: 30rpx;
+		margin-left: 35rpx;
+	}
+
+	.wx {
+		height: 27rpx;
+		width: 30rpx;
+		margin-top: 28rpx;
+		margin-left: 35rpx;
+		margin-bottom: 40rpx;
+	}
+
+	.zi {
+		font-size: 23rpx;
+		margin-top: 32rpx;
+		margin-left: 10rpx;
+
+		color: #494949;
+	}
+
+	.gou {
+		height: 30rpx;
+		width: 30rpx;
+		margin-top: 35rpx;
+		margin-left: auto;
+		margin-right: 45rpx;
+	}
+
+	.queren {
+		background-color: #f13720;
+		height: 75rpx;
+		width: 710rpx;
+		font-size: 33rpx;
+		border-radius: 40rpx;
+	}
 </style>
