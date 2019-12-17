@@ -18,14 +18,8 @@
 			<view class="beijing2" :style="{ backgroundImage: 'url(' + '/static/shouye/bg-84.png' + ')' }">
 				<view v-if="b === 0">
 					<swiper class="chufang" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
-						<swiper-item>
-							<image @click="sp1" class="chufang" src="/static/shouye1/banner.png"></image>
-						</swiper-item>
-						<swiper-item>
-							<image @click="sp1" class="chufang" src="/static/shouye1/banner.png"></image>
-						</swiper-item>
-						<swiper-item>
-							<image @click="sp1" class="chufang" src="/static/shouye1/banner.png"></image>
+						<swiper-item v-for="(item,index) in BannerList" :key="index">
+							<image @click="sp1(item.goods_id)" class="chufang" :src="item.url"></image>
 						</swiper-item>
 					</swiper>
 					<view class="lhd" :style="{ backgroundImage: 'url(' + '/static/shouye1/bg-lhd.png' + ')' }">
@@ -88,20 +82,20 @@
 					<view class="baidi">
 						<scroll-view scroll-x="true" style=" white-space: nowrap; display: flex">
 							<view class="zhibo_content" v-for="(item,index) in viedioList" :key="index">
-								<view class="xiaoshipin2" :style="{ backgroundImage: 'url(' + item.backimg + ')' }" @tap="zhibo1">
-									<view class="jinru">{{item.name}}</view>
+								<view class="xiaoshipin2" :style="{ backgroundImage: 'url(' + item.avatar + ')' }" @tap="gozhibo(item)">
+									<view class="jinru">{{item.user_nicename}}</view>
 								</view>
 							</view>
 						</scroll-view>
 						<scroll-view scroll-x="true" style=" white-space: nowrap; display: flex;width: 100%;">
 							<!--  display: inline-block-->
-							<view class="xiaoshipin " v-for="(item,index) in list1" :key="index" @tap="zhibo(index)">
-								<view class="xiaoshipin1" :style="{ backgroundImage: 'url(' + item.backimg + ')' }">
+							<view class="xiaoshipin " v-for="(item,index) in list1" :key="index" @tap="dshipin(item)">
+								<view class="xiaoshipin1" :style="{ backgroundImage: 'url(' + item.thumb + ')' }">
 								</view>
-								<view class="tidaikuan">{{item.name}}</view>
+								<view class="tidaikuan">{{item.title}}</view>
 								<view class="heng cent">
-									<image class="tx1" :src="item.touxiang" mode="aspectFit"></image>
-									<view class="lier">{{item.nicheng}}</view>
+									<image class="tx1" :src="item.userinfo.avatar" mode="aspectFit"></image>
+									<view class="lier">{{item.userinfo.user_nicename}}</view>
 								</view>
 							</view>
 						</scroll-view>
@@ -129,7 +123,12 @@
 					</view>
 				</view>
 				<view class="shangjia" v-if="b === 1">
-					<image class="banner" src="../../static/shouye/banner-82-.png" mode=""></image>
+					<swiper class="chufang" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+						<swiper-item v-for="(item,index) in gerenBannerList" :key="index" @tap="goodsdetails(item.goods_id)">
+							<image class="banner" :src="item.url"></image>
+						</swiper-item>
+					</swiper>
+					<!-- <image class="banner" src="../../static/shouye/banner-82-.png" mode=""></image> -->
 					<view class="shangjia_title">
 						<view style="display: flex;">
 							<view v-for="(item,index) in title" :key="index" @tap="chooseT(index)">
@@ -164,7 +163,7 @@
 				<view class="shipin_top" v-if="b === 2">
 					<image class="banner" src="../../static/shouye/banner-82-.png" mode=""></image>
 					<view class="shipinList">
-						<view class="shipin" v-for="(item,index) in shipin" :key="index">
+						<view class="shipin" v-for="(item,index) in shipin" :key="index" @tap="intoVideo(item)">
 							<view class="beijing" :style="{ backgroundImage: 'url(' + item.thumb_s + ')' }">
 								<view style="display: flex;flex-direction:column;">
 									<view class="xh">@{{item.userinfo.liang.name}}</view>
@@ -180,7 +179,12 @@
 					</view>
 				</view>
 				<view class="free" v-if="b === 3">
-					<image class="banner" src="../../static/shouye/banner-84.png" mode=""></image>
+					<swiper class="chufang" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+						<swiper-item v-for="(item,index) in mianfeiBannerList" :key="index" @tap="gofree(item)">
+							<image class="banner" :src="item.url"></image>
+						</swiper-item>
+					</swiper>
+					<!-- <image class="banner" src="../../static/shouye/banner-84.png" mode=""></image> -->
 					<view class="list" v-for="(item,index) in mianfeina" :key="index">
 						<view class="free_img">
 							<image class="logo1" :src="item.business_logo"></image>
@@ -232,9 +236,11 @@
 	import io from '../../common/weapp.socket.io/dist/weapp.socket.io.js'
 	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
 			luPopupWrapper,
+			bridge,
 			uniNoticeBar
 		},
 		data() {
@@ -440,6 +446,10 @@
 				longitude: 1,
 				latitude: 1,
 				pages: 1,
+				token: uni.getStorageSync('token'),
+				BannerList: '',
+				gerenBannerList: '',
+				mianfeiBannerList: '',
 				advertarr: '', //获取商城广告位
 				annunciate: '正在等待接收socket数据', //通告栏的走马灯
 			}
@@ -452,23 +462,19 @@
 					type = i
 				}
 			}
-			switch (type) {
-				case 0:
-					this.getList()
-					console.log(0);
-					break;
-				case 1:
-					this.getMerchantsshoplist(this.order)
-					console.log(1);
-					break;
-				case 2:
-					this.getvideolist()
-					console.log(2);
-					break;
-				case 3:
-					this.getbarngin()
-					console.log(3);
-					break;
+			switch(type){
+				case 0: this.getgoodsList()
+						console.log(0);
+						break;
+				case 1: this.getMerchantsshoplist(this.order)
+						console.log(1);
+						break;
+				case 2: this.getvideolist()
+						console.log(2);
+						break;
+				case 3: this.getbarngin()
+						console.log(3);
+						break;
 			}
 			// this.getMerchantsshoplist(this.order)
 		},
@@ -529,17 +535,41 @@
 			socket.on('new message', d => {
 				console.log('new message', d);
 			});
+			this.getgoodsList()
+			this.getviedioList()
+			this.getlist1()
+
 			this.getadvertising()
-			this.getList()
 			this.getvideolist()
 			this.getbarngin()
 			this.getMerchantsshoplist(this.order)
+			this.getBanner(1)
 		},
 		methods: {
 			sendsocket(){
 				// 发送消息
 				console.log(11111)
 				this.socket.emit('newmessage','发送消息') 
+			},
+			//获取轮播
+			getBanner(ty){
+				this.request.getBanner({
+					token: this.token,
+					type: ty
+				}).then(res => {
+					console.log(res)
+					switch(ty){
+						case 1: this.BannerList = res.data;break;
+						case 4: this.gerenBannerList = res.data;break;
+						case 5: this.mianfeiBannerList = res.data;break;
+					}
+				})
+			},
+			intoVideo(info){
+				bridge.call('intoVideoPlay', info);
+				bridge.register('intoVideoPlayCallback',function(res){
+					console.log(res);
+				});
 			},
 			getadvertising() { //获取首页广告位
 				this.request.getIndexA({
@@ -554,14 +584,58 @@
 				this.list[0].a = false
 				this.list[3].a = true;
 				this.b = 3
+				this.getBanner(5)
 			},
-			getList() {
+			//热卖商城商品
+			getgoodsList(){
 				this.request.getindexG({
 					token: uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res)
 					this.remaisc = res.data
 				})
+			},
+			//获取直播列表
+			getviedioList(){
+				this.request.getLiveList({
+					token: this.token
+				}).then(res => {
+					console.log(res)
+					this.viedioList = res.data
+				})
+			},
+			gozhibo(info) {
+				console.log(info);
+				bridge.call('intoLiveRoom', info);
+				bridge.register('intoLiveRoomCallback',function(res){
+					console.log(res);
+				});
+			},
+			//视频列表
+			getlist1(){
+				this.request.getVideoList({
+					uid: uni.getStorageSync('id'),
+					p: 1
+				}).then(res => {
+					console.log(res)
+					if(res.data.code === 0){
+						this.list1 = res.data.info
+					}else{
+						this.list1 = []
+						uni.showToast({
+							title:res.msg,
+							icon:'none',
+							duration:1500
+						})
+					}
+				})
+			},
+			dshipin(info){
+				console.log(info);
+				bridge.call('intoVideoPlay', info);
+				bridge.register('intoVideoPlayCallback',function(res){
+					console.log(res);
+				});
 			},
 			//个人商家
 			getMerchantsshoplist(order) {
@@ -662,9 +736,9 @@
 				// 		break;
 				// }
 			},
-			sp1() {
+			sp1(id) {
 				uni.navigateTo({
-					url: '../shangpinxiangqing/shangpinxiangqing'
+					url: '../shangpinxiangqing/shangpinxiangqing?id='+id
 				})
 			},
 			choose(index) {
@@ -727,6 +801,12 @@
 					// url: '../kanjia/kanjia?goods_id='+item.goods_id
 				})
 			},
+			goodsdetails(id) {
+				uni.navigateTo({
+					url: '../shangpinxiangqing/shangpinxiangqing?id=' + id
+					// url: '../kanjia/kanjia?goods_id='+item.goods_id
+				})
+			},
 			/* 筛选弹窗 */
 			right: function() {
 				this.width = "50%";
@@ -769,6 +849,11 @@
 				}
 			},
 			cancel(index) {
+				switch(index){
+					case 0: this.getBanner(1);break;
+					case 1: this.getBanner(4);break;
+					case 3: this.getBanner(5);break;
+				}
 				for (let i = 0; i < this.list.length; i++) {
 					if (index == i) {
 						this.list[i].a = true;

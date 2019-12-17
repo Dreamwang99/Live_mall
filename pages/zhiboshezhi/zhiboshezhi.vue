@@ -134,11 +134,10 @@
 		},
 		methods: {
 			choose(){
-				bridge.call('uploadImages', "开播设置上传封面");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
 					this.thumb = res
-					this.uploadIcon = res
 					this.showAgain = false
 					this.showAgain = true
 					console.log("成功")
@@ -286,7 +285,7 @@
 				var shareInfo = new Object();
 				shareInfo.title = "直播分享";
 				shareInfo.describe = "快来观看我的直播";
-				shareInfo.linkUrl = "https//www.baidu.com"
+				shareInfo.linkUrl = "https://www.baidu.com/"
 				if(types === "微信好友"){
 					bridge.call('shareWeChatFriends', shareInfo);
 					bridge.register('shareWeChatFriendsCallback',(res)=>{

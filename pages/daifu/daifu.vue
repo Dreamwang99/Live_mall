@@ -55,7 +55,8 @@
 						支付宝
 					</view>
 				</view>
-				<radio value="r2" color="#ff212c" style="transform:scale(0.7)"/>
+				<image :src="current == 0?require('../../static/shouhuodizhi/iocn-27-gou.png'):require('../../static/zhibo/iocn-4-wgx.png')"
+				 mode="" class="binggoimg" @tap="changebinggo(0)"></image>
 			</view>
 			<view class="zhifu">
 				<view class="Zhifu">
@@ -64,7 +65,8 @@
 						微信
 					</view>
 				</view>
-				<radio value="r2" color="#ff212c" style="transform:scale(0.7)"/>
+				<image :src="current1 == 0?require('../../static/shouhuodizhi/iocn-27-gou.png'):require('../../static/zhibo/iocn-4-wgx.png')"
+				 mode="" class="binggoimg" @tap="changebinggo(1)"></image>
 			</view>
 			<view class="kefu">
 				<view style="display: flex;">
@@ -90,7 +92,10 @@
 				orderid:'',
 				type:'',
 				detail:'',
-				arr:[]
+				arr:[],
+				paytype: '',
+				current1: 1,
+				current: 1
 			}
 		},
 		onLoad(options) {
@@ -116,26 +121,81 @@
 					console.log(res)
 				})
 			},
+			changebinggo(i) {
+				if(i == 0){
+					this.current =0
+					this.current1=-1
+					this.paytype = 'alipay'
+				}else if (i == 1){
+					this.current1=0
+					this.current =-1
+					this.paytype = 'wechat'
+				}
+			},
 			prepay(){
+				if (this.paytype == '') {
+					uni.showToast({
+						title: '请选择支付方式',
+						icon: 'none'
+					})
+					return
+				}
 				this.request.getprepay({
 					token: uni.getStorageSync('token'),
-					order_no: this.orderid
+					order_no: this.detail.order_no,
+					pay_type: this.paytype
 				}).then(res => {
 					console.log(res)
-					this.type = res.data.pay_type
-					this.alipay_res = res.data.paydata.split('&amp;').join('&');  
-					//支付宝支付
-					if (this.type == 'alipay') {
-						uni.requestPayment({
-							provider: 'alipay',
-							orderInfo: this.alipay_res, //微信、支付宝订单数据
-							success: function(res) {
-								console.log('success:' + JSON.stringify(res));
-							},
-							fail: function(err) {
-								console.log('fail:' + JSON.stringify(err));
+					console.log(res.data.ordersn)
+					console.log(res.data.paydata)
+					if (this.paytype == 'alipay') {
+						console.log(11)
+						// this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
+						bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
+						bridge.register('alipaycallback', function(result) {
+							console.log(result)
+							if(result*1 === 0){
+								uni.showToast({
+									title:'支付失败',
+									icon:'none'
+								})
+							}else if(result*1 === 1){
+								uni.showToast({
+									title:'支付成功',
+									icon:'none'
+								})
+								setTimeout(function(){
+									uni.redirectTo({
+										url: '../dingdan/dingdan'
+									});
+								},1500)
 							}
-						});
+						})
+					} else if (this.paytype == 'wechat') {
+						console.log(22)
+						// this.wxPay(res.data.paydata)
+						console.log(res.data.paydata)
+						bridge.call('wxpay', res.data.paydata)//微信
+						bridge.register('wxpaycallback', function(result) {
+							console.log(result)
+							if(result*1 === 0){
+								uni.showToast({
+									title:'支付失败',
+									icon:'none'
+								})
+							}else if(result*1 === 1){
+								uni.showToast({
+									title:'支付成功',
+									icon:'none'
+								})
+								setTimeout(function(){
+									uni.redirectTo({
+										url: '../dingdan/dingdan'
+									});
+								},1500)
+							}
+						})
+						console.log(33)
 					}
 				})
 			},
@@ -193,6 +253,7 @@
 		display: flex;
 		height: 168rpx;
 		justify-content: space-between;
+		align-items: center;
 		padding: 34rpx 40rpx 34rpx 40rpx;
 		width: 100%;
 		display: ;
@@ -485,5 +546,10 @@
 	.biao {
 		width: 193rpx;
 		height: 193rpx;
+	}
+	
+	.binggoimg {
+		width: 35rpx;
+		height: 35rpx;
 	}
 </style>

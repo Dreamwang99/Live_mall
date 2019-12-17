@@ -59,7 +59,7 @@
 				this.choseType = types
 			},
 			choseImages(){
-				bridge.call('uploadImages', "上传投诉照片");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
 					this.imageList[this.imageList.length] = res

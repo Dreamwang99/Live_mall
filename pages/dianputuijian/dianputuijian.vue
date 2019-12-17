@@ -182,7 +182,7 @@
 			search(){
 				console.log(123);
 				uni.navigateTo({
-					url:'../sousuokuang/sousuokuang'
+					url:'../fenlei/sousuo'
 				})
 			},
 			change(e){

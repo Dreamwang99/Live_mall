@@ -10,7 +10,7 @@
 				<image :src="list.logo" mode="" class="search_resultimg"></image>
 				<view class="searchtext">{{list.title}}</view>
 				<view class="searchcity">{{list.introduction}}</view>
-				<view class="searchmoney">{{list.price_selling}}</view>
+				<view class="searchmoney">￥{{list.price_rate}}</view>
 			</view>
 		</view>
 	</view>

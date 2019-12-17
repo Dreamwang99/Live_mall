@@ -239,6 +239,14 @@ const getGroupPurchase = (params) => ajax(BASE_URL + '/group_purchase/getGroupPu
 const getLiveBusinessShopList = (params) => ajax(BASE_URL + '/index/getLiveBusinessShopList', params)
 // 用户投诉建议
 const getUserComplain = (params) => ajax(BASE_URL + '/index/getUserComplain', params)
+// 获取充值积分
+const getBalance = (params) => ajax(BASE_URL1 + 'User.GetBalance', params)
+// 充值积分 --- 支付宝支付
+const getAliOrder = (params) => ajax(BASE_URL1 + 'Charge.GetAliOrder', params)
+// 充值积分 --- 微信支付
+const getWxOrder = (params) => ajax(BASE_URL1 + 'Charge.GetWxOrder', params)
+
+
 
 //陈
 //获取商品评论 全部 以及好评 中评 差评
@@ -253,6 +261,9 @@ const getSelfBrand = (params) => ajax(BASE_URL + '/index/getSelfBrand', params)
 const getActiviIdShop = (params) => ajax(BASE_URL + '/Bargain/getActiviIdShop', params)
 //砍价生成订单
 const createOrder = (params) => ajax(BASE_URL + '/Bargain/createOrder', params)
+//获取banner
+const getBanner = (params) => ajax(BASE_URL + '/banner/getBanner', params)
+
 
 
 export default {
@@ -382,6 +393,9 @@ export default {
 	getGroupPurchase,	//团购活动详情页
 	getLiveBusinessShopList,	// 开播 --- 获取商品列表
 	getUserComplain,	// 用户投诉建议
+	getBalance,	// 获取守护列表
+	getAliOrder,	// 充值积分 --- 支付宝支付
+	getWxOrder,		// 充值积分 --- 微信支付
 	
 	
 	//陈
@@ -391,4 +405,5 @@ export default {
 	getSelfBrand, //自主品牌
 	getActiviIdShop, //根据活动id展示活动商品
 	createOrder, //砍价生成订单
+	getBanner, //获取banner
 }

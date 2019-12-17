@@ -108,8 +108,8 @@
 								icon: "none",
 							});
 						}
+						this.getHistory()
 					})
-					this.getHistory()
 				} else {
 					this.switch1 = false
 					uni.showToast({
