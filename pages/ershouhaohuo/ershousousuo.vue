@@ -12,7 +12,7 @@
 			</view>
 		</view>
 		<!-- 历史搜索 -->
-		<view v-show="grabble">
+		<!-- <view v-show="grabble">
 			<view class="hiskuang">
 				<view class="history">历史搜索</view>
 				<image src="../../static/iocn-58-sc.png" mode="" class="hisdelet" @tap="del_sear()"></image>
@@ -20,7 +20,7 @@
 			<view class="hSearch">
 				<view class="hs-item" v-if="h.search_content" v-for="(h,h_idx) in hisSearchInfo" :key="h_idx" @tap="hSearch(h.search_content)">{{h.search_content}}</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="tax_control" v-show="sear">
 			<view class="classify">
 				<view class="search_result" v-for="(list,index) in arr" :key='index' @tap="cart(list.id)">

@@ -317,6 +317,7 @@
 							})
 						})
 						this.specifications = getInfo
+						console.log(this.specifications);
 					}else{
 						uni.showToast({
 							title:res.msg,

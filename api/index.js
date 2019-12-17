@@ -251,6 +251,9 @@ const getSelfBrand = (params) => ajax(BASE_URL + '/index/getSelfBrand', params)
 const getActiviIdShop = (params) => ajax(BASE_URL + '/Bargain/getActiviIdShop', params)
 //砍价生成订单
 const createOrder = (params) => ajax(BASE_URL + '/Bargain/createOrder', params)
+//获取banner
+const getBanner = (params) => ajax(BASE_URL + '/banner/getBanner', params)
+
 
 
 export default {
@@ -385,4 +388,5 @@ export default {
 	getSelfBrand, //自主品牌
 	getActiviIdShop, //根据活动id展示活动商品
 	createOrder, //砍价生成订单
+	getBanner, //获取banner
 }
