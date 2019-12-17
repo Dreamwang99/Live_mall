@@ -1,8 +1,50 @@
 <template>
 	<view class="fabu_content">
 		<input class="mingcheng" v-model="name" placeholder="名称(商品/型号)" type="text" value="" />
-		<view class="mingcheng" @tap="updatabigtype()">{{bigtype}}</view>
-		<view class="mingcheng" @tap="updatasmalltype()">{{smalltype}}</view>
+		<view class="mingcheng">
+			<view class="uni-list">
+				<view class="uni-list-cell">
+					<view class="uni-list-cell-left">
+						请选择所属一级类
+					</view>
+					<view class="uni-list-cell-db">
+						<picker @change="bindPickerChangeA" :value="indexA" :range="bigArr">
+							<view class="uni-input">{{bigArr[indexA]}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="mingcheng">
+			<view class="uni-list">
+				<view class="uni-list-cell">
+					<view class="uni-list-cell-left">
+						请选择所属二级类
+					</view>
+					<view class="uni-list-cell-db">
+						<picker @change="bindPickerChangeB" :value="indexB" :range="secArr">
+							<view class="uni-input">{{secArr[indexB]}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="mingcheng">
+			<view class="uni-list">
+				<view class="uni-list-cell">
+					<view class="uni-list-cell-left">
+						请选择所属三级类
+					</view>
+					<view class="uni-list-cell-db">
+						<picker @change="bindPickerChangeC" :value="indexC" :range="thirdArr">
+							<view class="uni-input">{{thirdArr[indexC]}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- <view class="mingcheng" @tap="updatabigtype()">{{bigtype}}</view>
+		<view class="mingcheng" @tap="updatasmalltype()">{{smalltype}}</view> -->
 		<input v-model="brand" class="mingcheng" placeholder="品牌" type="text" value="" />
 		<input v-model="hinge" class="mingcheng" placeholder="输入10-30关键字内容" type="text" value="" />
 		<view style="background: #fff;">
@@ -96,6 +138,13 @@
 				bigtype: "所属大类",
 				smalltype: "所属小类",
 				hinge: "",
+				bigArr : [],
+				bigArrIdx : [],
+				secArr : [],
+				secIdx : [],
+				thirdArr : [],
+				thirdIdx : [],
+				getBigIdx : 0,
 				brand: "",
 				province:'',
 				city:'',
@@ -125,7 +174,10 @@
 				longitude: 1,
 				latitude: 1,
 				address:'',
-				type_top:''
+				type_top:'',
+				indexA : 0,
+				indexB : 0,
+				indexC : 0
 			}
 		},
 		onNavigationBarButtonTap(e) {
@@ -139,6 +191,20 @@
 			this.getplace()
 		},
 		methods: {
+			bindPickerChangeA: function(e) {
+				console.log('picker发送选择改变，携带值为', this.bigArrIdx[e.target.value])
+				this.chooge(this.bigArrIdx[e.target.value]);
+				this.indexA = e.target.value
+			},
+			bindPickerChangeB: function(e) {
+				console.log('picker发送选择改变，携带值为', this.secIdx[e.target.value])
+				this.choogeBB(this.secIdx[e.target.value])
+				this.indexB = e.target.value
+			},
+			bindPickerChangeC: function(e) {
+				console.log('picker发送选择改变，携带值为', this.thirdArr[e.target.value])
+				this.indexC = e.target.value
+			},
 			toggleTab(item, index) {
 				this.tabIndex = index;
 				this.mode = item.mode;
@@ -155,21 +221,37 @@
 				console.log(this.provincial);
 			},
 			chooge(idx){
-				this.current = idx
-				this.maskShow1 = true
-				if(this.biglist.length !== 0){
-					var type = this.biglist[idx].id
-					this.bigtype = this.biglist[idx].label
-					this.smalltype = this.biglist[idx].label
-					this.type_top = this.biglist[idx].id
-				}
 				this.request.getCategory({
-					pid: type
+					pid: idx
 				}).then(res => {
 					console.log(res)
 					if (res.code === 1) {
-						console.log(res)
-						this.biglist = res.data
+						var getArr = [];
+						var getIndex = [];
+						res.data.forEach((i)=>{
+							getArr.push(i.label)
+							getIndex.push(i.id)
+						})
+						this.secArr = getArr
+						this.secIdx = getIndex
+						this.choogeBB(getIndex[0])
+					}
+				})
+			},
+			choogeBB(idx){
+				this.request.getCategory({
+					pid: idx
+				}).then(res => {
+					console.log(res)
+					if (res.code === 1) {
+						var getArr = [];
+						var getIndex = [];
+						res.data.forEach((i)=>{
+							getArr.push(i.label)
+							getIndex.push(i.id)
+						})
+						this.thirdArr = getArr
+						this.thirdIdx = getIndex
 					}
 				})
 			},
@@ -196,7 +278,7 @@
 			},
 			//上传图片
 			choose() {
-				bridge.call('uploadImages', "上传二手商品照片");
+				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
 					let serverList = res
@@ -291,8 +373,8 @@
 					title: this.name,
 					/* 商品名称 */
 					phone: this.phone,
-					cate_top: this.type_top,
-					cate_id: this.typeid,
+					cate_top: this.bigArrIdx[this.indexA],
+					cate_id: this.thirdIdx[this.indexC],
 					/* 大类ID */
 					keyword: this.hinge,
 					/* 关键字 */
@@ -364,7 +446,18 @@
 					console.log(res)
 					if (res.code === 1) {
 						console.log(res)
-						this.biglist = res.data
+						if(res.code === 1){
+							var getArr = [];
+							var getIdx = [];
+							res.data.forEach((i)=>{
+								getArr.push(i.label)
+								getIdx.push(i.id)
+							})
+						}
+						this.bigArr = getArr
+						this.bigArrIdx = getIdx
+						this.chooge(getIdx[0]);
+						// this.biglist = res.data
 					}
 				})
 			}
@@ -393,6 +486,14 @@
 		background: #fff;
 		color: #999;
 		border-top: 5rpx solid #eee;
+	}
+	.uni-list-cell{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.uni-list-cell-db{
+		margin-right: 20rpx;
 	}
 	.uf-imgs {
 		display: flex;

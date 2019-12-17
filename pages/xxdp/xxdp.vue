@@ -563,7 +563,7 @@
 				var shareInfo = new Object();
 				shareInfo.title = "快拼分享";
 				shareInfo.describe = "快来参加我的团";
-				shareInfo.linkUrl = "https//www.baidu.com"
+				shareInfo.linkUrl = "https://www.baidu.com/"
 				if(types === "微信好友"){
 					bridge.call('shareWeChatFriends', shareInfo);
 					bridge.register('shareWeChatFriendsCallback',(res)=>{

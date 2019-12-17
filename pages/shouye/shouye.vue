@@ -154,7 +154,7 @@
 									<view class="jd" @click="jindian1(item.id)">进店</view>
 								</view>
 								<view class="heng">
-									<image v-for="(img,idx) in item.goods_list" class="tup" :src="img.logo" @tap="goodsdetails(img.id)"></image>
+									<image v-for="(img,idx) in item.goods_list" :key="idx" class="tup" :src="img.logo" @tap="goodsdetails(img.id)"></image>
 								</view>
 							</view>
 						</view>
@@ -163,7 +163,7 @@
 				<view class="shipin_top" v-if="b === 2">
 					<image class="banner" src="../../static/shouye/banner-82-.png" mode=""></image>
 					<view class="shipinList">
-						<view class="shipin" v-for="(item,index) in shipin" :key="index">
+						<view class="shipin" v-for="(item,index) in shipin" :key="index" @tap="intoVideo(item)">
 							<view class="beijing" :style="{ backgroundImage: 'url(' + item.thumb_s + ')' }">
 								<view style="display: flex;flex-direction:column;">
 									<view class="xh">@{{item.userinfo.liang.name}}</view>
@@ -229,6 +229,7 @@
 
 <script>
 	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
 			luPopupWrapper
@@ -469,6 +470,12 @@
 			this.getMerchantsshoplist(this.order)
 		},
 		methods: {
+			intoVideo(info){
+				bridge.call('intoVideoPlay', info);
+				bridge.register('intoVideoPlayCallback',function(res){
+					console.log(res);
+				});
+			},
 			//拼砍专区
 			Chopping(){
 				this.list[0].a = false
