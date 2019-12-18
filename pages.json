@@ -549,72 +549,72 @@
 			"style": {
 				"navigationBarTitleText": "秘制好货",
 				"navigationBarTextStyle": "white",
-				"transparentTitle": "always",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue658",
-							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-							"fontSize": "30rpx",
-							"color": "#FFFFFF"
+				"transparentTitle": "always"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"text": "\ue658",
+				// 			"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+				// 			"fontSize": "30rpx",
+				// 			"color": "#FFFFFF"
 
-						}]
-					}
-				}
+				// 		}]
+				// 	}
+				// }
 			}
 		}, {
 			"path": "pages/xinpinshangshi/xinpinshangshi",
 			"style": {
 				"navigationBarTitleText": "新品上市",
 				"navigationBarTextStyle": "white",
-				"transparentTitle": "always",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue658",
-							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-							"fontSize": "30rpx",
-							"color": "#FFFFFF"
+				"transparentTitle": "always"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"text": "\ue658",
+				// 			"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+				// 			"fontSize": "30rpx",
+				// 			"color": "#FFFFFF"
 
-						}]
-					}
-				}
+				// 		}]
+				// 	}
+				// }
 			}
 		}, {
 			"path": "pages/guowaizhuanqu/guowaizhuanqu",
 			"style": {
 				"navigationBarTitleText": "国外专区",
 				"navigationBarTextStyle": "white",
-				"transparentTitle": "always",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue658",
-							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-							"fontSize": "30rpx",
-							"color": "#FFFFFF"
+				"transparentTitle": "always"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"text": "\ue658",
+				// 			"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+				// 			"fontSize": "30rpx",
+				// 			"color": "#FFFFFF"
 
-						}]
-					}
-				}
+				// 		}]
+				// 	}
+				// }
 			}
 		}, {
 			"path": "pages/shengqianzhuanqu/shengqianzhuanqu",
 			"style": {
-				"navigationBarTitleText": "国外专区",
+				"navigationBarTitleText": "省钱专区",
 				"navigationBarTextStyle": "white",
-				"transparentTitle": "always",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue658",
-							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-							"fontSize": "30rpx",
-							"color": "#FFFFFF"
+				"transparentTitle": "always"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"text": "\ue658",
+				// 			"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+				// 			"fontSize": "30rpx",
+				// 			"color": "#FFFFFF"
 
-						}]
-					}
-				}
+				// 		}]
+				// 	}
+				// }
 			}
 		}, {
 			"path": "pages/zizhupinpai/zizhupinpai",
@@ -709,18 +709,18 @@
 			"path": "pages/dianputuijian/dianputuijian",
 			"style": {
 				"navigationBarTitleText": "",
-				"transparentTitle": "always",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue658",
-							"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-							"fontSize": "30rpx",
-							"color": "#FFFFFF"
+				"transparentTitle": "always"
+				// "app-plus": {
+				// 	"titleNView": {
+				// 		"buttons": [{
+				// 			"text": "\ue658",
+				// 			"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
+				// 			"fontSize": "30rpx",
+				// 			"color": "#FFFFFF"
 
-						}]
-					}
-				}
+				// 		}]
+				// 	}
+				// }
 			}
 		}, {
 			"path": "pages/chakanwuliu/chakanwuliu",

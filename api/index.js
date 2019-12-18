@@ -263,6 +263,8 @@ const getActiviIdShop = (params) => ajax(BASE_URL + '/Bargain/getActiviIdShop', 
 const createOrder = (params) => ajax(BASE_URL + '/Bargain/createOrder', params)
 //获取banner
 const getBanner = (params) => ajax(BASE_URL + '/banner/getBanner', params)
+//购物车批量删除
+const deleteCart = (params) => ajax(BASE_URL + '/index/deleteCart', params)
 
 
 
@@ -406,4 +408,5 @@ export default {
 	getActiviIdShop, //根据活动id展示活动商品
 	createOrder, //砍价生成订单
 	getBanner, //获取banner
+	deleteCart, //购物车批量删除
 }

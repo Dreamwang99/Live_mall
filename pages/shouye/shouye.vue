@@ -1694,6 +1694,9 @@
 		width: 100%;
 		overflow: hidden;
 		padding-top: 10rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
 	.jiage {

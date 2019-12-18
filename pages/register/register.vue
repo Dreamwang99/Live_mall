@@ -41,13 +41,13 @@
 			}
 		},
 		onLoad() {
-			if(uni.getStorageSync('token')==''){
+			// if(uni.getStorageSync('token')==''){
 				
-			}else{
-				uni.switchTab({
-					url:'../shouye/shouye'
-				})
-			}
+			// }else{
+			// 	uni.switchTab({
+			// 		url:'../shouye/shouye'
+			// 	})
+			// }
 		},
 		methods: {
 			denglu1() {
