@@ -90,20 +90,20 @@
 			<view class="ggtime">9/20 16:30</view>
 		</view> -->
 		<view class="pingjia">
-			<view class="baobei">宝贝评价（1234）</view>
+			<view class="baobei">宝贝评价（{{allCounts}}）</view>
 			<view class="pingjia_let" @tap="chakanpj">
 				<view class="chakan">查看全部</view>
 				<image class="jr" src="../../static/pintuan/iocn-76-jinru.png" mode=""></image>
 			</view>
 		</view>
 		<view class="pingjia_detail">
-			<image class="tx" src="../../static/img-50-touxiang.png"></image>
+			<image class="tx" :src="userCommentsInfo.avatar"></image>
 			<view class="xh">
-				小黑粉
+				{{userCommentsInfo.user_nicename}}
 			</view>
 		</view>
 		<view class="pingjia">
-			正品有保障，小米还是一如既往的好 价格优惠非常好！
+			{{userCommentsInfo.content}}
 		</view>
 		<view class="xian"></view>
 		<view class="heng">
@@ -270,6 +270,8 @@
 				goods_id:'',
 				number: 1,
 				num: 1,
+				userCommentsInfo : "",
+				allCounts : 0
 			};
 		},
 		onLoad(options) {
@@ -498,6 +500,15 @@
 					shop_id : this.goods_id
 				}).then(res=>{
 					console.log(res);
+					if(res.code === 1){
+						this.userCommentsInfo = res.data.common
+						this.allCounts = res.data.count
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
+						})
+					}
 				})
 			},
 			//加减计算

@@ -233,7 +233,7 @@
 </template>
 
 <script>
-	import io from '../../common/weapp.socket.io/dist/weapp.socket.io.js'
+	// import io from '../../common/weapp.socket.io/dist/weapp.socket.io.js'
 	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
 	import bridge from '@/common/unfile/unfile.js';
@@ -480,61 +480,61 @@
 		},
 		onLoad() {
 			// 建立一个socket连接
-			const socket = (this.socket = io('http://zhibo.a2w0m.cn:19967'));
+			// const socket = (this.socket = io('http://zhibo.a2w0m.cn:19967'));
 			//客户端socket.on()监听的事件：
 			// 连接成功
-			socket.on('connect', () => {
-				console.log('连接成功');
-			});
+			// socket.on('connect', () => {
+			// 	console.log('连接成功');
+			// });
 			// 正在连接
-			socket.on('connecting', d => {
-				console.log('正在连接', d);
-			});
+			// socket.on('connecting', d => {
+			// 	console.log('正在连接', d);
+			// });
 			// 连接错误
-			socket.on('connect_error', d => {
-				console.log('连接失败', d);
-			});
+			// socket.on('connect_error', d => {
+			// 	console.log('连接失败', d);
+			// });
 			// 连接超时
-			socket.on('connect_timeout', d => {
-				console.log('连接超时', d);
-			});
+			// socket.on('connect_timeout', d => {
+			// 	console.log('连接超时', d);
+			// });
 			// 断开连接
-			socket.on('disconnect', reason => {
-				console.log('断开连接', reason);
-			});
+			// socket.on('disconnect', reason => {
+			// 	console.log('断开连接', reason);
+			// });
 			// 重新连接
-			socket.on('reconnect', attemptNumber => {
-				console.log('成功重连', attemptNumber);
-			});
+			// socket.on('reconnect', attemptNumber => {
+			// 	console.log('成功重连', attemptNumber);
+			// });
 			// 连接失败
-			socket.on('reconnect_failed', () => {
-				console.log('重连失败');
-			});
+			// socket.on('reconnect_failed', () => {
+			// 	console.log('重连失败');
+			// });
 			// 尝试重新连接
-			socket.on('reconnect_attempt', () => {
-				console.log('尝试重新重连');
-			});
+			// socket.on('reconnect_attempt', () => {
+			// 	console.log('尝试重新重连');
+			// });
 			// 错误发生，并且无法被其他事件类型所处理
-			socket.on('error', err => {
-				console.log('错误发生，并且无法被其他事件类型所处理', err);
-			});
-			socket.on('ping', (timeout) => {
-			  console.log(1111)
-			  console.log('ping')
-			});
-			socket.on('pong', (timeout) => {
-				console.log('pong',timeout)
-			});
+			// socket.on('error', err => {
+			// 	console.log('错误发生，并且无法被其他事件类型所处理', err);
+			// });
+			// socket.on('ping', (timeout) => {
+			//   console.log(1111)
+			//   console.log('ping')
+			// });
+			// socket.on('pong', (timeout) => {
+			// 	console.log('pong',timeout)
+			// });
 			// 接受到新消息
-			socket.on('systemfireworks', d => {
-				console.log('systemfireworks', d);
-			});
-			socket.on('superadminaction', d => {
-				console.log('superadminaction', d);
-			});
-			socket.on('new message', d => {
-				console.log('new message', d);
-			});
+			// socket.on('systemfireworks', d => {
+			// 	console.log('systemfireworks', d);
+			// });
+			// socket.on('superadminaction', d => {
+			// 	console.log('superadminaction', d);
+			// });
+			// socket.on('new message', d => {
+			// 	console.log('new message', d);
+			// });
 			this.getgoodsList()
 			this.getviedioList()
 			this.getlist1()

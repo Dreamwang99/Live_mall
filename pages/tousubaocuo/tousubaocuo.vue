@@ -62,7 +62,7 @@
 				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
-					this.imageList[this.imageList.length] = res
+					this.imageList.push(res)
 					this.show = false
 					this.show = true
 				});
