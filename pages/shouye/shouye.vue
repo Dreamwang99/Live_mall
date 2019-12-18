@@ -14,7 +14,6 @@
 					<text :class="item.a ? 'sp' : 'tj'">{{ item.name }}</text>
 				</view>
 			</view>
-			<view @tap="sendsocket()">aaaaaaaaaaaaaaaaaa</view>
 			<view class="beijing2" :style="{ backgroundImage: 'url(' + '/static/shouye/bg-84.png' + ')' }">
 				<view v-if="b === 0">
 					<swiper class="chufang" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
@@ -546,11 +545,6 @@
 			this.getBanner(1)
 		},
 		methods: {
-			sendsocket(){
-				// 发送消息
-				console.log(11111)
-				this.socket.emit('newmessage','发送消息') 
-			},
 			//获取轮播
 			getBanner(ty){
 				this.request.getBanner({

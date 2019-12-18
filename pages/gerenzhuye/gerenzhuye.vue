@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<image src="../../static/back.png" mode="" class="navback" @tap="navback()"></image>
+		<image src="../../static/gerenshangjia/20_back.png" mode="" class="navback" @tap="navback()"></image>
 		<view class="beijing" :style="{ backgroundImage: 'url(' + '/static/gerenzhongxin/bg-61-dingfu.png' + ')' }">
 			<view class="heng">
 				<image class="tx" :src="userlist.avatar" mode=""></image>
@@ -74,11 +74,6 @@
 				token:''
 			};
 		},
-		onBackPress() {//页面返回
-			bridge.register('navBack', function(result) {
-				console.log(result)
-			})
-		},
 		onLoad(options) {
 			this.getpersonalhomepage()//获取移动端返回信息
 			// this.uid = options.uid
@@ -87,13 +82,18 @@
 			this.getLiverecord()
 		},
 		methods: {
+			navback(){
+				console.log('back')
+				bridge.call('navBack', "页面返回");
+				return true;	
+			},
 			getpersonalhomepage(){//获取移动端返回信息
 				bridge.register('personalHomePageCallback', function(result) {
 					console.log(result)
-					this.UIDS =result.uid
+					this.UIDS =result
 				})
 			},
-			getvideolist() {
+			getvideolist() {//有问题
 				this.request.getVideoList({
 					uid: this.UIDS
 				}).then(res => {
@@ -104,7 +104,7 @@
 					})
 				})
 			},
-			getLiverecord(){
+			getLiverecord(){//没问题
 				this.request.getLivere({
 					touid: this.UIDS
 				}).then(res => {
@@ -115,15 +115,16 @@
 					})
 				})
 			},
-			getMyfans(){
+			getMyfans(){//没问题
 				this.request.getMyFans({
-					token:uni.getStorageSync('token')
+					token:uni.getStorageSync('token'),
+					user_id:this.UIDS
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
 				})
 			},
-			cancel1() {
+			cancel1() {//没问题
 				this.request.getAttent({
 					uid: uni.getStorageSync('id'),
 					touid: this.UIDS
@@ -283,5 +284,10 @@
 	}
 	.navback{
 		position: absolute;
+		left: 30rpx;
+		top: 45rpx;
+		width: 35rpx;
+		height: 45rpx;
+		z-index: 999;
 	}
 </style>

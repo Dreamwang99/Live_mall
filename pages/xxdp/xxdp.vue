@@ -75,7 +75,7 @@
 				<view class="people">
 					还差<view style="color: red;">{{n.surplus_num}}人</view>拼成
 				</view>
-				<view class="cantuan" @tap="nowboy(2,n.group_people_num,n.id)">去参团（选规格）</view>
+				<view class="cantuan" @tap="nowboy(2,n.group_people_num,n.id)">去参团(选规格)</view>
 				 <!-- @tap="sanren0" -->
 			</view>
 		</view>
@@ -776,7 +776,7 @@
 
 	.cantuan {
 		height: 47rpx;
-		width: 120rpx;
+		width: 180rpx;
 		text-align: center;
 		border-radius: 30rpx;
 		background-color: red;

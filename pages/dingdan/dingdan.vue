@@ -16,7 +16,7 @@
 					<view class="type">
 						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.business_name}}
 					</view>
-					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx">
+					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx" @tap="godetail()">
 						<view class="left">
 							<image :src="list.goods_logo"></image>
 						</view>
