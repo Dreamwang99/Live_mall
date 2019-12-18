@@ -7,6 +7,12 @@
 			}
 		},
 		{
+			"path": "pages/zhibo/shangchuanshipin",
+			"style": {
+				"navigationBarTitleText":"视频发布"
+			}
+		},
+		{
 			"path": "pages/xxdp/videoPlay",
 			"style": {
 				"navigationStyle": "custom"
