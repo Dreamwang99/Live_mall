@@ -1,1 +1,1 @@
-<view><view class="di"><view><input class="di1"/></view><view><image class="di2" src="../../static/kefu/icon-25-xl.png" mode></image></view><view><image class="di2" src="../../static/iocn-25-tj.png" mode></image></view></view><block wx:if="{{kefu==true}}"><web-view src="https://chat-new.mqimg.com/widget/standalone.html?eid=179049"></web-view></block></view>
+<view><block wx:if="{{kefu==true}}"><web-view src="https://chat-new.mqimg.com/widget/standalone.html?eid=179049&agentid=79532d519e083eb18c0924d5542fcb07"></web-view></block></view>

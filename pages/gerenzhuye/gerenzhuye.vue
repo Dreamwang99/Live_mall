@@ -27,7 +27,7 @@
 				<view class="tu"  :style="{ backgroundImage: 'url(' + detali.thumb + ')' }">
 					<view class="xiaohei">{{goodslist.user_nicename}}</view>
 					<view class="heng">
-						<view class="paimeishi">{{goodslist.signature}}</view>
+						<view class="paimeishi">{{detali.title}}</view>
 						<image class="bf" src="../../static/gerenzhongxin/iocn-59-bf.png" mode=""></image>
 						<view class="shu2">{{detali.views}}</view>
 					</view>
@@ -36,12 +36,12 @@
 		</view>
 		<view class="classify" v-show="num === 1">
 			<view class="heng" v-for="(list,index) in arr" :key='index'>
-				<view class="tu" :style="{ backgroundImage: 'url(' + '/static/gerenzhongxin/img-61-sp.png' + ')' }">
-					<view class="xiaohei">@小黑粉</view>
+				<view class="tu" :style="{ backgroundImage: 'url(' + list.thumb + ')' }">
+					<view class="xiaohei">@{{userlist.user_nicename}}</view>
 					<view class="heng">
-						<view class="paimeishi">给大家拍个美食来看看</view>
+						<view class="paimeishi">{{list.title}}</view>
 						<image class="bf" src="../../static/gerenzhongxin/iocn-59-bf.png" mode=""></image>
-						<view class="shu2">123</view>
+						<view class="shu2">{{list.nums}}</view>
 					</view>
 				</view>
 			</view>
@@ -71,12 +71,13 @@
 				detalis:[],
 				goodslist:'',
 				userlist:'',
-				token:''
+				token:'',
+				otheruid:''
 			};
 		},
-		onLoad(options) {
+		onLoad() {
 			this.getpersonalhomepage()//获取移动端返回信息
-			// this.uid = options.uid
+			console.log(111,this.otheruid)
 			this.getvideolist()
 			this.getMyfans()
 			this.getLiverecord()
@@ -90,12 +91,15 @@
 			getpersonalhomepage(){//获取移动端返回信息
 				bridge.register('personalHomePageCallback', function(result) {
 					console.log(result)
-					this.UIDS =result
+					console.log(JSON.parse(result))
+					console.log(JSON.parse(result).uid)
+					this.otheruid =JSON.parse(result).uid
 				})
 			},
-			getvideolist() {//有问题
-				this.request.getVideoList({
-					uid: this.UIDS
+			getvideolist() {//确认
+				this.request.getmyvideo({
+					uid: 22807,
+					token:uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res);
 					this.detalis = res.data.info
@@ -104,9 +108,9 @@
 					})
 				})
 			},
-			getLiverecord(){//没问题
+			getLiverecord(){//确认111
 				this.request.getLivere({
-					touid: this.UIDS
+					touid: 22807
 				}).then(res => {
 					console.log(res);
 					this.arr = res.data.info
@@ -115,19 +119,19 @@
 					})
 				})
 			},
-			getMyfans(){//没问题
+			getMyfans(){//确认1111
 				this.request.getMyFans({
 					token:uni.getStorageSync('token'),
-					user_id:this.UIDS
+					user_id:22807
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
 				})
 			},
-			cancel1() {//没问题
+			cancel1() {//没问题111
 				this.request.getAttent({
 					uid: uni.getStorageSync('id'),
-					touid: this.UIDS
+					touid: 22807
 				}).then(res => {
 					console.log(res);
 				})
@@ -248,10 +252,11 @@
 		margin-left: 8rpx;
 		margin-top: 12rpx;
 		background-size: 100% 100%;
+		background: #979797;
 	}
 
 	.xiaohei {
-		margin-top: 280rpx;
+		margin-top: 260rpx;
 		font-size: 17rpx;
 		color: #ffffff;
 		margin-left: 6rpx;
@@ -262,6 +267,10 @@
 		font-size: 12rpx;
 		color: #ffffff;
 		margin-left: 6rpx;
+		width: 140rpx;
+		overflow: hidden;
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 	.bf {

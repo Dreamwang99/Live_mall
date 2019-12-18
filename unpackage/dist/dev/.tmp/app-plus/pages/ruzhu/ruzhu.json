@@ -4,7 +4,6 @@
   "usingComponents": {
     "uni-popup": "/components/uni-popup/uni-popup",
     "w-picker": "/components/w-picker/w-picker",
-    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper",
-    "bridge": "/common/unfile/unfile"
+    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper"
   }
 }

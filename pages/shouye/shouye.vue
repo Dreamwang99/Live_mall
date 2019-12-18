@@ -524,6 +524,8 @@
 			// socket.on('pong', (timeout) => {
 			// 	console.log('pong',timeout)
 			// });
+			// socket.emit('systemfireworks','这是第一个消息内容')
+			// socket.emit('superadminaction','这是第二个消息内容')
 			// 接受到新消息
 			// socket.on('systemfireworks', d => {
 			// 	console.log('systemfireworks', d);
@@ -1741,8 +1743,10 @@
 		font-size: 22rpx;
 		margin-left: 10rpx;
 		width: 100%;
-		overflow: hidden;
 		padding-top: 10rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
 	.jiage {

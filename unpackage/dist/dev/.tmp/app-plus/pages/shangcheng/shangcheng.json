@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
-  "transparentTitle": "always",
+  "navigationStyle": "custom",
+  "titleView": false,
   "usingComponents": {}
 }

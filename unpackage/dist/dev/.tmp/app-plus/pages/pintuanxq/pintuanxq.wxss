@@ -1,5 +1,5 @@
 
-.content.data-v-3defd914 {
+.content.data-v-01c5830c {
 	width: 100%;
 	background: #fff;
 	height: 100%;
@@ -7,7 +7,7 @@
 	top: 0;
 	bottom: 0;
 }
-.pin_right.data-v-3defd914 {
+.pin_right.data-v-01c5830c {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -18,12 +18,12 @@
 	margin-left: 13rpx;
 	line-height: 50rpx;
 }
-.dp.data-v-3defd914 {
+.dp.data-v-01c5830c {
 	height: 25rpx;
 	width: 25rpx;
 	margin-left: 40rpx;
 }
-.pin_bottom.data-v-3defd914 {
+.pin_bottom.data-v-01c5830c {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -41,13 +41,13 @@
 	        align-items: center;
 	border-bottom: 1px solid #eee;
 }
-.daojishi.data-v-3defd914 {}
-.zi.data-v-3defd914 {
+.daojishi.data-v-01c5830c {}
+.zi.data-v-01c5830c {
 	color: #a5a5a5;
 	font-size: 17rpx;
 	margin-left: 12rpx;
 }
-.dian.data-v-3defd914 {
+.dian.data-v-01c5830c {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -60,7 +60,7 @@
 	        align-items: center;
 	padding-top: 32rpx;
 }
-.time_.data-v-3defd914 {
+.time_.data-v-01c5830c {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -77,22 +77,22 @@
 	        align-items: center;
 	margin: 49rpx 0 68rpx 0;
 }
-.line.data-v-3defd914 {
+.line.data-v-01c5830c {
 	height: 2rpx;
 	width: 24%;
 	background-color: #6e6e6e;
 }
-.img_t.data-v-3defd914 {
+.img_t.data-v-01c5830c {
 	width: 193rpx;
 	height: 193rpx;
 }
-.zi1.data-v-3defd914 {
+.zi1.data-v-01c5830c {
 	font-size: 20rpx;
 	margin-left: 18rpx;
 	margin-top: 45rpx;
 	margin-right: auto;
 }
-.xiangqing.data-v-3defd914 {
+.xiangqing.data-v-01c5830c {
 	margin-left: 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -103,7 +103,7 @@
 	        flex-direction: column;
 	width: 70%;
 }
-.people_list.data-v-3defd914 {
+.people_list.data-v-01c5830c {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -117,7 +117,7 @@
 	        justify-content: space-around;
 	padding-top: 30rpx;
 }
-.shangpin.data-v-3defd914 {
+.shangpin.data-v-01c5830c {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -133,26 +133,26 @@
 	margin-top: 10rpx;
 	border-bottom: 10rpx solid #eee;
 }
-.biao.data-v-3defd914 {
+.biao.data-v-01c5830c {
 	height: 195rpx;
 	width: 195rpx;
 }
-.biao_img.data-v-3defd914 {
+.biao_img.data-v-01c5830c {
 	width: 193rpx;
 }
-.biaozi.data-v-3defd914 {
+.biaozi.data-v-01c5830c {
 	font-size: 24rpx;
 	width: 75%;
 	margin-top: 10rpx;
 	height: 50%;
 }
-.biaozi1.data-v-3defd914 {
+.biaozi1.data-v-01c5830c {
 	font-size: 30rpx;
 	margin-right: 10rpx;
 	margin-left: auto;
 	font-weight: 300;
 }
-.list_middle.data-v-3defd914 {
+.list_middle.data-v-01c5830c {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -166,29 +166,29 @@
 	margin-top: 50rpx;
 	font-size: 26rpx;
 }
-.biaozi2.data-v-3defd914 {
+.biaozi2.data-v-01c5830c {
 	font-size: 26rpx;
 	color: #797979;
 }
-.biaozi4.data-v-3defd914 {
+.biaozi4.data-v-01c5830c {
 	font-size: 26rpx;
 	color: #797979;
 }
-.biaozi3.data-v-3defd914 {
+.biaozi3.data-v-01c5830c {
 	font-size: 32rpx;
 	color: red;
 	margin-left: 45rpx;
 }
-.tuanzhang.data-v-3defd914 {
+.tuanzhang.data-v-01c5830c {
 	/* height: 120rpx; */
 	width: 18%;
 }
-.pin.data-v-3defd914 {
+.pin.data-v-01c5830c {
 	height: auto;
 	background: #fff;
 	padding-bottom: 50rpx;
 }
-.hdi.data-v-3defd914 {
+.hdi.data-v-01c5830c {
 	position: relative;
 	height: 28rpx;
 	width: 52rpx;
@@ -201,11 +201,11 @@
 	top: -90%;
 	left: 55%;
 }
-.ktx.data-v-3defd914 {
+.ktx.data-v-01c5830c {
 	height: 15vw;
 	width: 15vw;
 }
-.time.data-v-3defd914 {
+.time.data-v-01c5830c {
 	background-color: red;
 	height: 48rpx;
 	width: 60rpx;
@@ -213,26 +213,26 @@
 	color: #ffffff;
 	text-align: center;
 }
-.shengyu.data-v-3defd914 {
+.shengyu.data-v-01c5830c {
 	color: #8b8b8b;
 	font-size: 30rpx;
 	padding: 0 10rpx;
 }
-.maohao.data-v-3defd914 {
+.maohao.data-v-01c5830c {
 	margin-top: 52rpx;
 	margin-left: 7rpx;
 	margin-right: 7rpx;
 	text-align: center;
 	font-size: 36rpx;
 }
-.lier.data-v-3defd914 {
+.lier.data-v-01c5830c {
 	font-size: 30rpx;
 }
-.time1.data-v-3defd914 {
+.time1.data-v-01c5830c {
 	font-size: 22rpx;
 	color: #818181;
 }
-.yaoqing.data-v-3defd914 {
+.yaoqing.data-v-01c5830c {
 	height: 68rpx;
 	width: 274rpx;
 	background-color: red;
@@ -244,38 +244,38 @@
 	font-size: 26rpx;
 	margin-bottom: 30rpx;
 }
-.xj.data-v-3defd914 {
+.xj.data-v-01c5830c {
 	height: 80rpx;
 	width: 80rpx;
 	margin-top: 55rpx;
 	margin-left: 188rpx;
 }
-.xiangcexq.data-v-3defd914 {
+.xiangcexq.data-v-01c5830c {
 	margin-top: 22rpx;
 	margin-left: 180rpx;
 	font-size: 22rpx;
 }
-.xiangjips.data-v-3defd914 {
+.xiangjips.data-v-01c5830c {
 	margin-top: 22rpx;
 	margin-left: 180rpx;
 	font-size: 22rpx;
 }
-.quxiao.data-v-3defd914 {
+.quxiao.data-v-01c5830c {
 	text-align: center;
 	font-size: 25rpx;
 }
 
 /* 底部分享 */
-.uni-share.data-v-3defd914 {
+.uni-share.data-v-01c5830c {
 	background: #fff;
 }
-.uni-share-title.data-v-3defd914 {
+.uni-share-title.data-v-01c5830c {
 	line-height: 60rpx;
 	font-size: 24rpx;
 	padding: 15rpx 0;
 	text-align: center;
 }
-.uni-share-content.data-v-3defd914 {
+.uni-share-content.data-v-01c5830c {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -286,7 +286,7 @@
 	-webkit-justify-content: space-around;
 	        justify-content: space-around;
 }
-.uni-share-content-box.data-v-3defd914 {
+.uni-share-content-box.data-v-01c5830c {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -300,7 +300,7 @@
 	width: 25%;
 	box-sizing: border-box;
 }
-.uni-share-content-image.data-v-3defd914 {
+.uni-share-content-image.data-v-01c5830c {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -315,17 +315,17 @@
 	overflow: hidden;
 	border-radius: 10rpx;
 }
-.uni-share-content-image .image.data-v-3defd914 {
+.uni-share-content-image .image.data-v-01c5830c {
 	width: 100%;
 	height: 100%;
 }
-.uni-share-content-text.data-v-3defd914 {
+.uni-share-content-text.data-v-01c5830c {
 	font-size: 26rpx;
 	color: #333;
 	padding-top: 5px;
 	padding-bottom: 10px;
 }
-.uni-share-btn.data-v-3defd914 {
+.uni-share-btn.data-v-01c5830c {
 	height: 90rpx;
 	line-height: 90rpx;
 	border-top: 1px #f5f5f5 solid;

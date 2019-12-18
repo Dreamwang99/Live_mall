@@ -1,0 +1,2 @@
+setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"vMs { height: 100vh; }\n.",[1],"vMs wx-video { width: 100%; height: 100%; }\n",],undefined,{path:"./pages/xxdp/videoPlay.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/xxdp/videoPlay.wxml') } }));

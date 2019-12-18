@@ -35,7 +35,7 @@
 /* ==================
         初始化
  ==================== */
-.uni-popup.data-v-545e3aa4 {
+.uni-popup.data-v-b7dc0bac {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -43,7 +43,7 @@
   right: 0;
   z-index: 99;
 }
-.uni-popup__mask.data-v-545e3aa4 {
+.uni-popup__mask.data-v-b7dc0bac {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -52,40 +52,40 @@
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
 }
-.mask-ani.data-v-545e3aa4 {
+.mask-ani.data-v-b7dc0bac {
   -webkit-transition-property: opacity;
   transition-property: opacity;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
-.uni-top-mask.data-v-545e3aa4 {
+.uni-top-mask.data-v-b7dc0bac {
   opacity: 1;
 }
-.uni-bottom-mask.data-v-545e3aa4 {
+.uni-bottom-mask.data-v-b7dc0bac {
   opacity: 1;
 }
-.uni-center-mask.data-v-545e3aa4 {
+.uni-center-mask.data-v-b7dc0bac {
   opacity: 1;
 }
-.uni-popup__wrapper.data-v-545e3aa4 {
+.uni-popup__wrapper.data-v-b7dc0bac {
   display: block;
   position: absolute;
 }
-.top.data-v-545e3aa4 {
+.top.data-v-b7dc0bac {
   top: 0;
   left: 0;
   right: 0;
   -webkit-transform: translateY(-500px);
           transform: translateY(-500px);
 }
-.bottom.data-v-545e3aa4 {
+.bottom.data-v-b7dc0bac {
   bottom: 0;
   left: 0;
   right: 0;
   -webkit-transform: translateY(500px);
           transform: translateY(500px);
 }
-.center.data-v-545e3aa4 {
+.center.data-v-b7dc0bac {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -107,11 +107,11 @@
           transform: scale(1.2);
   opacity: 0;
 }
-.uni-popup__wrapper-box.data-v-545e3aa4 {
+.uni-popup__wrapper-box.data-v-b7dc0bac {
   display: block;
   position: relative;
 }
-.content-ani.data-v-545e3aa4 {
+.content-ani.data-v-b7dc0bac {
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: transform, opacity;
@@ -119,25 +119,25 @@
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
-.uni-top-content.data-v-545e3aa4 {
+.uni-top-content.data-v-b7dc0bac {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-.uni-bottom-content.data-v-545e3aa4 {
+.uni-bottom-content.data-v-b7dc0bac {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-.uni-center-content.data-v-545e3aa4 {
+.uni-center-content.data-v-b7dc0bac {
   -webkit-transform: scale(1);
           transform: scale(1);
   opacity: 1;
 }
 
 
-.fabu_content.data-v-9cea2c88 {
+.fabu_content.data-v-c1fd3880 {
 	width: 100%;
 }
-.mingsize.data-v-9cea2c88{
+.mingsize.data-v-c1fd3880{
 	width: 10%;
 	font-size: 25rpx;
 	height: 80rpx;
@@ -145,7 +145,7 @@
 	background: #fff;
 	color: #999;
 }
-.mingcheng.data-v-9cea2c88 {
+.mingcheng.data-v-c1fd3880 {
 	width: 100%;
 	font-size: 25rpx;
 	height: 80rpx;
@@ -155,7 +155,21 @@
 	color: #999;
 	border-top: 5rpx solid #eee;
 }
-.uf-imgs.data-v-9cea2c88 {
+.uni-list-cell.data-v-c1fd3880{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.uni-list-cell-db.data-v-c1fd3880{
+	margin-right: 20rpx;
+}
+.uf-imgs.data-v-c1fd3880 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -166,23 +180,23 @@
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
-.tianjia.data-v-9cea2c88 {
+.tianjia.data-v-c1fd3880 {
 	height: 145rpx;
 	width: 145rpx;
 	margin: 80rpx 10rpx 13rpx 20rpx;
 	background: #fff;
 }
-.kanjia.data-v-9cea2c88 {
+.kanjia.data-v-c1fd3880 {
 	height: 350rpx;
 	width: 100%;
 	background-color: #FFFFFF;
 }
-.jy.data-v-9cea2c88 {
+.jy.data-v-c1fd3880 {
 	font-size: 25rpx;
 	margin: 20rpx;
 	background-color: #F5F5F5;
 }
-.ziti.data-v-9cea2c88 {
+.ziti.data-v-c1fd3880 {
 	line-height: 62rpx;
 	text-align: center;
 	margin-top: 35rpx;
@@ -193,7 +207,7 @@
 	color: #FFFFFF;
 	border-radius: 30rpx;
 }
-.kuaidi.data-v-9cea2c88 {
+.kuaidi.data-v-c1fd3880 {
 	line-height: 62rpx;
 	text-align: center;
 	margin-top: 35rpx;
@@ -205,7 +219,7 @@
 	background-color: #FFFFFF;
 	border-radius: 30rpx;
 }
-.fabu.data-v-9cea2c88 {
+.fabu.data-v-c1fd3880 {
 	color: #fff;
 	text-align: center;
 	margin: 60rpx auto;
@@ -215,23 +229,23 @@
 	border-radius: 40rpx;
 	line-height: 75rpx;
 }
-.way.data-v-9cea2c88 {
+.way.data-v-c1fd3880 {
 	width: 100%;
 	background-color: #F5F5F5;
 }
-.label.data-v-9cea2c88{
+.label.data-v-c1fd3880{
 	border-radius: 8rpx;
 	border: 1rpx #F5F5F5 solid;
 	padding: 5rpx 5rpx 5rpx 5rpx;
 	margin-right: 15rpx;
 }
-.ac.data-v-9cea2c88{
+.ac.data-v-c1fd3880{
 	border-radius: 8rpx;
 	border: 1rpx red solid;
 	padding: 5rpx 5rpx 5rpx 5rpx;
 	margin-right: 15rpx;
 }
-.heng.data-v-9cea2c88 {
+.heng.data-v-c1fd3880 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -244,7 +258,7 @@
 	position: fixed;
 	bottom: 30rpx;
 }
-.quxiao.data-v-9cea2c88 {
+.quxiao.data-v-c1fd3880 {
 	width: 130rpx;
 	height: 50rpx;
 	background-color: red;
@@ -253,7 +267,7 @@
 	line-height: 50rpx;
 	margin-right: 15rpx;
 }
-.queding.data-v-9cea2c88 {
+.queding.data-v-c1fd3880 {
 	width: 130rpx;
 	height: 50rpx;
 	background-color: red;
@@ -262,7 +276,7 @@
 	line-height: 50rpx;
 }
 /* 弹窗 */
-.fixed.data-v-9cea2c88 {
+.fixed.data-v-c1fd3880 {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -270,7 +284,7 @@
 	height: 100vh;
 	z-index: 9999999;
 }
-.maskB.data-v-9cea2c88 {
+.maskB.data-v-c1fd3880 {
 	background-color: rgba(0, 0, 0, .3);
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -278,7 +292,7 @@
 	top: 0;
 	height: 1000rpx;
 }
-.mask.data-v-9cea2c88 {
+.mask.data-v-c1fd3880 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -292,7 +306,7 @@
 	height: 100vh;
 	background-color: rgba(0, 0, 0, .3);
 }
-.maskBox.data-v-9cea2c88 {
+.maskBox.data-v-c1fd3880 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -314,7 +328,7 @@
 	border-top-right-radius: 20rpx;
 	border-top-left-radius: 20rpx;
 }
-.user.data-v-9cea2c88{
+.user.data-v-c1fd3880{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

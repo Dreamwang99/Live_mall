@@ -1,0 +1,1 @@
+<view><view class="vMs"><video src="{{videoUrl}}" controls autoplay="true"></video></view></view>

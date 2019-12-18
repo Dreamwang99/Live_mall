@@ -271,7 +271,7 @@
 									})
 									setTimeout(function(){
 										uni.redirectTo({
-											url: '../dingdan/dingdan'
+											url: '../dingdan/dingdan?tbIndex=1'
 										});
 									},1500)
 								}
@@ -991,7 +991,8 @@
 <style>
 	.beijing {
 		height: 1080rpx;
-		background-color: #F5F5F5;
+		/* background-color: #F5F5F5; */
+		background-color: #FFF;
 	}
 
 	.baidi {
