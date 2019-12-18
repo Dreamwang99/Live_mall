@@ -475,7 +475,7 @@
 						})
 					} else {
 						uni.showToast({
-							title: res.data.msg,
+							title: res.msg,
 							icon: "none",
 						});
 					}

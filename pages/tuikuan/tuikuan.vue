@@ -49,7 +49,7 @@
 					<view>{{detail.create_at}}</view>
 				</view>
 			</view>
-			<view class="kefu">
+			<view class="kefu" @tap="goKF()">
 				<view style="display: flex;">
 					<image class="kefu1" src="../../static/dingdan/iocn-29-lxkf_61.png" mode=""></image>
 					<view class="kefu2">联系客服</view>
@@ -58,9 +58,9 @@
 				<image class="back" src="../../static/back.png" mode=""></image>
 			</view>
 
-			<view class="anniu">
+			<!-- <view class="anniu">
 				<view class="anniu2">确定</view>
-			</view>
+			</view> -->
 			<view class="xian2"></view>
 		</view>
 	</view>
@@ -87,6 +87,11 @@
 				}).then(res =>{
 					console.log(res);
 					this.detail = res.data
+				})
+			},
+			goKF(){
+				uni.navigateTo({
+					url:'/pages/kefu2/kefu2'
 				})
 			},
 			goshop(id){
