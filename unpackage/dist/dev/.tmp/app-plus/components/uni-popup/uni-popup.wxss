@@ -35,7 +35,7 @@
 /* ==================
         初始化
  ==================== */
-.uni-popup.data-v-545e3aa4 {
+.uni-popup.data-v-b7dc0bac {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -43,7 +43,7 @@
   right: 0;
   z-index: 99;
 }
-.uni-popup__mask.data-v-545e3aa4 {
+.uni-popup__mask.data-v-b7dc0bac {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -52,40 +52,40 @@
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
 }
-.mask-ani.data-v-545e3aa4 {
+.mask-ani.data-v-b7dc0bac {
   -webkit-transition-property: opacity;
   transition-property: opacity;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
-.uni-top-mask.data-v-545e3aa4 {
+.uni-top-mask.data-v-b7dc0bac {
   opacity: 1;
 }
-.uni-bottom-mask.data-v-545e3aa4 {
+.uni-bottom-mask.data-v-b7dc0bac {
   opacity: 1;
 }
-.uni-center-mask.data-v-545e3aa4 {
+.uni-center-mask.data-v-b7dc0bac {
   opacity: 1;
 }
-.uni-popup__wrapper.data-v-545e3aa4 {
+.uni-popup__wrapper.data-v-b7dc0bac {
   display: block;
   position: absolute;
 }
-.top.data-v-545e3aa4 {
+.top.data-v-b7dc0bac {
   top: 0;
   left: 0;
   right: 0;
   -webkit-transform: translateY(-500px);
           transform: translateY(-500px);
 }
-.bottom.data-v-545e3aa4 {
+.bottom.data-v-b7dc0bac {
   bottom: 0;
   left: 0;
   right: 0;
   -webkit-transform: translateY(500px);
           transform: translateY(500px);
 }
-.center.data-v-545e3aa4 {
+.center.data-v-b7dc0bac {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -107,11 +107,11 @@
           transform: scale(1.2);
   opacity: 0;
 }
-.uni-popup__wrapper-box.data-v-545e3aa4 {
+.uni-popup__wrapper-box.data-v-b7dc0bac {
   display: block;
   position: relative;
 }
-.content-ani.data-v-545e3aa4 {
+.content-ani.data-v-b7dc0bac {
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: transform, opacity;
@@ -119,15 +119,15 @@
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
-.uni-top-content.data-v-545e3aa4 {
+.uni-top-content.data-v-b7dc0bac {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-.uni-bottom-content.data-v-545e3aa4 {
+.uni-bottom-content.data-v-b7dc0bac {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-.uni-center-content.data-v-545e3aa4 {
+.uni-center-content.data-v-b7dc0bac {
   -webkit-transform: scale(1);
           transform: scale(1);
   opacity: 1;

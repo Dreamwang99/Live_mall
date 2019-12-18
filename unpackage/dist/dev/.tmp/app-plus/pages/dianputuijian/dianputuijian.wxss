@@ -26,6 +26,13 @@
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 }
+.hengs{
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	/* justify-content: space-between; */
+}
 .beijing {
 	background-color: #fff;
 	height: 60rpx;
@@ -188,6 +195,7 @@
 }
 .img1{
 	width: 229rpx;
+	margin-left: 10rpx;
 }
 
 /* 底部分享 */
@@ -256,5 +264,12 @@
 	border-top: 1px #f5f5f5 solid;
 	text-align: center;
 	color: #666;
+}
+.backimg{
+	position: absolute;
+	top: 80rpx;
+	left: 30rpx;
+	width: 30rpx;
+	height: 40rpx;
 }
 

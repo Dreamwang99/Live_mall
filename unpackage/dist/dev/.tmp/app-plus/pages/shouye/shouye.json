@@ -2,6 +2,8 @@
   "transparentTitle": "always",
   "navigationStyle": "custom",
   "usingComponents": {
-    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper"
+    "lu-popup-wrapper": "/components/lu-popup-wrapper/lu-popup-wrapper",
+    "bridge": "/common/unfile/unfile",
+    "uni-notice-bar": "/components/uni-notice-bar/uni-notice-bar"
   }
 }

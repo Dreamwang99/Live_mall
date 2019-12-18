@@ -102,11 +102,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/lu-popup-wrapper/lu-popup-wrapper":1,"components/uni-popup/uni-popup":1,"components/w-picker/w-picker":1,"components/uni-rate/uni-rate":1,"components/add":1,"components/linnian-CountDown/uni-countdown":1,"components/uni-transition/uni-transition":1,"components/uni-steps/uni-steps":1,"components/uni-icons/uni-icons":1};
+/******/ 		var cssChunks = {"components/lu-popup-wrapper/lu-popup-wrapper":1,"components/uni-notice-bar/uni-notice-bar":1,"components/uni-popup/uni-popup":1,"components/w-picker/w-picker":1,"components/uni-rate/uni-rate":1,"components/add":1,"components/linnian-CountDown/uni-countdown":1,"components/uni-transition/uni-transition":1,"components/uni-steps/uni-steps":1,"components/uni-icons/uni-icons":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/lu-popup-wrapper/lu-popup-wrapper":"components/lu-popup-wrapper/lu-popup-wrapper","components/uni-popup/uni-popup":"components/uni-popup/uni-popup","components/w-picker/w-picker":"components/w-picker/w-picker","components/uni-rate/uni-rate":"components/uni-rate/uni-rate","components/add":"components/add","components/linnian-CountDown/uni-countdown":"components/linnian-CountDown/uni-countdown","components/uni-transition/uni-transition":"components/uni-transition/uni-transition","components/uni-steps/uni-steps":"components/uni-steps/uni-steps","components/uni-icons/uni-icons":"components/uni-icons/uni-icons"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/lu-popup-wrapper/lu-popup-wrapper":"components/lu-popup-wrapper/lu-popup-wrapper","components/uni-notice-bar/uni-notice-bar":"components/uni-notice-bar/uni-notice-bar","components/uni-popup/uni-popup":"components/uni-popup/uni-popup","components/w-picker/w-picker":"components/w-picker/w-picker","components/uni-rate/uni-rate":"components/uni-rate/uni-rate","components/add":"components/add","components/linnian-CountDown/uni-countdown":"components/linnian-CountDown/uni-countdown","components/uni-transition/uni-transition":"components/uni-transition/uni-transition","components/uni-steps/uni-steps":"components/uni-steps/uni-steps","components/uni-icons/uni-icons":"components/uni-icons/uni-icons"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

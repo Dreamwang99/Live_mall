@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/register/register",
+    "pages/xxdp/videoPlay",
     "pages/shouye/shouye",
     "pages/dianpu/dianpu",
     "pages/tixianjieguo/tixianjieguo",

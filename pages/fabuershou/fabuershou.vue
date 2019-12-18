@@ -63,9 +63,9 @@
 		<w-picker mode="region" :defaultVal="['浙江省','杭州市','滨江区']" :areaCode="['33','3301','330108']" :hideArea="false"
 		 @confirm="onConfirm" ref="region"></w-picker>
 		<input v-model="price" class="mingcheng" placeholder="价格" type="number" value="" />
-		<input v-model="oldprice" class="mingcheng" placeholder="入手价" type="text" value="" />
+		<input v-model="oldprice" class="mingcheng" placeholder="入手价" type="number" value="" />
 		<input v-model="newold" class="mingcheng" placeholder="新旧程度" type="text" value="" />
-		<input v-model="phone" class="mingcheng" placeholder="联系方式" type="text" value="" />
+		<input v-model="phone" class="mingcheng" placeholder="联系方式" type="number" maxlength="11" value="" />
 		<view class="jy">交易方式</view>
 		<view class="way">
 			<view style="display: flex;flex-direction: row;justify-content: space-around;">

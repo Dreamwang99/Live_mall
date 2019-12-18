@@ -2,7 +2,8 @@
 	<view class="beijing uni-fle">
 		<view class="left">
 			<view v-for="(item,index) in showlist1" :key="index">
-				<image :class="index%2==0?'tu2':'tu'" :src="item.image" mode="aspectFill"></image>
+				<image class="tu2" :src="item.image" mode="aspectFill"></image>
+				<!-- <image :class="index==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image> -->
 				<view class="baidi">
 					<view class="xjhao">
 						{{item.content}}
@@ -21,7 +22,8 @@
 		</view>
 		<view class="right">
 			<view v-for="(item,index) in showlist2" :key="index">
-				<image :class="index%2==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image>
+				<image class="tu2" :src="item.image" mode="aspectFill"></image>
+				<!-- <image :class="index%2==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image> -->
 				<view class="baidi">
 					<view class="xjhao">
 						{{item.content}}

@@ -16,6 +16,7 @@ page {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
+	/* min-width: 400rpx; */
 	height: 90rpx;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
@@ -45,7 +46,7 @@ page {
 .name {
 	margin: auto 40rpx auto 20rpx;
 	max-height: 90rpx;
-	width: 100rpx;
+	min-width: 100rpx;
 	font-size: 32rpx;
 }
 .phone {

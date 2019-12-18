@@ -8,11 +8,11 @@
 			<view class="sousuo_">搜索</view>
 		</view>
 		<view class="title1">
-			<view style="display: flex;">
+			<!-- <view style="display: flex;">
 				<view v-for="(item, index) in Title" :key="index" @click="cancel(index)">
 					<view :class="item.status ? 'sp' : 'tj'">{{ item.name }}</view>
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="ershou_right">
 				<view class="shai">筛选</view>
 				<image class="sxtu" src="../../static/ershou/iocn-63-sx.png" mode=""></image>

@@ -48,7 +48,7 @@
 				</view>
 				<view class="evaluatehumanbox" v-if="shopcommon.count!=0">
 					<view class="photobox">
-						<image :src="shopcommon.common.avatar" mode="" class="humanimg"></image>
+						<image :src="shopcommon.common.avatar || ''" mode="" class="humanimg"></image>
 						<view class="humanname">{{shopcommon.common.user_nicename}}</view>
 					</view>
 					<view class="humanmsg">{{shopcommon.common.content}}</view>
@@ -563,6 +563,12 @@
 				}).then(res => {
 					console.log(res)
 					console.log(res.msg)
+					if(res.code!=1){
+						uni.showToast({
+							title: res.msg,
+							icon: 'none'
+						})
+					}
 					this.goodsparameter = res.data.specs //商品参数
 					this.goodsdata = res.data //商品所有数据
 					this.lunboimg = res.data.image
@@ -885,6 +891,12 @@
 	.shopprice {
 		color: red;
 		font-size: 42rpx;
+	}
+	
+	.shopname{
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
 	.shopmsg {

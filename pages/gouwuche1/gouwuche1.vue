@@ -86,6 +86,7 @@
 				getimgaddress: '',
 				dianji: 0,
 				goods_id: [],
+				deteleid: [],
 				switch1: true,
 				page: 1,
 				carid: '',
@@ -190,6 +191,7 @@
 						console.log(val2.goods_id)
 						if (val2.goodsChose) {
 							this.goods_id[this.goods_id.length] = val2.goods_id
+							this.deteleid[this.goods_id.length] = val2.id
 						}
 						console.log(val2.goods_spec)
 						if (val2.goodsChose) {
@@ -197,10 +199,12 @@
 						}
 					})
 				})
-				this.request.delshopcar({
+				// deleteCart   delshopcar
+				this.request.deleteCart({
 					token: uni.getStorageSync('token'),
-					goodsid:this.goods_id,
-					spec:this.goods_spec
+					// goodsid:this.goods_id,
+					// spec:this.goods_spec,
+					cart_id: this.deteleid,
 				}).then(res=>{
 					console.log(res)
 					this.getcart()
@@ -492,7 +496,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 180rpx;
+		width: 240rpx;
 		height: 40rpx;
 		font-size: 20rpx;
 		margin-top: 15rpx;

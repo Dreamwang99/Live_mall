@@ -102,9 +102,9 @@
 				pages: 1
 			}
 		},
-		onNavigationBarButtonTap() {
-			this.$refs.share.open()
-		},
+		// onNavigationBarButtonTap() {
+		// 	this.$refs.share.open()
+		// },
 		onReachBottom(){
 			this.pages ++
 			this.getmizhiList()

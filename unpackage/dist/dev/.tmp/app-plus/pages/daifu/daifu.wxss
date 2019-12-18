@@ -53,6 +53,9 @@
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
 	padding: 34rpx 40rpx 34rpx 40rpx;
 	width: 100%;
 	display: ;
@@ -371,5 +374,9 @@
 .biao {
 	width: 193rpx;
 	height: 193rpx;
+}
+.binggoimg {
+	width: 35rpx;
+	height: 35rpx;
 }
 
