@@ -514,18 +514,18 @@
 			// 	console.log('尝试重新重连');
 			// });
 			// 错误发生，并且无法被其他事件类型所处理
-			socket.on('error', err => {
-				console.log('错误发生，并且无法被其他事件类型所处理', err);
-			});
-			socket.on('ping', (timeout) => {
-			  console.log(1111)
-			  console.log('ping')
-			});
-			socket.on('pong', (timeout) => {
-				console.log('pong',timeout)
-			});
-			socket.emit('systemfireworks','这是第一个消息内容')
-			socket.emit('superadminaction','这是第二个消息内容')
+			// socket.on('error', err => {
+			// 	console.log('错误发生，并且无法被其他事件类型所处理', err);
+			// });
+			// socket.on('ping', (timeout) => {
+			//   console.log(1111)
+			//   console.log('ping')
+			// });
+			// socket.on('pong', (timeout) => {
+			// 	console.log('pong',timeout)
+			// });
+			// socket.emit('systemfireworks','这是第一个消息内容')
+			// socket.emit('superadminaction','这是第二个消息内容')
 			// 接受到新消息
 			// socket.on('systemfireworks', d => {
 			// 	console.log('systemfireworks', d);
