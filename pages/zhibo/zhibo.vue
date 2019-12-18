@@ -3,7 +3,7 @@
 		<view class="beijing1" :style="{ backgroundImage: 'url(' + '../../static/gerenzhongxin/bg-92-fm.png' + ')' }">
 			<view class="dianpu_top">
 				<image src="../../static/gerenshangjia/20_back.png" @tap="fanhui"></image>
-				<view class="top_right">
+				<view class="top_right" @tap="goscsp()">
 					<image src="../../static/gerenzhongxin/icon_ps.png"></image>
 				</view>
 			</view>
@@ -39,7 +39,6 @@
 
 <script>
 	export default {
-
 		data() {
 			return {
 				userinfo: uni.getStorageSync('userInformation'),
@@ -61,6 +60,11 @@
 			this.GetMyVideo()
 		},
 		methods: {
+			goscsp(){
+				uni.navigateTo({
+					url:'/pages/zhibo/shangchuanshipin'
+				})
+			},
 			choose(index) {
 				for (let i = 0; i < this.titles.length; i++) {
 					if (index == i) {

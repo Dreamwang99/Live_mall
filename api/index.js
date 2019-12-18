@@ -245,6 +245,8 @@ const getBalance = (params) => ajax(BASE_URL1 + 'User.GetBalance', params)
 const getAliOrder = (params) => ajax(BASE_URL1 + 'Charge.GetAliOrder', params)
 // 充值积分 --- 微信支付
 const getWxOrder = (params) => ajax(BASE_URL1 + 'Charge.GetWxOrder', params)
+// 上传视频
+const setVideo = (params) => ajax(BASE_URL1 + 'Video.SetVideo', params)
 
 
 
@@ -396,6 +398,7 @@ export default {
 	getBalance,	// 获取守护列表
 	getAliOrder,	// 充值积分 --- 支付宝支付
 	getWxOrder,		// 充值积分 --- 微信支付
+	setVideo,		// 上传视频
 	
 	
 	//陈
