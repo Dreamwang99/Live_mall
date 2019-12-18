@@ -17,6 +17,7 @@
 	width: 112rpx;
 	margin-left: 70rpx;
 	margin-top: 162rpx;
+	border-radius: 50%;
 }
 .guanzhu {
 	margin-top: 190rpx;
@@ -27,6 +28,8 @@
 	width: 370rpx;
 	background-color: #f13620;
 	border-radius: 40rpx;
+	margin-left: 50rpx;
+	color: #FFFFFF;
 }
 .quxiaoguanzhu {
 	margin-top: 190rpx;
@@ -37,6 +40,8 @@
 	width: 370rpx;
 	background-color: #A5A5A5;
 	border-radius: 40rpx;
+	margin-left: 50rpx;
+	color: #FFFFFF;
 }
 .tiezhu {
 	font-size: 26rpx;
@@ -58,8 +63,12 @@
 .shipin {
 	font-size: 28rpx;
 	line-height: 50rpx;
-	color: #ff212c;
 	margin-left: 206rpx;
+}
+.ac{
+	color: #f23d3d;
+	text-align: center;
+	border-bottom: 3rpx solid #f23d3d;
 }
 .hongxian {
 	height: 4rpx;
@@ -97,5 +106,19 @@
 	font-size: 12rpx;
 	color: #ffffff;
 	margin-left: 12rpx;
+}
+.classify{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.navback{
+	position: absolute;
 }
 

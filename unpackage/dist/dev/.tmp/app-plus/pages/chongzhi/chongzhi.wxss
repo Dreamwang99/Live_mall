@@ -13,15 +13,20 @@
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
 	        flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
 }
 .kuang {
-	height: 102rpx;
+	min-height: 102rpx;
 	width: 162rpx;
 	border: solid;
-	border-color: #ff212c;
+	border-color: #d5d5d5;
 	margin-left: 40rpx;
 	margin-top: 22rpx;
 	margin-bottom: 25rpx;
+}
+.ac {
+	border-color: #ff212c;
 }
 .zs {
 	height: 20rpx;
@@ -40,34 +45,34 @@
 	font-size: 18rpx;
 	color: #d5d5d5;
 }
-.zfb{
+.zfb {
 	height: 32rpx;
 	width: 32rpx;
 	margin-top: 30rpx;
 	margin-left: 35rpx;
 }
-.wx{
+.wx {
 	height: 27rpx;
 	width: 30rpx;
 	margin-top: 28rpx;
 	margin-left: 35rpx;
 	margin-bottom: 40rpx;
 }
-.zi{
+.zi {
 	font-size: 23rpx;
 	margin-top: 32rpx;
 	margin-left: 10rpx;
-	
+
 	color: #494949;
 }
-.gou{
+.gou {
 	height: 30rpx;
 	width: 30rpx;
 	margin-top: 35rpx;
 	margin-left: auto;
 	margin-right: 45rpx;
 }
-.queren{
+.queren {
 	background-color: #f13720;
 	height: 75rpx;
 	width: 710rpx;

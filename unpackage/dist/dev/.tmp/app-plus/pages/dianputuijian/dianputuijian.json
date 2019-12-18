@@ -1,16 +1,6 @@
 {
   "navigationBarTitleText": "",
   "transparentTitle": "always",
-  "titleNView": {
-    "buttons": [
-      {
-        "text": "",
-        "fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-        "fontSize": "30rpx",
-        "color": "#FFFFFF"
-      }
-    ]
-  },
   "usingComponents": {
     "uni-popup": "/components/uni-popup/uni-popup"
   }
