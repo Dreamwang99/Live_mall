@@ -1741,7 +1741,6 @@
 		font-size: 22rpx;
 		margin-left: 10rpx;
 		width: 100%;
-		overflow: hidden;
 		padding-top: 10rpx;
 		text-overflow: ellipsis;
 		white-space: nowrap;

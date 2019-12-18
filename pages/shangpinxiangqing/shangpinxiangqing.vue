@@ -560,15 +560,12 @@
 				}).then(res => {
 					console.log(res)
 					console.log(res.msg)
-<<<<<<< HEAD
 					if(res.code!=1){
 						uni.showToast({
 							title: res.msg,
 							icon: 'none'
 						})
 					}
-=======
->>>>>>> 5547fa7c30dfe8a8426bf363f41a46e5566b5cfd
 					this.goodsparameter = res.data.specs //商品参数
 					this.goodsdata = res.data //商品所有数据
 					this.lunboimg = res.data.image
@@ -891,6 +888,12 @@
 	.shopprice {
 		color: red;
 		font-size: 42rpx;
+	}
+	
+	.shopname{
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
 	.shopmsg {
