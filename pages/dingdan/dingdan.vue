@@ -12,11 +12,11 @@
 						没有相关订单
 					</view>
 				</view>
-				<view class="row" v-if="t.length>0" v-for="(row,index) in t" :key="index">
+				<view class="row" v-if="t.length>0" v-for="(row,index) in t" :key="index" @tap="godetail(row)">
 					<view class="type">
 						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.goods_list[0].business_name}}
 					</view>
-					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx" @tap="godetail()">
+					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx">
 						<view class="left">
 							<image :src="list.goods_logo"></image>
 						</view>
