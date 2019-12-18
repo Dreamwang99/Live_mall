@@ -865,6 +865,12 @@
 		color: red;
 		font-size: 42rpx;
 	}
+	
+	.shopname{
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
 
 	.shopmsg {
 		width: 725 rpx;
