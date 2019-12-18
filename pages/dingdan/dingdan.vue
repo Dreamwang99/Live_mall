@@ -16,7 +16,7 @@
 					<view class="type">
 						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.business_name}}
 					</view>
-					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx" @tap="godetail(row)">
+					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx" @tap="godetail()">
 						<view class="left">
 							<image :src="list.goods_logo"></image>
 						</view>
@@ -34,7 +34,7 @@
 					<view class="btns">
 						<block v-if="row.status*1 === 1">
 							<view class="default" @tap="cancel(row.order_no)">取消</view>
-							<view class="pay">付款</view>
+							<view class="pay" @tap="gopay(row)">付款</view>
 						</block>
 						<block v-if="row.status*1 === 2">
 							<view class="default" @tap="chakanwuliu(row.business_order_no)">物流查询</view>
@@ -111,6 +111,11 @@
 			this.headerPosition = e.scrollTop >= 0 ? "fixed" : "absolute";
 		},
 		methods: {
+			gopay(row){//付款
+				uni.navigateTo({
+					url: '../daifu/daifu?order_no=' + row.order_no
+				})
+			},
 			gopingjia(business_order_no) {
 				uni.navigateTo({
 					url: '../fapingjia/fapingjia?business_order_no=' + business_order_no

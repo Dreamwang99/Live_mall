@@ -95,37 +95,45 @@
 			// 设置默认地址
 			setdefault(item) {
 				console.log(item);
-				uni.request({
-					url: 'http://zsybshop.yanggod.com/api/order/setDefaultAddress',
-					method: "POST",
-					header: {
-						'content-type': 'application/x-www-form-urlencoded',
-					},
-					data: {
-						token: uni.getStorageSync('token'),
-						address_id: item.id
-					},
-			
-					success: (res) => {
-						console.log(res)
-			
-						if (res.data.code === 1) {
-							uni.showToast({
-								title: res.data.msg,
-								icon: "none",
-							})
-			
-							console.log("成功")
-							this.myAdress()
-						} else {
-							uni.showToast({
-								title: res.data.msg,
-								icon: "none",
-							})
-							console.log("失败")
+				if(item.is_default*1 === 0){
+					uni.request({
+						url: 'http://zsybshop.yanggod.com/api/order/setDefaultAddress',
+						method: "POST",
+						header: {
+							'content-type': 'application/x-www-form-urlencoded',
+						},
+						data: {
+							token: uni.getStorageSync('token'),
+							address_id: item.id
+						},
+								
+						success: (res) => {
+							console.log(res)
+								
+							if (res.data.code === 1) {
+								uni.showToast({
+									title: res.data.msg,
+									icon: "none",
+								})
+								
+								console.log("成功")
+								this.myAdress()
+							} else {
+								uni.showToast({
+									title: res.data.msg,
+									icon: "none",
+								})
+								console.log("失败")
+							}
 						}
-					}
-				})
+					})
+				}else{
+					uni.showToast({
+						title:'改地址已为默认',
+						icon:'none'
+					})
+				}
+				
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 			<view class="top_view"></view>
 		</view>
 		<view class="top" :style="{ backgroundImage: 'url(' + '/static/dianputuijian/bg-87-top.png' + ')' }">
+			<image src="../../static/gerenshangjia/20_back.png" mode="" class="backimg" @tap="navback()"></image>
 			<view style="height: 28rpx;"></view>
 			<view class="beijing" @tap="search">
 				<image class="fangdajing" src="../../static/icon-fangdajing.png" mode=""></image>
@@ -42,13 +43,13 @@
 					<button class="jd" @tap="jindain(item)">进店</button>
 				</view>
 			</view>
-			<view class="heng">
+			<view class="hengs">
 				<view class="img1" v-for="(item,index) in item.goods_list" :key="index">
-					<image class="tu1" :src="item.logo"></image>
+					<image class="tu1" :src="item.logo" @tap="goshopdetial(item.id)"></image>
 				</view>
 			</view>
 		</view>
-		<uni-popup ref="share" type="bottom" :custom="true" @change="change">
+		<!-- <uni-popup ref="share" type="bottom" :custom="true" @change="change">
 			<view class="uni-share">
 				<view class="uni-share-content">
 					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
@@ -60,16 +61,16 @@
 				</view>
 				<view class="uni-share-btn" @click="cancel('share')">取消</view>
 			</view>
-		</uni-popup>
+		</uni-popup> -->
 	</view>
 </template>
 
 <script>
-	import uniPopup from '@/components/uni-popup/uni-popup.vue';
+	// import uniPopup from '@/components/uni-popup/uni-popup.vue';
 	export default {
-		components:{
-			uniPopup,
-		},
+		// components:{
+		// 	uniPopup,
+		// },
 		data() {
 			return {
 				bottomData: [{
@@ -102,9 +103,9 @@
 				latitude: '',
 			}
 		},
-		onNavigationBarButtonTap() {
-			this.$refs.share.open()
-		},
+		// onNavigationBarButtonTap() {
+		// 	this.$refs.share.open()
+		// },//取消分享
 		onLoad() {
 			this.location()
 			this.getPersons()
@@ -112,6 +113,17 @@
 			this.getMerchantsgoodlist()
 		},
 		methods: {
+			navback(){
+				uni.navigateBack({
+					
+				})
+			},
+			goshopdetial(id){
+				console.log(id)
+				uni.navigateTo({
+					url:`../xxdp/xxdp?goods_id=${id}`,
+				})
+			},
 			//获取地址
 			location() {
 				uni.getLocation({
@@ -216,6 +228,11 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
+	}
+	.hengs{
+		width: 100%;
+		display: flex;
+		/* justify-content: space-between; */
 	}
 	.beijing {
 		background-color: #fff;
@@ -384,6 +401,7 @@
 	}
 	.img1{
 		width: 229rpx;
+		margin-left: 10rpx;
 	}
 	/* 底部分享 */
 	.uni-share {
@@ -440,5 +458,12 @@
 		border-top: 1px #f5f5f5 solid;
 		text-align: center;
 		color: #666;
+	}
+	.backimg{
+		position: absolute;
+		top: 80rpx;
+		left: 30rpx;
+		width: 30rpx;
+		height: 40rpx;
 	}
 </style>
