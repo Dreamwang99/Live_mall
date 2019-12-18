@@ -221,7 +221,7 @@ page {
   -webkit-flex-direction: column;
           flex-direction: column;
   width: 342rpx;
-  height: 532rpx;
+  min-height: 200rpx;
   margin-top: 15rpx;
   margin-left: 20rpx;
   border-radius: 20rpx;
@@ -298,6 +298,9 @@ page {
   margin-left: 10rpx;
   font-size: 28rpx;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .searchmoney {
   display: -webkit-box;
@@ -321,7 +324,7 @@ page {
   margin-left: 8rpx;
 }
 .searchcity {
-  min-height: 50rpx;
+  min-height: 0rpx;
   font-size: 24rpx;
   color: #232323;
   margin-left: 10rpx;

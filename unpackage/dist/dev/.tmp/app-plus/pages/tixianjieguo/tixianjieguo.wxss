@@ -1,21 +1,21 @@
 
-.content.data-v-0d7db808 {
+.content.data-v-19ba0800 {
 	padding-top: 60rpx;
 	background: #F8F8F8;
 }
-.success.data-v-0d7db808{
+.success.data-v-19ba0800{
 	width: 91rpx;
 	height: 121rpx;
 	display: block;
 	margin:auto;
 }
-.tixian_title.data-v-0d7db808 {
+.tixian_title.data-v-19ba0800 {
 	font-size: 28rpx;
 	width: 100%;
 	text-align: center;
 	margin-top: 40rpx;
 }
-.wancheng.data-v-0d7db808 {
+.wancheng.data-v-19ba0800 {
 	width: 690rpx;
 	height: 69rpx;
 	line-height: 69rpx;

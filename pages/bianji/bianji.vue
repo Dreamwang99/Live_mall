@@ -90,9 +90,10 @@
 						is_default: this.default,
 					},
 					success: (res) => {
+						console.log(res.data.code,121321)
 						if (res.data.code === 1) {
 							uni.showToast({
-								title: res.msg,
+								title: res.data.msg,
 								icon: "none"
 							})
 							console.log("成功")
@@ -101,7 +102,7 @@
 							})
 						} else {
 							uni.showToast({
-								title: res.msg,
+								title: res.data.msg,
 								icon: "none",
 							})
 							console.log("失败")

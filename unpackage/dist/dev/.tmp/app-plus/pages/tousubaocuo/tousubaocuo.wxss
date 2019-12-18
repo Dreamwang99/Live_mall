@@ -10,7 +10,7 @@
 	margin-top: 10%;
 }
 .heng {
-	width: 100%;
+	width: 92%;
 	margin: auto;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -21,10 +21,10 @@
 	        flex-direction: row;
 	-webkit-flex-wrap: wrap;
 	        flex-wrap: wrap;
-	padding: 20rpx 10rpx 20rpx 40rpx;
-	-webkit-box-pack: start;
-	-webkit-justify-content: flex-start;
-	        justify-content: flex-start;
+	padding: 20rpx 40rpx 20rpx 0rpx;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
 }
 .middle {
 	background: #fff;
@@ -39,6 +39,7 @@
 	color: #818181;
 }
 .fankui {
+	width: 92%;
 	margin-top: 18rpx;
 	font-size: 30rpx;
 	margin-left: 28rpx;
@@ -56,6 +57,10 @@
 	color: #7e7e7e;
 	text-align: center;
 	margin-left: 40rpx;
+}
+.ac{
+	border: 1rpx solid #FF0000;
+	color: #FF0000;
 }
 .zhaopian {
 	height: 145rpx;
@@ -75,5 +80,9 @@
 	width:100%;
 	border-radius: 40rpx;
 	font-size: 30rpx;
+}
+.red{
+	color: #FE2E38;
+	border-color: #FE2E38;
 }
 

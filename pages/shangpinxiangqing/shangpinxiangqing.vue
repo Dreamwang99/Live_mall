@@ -21,7 +21,7 @@
 				</view>
 			</view>
 			<view class="parameter" @tap="lookshopdetial()">
-				<view class="parametermsg">商品参数:品牌、尺码......</view>
+				<view class="parametermsg">商品参数: <text v-for="(sac,index) in goodsdata.specs" :key='index' class="commercialbox">{{sac.name}}</text></view>
 				<image src="../../static/iocn-2-jr.png" mode="" class="nextimg"></image>
 			</view>
 			<!-- ///////////////////////////////////////////////////// -->
@@ -225,6 +225,7 @@
 <script>
 	let a = []
 	import add from '@/components/add.vue'
+	import bridge from '../../common/unfile/unfile.js'
 	export default {
 		components: {
 			add
@@ -283,6 +284,7 @@
 			}
 		},
 		onLoad(options) {
+			this.getdetial()
 			console.log('qweqe')
 			this.token = uni.getStorageSync('token')
 			this.shopid = options.id
@@ -302,6 +304,13 @@
 			this.getShopCommon()
 		},
 		methods: {
+			getdetial(){
+				bridge.register('getShopDetialBack', function(result) {
+					console.log(result)
+					console.log(result.goods_id)
+					this.shopid = result.goods_id
+				})
+			},
 			//////////////////////////////////////////////////////////////////////////////////////////////////
 			//获取买家秀
 			getshopshow() {
@@ -551,12 +560,15 @@
 				}).then(res => {
 					console.log(res)
 					console.log(res.msg)
+<<<<<<< HEAD
 					if(res.code!=1){
 						uni.showToast({
 							title: res.msg,
 							icon: 'none'
 						})
 					}
+=======
+>>>>>>> 5547fa7c30dfe8a8426bf363f41a46e5566b5cfd
 					this.goodsparameter = res.data.specs //商品参数
 					this.goodsdata = res.data //商品所有数据
 					this.lunboimg = res.data.image
@@ -666,17 +678,30 @@
 			},
 			bugcars() {//团购点击确认跳转订单
 				if (a.length * 1 === this.colorbox.length * 1) {
-					if (this.shoppricess !== '0.00' && this.status * 1 !== 0) { //判断是否有该商品或该商品是否已下架
-						uni.navigateTo({ //goods_type=0普通商品 2秒杀商品 3砍价商品 4团购商品
-							url: `../dingdantijiao/dingdantijiao?id=${this.shopid}&goods_type=4&goods_spec=${this.goods_specs}&specid=${this.specid}&goodsid=${this.goods_idss}&activityid=${this.pintuanid}&types='开团'&tPeopleNums=${this.peoplenumbers}`
-						})
-					} else {
+					
+					
+					
+					if(this.peoplenumbers == ''){
 						uni.showToast({
-							title: '该规格已下架',
-							icon: 'none'
+							title:'请选择开团人数',
+							icon:'none'
 						})
+					}else{
+						if (this.shoppricess !== '0.00' && this.status * 1 !== 0) { //判断是否有该商品或该商品是否已下架
+							uni.navigateTo({ //goods_type=0普通商品 2秒杀商品 3砍价商品 4团购商品
+								url: `../dingdantijiao/dingdantijiao?id=${this.shopid}&goods_type=4&goods_spec=${this.goods_specs}&specid=${this.specid}&goodsid=${this.goods_idss}&activityid=${this.pintuanid}&types='开团'&tPeopleNums=${this.peoplenumbers}`
+							})
+						} else {
+							uni.showToast({
+								title: '该规格已下架',
+								icon: 'none'
+							})
+						}
 					}
-
+					
+					
+					
+					
 				} else {
 					uni.showToast({
 						title: '请先选的商品规格',
@@ -724,7 +749,7 @@
 			},
 			group() {
 				console.log(this.pintuanid)
-				if(this.pintuanid*1 !== ''){
+				if(this.pintuanid != null){
 					this.showimg = 0
 					this.showimg1 = 2
 					this.showimg2 = 5
@@ -732,14 +757,15 @@
 					this.showmsgdetial2 = true
 				}else{
 						uni.showToast({
-							title:'该商品不支持拼团'
+							title:'该商品不支持拼团',
+							icon:'none'
 						})
 				}
 				
 			},
 			bargain() {
 				console.log(this.bargain_id)
-				if(this.bargain_id !== ''){
+				if(this.bargain_id != null){
 					this.showimg = 0
 					this.showimg1 = 2
 					this.showimg2 = 4
@@ -747,7 +773,8 @@
 					this.showmsgdetial1 = true
 				}else{
 						uni.showToast({
-							title:'该商品不支持砍价'
+							title:'该商品不支持砍价',
+							icon:'none'
 						})
 				}
 				
@@ -887,7 +914,12 @@
 		color: #A5A5A5;
 		margin-top: 10rpx;
 	}
-
+	.parametermsg{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 600rpx;
+	}
 	.nextimg {
 		width: 20rpx;
 		height: 30rpx;

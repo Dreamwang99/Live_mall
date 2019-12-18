@@ -13,7 +13,7 @@
 }
 .baidi{
 	background-color: #FFFFFF;
-	height: 200rpx;
+	min-height: 200rpx;
 	width: 710rpx;
 	margin-left: 20rpx;
 }

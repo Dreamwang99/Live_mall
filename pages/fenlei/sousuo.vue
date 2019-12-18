@@ -32,7 +32,7 @@
 					<image :src="list.logo" mode="" class="search_resultimg"></image>
 					<view class="searchtext">{{list.title}}</view>
 					<view class="searchcity">{{list.introduction}}</view>
-					<view class="searchmoney">{{list.price_selling}}</view>
+					<view class="searchmoney">￥{{list.price_selling}}</view>
 				</view>
 			</view>
 		</view>
@@ -373,7 +373,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 342rpx;
-		height: 532rpx;
+		min-height: 200rpx;
 		margin-top: 15rpx;
 		margin-left: 20rpx;
 		border-radius: 20rpx;
@@ -462,7 +462,7 @@
 	}
 
 	.searchcity {
-		min-height: 50rpx;
+		min-height: 0rpx;
 		font-size: 24rpx;
 		color: #232323;
 		margin-left: 10rpx;

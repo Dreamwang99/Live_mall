@@ -88,7 +88,7 @@
 					</view>
 				</view>
 				<view class="heng">
-					<view class="se" style="margin-top: 40rpx;">发配时间</view>
+					<view class="se" style="margin-top: 40rpx;">下单时间</view>
 					<view class="se time">{{nowdate}}</view>
 				</view>
 				<view class="heng">

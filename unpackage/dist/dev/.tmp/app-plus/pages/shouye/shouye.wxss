@@ -1,10 +1,10 @@
 
-.shaixuan_title.data-v-a3b993c8 {
+.shaixuan_title.data-v-bbb417c0 {
 	width: 100%;
 	padding: 20rpx 30rpx;
 	font-size: 30rpx;
 }
-.paixu.data-v-a3b993c8 {
+.paixu.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -12,27 +12,27 @@
 	-webkit-justify-content: space-around;
 	        justify-content: space-around;
 }
-.status_bar.data-v-a3b993c8 {
+.status_bar.data-v-bbb417c0 {
 	height: var(--status-bar-height);
 	width: 100%;
 	background-color: #F8F8F8;
 }
-.top_view.data-v-a3b993c8 {
+.top_view.data-v-bbb417c0 {
 	height: var(--status-bar-height);
 	width: 100%;
 	position: fixed;
-	background:#fff;
+	background: #fff;
 	top: 0;
 	z-index: 999;
 }
-.paixu_title.data-v-a3b993c8 {
+.paixu_title.data-v-bbb417c0 {
 	/* width: 35%; */
 	border: 1px solid red;
 	color: red;
 	border-radius: 1rem;
 	padding: 5rpx 15rpx;
 }
-.paixu_none.data-v-a3b993c8 {
+.paixu_none.data-v-bbb417c0 {
 	/* width: 35%; */
 	background: #eee;
 	color: #494949;
@@ -42,7 +42,7 @@
 	/* line-height: 50rpx; */
 	padding: 5rpx 15rpx;
 }
-.confirm.data-v-a3b993c8 {
+.confirm.data-v-bbb417c0 {
 	background: red;
 	width: 90%;
 	border-radius: 1rem;
@@ -53,10 +53,10 @@
 	color: #fff;
 	line-height: 60rpx;
 }
-.paixu_title1.data-v-a3b993c8 {
+.paixu_title1.data-v-bbb417c0 {
 	padding-left: 30rpx;
 }
-.mycontent.data-v-a3b993c8 {
+.mycontent.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -74,7 +74,7 @@
 	width: 100%;
 	overflow: scroll;
 }
-.paixu_shangjia1.data-v-a3b993c8 {
+.paixu_shangjia1.data-v-bbb417c0 {
 	border: 1px solid red;
 	color: red;
 	width: 35%;
@@ -83,7 +83,7 @@
 	text-align: center;
 	padding: 6rpx 0;
 }
-.paixu_shangjia2.data-v-a3b993c8 {
+.paixu_shangjia2.data-v-bbb417c0 {
 	background: #eee;
 	color: #494949;
 	width: 35%;
@@ -92,42 +92,42 @@
 	text-align: center;
 	padding: 6rpx 0;
 }
-.beijing1.data-v-a3b993c8 {
+.beijing1.data-v-bbb417c0 {
 	width: 100%;
 	height: 425rpx;
 	background-size: cover;
 	padding-top: 30rpx;
 }
-.screen.data-v-a3b993c8 {
+.screen.data-v-bbb417c0 {
 	font-size: 30rpx;
 	width: 100%;
 	border-bottom: 1px solid #eee;
 	text-align: center;
 	padding-bottom: 20rpx;
 }
-.baidi.data-v-a3b993c8 {
+.baidi.data-v-bbb417c0 {
 	width: 100%;
 	padding-bottom: 10rpx;
 	background-color: #FFFFFF;
 	padding-left: 21rpx;
 }
-.baidis.data-v-a3b993c8 {
+.baidis.data-v-bbb417c0 {
 	width: 100%;
 	padding-bottom: 10rpx;
 	background-color: #FFFFFF;
 }
-.baidi1.data-v-a3b993c8 {
+.baidi1.data-v-bbb417c0 {
 	background-color: #FFFFFF;
 	width: 100%;
 }
-.xian.data-v-a3b993c8 {
+.xian.data-v-bbb417c0 {
 	height: 10rpx;
 	margin-bottom: 20rpx;
 }
-.xian1.data-v-a3b993c8 {
+.xian1.data-v-bbb417c0 {
 	height: 20rpx;
 }
-.heng.data-v-a3b993c8 {
+.heng.data-v-bbb417c0 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -139,7 +139,7 @@
 	-webkit-flex-direction: row;
 	        flex-direction: row;
 }
-.heng_dian.data-v-a3b993c8 {
+.heng_dian.data-v-bbb417c0 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -156,7 +156,7 @@
 	        align-items: center;
 	padding-right: 10rpx;
 }
-.shouye_top.data-v-a3b993c8 {
+.shouye_top.data-v-bbb417c0 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -169,7 +169,7 @@
 	        align-items: center;
 	padding-right: 20rpx;
 }
-.free_bottom.data-v-a3b993c8 {
+.free_bottom.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -184,33 +184,33 @@
 	-webkit-flex-direction: row;
 	        flex-direction: row;
 }
-.beijing.data-v-a3b993c8 {
+.beijing.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-box-align: end;
 	-webkit-align-items: flex-end;
 	        align-items: flex-end;
-	width:349rpx;
+	width: 349rpx;
 	height: 499rpx;
 	padding-bottom: 10rpx;
 	background-size: 100% 100%;
 }
-.jl.data-v-a3b993c8 {
+.jl.data-v-bbb417c0 {
 	font-size: 28rpx;
 	color: #ff212c;
 	padding: 10rpx 25rpx 10rpx 0;
 }
-.zd.data-v-a3b993c8 {
+.zd.data-v-bbb417c0 {
 	font-size: 28rpx;
 	padding: 10rpx 25rpx 10rpx 0;
 	color: #161616;
 }
-.xl.data-v-a3b993c8 {
+.xl.data-v-bbb417c0 {
 	margin-left: 40rpx;
 	color: black;
 }
-.xiaoshipin.data-v-a3b993c8 {
+.xiaoshipin.data-v-bbb417c0 {
 	display: inline-block;
 	width: 174rpx;
 	margin: 5rpx;
@@ -218,21 +218,21 @@
 	margin-bottom: 28rpx;
 	padding-bottom: 20rpx;
 }
-.jindian_content.data-v-a3b993c8 {
+.jindian_content.data-v-bbb417c0 {
 	background: #fff;
 	width: 100%;
 }
-.mi.data-v-a3b993c8 {
+.mi.data-v-bbb417c0 {
 	height: 61rpx;
 	width: 62rpx;
 	margin-left: 21rpx;
 }
-.xiaoshipin1.data-v-a3b993c8 {
+.xiaoshipin1.data-v-bbb417c0 {
 	height: 165rpx;
 	width: 174rpx;
 	background-size: cover;
 }
-.xiaoshipin2.data-v-a3b993c8 {
+.xiaoshipin2.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -246,30 +246,30 @@
 	width: 407rpx;
 	background-size: cover;
 }
-.tidaikuan.data-v-a3b993c8 {
+.tidaikuan.data-v-bbb417c0 {
 	font-size: 16rpx;
 	margin-top: 8rpx;
 	margin-left: 10rpx;
 	margin-right: 10rpx;
 	white-space: pre-line;
 }
-.cent.data-v-a3b993c8 {
+.cent.data-v-bbb417c0 {
 	width: 100%;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	        justify-content: center;
 }
-.tx1.data-v-a3b993c8 {
+.tx1.data-v-bbb417c0 {
 	height: 30rpx;
 	width: 30rpx;
 	margin-top: 23rpx;
 }
-.lier.data-v-a3b993c8 {
+.lier.data-v-bbb417c0 {
 	font-size: 16rpx;
 	margin-top: 22rpx;
 	margin-left: 10rpx;
 }
-.sousuo.data-v-a3b993c8 {
+.sousuo.data-v-bbb417c0 {
 	height: 61rpx;
 	width: 72%;
 	display: -webkit-box;
@@ -282,21 +282,21 @@
 	background-color: #ffffff;
 	border-radius: 30rpx;
 }
-.goods.data-v-a3b993c8 {
+.goods.data-v-bbb417c0 {
 	width: 335rpx;
 	background: #fff;
-	margin:5rpx;
+	margin: 5rpx;
 }
-.free_right.data-v-a3b993c8 {
+.free_right.data-v-bbb417c0 {
 	width: 480rpx;
 	height: 161rpx;
 }
-.fangdajing.data-v-a3b993c8 {
+.fangdajing.data-v-bbb417c0 {
 	width: 28rpx;
 	height: 28rpx;
 	margin-left: 28rpx;
 }
-.heng.data-v-a3b993c8 {
+.heng.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -305,9 +305,9 @@
 	-webkit-flex-direction: row;
 	        flex-direction: row;
 }
-.shangpin.data-v-a3b993c8 {
+.shangpin.data-v-bbb417c0 {
 	width: 690rpx;
-	margin:10rpx auto;
+	margin: 10rpx auto;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -315,34 +315,34 @@
 	        flex-wrap: wrap;
 	margin-bottom: 100rpx;
 }
-.shuru.data-v-a3b993c8 {
+.shuru.data-v-bbb417c0 {
 	font-size: 24rpx;
 	margin-left: 30rpx;
 	margin-right: 10rpx;
 }
-.xinxi.data-v-a3b993c8 {
+.xinxi.data-v-bbb417c0 {
 	height: 35rpx;
 	/* 40 修改成45 */
 	width: 45rpx;
 }
-.xh1.data-v-a3b993c8 {
+.xh1.data-v-bbb417c0 {
 	margin-left: 12rpx;
 	font-size: 18rpx;
 	color: #FFFFFF;
 }
-.xh2.data-v-a3b993c8 {
+.xh2.data-v-bbb417c0 {
 	margin-left: 20rpx;
 	margin-top: 8rpx;
 	height: 18rpx;
 	width: 18rpx;
 }
-.xh3.data-v-a3b993c8 {
+.xh3.data-v-bbb417c0 {
 	font-size: 20rpx;
 	color: #FFFFFF;
 	margin-top: 5rpx;
 	padding-right: 10rpx;
 }
-.title_right.data-v-a3b993c8 {
+.title_right.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -350,24 +350,24 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.xh.data-v-a3b993c8 {
+.xh.data-v-bbb417c0 {
 	margin-left: 12rpx;
 	font-size: 25rpx;
 	color: #FFFFFF;
 	width: 100%;
 }
-.free.data-v-a3b993c8 {
+.free.data-v-bbb417c0 {
 	width: 100%;
 	margin-bottom: 120rpx;
 	background: #fff;
 }
-.beijing2.data-v-a3b993c8 {
+.beijing2.data-v-bbb417c0 {
 	margin-top: 20rpx;
 	height: 1200rpx;
 	width: 100%;
 	background-size: 100% 100%;
 }
-.list.data-v-a3b993c8 {
+.list.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -379,10 +379,10 @@
 	height: 213rpx;
 	-webkit-justify-content: space-around;
 	        justify-content: space-around;
-	padding:20rpx 30rpx 0 30rpx;
+	padding: 20rpx 30rpx 0 30rpx;
 	border-bottom: 1px solid #eee;
 }
-.zhibo_img.data-v-a3b993c8 {
+.zhibo_img.data-v-bbb417c0 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -390,17 +390,17 @@
 	-webkit-justify-content: space-around;
 	        justify-content: space-around;
 }
-.free_img.data-v-a3b993c8 {
-	width:198rpx;
+.free_img.data-v-bbb417c0 {
+	width: 198rpx;
 	margin-right: 10rpx;
 	margin-bottom: 40rpx;
 }
-.xiaomi.data-v-a3b993c8 {
+.xiaomi.data-v-bbb417c0 {
 	width: 100%;
 	/* margin-top: 25rpx; */
 	font-size: 24rpx;
 }
-.shipinList.data-v-a3b993c8 {
+.shipinList.data-v-bbb417c0 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -412,12 +412,12 @@
 	        justify-content: space-between;
 	padding: 10rpx 21rpx;
 }
-.prise.data-v-a3b993c8 {
+.prise.data-v-bbb417c0 {
 	color: red;
 	font-size: 22rpx;
 	margin-left: 10rpx;
 }
-.dianji.data-v-a3b993c8 {
+.dianji.data-v-bbb417c0 {
 	height: 46rpx;
 	line-height: 46rpx;
 	padding: 0 15rpx;
@@ -427,21 +427,21 @@
 	color: #FFFFFF;
 	text-align: center;
 }
-.topTitle.data-v-a3b993c8 {
+.topTitle.data-v-bbb417c0 {
 	width: 25%;
 	text-align: center;
 	padding-top: 10rpx;
 }
-.logo1.data-v-a3b993c8 {
+.logo1.data-v-bbb417c0 {
 	height: 172rpx;
-	width:198rpx;
+	width: 198rpx;
 	margin-right: 10rpx;
 }
-.shangjia.data-v-a3b993c8 {
+.shangjia.data-v-bbb417c0 {
 	width: 100%;
 	margin-bottom: 100rpx;
 }
-.list.data-v-a3b993c8 {
+.list.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -450,7 +450,7 @@
 	-webkit-flex-direction: row;
 	        flex-direction: row;
 }
-.shangjia_title.data-v-a3b993c8 {
+.shangjia_title.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -463,26 +463,26 @@
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.list1.data-v-a3b993c8 {
+.list1.data-v-bbb417c0 {
 	height: 175rpx;
 	width: 200rpx;
 	margin-left: 30rpx;
 	margin-right: 10rpx;
 	margin-bottom: 40rpx;
 }
-.xiangqing.data-v-a3b993c8 {
+.xiangqing.data-v-bbb417c0 {
 	width: 100%;
-	height:95rpx;
+	height: 95rpx;
 	padding-right: 10rpx;
 	color: #C0C0C0;
 	font-size: 22rpx;
 	margin-left: 10rpx;
 }
-.rgm image.data-v-a3b993c8 {
+.rgm image.data-v-bbb417c0 {
 	width: 100%;
 	height: 60rpx;
 }
-.tj.data-v-a3b993c8 {
+.tj.data-v-bbb417c0 {
 	width: 100%;
 	font-size: 24rpx;
 	line-height: 57rpx;
@@ -492,11 +492,11 @@
 	/* margin-right: 55rpx; */
 	margin-top: 12rpx;
 }
-.hezi1.data-v-a3b993c8 {
+.hezi1.data-v-bbb417c0 {
 	height: 291rpx;
 	width: 341rpx;
 }
-.sp.data-v-a3b993c8 {
+.sp.data-v-bbb417c0 {
 	margin-top: 12rpx;
 	width: 100%;
 	line-height: 57rpx;
@@ -504,20 +504,20 @@
 	color: #FFFFFF;
 	font-size: 30rpx;
 }
-.chufang.data-v-a3b993c8 {
+.chufang.data-v-bbb417c0 {
 	height: 287rpx;
 	width: 710rpx;
 	display: block;
 	margin: auto;
 }
-.banner.data-v-a3b993c8 {
+.banner.data-v-bbb417c0 {
 	height: 221rpx;
 	width: 710rpx;
 	display: block;
 	margin: auto;
 }
-.swiper-item.data-v-a3b993c8 {}
-.lhd.data-v-a3b993c8 {
+.swiper-item.data-v-bbb417c0 {}
+.lhd.data-v-bbb417c0 {
 	height: 45rpx;
 	width: 100%;
 	background-size: cover;
@@ -527,27 +527,27 @@
 	line-height: 42rpx;
 	color: #FFFFFF;
 }
-.tupian.data-v-a3b993c8 {
+.tupian.data-v-bbb417c0 {
 	height: 305rpx;
 	width: 689rpx;
 	display: block;
 	margin: auto;
 	/* padding:0 30rpx 10rpx 30rpx; */
 }
-.hezi.data-v-a3b993c8 {
+.hezi.data-v-bbb417c0 {
 	height: 184rpx;
 	width: 176rpx;
 	text-align: center;
 }
-.tu.data-v-a3b993c8 {
+.tu.data-v-bbb417c0 {
 	height: 98rpx;
 	width: 98rpx;
 	margin-top: 21rpx;
 }
-.zi.data-v-a3b993c8 {
+.zi.data-v-bbb417c0 {
 	font-size: 21rpx;
 }
-.pinkanzhuanqu.data-v-a3b993c8 {
+.pinkanzhuanqu.data-v-bbb417c0 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -559,57 +559,57 @@
 	line-height: 70rpx;
 	background-color: #FFFFFF;
 }
-.pk.data-v-a3b993c8 {
+.pk.data-v-bbb417c0 {
 	margin-left: 20rpx;
 	height: 30rpx;
 	width: 30rpx;
 	margin-top: 20rpx;
 }
-.pkzq.data-v-a3b993c8 {
+.pkzq.data-v-bbb417c0 {
 	font-size: 28rpx;
 	margin-left: 10rpx;
 }
-.gengduo.data-v-a3b993c8 {
+.gengduo.data-v-bbb417c0 {
 	font-size: 18rpx;
 	color: #c4c3c3;
 	margin-left: auto;
 }
-.jr.data-v-a3b993c8 {
+.jr.data-v-bbb417c0 {
 	margin-right: 20rpx;
 	height: 20rpx;
 	width: 11rpx;
 	margin-left: 10rpx;
 	margin-top: 25rpx;
 }
-.pinkan.data-v-a3b993c8 {
+.pinkan.data-v-bbb417c0 {
 	margin-top: 2rpx;
 	height: 340rpx;
 	width: 750rpx;
 }
-.box.data-v-a3b993c8 {
+.box.data-v-bbb417c0 {
 	border-bottom: 2px solid #eee;
 }
-.dianpu_box.data-v-a3b993c8 {
+.dianpu_box.data-v-bbb417c0 {
 	padding: 10rpx 20rpx;
 }
-.zhainan.data-v-a3b993c8 {
+.zhainan.data-v-bbb417c0 {
 	height: 334rpx;
 	width: 50%;
 	margin-left: 0rpx;
 	background-color: #FFFFFF;
 	margin-top: 5rpx;
 }
-.right.data-v-a3b993c8 {
+.right.data-v-bbb417c0 {
 	width: 50%;
 }
-.znbibei.data-v-a3b993c8 {
+.znbibei.data-v-bbb417c0 {
 	width: 100%;
 	font-size: 23rpx;
 	margin-top: 23rpx;
 	margin-left: 40rpx;
 	color: #f23d2e;
 }
-.content.data-v-a3b993c8 {
+.content.data-v-bbb417c0 {
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -617,42 +617,42 @@
 	margin-left: 10%;
 	font-size: 20rpx;
 }
-.shengyu.data-v-a3b993c8 {
+.shengyu.data-v-bbb417c0 {
 	margin-left: 40rpx;
 	color: #c1c1c1;
 	font-size: 20rpx;
 	margin-top: 22rpx;
 }
-.jj.data-v-a3b993c8 {
+.jj.data-v-bbb417c0 {
 	font-size: 20rpx;
 	margin-top: 26rpx;
 	color: #f23d2e;
 	padding: 0 10rpx;
 }
-.jian.data-v-a3b993c8 {
+.jian.data-v-bbb417c0 {
 	color: #c1c1c1;
 	font-size: 20rpx;
 	margin-top: 22rpx;
 }
-.diannao.data-v-a3b993c8 {
+.diannao.data-v-bbb417c0 {
 	height: 145rpx;
 	width: 60%;
 	display: block;
 	margin: auto;
 	margin-top: 45rpx;
 }
-.zhibo_content.data-v-a3b993c8 {
+.zhibo_content.data-v-bbb417c0 {
 	display: inline-block;
 	text-align: center;
 	margin: 0 10rpx 7rpx 0;
 	width: 407rpx;
 	height: 305rpx;
 }
-.shipin_top.data-v-a3b993c8 {
+.shipin_top.data-v-bbb417c0 {
 	width: 100%;
 	margin-bottom: 130rpx;
 }
-.tuan.data-v-a3b993c8 {
+.tuan.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -666,28 +666,28 @@
 	margin-left: 5rpx;
 	padding-right: 20rpx;
 }
-.right_tuan.data-v-a3b993c8 {
+.right_tuan.data-v-bbb417c0 {
 	width: 66%;
 }
-.tuangouhaohuo.data-v-a3b993c8 {
+.tuangouhaohuo.data-v-bbb417c0 {
 	font-size: 23rpx;
 	margin-top: 23rpx;
 	margin-left: 22rpx;
 	color: #ff6a88;
 }
-.xiamo.data-v-a3b993c8 {
+.xiamo.data-v-bbb417c0 {
 	margin-left: 22rpx;
 	color: #c1c1c1;
 	font-size: 18rpx;
 	margin-top: 22rpx;
 }
-.yifu.data-v-a3b993c8 {
+.yifu.data-v-bbb417c0 {
 	height: 122rpx;
 	width: 37%;
 	/* margin-left: 80rpx; */
 	margin-top: 6rpx;
 }
-.jinqiufs.data-v-a3b993c8 {
+.jinqiufs.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -701,62 +701,62 @@
 	height: 200rpx;
 	border-left: 5rpx solid #eee;
 }
-.jinqiu.data-v-a3b993c8 {
+.jinqiu.data-v-bbb417c0 {
 	width: 100%;
 	font-size: 23rpx;
 	padding-top: 23rpx;
 	padding-left: 22rpx;
 	color: #ff6a88;
 }
-.xiying.data-v-a3b993c8 {
+.xiying.data-v-bbb417c0 {
 	width: 100%;
 	padding-left: 22rpx;
 	color: #c1c1c1;
 	font-size: 18rpx;
 	padding-top: 3rpx;
 }
-.rgm.data-v-a3b993c8 {
+.rgm.data-v-bbb417c0 {
 	height: 94rpx;
 	width: 120rpx;
 }
-.tttehui.data-v-a3b993c8 {
+.tttehui.data-v-bbb417c0 {
 	margin-top: 5rpx;
 	background-color: #FFFFFF;
 	width: 50%;
 	height: 200rpx;
 	margin-left: 3rpx;
 }
-.tehui.data-v-a3b993c8 {
+.tehui.data-v-bbb417c0 {
 	font-size: 23rpx;
 	margin-top: 23rpx;
 	margin-left: 22rpx;
 	color: #ff6a88;
 }
-.zhineng.data-v-a3b993c8 {
+.zhineng.data-v-bbb417c0 {
 	margin-left: 22rpx;
 	color: #c1c1c1;
 	font-size: 18rpx;
 	margin-top: 22rpx;
 }
-.sb.data-v-a3b993c8 {
+.sb.data-v-bbb417c0 {
 	height: 102rpx;
 	width: 70rpx;
 	margin-left: 108rpx;
 }
-.jrduanshipin.data-v-a3b993c8 {
+.jrduanshipin.data-v-bbb417c0 {
 	height: 304rpx;
 	width: 400rpx;
 	margin-left: 18rpx;
 	background-size: cover;
 	/* display: inline-block; */
 }
-.tx.data-v-a3b993c8 {
+.tx.data-v-bbb417c0 {
 	height: 95rpx;
 	width: 94rpx;
 	margin-top: 18rpx;
 	margin-left: 19rpx;
 }
-.jinru.data-v-a3b993c8 {
+.jinru.data-v-bbb417c0 {
 	height: 35rpx;
 	width: 140rpx;
 	line-height: 35rpx;
@@ -766,20 +766,20 @@
 	font-size: 17rpx;
 	color: #f4212b;
 }
-.xm.data-v-a3b993c8 {
+.xm.data-v-bbb417c0 {
 	width: 100%;
 	margin-left: 15rpx;
 	margin-top: 25rpx;
 	font-size: 28rpx;
 }
-.xm1.data-v-a3b993c8 {
+.xm1.data-v-bbb417c0 {
 	width: 100%;
 	margin-left: 15rpx;
 	margin-top: 15rpx;
 	font-size: 22rpx;
 	color: #797979;
 }
-.jd.data-v-a3b993c8 {
+.jd.data-v-bbb417c0 {
 	height: 46rpx;
 	width: 99rpx;
 	color: red;
@@ -791,39 +791,39 @@
 	background-color: #FFFFFF;
 	text-align: center;
 }
-.jindian_left.data-v-a3b993c8 {
+.jindian_left.data-v-bbb417c0 {
 	width: 80%;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
 }
-.tup.data-v-a3b993c8 {
+.tup.data-v-bbb417c0 {
 	height: 212rpx;
 	width: 229rpx;
 	/* margin-left: 15rpx; */
 	margin-top: 20rpx;
 	margin-bottom: 20rpx;
 }
-.tup1.data-v-a3b993c8 {
+.tup1.data-v-bbb417c0 {
 	height: 210rpx;
 	width: 230rpx;
 	margin-left: 15rpx;
 	margin-top: 20rpx;
 }
-.shipin.data-v-a3b993c8 {
+.shipin.data-v-bbb417c0 {
 	width: 349rpx;
 	padding-bottom: 10rpx;
 }
-.sx.data-v-a3b993c8 {
+.sx.data-v-bbb417c0 {
 	margin-left: 450rpx;
 	color: black;
 }
-.sxtu.data-v-a3b993c8 {
+.sxtu.data-v-bbb417c0 {
 	height: 24rpx;
 	width: 24rpx;
 	margin-left: 20rpx;
 }
-.zi1.data-v-a3b993c8 {
+.zi1.data-v-bbb417c0 {
 	height: 20rpx;
 	width: 100%;
 	display: inline-block;
@@ -832,30 +832,33 @@
 	/* padding-bottom: 20rpx; */
 	color: #FFFFFF;
 }
-.zhibo1.data-v-a3b993c8 {
+.zhibo1.data-v-bbb417c0 {
 	height: 40rpx;
 	font-size: 15rpx;
 	color: #FFFFFF;
 	margin-top: 5rpx;
 }
-.bf.data-v-a3b993c8 {
+.bf.data-v-bbb417c0 {
 	margin-top: 10rpx;
 	height: 18rpx;
 	width: 15rpx;
 	margin-left: 48rpx;
 }
-.sp1.data-v-a3b993c8 {
+.sp1.data-v-bbb417c0 {
 	font-size: 22rpx;
 	margin-left: 10rpx;
 	width: 100%;
 	overflow: hidden;
 	padding-top: 10rpx;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
-.jiage.data-v-a3b993c8 {
+.jiage.data-v-bbb417c0 {
 	color: #ff0d2e;
 	font-size: 28rpx;
 }
-.heng9.data-v-a3b993c8 {
+.heng9.data-v-bbb417c0 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -864,12 +867,12 @@
 	        align-items: center;
 	padding: 10rpx 10rpx 20rpx 10rpx;
 }
-.renshu.data-v-a3b993c8 {
+.renshu.data-v-bbb417c0 {
 	color: #ADADAD;
 	font-size: 18rpx;
 	margin-left: 29rpx;
 }
-.content_popup.data-v-a3b993c8 {
+.content_popup.data-v-bbb417c0 {
 	position: absolute;
 	top: 5%;
 	width: 100%;

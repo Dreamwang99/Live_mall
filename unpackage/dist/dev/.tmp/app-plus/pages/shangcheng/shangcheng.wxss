@@ -3,6 +3,7 @@
 	width: 750rpx;
 	height: 425rpx;
 	background-size: cover;
+	/* padding-top: 32rpx; */
 }
 .heng {
 	display: -webkit-box;
@@ -83,10 +84,13 @@
 	margin-right: 45rpx;
 }
 .tuzi {
+	min-width: 100rpx;
+	max-width: 100rpx;
 	font-size: 20rpx;
-	margin-left: 48rpx;
+	margin-left: 45rpx;
 	margin-top: 22rpx;
-	margin-right: 50rpx;
+	margin-right: 45rpx;
+	text-align: center;
 }
 .di {
 	height: 145rpx;
@@ -156,6 +160,7 @@
 	margin-top: 32rpx;
 	margin-left: 21rpx;
 	color: #949494;
+	text-decoration:line-through;
 }
 .xian {
 	position: absolute;
@@ -188,19 +193,32 @@
 }
 .deng {
 	font-size: 23rpx;
-	
 	margin-left: 20rpx;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .ziwaixian {
 	font-size: 17rpx;
 	margin-top: 15rpx;
 	margin-left: 20rpx;
 	color: #949494;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .rmb2 {
 	font-size: 24rpx;
 	margin-top: 28rpx;
 	margin-left: 21rpx;
 	color: #ff0d2e;
+}
+.navback{
+		position: absolute;
+		left: 30rpx;
+		top: 70rpx;
+		width: 30rpx;
+		height: 40rpx;
+		z-index: 999;
 }
 

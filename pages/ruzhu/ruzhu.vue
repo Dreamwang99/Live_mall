@@ -11,16 +11,16 @@
 			<text class="shenfen">请上传身份证件</text>
 		</view>
 		<!-- 身份证正面上传前 -->
-		<view class="kuang1" v-if="showA">
-			<image class="kuang" @click="updataPic()" :src="frontImage"></image>
+		<view class="kuang1">
+			<image v-if="showA" class="kuang" @click="updataPic()" :src="frontImage"></image>
 		</view>
 		<!-- 身份证背面上传前 -->
-		<view class="kuang1" v-if="showB">
-			<image class="kuang" @click="updata_back()" :src="back_image"></image>
+		<view class="kuang1">
+			<image v-if="showB" class="kuang" @click="updata_back()" :src="back_image"></image>
 		</view>
 		<!-- 手持身份证上传前 -->
-		<view class="kuang1" v-if="showC">
-			<image class="kuang" @click="updata_Peo()" :src="peoson_image"></image>
+		<view class="kuang1">
+			<image v-if="showC" class="kuang" @click="updata_Peo()" :src="peoson_image"></image>
 		</view>
 		<view style="background-color: #FFF;">
 			<input class="name" type="text" v-model="shopName" placeholder="请输入店铺名称"></input>
@@ -32,8 +32,8 @@
 			<text class="shenfen">请上传logo</text>
 		</view>
 		<!-- 店铺logo 上传前-->
-		<view class="kuang1" v-if="showD">
-			<view class="kuang" :style="{ backgroundImage: 'url(' + logo + ')' }" @click="logo_pic()">
+		<view class="kuang1">
+			<view class="kuang" v-if="showD" :style="{ backgroundImage: 'url(' + logo + ')' }" @click="logo_pic()">
 				<image class="xiangji" style="height: 100rpx;" :src="a?'../../static/iocn-26-logo.png':''"></image>
 			</view>
 		</view>
@@ -48,8 +48,8 @@
 			<text class="shenfen">请上传营业执照</text>
 		</view>
 		<!-- 营业执照上传前 -->
-		<view class="kuang1" v-if="showE">
-			<view class="kuang" :style="{ backgroundImage: 'url(' + license + ')' }" @click="licens_pic()">
+		<view class="kuang1">
+			<view class="kuang" v-if="showE" :style="{ backgroundImage: 'url(' + license + ')' }" @click="licens_pic()">
 				<image class="xiangji" style="height: 100rpx;" :src="b?'/static/ruzhu/iocn-26-scyezz.png':''"></image>
 			</view>
 		</view>
@@ -240,6 +240,7 @@
 					this.frontImage = res
 					this.showA = false
 					this.showA = true
+					console.log("成功");
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -258,9 +259,11 @@
 			updata_back() {
 				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
+					console.log(res)
 					this.back_image = res
 					this.showB = false
 					this.showB = true
+					console.log("成功");
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -321,9 +324,11 @@
 			updata_Peo() {
 				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
+					console.log(res)
 					this.peoson_image = res
 					this.showC = false
 					this.showC = true
+					console.log("成功");
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -363,10 +368,11 @@
 			logo_pic() {
 				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
+					console.log(res)
 					this.logo = res
-					this.a = false
 					this.showD = false
 					this.showD = true
+					console.log("成功");
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -408,10 +414,11 @@
 			licens_pic() {
 				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',function(res){
+					console.log(res)
 					this.license = res
-					this.b = false
 					this.showE = false
 					this.showE = true
+					console.log("成功");
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -475,7 +482,7 @@
 						})
 					} else {
 						uni.showToast({
-							title: res.data.msg,
+							title: res.msg,
 							icon: "none",
 						});
 					}

@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<image src="../../static/gerenshangjia/20_back.png" mode="" class="navback" @tap="navback()"></image>
 		<view class="beijing1" :style="{ backgroundImage: 'url(' + '/static/shouye/bg-top.png' + ')' }">
 			<view class="heng">
 				<view class="heng sousuo" @tap="goSousuo">
@@ -85,6 +86,11 @@ export default {
 		this.getpinpai()
 	},
 	methods: {
+		navback(){
+			uni.navigateBack({
+				
+			})	
+		},
 		//获取自主品牌
 		getpinpai(){
 			this.request.getSelfBrand({
@@ -400,4 +406,12 @@ export default {
 	margin-left: 21rpx;
 	color: #ff0d2e;
 }
+.navback{
+		position: absolute;
+		left: 30rpx;
+		top: 70rpx;
+		width: 30rpx;
+		height: 40rpx;
+		z-index: 999;
+	}
 </style>

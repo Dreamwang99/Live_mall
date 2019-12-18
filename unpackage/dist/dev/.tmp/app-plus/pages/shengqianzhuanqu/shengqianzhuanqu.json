@@ -1,17 +1,7 @@
 {
-  "navigationBarTitleText": "国外专区",
+  "navigationBarTitleText": "省钱专区",
   "navigationBarTextStyle": "white",
   "transparentTitle": "always",
-  "titleNView": {
-    "buttons": [
-      {
-        "text": "",
-        "fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-        "fontSize": "30rpx",
-        "color": "#FFFFFF"
-      }
-    ]
-  },
   "usingComponents": {
     "uni-popup": "/components/uni-popup/uni-popup"
   }

@@ -1,4 +1,79 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 顶部 */
+.status_bar {
+  height: var(--status-bar-height);
+  width: 100%;
+  background-color: #FFFFFF;
+}
+.top_view {
+  height: var(--status-bar-height);
+  width: 100%;
+  position: fixed;
+  background: -webkit-gradient(linear, 0 0, 100% 100%, from(#fff), to(#fff));
+  top: 0;
+  z-index: 999;
+}
 .heng {
 	width: 100%;
 	display: -webkit-box;

@@ -71,7 +71,7 @@ page {
 	-webkit-align-items: center;
 	        align-items: center;
 	margin-bottom: 100rpx;
-	margin-top: 85rpx;
+	/* margin-top: 85rpx; */
 }
 .mdltop {
 	display: -webkit-box;
@@ -188,7 +188,7 @@ page {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
-	width: 180rpx;
+	width: 240rpx;
 	height: 40rpx;
 	font-size: 20rpx;
 	margin-top: 15rpx;

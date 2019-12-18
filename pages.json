@@ -52,8 +52,6 @@
 			{
 			   "path": "pages/zhibogeren/gerenzhuye",
 			   "style": {
-			    "navigationBarTitleText": "直播个人主页",
-			    "navigationBarBackgroundColor": "#FFFFFF",
 			    "navigationStyle":"custom"
 			   }
 			  },
@@ -446,8 +444,10 @@
 		}, {
 			"path": "pages/gerenzhuye/gerenzhuye",
 			"style": {
-				"navigationBarTitleText": "",
-				"transparentTitle": "always"
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				}
 			}
 		}, {
 			"path": "pages/xinxitongzhi/xinxitongzhi",
@@ -517,8 +517,10 @@
 		, {
 			"path": "pages/shangcheng/shangcheng",
 			"style": {
-				"navigationBarTitleText": "",
-				"transparentTitle": "always"
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				}
 			}
 		}, {
 			"path": "pages/meiribimiao/meiribimiao",
@@ -634,8 +636,10 @@
 		}, {
 			"path": "pages/chongzhi/chongzhi",
 			"style": {
-				"navigationBarTitleText": "充值",
-				"navigationBarBackgroundColor": "#FFFFFF"
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				}
 			}
 		}
 
@@ -708,19 +712,10 @@
 		}, {
 			"path": "pages/dianputuijian/dianputuijian",
 			"style": {
-				"navigationBarTitleText": "",
-				"transparentTitle": "always"
-				// "app-plus": {
-				// 	"titleNView": {
-				// 		"buttons": [{
-				// 			"text": "\ue658",
-				// 			"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-				// 			"fontSize": "30rpx",
-				// 			"color": "#FFFFFF"
-
-				// 		}]
-				// 	}
-				// }
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": false //禁用原生导航栏
+				}
 			}
 		}, {
 			"path": "pages/chakanwuliu/chakanwuliu",
