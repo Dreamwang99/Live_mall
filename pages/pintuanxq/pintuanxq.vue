@@ -95,7 +95,6 @@
 						status: false
 					},
 				],
-
 				bottomData: [{
 						icon: '/static/zhuye/icon_wx.png',
 						text: '微信好友'

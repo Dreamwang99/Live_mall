@@ -3,7 +3,7 @@
 		<view class="beijing1" :style="{ backgroundImage: 'url(' + '../../static/gerenzhongxin/bg-92-fm.png' + ')' }">
 			<view class="dianpu_top">
 				<image src="../../static/gerenshangjia/20_back.png" @tap="fanhui"></image>
-				<view class="top_right">
+				<view class="top_right" @tap="uploadVideo()">
 					<image src="../../static/gerenzhongxin/icon_ps.png"></image>
 				</view>
 			</view>
@@ -38,8 +38,8 @@
 </template>
 
 <script>
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
-
 		data() {
 			return {
 				userinfo: uni.getStorageSync('userInformation'),
@@ -81,6 +81,12 @@
 				uni.navigateBack({
 					delta: 1
 				})
+			},
+			uploadVideo(){
+				bridge.call('uploadVideo', "上传视频");
+				bridge.register('uploadVideoCallback',function(res){
+					console.log(res)
+				});
 			},
 			GetMyVideo(){
 				console.log(this.pages);
