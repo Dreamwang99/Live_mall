@@ -69,7 +69,7 @@
 		},
 		methods: {
 			navBack(){
-				console.log(back)
+				console.log('back')
 				bridge.call('navBack', "页面返回");
 				return true;
 			},
@@ -188,7 +188,7 @@
 			height: 30rpx;
 			margin-top: 10rpx;
 			text-align: center;
-
+			z-index: 999;
 			image {
 				width: 20rpx;
 				height: 30rpx;

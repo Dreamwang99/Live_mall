@@ -284,10 +284,13 @@
 			}
 		},
 		onLoad(options) {
-			this.getdetial()
-			console.log('qweqe')
 			this.token = uni.getStorageSync('token')
-			this.shopid = options.id
+			if(options.id == ''){
+				this.getdetial()
+			}else{
+				this.shopid = options.id
+			}
+			console.log('qweqe')
 			this.judges = options.judge /////////////////////////////////////新增状态 秒杀为2
 			console.log(options.judge)
 			console.log(this.judges)
@@ -307,8 +310,8 @@
 			getdetial(){
 				bridge.register('getShopDetialBack', function(result) {
 					console.log(result)
-					console.log(result.goods_id)
-					this.shopid = result.goods_id
+					console.log(JSON.parse(result).goods_id)
+					this.shopid = JSON.parse(result).goods_id
 				})
 			},
 			//////////////////////////////////////////////////////////////////////////////////////////////////

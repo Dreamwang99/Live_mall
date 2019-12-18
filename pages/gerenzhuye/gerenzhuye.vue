@@ -71,12 +71,12 @@
 				detalis:[],
 				goodslist:'',
 				userlist:'',
-				token:''
+				token:'',
+				UIDS:''
 			};
 		},
-		onLoad(options) {
+		onLoad() {
 			this.getpersonalhomepage()//获取移动端返回信息
-			// this.uid = options.uid
 			this.getvideolist()
 			this.getMyfans()
 			this.getLiverecord()
@@ -90,12 +90,15 @@
 			getpersonalhomepage(){//获取移动端返回信息
 				bridge.register('personalHomePageCallback', function(result) {
 					console.log(result)
-					this.UIDS =result
+					console.log(JSON.parse(result))
+					console.log(JSON.parse(result).uid)
+					this.UIDS =JSON.parse(result).uid
 				})
 			},
-			getvideolist() {//有问题
-				this.request.getVideoList({
-					uid: this.UIDS
+			getvideolist() {//确认
+				this.request.getmyvideo({
+					uid: uni.getStorageSync('id'),
+					token:uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res);
 					this.detalis = res.data.info
@@ -104,7 +107,7 @@
 					})
 				})
 			},
-			getLiverecord(){//没问题
+			getLiverecord(){//确认
 				this.request.getLivere({
 					touid: this.UIDS
 				}).then(res => {
@@ -115,10 +118,10 @@
 					})
 				})
 			},
-			getMyfans(){//没问题
+			getMyfans(){//确认
 				this.request.getMyFans({
 					token:uni.getStorageSync('token'),
-					user_id:this.UIDS
+					user_id:uni.getStorageSync('id')
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
