@@ -309,7 +309,8 @@
 					let products = list.goods_list
 					products.forEach((item) => {
 						if (item.goodsChose) {
-							this.allPrice += item.price_selling * item.number_goods
+							this.allPrice += Number(item.price_selling) * Number(item.number_goods)
+							this.allPrice = parseFloat(this.allPrice).toFixed(2)
 						}
 					})
 				})

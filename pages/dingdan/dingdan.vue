@@ -14,7 +14,7 @@
 				</view>
 				<view class="row" v-if="t.length>0" v-for="(row,index) in t" :key="index">
 					<view class="type">
-						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.business_name}}
+						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.goods_list[0].business_name}}
 					</view>
 					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx" @tap="godetail(row)">
 						<view class="left">
@@ -34,7 +34,7 @@
 					<view class="btns">
 						<block v-if="row.status*1 === 1">
 							<view class="default" @tap="cancel(row.order_no)">取消</view>
-							<view class="pay">付款</view>
+							<view class="pay" @tap="godetail(row)">付款</view>
 						</block>
 						<block v-if="row.status*1 === 2">
 							<view class="default" @tap="chakanwuliu(row.business_order_no)">物流查询</view>
