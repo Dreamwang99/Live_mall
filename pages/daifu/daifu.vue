@@ -86,6 +86,7 @@
 </template>
 
 <script>
+	import bridge from '../../common/unfile/unfile.js'
 	export default {
 		data() {
 			return {
@@ -150,51 +151,63 @@
 					console.log(res.data.paydata)
 					if (this.paytype == 'alipay') {
 						console.log(11)
-						// this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
-						bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
-						bridge.register('alipaycallback', function(result) {
-							console.log(result)
-							if(result*1 === 0){
-								uni.showToast({
-									title:'支付失败',
-									icon:'none'
-								})
-							}else if(result*1 === 1){
-								uni.showToast({
-									title:'支付成功',
-									icon:'none'
-								})
-								setTimeout(function(){
-									uni.redirectTo({
-										url: '../dingdan/dingdan'
-									});
-								},1500)
-							}
-						})
+						this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
+						// bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
+						// bridge.register('alipaycallback', function(result) {
+						// 	console.log(result)
+						// 	if(result*1 === 0){
+						// 		uni.showToast({
+						// 			title:'支付失败',
+						// 			icon:'none'
+						// 		})
+						// 	}else if(result*1 === 1){
+						// 		uni.showToast({
+						// 			title:'支付成功',
+						// 			icon:'none'
+						// 		})
+						// 		setTimeout(function(){
+						// 			uni.redirectTo({
+						// 				url: '../dingdan/dingdan'
+						// 			});
+						// 		},1500)
+						// 	}
+						// })
 					} else if (this.paytype == 'wechat') {
 						console.log(22)
-						// this.wxPay(res.data.paydata)
+						this.wxPay(res.data.paydata)
 						console.log(res.data.paydata)
-						bridge.call('wxpay', res.data.paydata)//微信
-						bridge.register('wxpaycallback', function(result) {
-							console.log(result)
-							if(result*1 === 0){
-								uni.showToast({
-									title:'支付失败',
-									icon:'none'
-								})
-							}else if(result*1 === 1){
-								uni.showToast({
-									title:'支付成功',
-									icon:'none'
-								})
-								setTimeout(function(){
-									uni.redirectTo({
-										url: '../dingdan/dingdan'
-									});
-								},1500)
+						// bridge.call('wxpay', res.data.paydata)//微信
+						// bridge.register('wxpaycallback', function(result) {
+						// 	console.log(result)
+						// 	if(result*1 === 0){
+						// 		uni.showToast({
+						// 			title:'支付失败',
+						// 			icon:'none'
+						// 		})
+						// 	}else if(result*1 === 1){
+						// 		uni.showToast({
+						// 			title:'支付成功',
+						// 			icon:'none'
+						// 		})
+						// 		setTimeout(function(){
+						// 			uni.redirectTo({
+						// 				url: '../dingdan/dingdan'
+						// 			});
+						// 		},1500)
+						// 	}
+						// })
+						uni.requestPayment({
+							provider: 'wxpay',
+							orderInfo: res.data.paydata, //微信、支付宝订单数据 
+							success: function(res) {
+								console.log(444)
+								console.log('success:' + JSON.stringify(res));
+							},
+							fail: function(err) {
+								console.log(555)
+								console.log('fail:' + JSON.stringify(err));
 							}
-						})
+						});
 						console.log(33)
 					}
 				})

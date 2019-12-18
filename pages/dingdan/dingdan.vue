@@ -14,7 +14,7 @@
 				</view>
 				<view class="row" v-if="t.length>0" v-for="(row,index) in t" :key="index">
 					<view class="type">
-						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.business_name}}
+						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.goods_list[0].business_name}}
 					</view>
 					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx" @tap="godetail()">
 						<view class="left">
