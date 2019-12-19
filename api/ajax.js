@@ -7,7 +7,8 @@ export default function ajax(url = '', params = {}, type = 'POST', header = {'co
 			header: header,
 		}).then((response) => {
 			let [error, res] = response;
-			if(res.data.data.code){
+			if(res.data.data!=null && res.data.data!=''){
+				console.log('qewqewqeqe');
 				if(res.data.data.code==700){
 					uni.showToast({
 						title: res.data.data.msg,
@@ -20,6 +21,7 @@ export default function ajax(url = '', params = {}, type = 'POST', header = {'co
 					},1500)
 				}
 			}else{
+				console.log('123123131');
 				if(res.data.code==700){
 					uni.showToast({
 						title: '登陆状态失效,请重新登录!',
@@ -32,7 +34,6 @@ export default function ajax(url = '', params = {}, type = 'POST', header = {'co
 					},1500)
 				}
 			}
-			
 			resolve(res.data);
 		}).catch(error => {
 			let [err, res] = error;

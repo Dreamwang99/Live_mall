@@ -226,6 +226,7 @@
 	height: 61rpx;
 	width: 62rpx;
 	margin-left: 21rpx;
+	border-radius: 100%;
 }
 .xiaoshipin1.data-v-bbb417c0 {
 	height: 165rpx;
@@ -848,7 +849,6 @@
 	font-size: 22rpx;
 	margin-left: 10rpx;
 	width: 100%;
-	overflow: hidden;
 	padding-top: 10rpx;
 	text-overflow: ellipsis;
 	white-space: nowrap;

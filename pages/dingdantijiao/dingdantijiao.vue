@@ -220,6 +220,7 @@
 			// 输出格式 为 2018-8-27 14:45:33
 			this.nowdate = currentDate + " " + currentTime
 			console.log(this.nowdate);
+			this.myAdress()
 		},
 		onShow() {
 			this.addressbox = uni.getStorageSync('getaddress')
@@ -983,7 +984,23 @@
 				this.pintuanyaoqing = false;
 
 			}
-		}
+		},
+		/* 地址列表 */
+		myAdress() {
+			this.request.getAddressList({
+				token: uni.getStorageSync('token')
+			}).then(res => {
+				console.log(res)
+				console.log(res.data)
+				res.data.forEach(item =>{
+					if(item.is_default==1){
+						this.addressbox = item
+						this.addressbox_id = item.id
+					}
+				})
+				// this.adressList = res.data
+			})
+		},
 	}
 	}
 </script>

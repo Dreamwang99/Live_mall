@@ -21,10 +21,15 @@
 				</view>
 			</view>
 			<view class="parameter" @tap="lookshopdetial()">
-				<view class="parametermsg">商品参数: <text v-for="(sac,index) in goodsdata.specs" :key='index' class="commercialbox">{{sac.name}}</text></view>
-				<image src="../../static/iocn-2-jr.png" mode="" class="nextimg"></image>
+				<view class="pMs">
+					<view class="p-left">
+						商品参数: <text v-for="(sac,index) in goodsdata.specs" :key='index' class="commercialbox">{{sac.name}}</text>
+					</view>
+					<view class="p-right">
+						<image src="../../static/iocn-2-jr.png" mode="" class="nextimg"></image>
+					</view>
+				</view>
 			</view>
-			<!-- ///////////////////////////////////////////////////// -->
 			<view class="pepershow">
 				<view class="showbox">
 					<view class="showtilte" v-if="buylist.count == undefined">买家秀（0}）</view>
@@ -54,48 +59,46 @@
 					<view class="humanmsg">{{shopcommon.common.content}}</view>
 				</view>
 			</view>
-			<!-- //////////////////////////////////////////////////////////////////// -->
 			<view class="shopdetial">
 				<view>————————</view>
 				<view>商品详情</view>
 				<view>————————</view>
 			</view>
 			<view class="bigimgbox">
-				<!-- <image :src="goodsdata.logo" mode="widthFix" class="bigimg"></image> -->
 				<rich-text :nodes="shopdetialimg"></rich-text>
 			</view>
 		</view>
 		<!-- 商品参数的弹框 -->
-		<view class="blackbox" v-show="showdetial == true" @tap="closeshopdetial()"></view>
-		<view class="whitebox" v-show="showdetial == true">
+		<view class="blackbox" v-show="showdetial" @tap="closeshopdetial()"></view>
+		<view class="whitebox" v-show="showdetial">
 			<view class="whiteboxtitle">商品参数</view>
-			<view class="whitenamebox" v-for="(item,idx) in goodsparameter" :key='idx'>
+			<view class="whitenamebox" v-for="(item,idx) in colorbox" :key='idx'>
 				<view class="whiteboxname">{{item.name}}</view>
-				<view class="whiteboxcontent"><text v-for="(itemm,idxx) in item.list" :key='idxx'>{{itemm.name}}:</text></view>
+				<view class="whiteboxcontent"><text v-for="(itemm,idxx) in item.list" :key='idxx'>{{itemm.name}}/</text></view>
 			</view>
 			<view class="redbutton" @tap="closeshopdetial()">完成</view>
 		</view>
-		<!-- 商品参数的弹框 -->
-		<!-- 加入购物车的弹框 -->
-		<view class="blackbox" v-show="showmsgdetial == true" @tap="closeshopdetial()"></view>
-		<view class="shopdetialmsgbox" v-show="showmsgdetial == true">
+		<!-- 弹框 -->
+		<view class="blackbox" v-show="showmsgdetial" @tap="closeshopdetial()"></view>
+		<view class="shopdetialmsgbox" v-show="showmsgdetial">
 			<view class="shopmsg1">
 				<image src="../../static/11.png" mode="" class="shopmsg1img"></image>
 				<view class="shoppircebox">
-					<view class="pricetitle" v-if="shopmsg.price_selling != ''&&judges*1!==2">￥{{shopmsg.price_selling}}</view>
-					<view class="pricetitle" v-if="judges*1===2">￥{{shopmsg.seckill_price}}</view>
-					<view class="repertory">库存118件</view>
+					<view class="pricetitle">￥{{getInfos.price_selling}}</view>
+					<view class="repertory">库存{{getInfos.number_stock}}件</view>
 				</view>
 			</view>
 			<view class="shopmsg2">{{goodsdata.title}}</view>
 			<view class="shopmsg3" v-for="(color,index) in colorbox" :key='index'>
 				<view class="forname">{{color.name}}</view>
 				<view class="forcontent">
-					<!-- 方法二 -->
-					<!-- <view class="colorbox" :class="col.aaa != -1? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(col.aaa,index,index1)">{{col.name}}</view>
-				</view> -->
-					<!-- 方法二 -->
-					<view class="colorbox" :class="color.aaa ==index1 ? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(index,index1,color.name,col.name)">{{col.name}}</view>
+					<view class="colorbox" :class="{'ac' : col.isChose}" v-for="(col,index1) in color.list" :key='index1' @tap="choseEachKinds(index,index1)">{{col.name}}</view>
+				</view>
+			</view>
+			<view class="shopmsg3" v-if="btnTypes === 4">
+				<view class="forname">拼团人数</view>
+				<view class="forcontent">
+					<view class="colorbox" :class="{'ac' : item.isChose}" v-for="(item,index) in dumpling" :key='index' @tap="choseEachTNms(index)">{{item.name}}</view>
 				</view>
 			</view>
 			<view class="shopmsg4">
@@ -107,92 +110,12 @@
 				<view class="postagecontent" v-if="postage == '0.00'">快递免邮</view>
 				<view class="postagecontent" v-else>邮费:{{postage}}元</view>
 			</view>
-			<view class="center" @tap="bugcar()">确定</view>
+			<view class="center" v-if="btnTypes === 1" @tap="buyNow()">确定</view>
+			<view class="center" v-if="btnTypes === 2" @tap="addMyCar()">确定</view>
+			<view class="center" v-if="btnTypes === 3" @tap="cutPrice()">确定</view>
+			<view class="center" v-if="btnTypes === 4" @tap="openTuan()">确定</view>
+			<view class="center" v-if="btnTypes === 5" @tap="seckill()">确定</view>
 		</view>
-
-
-
-		<!-- 跳转砍价页面 -->
-		<view class="blackbox" v-show="showmsgdetial1 == true" @tap="closeshopdetial()"></view>
-		<view class="shopdetialmsgbox" v-show="showmsgdetial1 == true">
-			<view class="shopmsg1">
-				<image src="../../static/11.png" mode="" class="shopmsg1img"></image>
-				<view class="shoppircebox">
-					<view class="pricetitle" v-if="shopmsg.price_selling != ''">￥{{shopmsg.seckill_price}}</view>
-					<view class="repertory">库存118件</view>
-				</view>
-			</view>
-			<view class="shopmsg2">{{goodsdata.title}}</view>
-			<view class="shopmsg3" v-for="(color,index) in colorbox" :key='index'>
-				<view class="forname">{{color.name}}</view>
-				<view class="forcontent">
-					<!-- 方法二 -->
-					<!-- <view class="colorbox" :class="col.aaa != -1? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(col.aaa,index,index1)">{{col.name}}</view>
-				</view> -->
-					<!-- 方法二 -->
-					<view class="colorbox" :class="color.aaa ==index1 ? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolors(index,index1,color.name,col.name)">{{col.name}}</view>
-				</view>
-			</view>
-			<view class="shopmsg4">
-				<view class="buynumbername">购买数量</view>
-				<add :num='1' @numChange='fixNum($event)'></add>
-			</view>
-			<view class="shopmsg5">
-				<view class="postagename">配送费</view>
-				<view class="postagecontent" v-if="postage == '0.00'">快递免邮</view>
-				<view class="postagecontent" v-else>邮费:{{postage}}元</view>
-			</view>
-			<view class="center" @tap="bargainmit()">确定</view>
-		</view>
-
-
-
-		<!-- 拼团的弹框 -->
-		<view class="blackbox" v-show="showmsgdetial2 == true" @tap="closeshopdetial()"></view>
-		<view class="shopdetialmsgbox" v-show="showmsgdetial2 == true">
-			<view class="shopmsg1">
-				<image src="../../static/11.png" mode="" class="shopmsg1img"></image>
-				<view class="shoppircebox">
-					<view class="pricetitle" v-if="shopmsg.price_selling != ''&&judges*1!==2">￥{{shopmsg.price_selling}}</view>
-					<view class="pricetitle" v-if="judges*1===2">￥{{shopmsg.seckill_price}}</view>
-					<view class="repertory">库存118件</view>
-				</view>
-			</view>
-			<view class="shopmsg2">{{goodsdata.title}}</view>
-			<view class="shopmsg3" v-for="(color,index) in colorbox" :key='index'>
-				<view class="forname">{{color.name}}</view>
-				<view class="forcontent">
-					<!-- 方法二 -->
-					<!-- <view class="colorbox" :class="col.aaa != -1? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor(col.aaa,index,index1)">{{col.name}}</view>
-				</view> -->
-					<!-- 方法二 -->
-					<view class="colorbox" :class="color.aaa ==index1 ? 'ac':''" v-for="(col,index1) in color.list" :key='index1' @tap="choosecolor3(index,index1,color.name,col.name)">{{col.name}}</view>
-				</view>
-				
-				
-			</view>
-			<!-- 拼团人数 -->
-			<view class="shopmsg3">
-				<view class="forname">开团人数</view>
-				<view class="forcontent">
-<view class="colorbox" :class="currents==index ? 'ac':''" v-for="(dump,index) in dumpling" :key='index' @tap="choosecolor4(index)">{{dump.name}}</view>
-				</view>
-			</view>
-			
-			
-			<view class="shopmsg4">
-				<view class="buynumbername">购买数量</view>
-				<add :num='1' @numChange='fixNum($event)'></add>
-			</view>
-			<view class="shopmsg5">
-				<view class="postagename">配送费</view>
-				<view class="postagecontent" v-if="postage == '0.00'">快递免邮</view>
-				<view class="postagecontent" v-else>邮费:{{postage}}元</view>
-			</view>
-			<view class="center" @tap="bugcars()">确定</view>
-		</view>
-
-
 		<view class="fixedbox">
 			<view class="store" @tap="store()">
 				<image src="../../static/dingdan/iocn-29-dp.png" mode="" class="storeimg" v-if="showimg == 0"></image>
@@ -204,19 +127,19 @@
 				<image src="../../static/dingdan/iocn-29-lxkf_61.png" mode="" class="storeimg" v-if="showimg1 == 3"></image>
 				<view class="storename" :class="showimg1 == 3?'red':''">客服</view>
 			</view>
-			<view class="store" @tap="group()">
+			<view class="store" @tap="openHidden(4)">
 				<image src="../../static/shopdetial/iocn-2-pt.png" mode="" class="storeimg" v-if="showimg2 == 4"></image>
 				<image src="../../static/shopdetial/icon_pt.png" mode="" class="storeimg" v-if="showimg2 == 5"></image>
 				<view class="storename" :class="showimg2 == 5?'red':''">拼团</view>
 			</view>
-			<view class="store" @tap="bargain()">
+			<view class="store" @tap="openHidden(3)">
 				<image src="../../static/shopdetial/iocn-2-kj.png" mode="" class="storeimg" v-if="showimg3 == 6"></image>
 				<image src="../../static/shopdetial/icon_kj.png" mode="" class="storeimg" v-if="showimg3 == 7"></image>
 				<view class="storename" :class="showimg3 == 7?'red':''">砍价</view>
 			</view>
 			<view class="buttons">
-				<view class="shoppingcart" @tap="opencar()">加入购物车</view>
-				<view class="buy" @tap="nowbuy()">立即购买</view>
+				<view class="shoppingcart" @tap="openHidden(2)">加入购物车</view>
+				<view class="buy" @tap="openHidden(1)">立即购买</view>
 			</view>
 		</view>
 	</view>
@@ -232,7 +155,19 @@
 		},
 		data() {
 			return {
+				// 按钮类型
+				btnTypes: -1,
+				isChoseColor: "",
+				isChoseSize: "",
+				getInfos: {
+					id: "",
+					price_selling: "",
+					number_stock: ""
+				},
+				tPersonNums: 0,
+				ptTypes: "",
 				showimg: 1,
+				specs: "",
 				showimg1: 2,
 				showimg2: 4,
 				showimg3: 6,
@@ -254,11 +189,8 @@
 				specid: '',
 				judges: '',
 				goods_idss: '',
-
 				bargain_id: '',
 				bargainid: '',
-
-
 				//买家秀列表
 				buylist: [],
 				//商品评论信息 1个
@@ -269,36 +201,38 @@
 				choosetype: 0, //购物车的选择弹出
 				shopdetialimg: '',
 				postage: '', //邮费
-				dumpling:[
-					{
-						name:'三人团'
+				dumpling: [{
+						name: '三人团',
+						isChose: false
 					},
 					{
-						name:'五人团'
+						name: '五人团',
+						isChose: false
 					}
 				],
-				currents:-1,
-				pintuanid:'',//拼团id
-				peoplenumbers:'',//拼团人数
-				bargainshopid:'',//店铺id
+				currents: -1,
+				pintuanid: '', //拼团id
+				peoplenumbers: '', //拼团人数
+				bargainshopid: '', //店铺id
 			}
 		},
 		onLoad(options) {
 			this.token = uni.getStorageSync('token')
-			if(options.id == ''){
+			if (options.id == '') {
 				this.getdetial()
-			}else{
+			} else {
 				this.shopid = options.id
 			}
 			console.log('qweqe')
-			this.judges = options.judge /////////////////////////////////////新增状态 秒杀为2
+			this.judges = options.judge
 			console.log(options.judge)
 			console.log(this.judges)
 			if (this.judges * 1 === 2) {
+				this.btnTypes = 5
 				this.showmsgdetial = true
 				this.goods_idss = options.goods_ids
 			} else {
-				this.judges = 0 //-1为购物车
+				this.judges = 0
 			}
 			console.log(this.judges)
 			this.getshopmsg()
@@ -307,14 +241,292 @@
 			this.getShopCommon()
 		},
 		methods: {
-			getdetial(){
+			// 立即购买
+			buyNow() {
+				if (this.showToasts()) {
+					uni.navigateTo({
+						url: "/pages/dingdantijiao/dingdantijiao?goods_type="+"0"+"&id="+this.shopid+"&goods_spec="+this.specs+"&specid="+this.getInfos.id+"&number="+this.number
+					})
+				}
+			},
+			// 加入购物车
+			addMyCar() {
+				if (this.showToasts()) {
+					this.request.addshopcar({
+						token : uni.getStorageSync('token'),
+						goodsid : this.shopid,
+						spec : this.specs,
+						number : this.number
+					}).then(res=>{
+						console.log(res);
+						if(res.code === 1){
+							this.closeshopdetial();
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					})
+				}
+			},
+			// 砍价
+			cutPrice() {
+				if (this.showToasts()) {
+					this.request.getStart({
+						token : uni.getStorageSync('token'),
+						goods_id : this.shopid,
+						type : 1,
+						bargain_id : this.getInfos.id,
+						open_people : uni.getStorageSync('id')
+					}).then(res=>{
+						console.log(res);
+						if(res.code === 1){
+							this.closeshopdetial();
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+							setTimeout(()=>{
+								uni.navigateTo({
+									url:"/pages/kanjia/kanjia?activid="+res.data.activity_id+"&openid="+uni.getStorageSync('id')
+								})
+							},2000)
+						}else{
+							this.closeshopdetial();
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					})
+				}
+			},
+			// 秒杀
+			seckill(){
+				if (this.showToasts()) {
+					uni.navigateTo({
+						url: "/pages/dingdantijiao/dingdantijiao?goods_type="+"2"+"&id="+this.shopid+"&goods_spec="+this.specs+"&specid="+this.getInfos.id+"&goodsid="+this.goods_idss
+					})
+				}
+			},
+			backnext() {
+				uni.navigateBack({
+			
+				})
+			},
+			// 拼团
+			openTuan() {
+				if (this.showToasts()) {
+					uni.navigateTo({
+						url: "/pages/dingdantijiao/dingdantijiao?goods_type=" + "4" + "&goods_spec=" + this.specs + "&id=" + this.shopid +
+							"&tPeopleNums=" + this.tPersonNums + "&activityid=" + this.getInfos.id + "&types=" + "开团"
+					})
+				}
+			},
+			showToasts() {
+				if (this.btnTypes === 1 || this.btnTypes === 2 || this.btnTypes === 3) {
+					if (!this.isChoseColor) {
+						uni.showToast({
+							title: "请选择颜色",
+							icon: 'none'
+						});
+						return false;
+					} else if (!this.isChoseSize) {
+						uni.showToast({
+							title: "请选择尺码",
+							icon: 'none'
+						})
+						return false;
+					} else {
+						return true;
+					}
+				} else if (this.btnTypes === 4) {
+					if (!this.isChoseColor) {
+						uni.showToast({
+							title: "请选择颜色",
+							icon: 'none'
+						});
+						return false;
+					} else if (!this.isChoseSize) {
+						uni.showToast({
+							title: "请选择尺码",
+							icon: 'none'
+						})
+						return false;
+					} else if (!this.tPersonNums === 0) {
+						uni.showToast({
+							title: "请选择拼团人数",
+							icon: 'none'
+						})
+						return false;
+					} else {
+						return true;
+					}
+				}
+			},
+			openHidden(nums) {
+				this.btnTypes = nums
+				if (nums === 1 || nums === 2) {
+					this.showmsgdetial = true
+				} else if (nums === 3) {
+					if (!this.bargain_id) {
+						uni.showToast({
+							title: "此商品不支持砍价",
+							icon: 'none'
+						})
+					} else {
+						this.showmsgdetial = true
+					}
+				} else if (nums === 4) {
+					if (!this.pintuanid) {
+						uni.showToast({
+							title: "此商品不支持拼团",
+							icon: 'none'
+						})
+					} else {
+						this.showmsgdetial = true
+					}
+				}
+			},
+			choseEachTNms(idx) {
+				this.dumpling.forEach((i, i_idx) => {
+					if (idx === i_idx) {
+						i.isChose = true
+						this.ptTypes = i.name
+					} else {
+						i.isChose = false
+					}
+				});
+				this.getNormalPrice();
+			},
+			// 普通商品规格
+			getNormalPrice() {
+				this.goodsdata.lists.forEach((i) => {
+					if (this.isChoseColor === i[0].name && this.isChoseSize === i[1].name) {
+						this.specs = i[0].key
+					}
+				})
+				if (this.btnTypes === 1 || this.btnTypes === 2) {
+					this.request.gitshopspecification({
+						goods_id: this.shopid,
+						goods_spec: this.specs
+					}).then(res => {
+						console.log(res);
+						if (res.code === 1) {
+							this.getInfos.id = res.data.id
+							this.getInfos.price_selling = res.data.price_selling
+							this.getInfos.number_stock = res.data.number_stock - res.data.number_sales
+						} else {
+							uni.showToast({
+								title: res.msg,
+								icon: 'none'
+							})
+						}
+					});
+				} else if (this.btnTypes === 3) {
+					this.request.seckillchoose({
+						goods_id: this.bargain_id,
+						goods_spec: this.specs
+					}).then(res => {
+						console.log(res);
+						if (res.code === 1) {
+							this.getInfos.id = res.data.id
+							this.getInfos.price_selling = res.data.bargain_price
+							this.getInfos.number_stock = res.data.number_stock
+						} else {
+							uni.showToast({
+								title: res.msg,
+								icon: 'none'
+							})
+						}
+					});
+				} else if (this.btnTypes === 4) {
+					this.request.seckillchoose({
+						goods_id: this.pintuanid,
+						goods_spec: this.specs
+					}).then(res => {
+						console.log(res);
+						if (res.code === 1) {
+							this.getInfos.id = res.data.id
+							this.getInfos.number_stock = res.data.number_stock
+							if (this.ptTypes === "三人团") {
+								this.tPersonNums = 3
+								this.getInfos.price_selling = res.data.group_price_three
+							} else if (this.ptTypes === "五人团") {
+								this.tPersonNums = 5
+								this.getInfos.price_selling = res.data.group_price_five
+							}
+						} else {
+							uni.showToast({
+								title: res.msg,
+								icon: 'none'
+							})
+						}
+					});
+				}else if(this.btnTypes === 5){
+					this.request.seckillchoose({
+						goods_id: this.pintuanid,
+						goods_spec: this.specs
+					}).then(res => {
+						console.log(res);
+						if (res.code === 1) {
+							this.getInfos.id = res.data.id
+							this.getInfos.number_stock = res.data.number_stock
+							this.getInfos.price_selling = res.data.seckill_price
+						} else {
+							uni.showToast({
+								title: res.msg,
+								icon: 'none'
+							})
+						}
+					});
+				}
+			},
+			getdetial() {
 				bridge.register('getShopDetialBack', function(result) {
 					console.log(result)
 					console.log(JSON.parse(result).goods_id)
 					this.shopid = JSON.parse(result).goods_id
 				})
 			},
-			//////////////////////////////////////////////////////////////////////////////////////////////////
+			//商品详情的请求
+			getshopmsg() {
+				this.request.gitshopdetial({
+					goods_id: this.shopid
+				}).then(res => {
+					console.log(res)
+					if (res.code === 1) {
+						res.data.specs.forEach((i) => {
+							i.list.forEach((j) => {
+								j.isChose = false
+							})
+						})
+						this.colorbox = res.data.specs
+						this.goodsparameter = res.data.specs //商品参数
+						this.goodsdata = res.data //商品所有数据
+						this.lunboimg = res.data.image
+						this.shopdetialimg = res.data.content
+						this.postage = res.data.price_express //邮费
+						this.pintuanid = res.data.group //拼团的商品活动id
+						this.bargain_id = res.data.bargain //砍价的商品活动id
+						this.bargainshopid = res.data.business_id //砍价的商品活动id
+					} else {
+						uni.showToast({
+							title: res.msg,
+							icon: 'none'
+						})
+					}
+				})
+			},
+			//加减计算
+			fixNum(e, id) {
+				this.number = e
+			},
 			//获取买家秀
 			getshopshow() {
 				this.request.shopshow({
@@ -337,7 +549,6 @@
 					this.shopcommon = res.data
 				})
 			},
-			///////////////////////////////////////ch
 			getcollectList() {
 				this.request.getcollectList({
 					token: this.token,
@@ -353,6 +564,7 @@
 					}
 				})
 			},
+			// 是否收藏
 			choosecollect() {
 				if (this.bool) {
 					console.log("收藏")
@@ -381,448 +593,64 @@
 						})
 					})
 				}
-				//取反开等于关  关等于开
 				this.bool = !this.bool
 			},
-			choosecolor(index, index1, cname, name) { //普通商品的选择规格
-				console.log(index)
-				console.log(this.colorbox)
-				console.log(cname)
-				console.log(name)
-				console.log(this.colorbox[index])
-				this.color = this.colorbox[0].name
-				this.color1 = this.colorbox[index].list[0].name
-				a[index] = this.colorbox[index].name + '::' + this.colorbox[index].list[index1].name
-				var bb = '';
-				for (var i = 0; i < a.length; i++) {
-					bb += a[i] + ';;';
-				}
-				this.goods_specs = bb.substr(0, bb.length - 2)
-				if (this.colorbox[index].aaa == index1) {
-					this.colorbox[index].aaa = -1
-				} else {
-					this.colorbox[index].aaa = index1
-				}
-				console.log(this.judges)
-				if (this.judges * 1 === 2) { ////////////////////////秒杀为2
-					// 判断位数是否相等
-					if (a.length * 1 === this.colorbox.length * 1) {
-						this.seckillChoose()
-					} else {
-						uni.showToast({
-							title: '继续选择其他商品类型',
-							icon: 'none'
-						})
-					}
-				} else {
-					// 判断位数是否相等
-					if (a.length * 1 === this.colorbox.length * 1) {
-						this.gitshopspecifications()
-					} else {
-						uni.showToast({
-							title: '继续选择其他商品类型',
-							icon: 'none'
-						})
-					}
-				}
-				//方法二
-				// for(var i = 0 ; i<this.colorbox[index].list.length;i++){
-				// 	this.colorbox[index].list[i].aaa = -1
-				// }
-				// this.colorbox[index].list[index1].aaa = 1
-				//方法
-			},
-
-			choosecolors(index, index1, cname, name) { //砍价的选择规格
-				console.log(index)
-				console.log(this.colorbox)
-				console.log(cname)
-				console.log(name)
-				console.log(this.colorbox[index])
-				this.color = this.colorbox[0].name
-				this.color1 = this.colorbox[index].list[0].name
-				a[index] = this.colorbox[index].name + '::' + this.colorbox[index].list[index1].name
-				var bb = '';
-				for (var i = 0; i < a.length; i++) {
-					bb += a[i] + ';;';
-				}
-				this.goods_specs = bb.substr(0, bb.length - 2)
-				if (this.colorbox[index].aaa == index1) {
-					this.colorbox[index].aaa = -1
-				} else {
-					this.colorbox[index].aaa = index1
-				}
-				// 判断位数是否相等
-				if (a.length * 1 === this.colorbox.length * 1) {
-					this.gitshopspeci()
-				} else {
-					uni.showToast({
-						title: '继续选择其他商品类型',
-						icon: 'none'
-					})
-				}
-				//方法二
-				// for(var i = 0 ; i<this.colorbox[index].list.length;i++){
-				// 	this.colorbox[index].list[i].aaa = -1
-				// }
-				// this.colorbox[index].list[index1].aaa = 1
-				//方法
-			},
-			choosecolor3(index, index1, cname, name) {
-				console.log(index)
-				console.log(this.colorbox)
-				console.log(cname)
-				console.log(name)
-				console.log(this.colorbox[index])
-				this.color = this.colorbox[0].name
-				this.color1 = this.colorbox[index].list[0].name
-				a[index] = this.colorbox[index].name + '::' + this.colorbox[index].list[index1].name
-				var bb = '';
-				for (var i = 0; i < a.length; i++) {
-					bb += a[i] + ';;';
-				}
-				this.goods_specs = bb.substr(0, bb.length - 2)
-				if (this.colorbox[index].aaa == index1) {
-					this.colorbox[index].aaa = -1
-				} else {
-					this.colorbox[index].aaa = index1
-				}
-				console.log(this.judges)
-				// 判断位数是否相等
-				if (a.length * 1 === this.colorbox.length * 1) {
-					this.gitshopspecifications()
-				} else {
-					uni.showToast({
-						title: '继续选择其他商品类型',
-						icon: 'none'
-					})
-				}
-				//方法二
-				// for(var i = 0 ; i<this.colorbox[index].list.length;i++){
-				// 	this.colorbox[index].list[i].aaa = -1
-				// }
-				// this.colorbox[index].list[index1].aaa = 1
-				//方法
-			},
-			choosecolor4(index){
-				console.log(index)
-				this.currents =index
-				if(this.currents*1 ===0){
-					this.peoplenumbers =3
-				}else if(this.currents*1 ===1){
-					this.peoplenumbers =5
-				}
-			},
-			gitshopspeci() {
-				this.request.getGoodsSpec({
-					goods_id: this.bargain_id,
-					goods_spec: this.goods_specs
-				}).then(res => {
-					console.log(res)
-					console.log(11111)
-					console.log(res.data.price_selling)
-					this.shopmsg = res.data
-					this.shoppricess = res.data.price_selling
-					this.status = res.data.status
-					this.bargainid = res.data.id
-				})
-			},
-
-
-			//秒杀规格的请求
-			seckillChoose() {
-				this.request.seckillchoose({
-					goods_id: this.goods_idss,
-					goods_spec: this.goods_specs
-				}).then(res => {
-					console.log(res)
-					this.shopmsg = res.data
-					this.shoppricess = res.data.seckill_price
-					this.status = res.data.status
-					this.specid = res.data.id
-				})
-			},
-			//普通商品规格的请求
-			gitshopspecifications() {
-				this.request.gitshopspecification({
-					goods_id: this.shopid,
-					goods_spec: this.goods_specs
-				}).then(res => {
-					console.log(res)
-					console.log(res.data.price_selling)
-					this.shopmsg = res.data
-					this.shoppricess = res.data.price_selling
-					this.status = res.data.status
-				})
-			},
-			//商品详情的请求
-			getshopmsg() {
-				console.log(1111)
-				this.request.gitshopdetial({
-					goods_id: this.shopid
-				}).then(res => {
-					console.log(res)
-					console.log(res.msg)
-					if(res.code!=1){
-						uni.showToast({
-							title: res.msg,
-							icon: 'none'
-						})
-					}
-					this.goodsparameter = res.data.specs //商品参数
-					this.goodsdata = res.data //商品所有数据
-					this.lunboimg = res.data.image
-					this.shopdetialimg = res.data.content
-					this.postage = res.data.price_express//邮费
-					this.pintuanid =res.data.group//拼团的商品活动id
-					this.bargain_id = res.data.bargain//砍价的商品活动id
-					this.bargainshopid = res.data.business_id//砍价的商品活动id
-					let arr = res.data.specs
-					//forEach循环
-					// arr.forEach(item => {
-					// 	item.list.forEach(i => {
-					// 		i.aaa = -1
-					// 	})
-					// 	console.log(item)
-					// })
-					for (var i in arr) {
-						arr[i].aaa = -1
-					}
-					console.log(arr)
-					this.colorbox = arr
-					console.log(this.colorbox)
-					//for循环
-					// for(let index in arr){
-					// 	console.log(arr)
-					// 	let newarr=arr[index].list
-					// 	console.log(newarr)
-
-					// 	for(var i=0 ; i<newarr.length ; i++ ){
-					// 		newarr[i].aaa=-1
-					// 	}
-					// }
-
-
-				})
-			},
-			//加减计算
-			fixNum(e, id) {
-				console.log(e)
-				console.log(id)
-				this.number = e
-				console.log(this.number)
-				// this.grtcarnumber(e,id)
-				// this.fixCost()
-			},
-			opencar() {
-				console.log(1111)
-				this.judges = -1
-				this.showmsgdetial = true
-
-			},
-			nowbuy() { //直接购买
-				console.log('直接购买')
-				this.showmsgdetial = true
-				this.judges = 0
-			},
-			bugcar() {
-				if (a.length * 1 === this.colorbox.length * 1) {
-					if (this.shoppricess !== '0.00' && this.status * 1 !== 0) { //判断是否有该商品或该商品是否已下架
-						console.log(this.judges)
-						if (this.judges * 1 === 2) {
-							uni.navigateTo({ //goods_type=0普通商品 2秒杀商品 3砍价商品 4团购商品
-								url: `../dingdantijiao/dingdantijiao?id=${this.shopid}&goods_type=2&goods_spec=${this.goods_specs}&specid=${this.specid}&goodsid=${this.goods_idss}`
-							})
-						} else if (this.judges * 1 === 0) {
-							uni.navigateTo({ //goods_type=0普通商品 2秒杀商品 3砍价商品 4团购商品
-								url: `../dingdantijiao/dingdantijiao?id=${this.shopid}&goods_type=0&goods_spec=${this.goods_specs}&specid=${this.specid}&goodsid=${this.goods_idss}&number=${this.number}`
-							})
-						} else if (this.judges * 1 === -1) {
-							this.request.addshopcar({ //普通商品的加入购物车
-								token: this.token,
-								goodsid: this.shopid,
-								spec: this.goods_specs,
-								number: this.number
-							}).then(res => {
-								console.log(res)
-								this.showmsgdetial = false
-								if (res.code * 1 === 1) {
-									uni.showToast({
-										title: '加入购物车成功',
-										icon: 'none'
-									})
+			choseEachKinds(index, index1) {
+				this.colorbox.forEach((i, i_idx) => {
+					if (index === i_idx) {
+						i.list.forEach((j, j_idx) => {
+							if (index1 === j_idx) {
+								j.isChose = true
+								if (index === 0) {
+									this.isChoseColor = j.name
+									if (!this.isChoseSize) {} else {
+										this.getNormalPrice()
+									}
 								} else {
-									uni.showToast({
-										title: res.msg,
-										icon: 'none'
-									})
+									this.isChoseSize = j.name
+									if (!this.isChoseColor) {} else {
+										this.getNormalPrice()
+									}
 								}
-							})
-						}
-					} else {
-						uni.showToast({
-							title: '该规格已下架',
-							icon: 'none'
+							} else {
+								j.isChose = false
+							}
 						})
 					}
-
-				} else {
-					uni.showToast({
-						title: '请先选的商品规格',
-						icon: 'none'
-					})
-				}
-				this.showmsgdetial =false
-				this.showmsgdetial1 =false
-				this.showmsgdetial2 =false//关闭弹窗页面
+				});
 			},
-			bugcars() {//团购点击确认跳转订单
-				if (a.length * 1 === this.colorbox.length * 1) {
-					
-					
-					
-					if(this.peoplenumbers == ''){
-						uni.showToast({
-							title:'请选择开团人数',
-							icon:'none'
-						})
-					}else{
-						if (this.shoppricess !== '0.00' && this.status * 1 !== 0) { //判断是否有该商品或该商品是否已下架
-							uni.navigateTo({ //goods_type=0普通商品 2秒杀商品 3砍价商品 4团购商品
-								url: `../dingdantijiao/dingdantijiao?id=${this.shopid}&goods_type=4&goods_spec=${this.goods_specs}&specid=${this.specid}&goodsid=${this.goods_idss}&activityid=${this.pintuanid}&types='开团'&tPeopleNums=${this.peoplenumbers}`
-							})
-						} else {
-							uni.showToast({
-								title: '该规格已下架',
-								icon: 'none'
-							})
-						}
-					}
-					
-					
-					
-					
-				} else {
-					uni.showToast({
-						title: '请先选的商品规格',
-						icon: 'none'
-					})
-				}
-				this.showmsgdetial =false
-				this.showmsgdetial1 =false
-				this.showmsgdetial2 =false//关闭弹窗页面
-			},
-
-
 			closeshopdetial() {
 				this.showdetial = false
 				this.showmsgdetial = false
-				this.showmsgdetial1 = false
-				this.showmsgdetial2 = false
-
-				this.showimg = 1
-				this.showimg1 = 2
-				this.showimg2 = 4
-				this.showimg3 = 6
+				this.btnTypes = -1
+				this.getGoodsPrice = ""
+				this.isChoseColor = ""
+				this.isChoseSize = ""
+				this.specs = ""
+				this.getInfos.id = ""
+				this.getInfos.price_selling = ""
+				this.getInfos.number_stock = ""
+				this.colorbox.forEach((i) => {
+					i.list.forEach((j) => {
+						j.isChose = false
+					})
+				})
+				this.dumpling.forEach((k) => {
+					k.isChose = false
+				})
+				this.tPersonNums = 0
 			},
 			lookshopdetial() {
 				this.showdetial = true
 			},
 			store() {
-				this.showimg = 1
-				this.showimg1 = 2
-				this.showimg2 = 4
-				this.showimg3 = 6
-				console.log(this.bargainshopid)
 				uni.navigateTo({
-					url:`../dianpu/dianpu?shopid=${this.bargainshopid}`
+					url: `../dianpu/dianpu?shopid=${this.bargainshopid}`
 				})
 			},
 			service() {
-				this.showimg = 0
-				this.showimg1 = 3
-				this.showimg2 = 4
-				this.showimg3 = 6
 				uni.navigateTo({
 					url: '../kefu2/kefu2'
-				})
-			},
-			group() {
-				console.log(this.pintuanid)
-				if(this.pintuanid != null){
-					this.showimg = 0
-					this.showimg1 = 2
-					this.showimg2 = 5
-					this.showimg3 = 6
-					this.showmsgdetial2 = true
-				}else{
-						uni.showToast({
-							title:'该商品不支持拼团',
-							icon:'none'
-						})
-				}
-				
-			},
-			bargain() {
-				console.log(this.bargain_id)
-				if(this.bargain_id != null){
-					this.showimg = 0
-					this.showimg1 = 2
-					this.showimg2 = 4
-					this.showimg3 = 7
-					this.showmsgdetial1 = true
-				}else{
-						uni.showToast({
-							title:'该商品不支持砍价',
-							icon:'none'
-						})
-				}
-				
-			},
-			bargainmit() {
-				if (a.length * 1 === this.colorbox.length * 1) {
-					if (this.shoppricess !== '0.00' && this.status * 1 !== 0) {
-						this.request.getStart({
-							token: uni.getStorageSync('token'),
-							goods_id: this.shopid,
-							type: 1,
-							bargain_id: this.bargainid,
-							open_people: uni.getStorageSync('id')
-						}).then(res => {
-							console.log(res)
-							console.log(res.msg)
-							uni.showToast({
-								title: res.msg,
-								icon: 'none'
-							})
-							if (res.code == 1) {
-								uni.navigateTo({
-									url: '../kanjia/kanjia?activid=' + res.data.activity_id + '&openid=' + uni.getStorageSync('id')
-								})
-							} else {
-								uni.showToast({
-									title: res.msg,
-									icon: 'none'
-								})
-							}
-						})
-					} else {
-						uni.showToast({
-							title: '该规格已下架',
-							icon: 'none'
-						})
-					}
-
-				} else {
-					uni.showToast({
-						title: '请先选的商品规格',
-						icon: 'none'
-					})
-				}
-			},
-			backnext() {
-				uni.navigateBack({
-
 				})
 			},
 			quanbupingjia() {
@@ -882,50 +710,68 @@
 	.shopmsgbox {
 		width: 750rpx;
 		height: 200rpx;
-		display: flex;
-		flex-direction: column;
-		padding-left: 25rpx;
+		/* display: flex;
+		flex-direction: column; */
+		/* padding-left: 25rpx; */
 		background: #FFFFFF;
 	}
 
 	.shopprice {
+		width: 94%;
+		height: 70rpx;
+		margin: 0 auto;
+		line-height: 70rpx;
 		color: red;
-		font-size: 42rpx;
+		font-size: 36rpx;
 	}
-	
-	.shopname{
+
+	.shopname {
+		width: 94%;
+		height: 60rpx;
+		margin: 0 auto;
+		line-height: 60rpx;
+		font-size: 28rpx;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
 	}
 
 	.shopmsg {
-		width: 725 rpx;
+		width: 94%;
+		height: 50rpx;
+		margin: 0 auto;
 		display: flex;
+		font-size: 24rpx;
 		flex-direction: row;
 		align-items: center;
-		justify-content: space-around;
+		justify-content: space-between;
 		color: #b4b4b4;
 	}
 
 	.parameter {
-		width: 750rpx;
-		background: #FFFFFF;
 		height: 90rpx;
+		background: #FFFFFF;
+		margin-top: 10rpx;
+	}
+
+	.pMs {
+		width: 94%;
+		height: 90rpx;
+		margin: 0 auto;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
-		padding: 50rpx;
 		color: #A5A5A5;
-		margin-top: 10rpx;
 	}
-	.parametermsg{
+
+	.parametermsg {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		width: 600rpx;
 	}
+
 	.nextimg {
 		width: 20rpx;
 		height: 30rpx;
@@ -933,24 +779,20 @@
 	}
 
 	.pepershow {
-		width: 750rpx;
-		height: 230rpx;
 		background: #FFFFFF;
-		display: flex;
-		flex-direction: column;
 		margin-top: 10rpx;
+		padding-bottom: 20rpx;
 	}
 
 	.showbox {
-		width: 750rpx;
-		background: #FFFFFF;
+		width: 94%;
 		height: 90rpx;
+		margin: 0 auto;
 		display: flex;
 		flex-direction: row;
-		color: #A5A5A5;
+		color: #000000;
 		align-items: center;
 		justify-content: space-between;
-		padding: 50rpx;
 	}
 
 	.backbox {
@@ -960,27 +802,29 @@
 	}
 
 	.showimgbox {
+		width: 94%;
+		margin: 0 auto;
 		display: flex;
 		flex-direction: row;
-		padding-left: 30rpx;
 	}
 
 	.showimgsize {
 		width: 120rpx;
 		height: 120rpx;
-		margin-left: 15rpx;
+		margin-right: 10rpx;
+		border-radius: 8rpx;
 	}
 
 	.evaluatetitlebox {
-		width: 750rpx;
-		background: #FFFFFF;
+		width: 94%;
 		height: 90rpx;
+		background: #FFFFFF;
+		margin: 0 auto;
 		display: flex;
 		flex-direction: row;
-		color: #A5A5A5;
+		color: #000000;
 		align-items: center;
 		justify-content: space-between;
-		padding: 50rpx;
 	}
 
 	.evaluatebox {
@@ -999,9 +843,10 @@
 	}
 
 	.evaluatehumanbox {
+		width: 94%;
+		margin: 0 auto;
 		display: flex;
 		flex-direction: column;
-		padding-left: 50rpx;
 	}
 
 	.photobox {
@@ -1013,7 +858,18 @@
 	.humanimg {
 		width: 60rpx;
 		height: 60rpx;
-		border-radius: 20rpx;
+		border-radius: 50%;
+	}
+
+	.humanname {
+		font-size: 22rpx;
+		color: #666666;
+		margin-left: 16rpx;
+	}
+
+	.humanmsg {
+		margin: 20rpx 0 20rpx 0;
+		font-size: 24rpx;
 	}
 
 	.shopdetial {
@@ -1100,7 +956,8 @@
 
 	.whitebox {
 		width: 750rpx;
-		height: 680rpx;
+		/* height: 680rpx; */
+		padding-bottom: 20rpx;
 		position: fixed;
 		left: 0rpx;
 		bottom: 0rpx;
@@ -1109,6 +966,7 @@
 		display: flex;
 		flex-direction: column;
 		color: #949494;
+		z-index: 9999;
 	}
 
 	.whiteboxtitle {
@@ -1148,12 +1006,11 @@
 		bottom: 0rpx;
 		left: 0rpx;
 		width: 750rpx;
-		min-height: 1100rpx;
+		padding: 20rpx 0 20rpx 20rpx;
 		background: #f5f5f5;
 		display: flex;
 		flex-direction: column;
-		padding-left: 20rpx;
-		padding-top: 20rpx;
+		z-index: 9999;
 	}
 
 	.shopmsg1 {

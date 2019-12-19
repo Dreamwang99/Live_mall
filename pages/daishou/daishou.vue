@@ -64,10 +64,10 @@
 			</view>
 			<view class="xian2" v-show="shenqing==1">
 				<view class="middle">
-					<textarea class="yijian" type="text" v-model="refund_reason" placeholder="说说您的意见吧!" value=""></textarea>
+					<textarea class="yijian" type="text" v-model="refund_reason" placeholder="请填写退款原因" value=""></textarea>
 				</view>
 				<view class="beijing3">
-					<view class="tijiao" type="primary" @tap="TuiKuan">提交</view>
+					<button class="tijiao" type="warn" @tap="TuiKuan">提交</button>
 				</view>
 			</view>
 		</view>
@@ -464,25 +464,8 @@
 		background: #fff;
 		padding: 30rpx;
 	}
-	.yijian {
-		width: 100%;
-		color: #666666;
-		font-size: 30rpx;
-		padding-bottom: 30rpx;
-	}
-	.beijing3 {
-		background-color: #eeeeee;
-		width: 90%;
-		margin: auto;
-		/* margin-top: 10%; */
-	}
-	.tijiao {
-		background-color: #f13821;
-		height: 81rpx;
-		line-height: 81rpx;
-		text-align: center;
-		width:100%;
-		border-radius: 40rpx;
-		font-size: 30rpx;
+	.yijian{
+		width: 80%;
+		margin-left: 10%;
 	}
 </style>

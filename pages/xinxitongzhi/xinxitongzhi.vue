@@ -53,6 +53,7 @@
 						uni.navigateTo({
 							url: '../kanjia/kanjia?activid='+e.other_id+'&openid='+uni.getStorageSync('id')
 						})
+						break;
 				}
 			}
 		}

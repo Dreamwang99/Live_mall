@@ -5,7 +5,7 @@
 			<view style="width: 85%;">
 				<view class="heng">
 					<view class="gongsi">物流公司：</view>
-					<view class="kuaidi">{{detail.express_company_title}}</view>
+					<view class="kuaidi" v-if="detail.express_company_title">{{detail.express_company_title}}快递</view>
 				</view>
 				<view class="heng2">
 					<view class="heng">
@@ -17,10 +17,21 @@
 			</view>
 		</view>
 		<view class="baidi">
-			<view class="example-body">
+			<!-- <view class="example-body">
 				<uni-steps :options="detail.logistics" direction="column" />
+			</view> -->
+			<view class="KDdetail" v-if="detail.logistics">
+				<view class="kuaidiItem" :class="index==0?'first':''" v-for="(item,index) in detail.logistics">
+					<view>{{item.context}}</view>
+					<view class="date">{{item.time}}</view>
+				</view>
 			</view>
-
+			<view class="KDdetail" v-else>
+				<view class="kuaidiItem">
+					<view>暂无快递信息！</view>
+					<view class="date">...  ...</view>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -195,5 +206,18 @@
 		color: #999999;
 		margin-left: 18rpx;
 		margin-top: 23rpx;
+	}
+	
+	.kuaidiItem{
+		width: 90%;
+		margin: 0 auto 0;
+		padding-top: 50rpx;
+	}
+	.first{
+		color: #FF212C;
+	}
+	.date{
+		margin-top: 15rpx;
+		font-size: 0.8em;
 	}
 </style>

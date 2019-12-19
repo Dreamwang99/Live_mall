@@ -12,11 +12,11 @@
 						没有相关订单
 					</view>
 				</view>
-				<view class="row" v-if="t.length>0" v-for="(row,index) in t" :key="index" @tap="godetail(row)">
-					<view class="type">
+				<view class="row" v-if="t.length>0" v-for="(row,index) in t" :key="index">
+					<view class="type" @tap="godetail(row)">
 						<image class="level" src="../../static/dingdan/iocn-29-dp.png" mode=""></image>{{row.goods_list[0].business_name}}
 					</view>
-					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx">
+					<view class="order-info" v-for="(list,idx) in row.goods_list" :key="idx" @tap="godetail(row)">
 						<view class="left">
 							<image :src="list.goods_logo"></image>
 						</view>
@@ -37,7 +37,7 @@
 							<view class="pay" @tap="godetail(row)">付款</view>
 						</block>
 						<block v-if="row.status*1 === 2">
-							<view class="default" @tap="chakanwuliu(row.business_order_no)">物流查询</view>
+							<!-- <view class="default" @tap="chakanwuliu(row.business_order_no)">物流查询</view> -->
 							<view class="pay" @tap="cuifa(row.business_order_no)">催发货</view>
 						</block>
 						<block v-if="row.status*1 === 3">
@@ -172,10 +172,12 @@
 				}
 			},
 			cuifa(business_order_no) {
+				console.log(business_order_no);
 				this.request.pushDelivery({
 					token: uni.getStorageSync('token'),
 					business_order_no: business_order_no
 				}).then(res => {
+					console.log(res);
 					uni.showToast({
 						title: res.msg,
 						icon: 'none'
@@ -443,6 +445,7 @@
 						width: 150rpx;
 						height: 50rpx;
 						background: red;
+						z-index: 20;
 					}
 				}
 			}

@@ -6,8 +6,8 @@
 		<view class="heng">
 			<view class="top_nav">
 				<view class="bor" :class="num===0? 'ac':''" @tap="sel_nav(0)">直播</view>
-				<view :class="num===1? 'ac':''" @tap="sel_nav(1)">短视频</view>
-				<view :class="num===2? 'ac':''" @tap="sel_nav(2)">关注</view>
+				<view class="bor" :class="num===1? 'ac':''" @tap="sel_nav(1)">短视频</view>
+				<view class="bor" :class="num===2? 'ac':''" @tap="sel_nav(2)">关注</view>
 			</view>
 			<img class="fangdajing" src="/static/zhibo/iocn-60-ss.png" @tap="search"></img>
 			<img class="xinxi" src="/static/zhibo/iocn-60-xx.png" @tap="message"></img>
@@ -298,6 +298,8 @@
 
 		.bor {
 			margin-left: 10rpx;
+			min-width: 100rpx;
+			max-width: 100rpx;
 		}
 
 		.ac {

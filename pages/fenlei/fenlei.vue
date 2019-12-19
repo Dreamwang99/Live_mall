@@ -216,6 +216,7 @@
 			height: 100rpx;
 			font-size: 26rpx;
 			text-align: center;
+			border-left: 3px #FAFAFA solid;
 		}
 
 		.ac {
