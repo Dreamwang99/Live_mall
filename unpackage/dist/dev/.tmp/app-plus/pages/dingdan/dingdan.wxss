@@ -264,6 +264,7 @@ page {
           width: 150rpx;
           height: 50rpx;
           background: red;
+          z-index: 20;
 }
 .level {
   width: 30rpx;

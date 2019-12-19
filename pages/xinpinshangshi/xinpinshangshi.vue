@@ -20,7 +20,7 @@
 					<view class="baidi2">
 						<view class="chaozhi">超值新品</view>
 						<view class="tiao heng" :style="{ backgroundImage: 'url(' + '/static/mizhihaohuo/btn-98-sp.png' + ')' }">
-							<view class="yishou">已售203件</view>
+							<view class="yishou">已售{{Super.number_sales || '0'}}件</view>
 							<image class="jr" src="../../static/mizhihaohuo/icon-98-jr.png" mode=""></image>
 						</view>
 						<image class="hezi1" :src="Super.logo" mode=""></image>
@@ -28,7 +28,7 @@
 					<view class="baidi2">
 						<view class="chaozhi">特价新品</view>
 						<view class="tiao heng" :style="{ backgroundImage: 'url(' + '/static/mizhihaohuo/btn-98-sp2.png' + ')' }">
-							<view class="yishou">已售203件</view>
+							<view class="yishou">已售{{Special.number_sales || '0'}}件</view>
 							<image class="jr" src="../../static/mizhihaohuo/icon-98-jr.png" mode=""></image>
 						</view>
 						<image class="hezi1" :src="Special.logo" mode=""></image>
@@ -36,7 +36,7 @@
 					<view class="baidi2">
 						<view class="chaozhi">拼团新品</view>
 						<view class="tiao heng" :style="{ backgroundImage: 'url(' + '/static/mizhihaohuo/btn-98-sp3.png' + ')' }">
-							<view class="yishou">已售203件</view>
+							<view class="yishou">已售{{Assemble.number_sales || '0'}}件</view>
 							<image class="jr" src="../../static/mizhihaohuo/icon-98-jr.png" mode=""></image>
 						</view>
 						<image class="hezi1" :src="Assemble.logo" mode=""></image>
@@ -118,7 +118,7 @@ export default {
 			this.request.getShopNew({
 				token: uni.getStorageSync('token')
 			}).then(res =>{
-				console.log(res)
+				console.log(res,'11111111111111111')
 				this.Super = res.data.bargain_goods
 				this.Special = res.data.group_goods
 				this.Assemble = res.data.seckill_goods

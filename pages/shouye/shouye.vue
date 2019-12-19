@@ -2,7 +2,8 @@
 	<view>
 		<view class="beijing1" :style="{ backgroundImage: 'url(' + '../../static/shouye/bg-top.png' + ')' }">
 			<view class="shouye_top">
-				<image class="mi" src="../../static/shouye/logo-84-wz.png" mode=""></image>
+				<image class="mi" src="../../static/shouye/sousuoLogo.png" mode=""></image>
+				<!-- <image class="mi" src="../../static/shouye/logo-84-wz.png" mode=""></image> -->
 				<view class="sousuo">
 					<image class="fangdajing" src="../../static/icon-fangdajing.png" mode="aspectFit"></image>
 					<input class="shuru" type="text" value="" placeholder="请输入搜索内容" @tap="goSousuo()" />
@@ -111,9 +112,9 @@
 						<view class="goods" v-for="(item,index) in remaisc" :key='index' @tap="sp(item.id)">
 							<image class="hezi1" :src='item.logo'></image>
 							<view class="baidi1">
-								<view class="sp1">{{item.title}}</view>
+								<view class="spname">{{item.title}}</view>
 								<view class="heng9">
-									<view class="jiage">{{item.price_selling}}</view>
+									<view class="jiage">￥{{item.price_selling}}</view>
 									<view class="renshu">{{item.number_sales}}人付款</view>
 								</view>
 							</view>
@@ -165,11 +166,11 @@
 						<view class="shipin" v-for="(item,index) in shipin" :key="index" @tap="intoVideo(item)">
 							<view class="beijing" :style="{ backgroundImage: 'url(' + item.thumb_s + ')' }">
 								<view style="display: flex;flex-direction:column;">
-									<view class="xh">@{{item.userinfo.liang.name}}</view>
+									<view class="xh">@{{item.userinfo.user_nicename}}</view>
 									<view style="display: flex;flex-direction: row;">
 										<text class="xh1">{{item.title}}!</text>
 										<image class="xh2" src="/static/dpshoucang/iocn-89-bf.png" mode=""></image>
-										<text class="xh3">{{item.number}}</text>
+										<text class="xh3">{{item.views}}</text>
 									</view>
 								</view>
 							</view>
@@ -186,13 +187,13 @@
 					<!-- <image class="banner" src="../../static/shouye/banner-84.png" mode=""></image> -->
 					<view class="list" v-for="(item,index) in mianfeina" :key="index">
 						<view class="free_img">
-							<image class="logo1" :src="item.business_logo"></image>
+							<image class="logo1" :src="item.image"></image>
 						</view>
 						<view class="free_right">
 							<view class="xiaomi">{{item.title}}</view>
 							<view class="xiangqing">{{item.introduction}}</view>
 							<view class="free_bottom">
-								<view class="prise">{{item.number_sales}}</view>
+								<view class="prise">￥{{item.price_selling}}</view>
 								<view class="dianji" @tap="gofree(item)">点击免费拿</view>
 							</view>
 						</view>
@@ -1087,6 +1088,7 @@
 		height: 61rpx;
 		width: 62rpx;
 		margin-left: 21rpx;
+		border-radius: 100%;
 	}
 
 	.xiaoshipin1 {
@@ -1738,17 +1740,7 @@
 		width: 15rpx;
 		margin-left: 48rpx;
 	}
-
-	.sp1 {
-		font-size: 22rpx;
-		margin-left: 10rpx;
-		width: 100%;
-		padding-top: 10rpx;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
-	}
-
+	
 	.jiage {
 		color: #ff0d2e;
 		font-size: 28rpx;

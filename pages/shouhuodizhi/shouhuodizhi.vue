@@ -146,7 +146,7 @@
 	.A_ress{
 		width: 750rpx;
 		background-color: #FFFFFF;
-		height: 210rpx;
+		/* height: 210rpx; */
 		margin-bottom: 15rpx;
 	}
 	.back {

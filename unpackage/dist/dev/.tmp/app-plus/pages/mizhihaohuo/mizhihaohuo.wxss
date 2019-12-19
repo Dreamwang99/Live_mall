@@ -1,55 +1,63 @@
 
-.beijing{
+.beijing {
 	background-size: 100% 100%;
 	height: 480rpx;
 	width: 750rpx;
 }
-.tu{
-	height: 200rpx;
+.swiper-item{
+	background-color: #FFF;
+	/* height: 200rpx; */
 }
-.tu1{
+.tu {
+	height: 300rpx;
+}
+.back_ground{
+	/* background-color: #FFF; */
+	/* height: 200rpx; */
+}
+.tu1 {
 	margin-top: 35rpx;
 }
-.ziwaixian{
+.ziwaixian {
 	font-size: 26rpx;
 	margin-left: 10rpx;
 	color: #000000;
 	background-color: #FFFFFF;
 }
-.tx{
-		z-index: 100;
+.tx {
+	z-index: 100;
 	height: 30rpx;
 	width: 30rpx;
 	margin-top: 20rpx;
 	margin-left: 10rpx;
 }
-.lunbo{
-/* 	height: 380rpx;
-	width: 490rpx; */
+.lunbo {
+	/* 	height: 380rpx;
+width: 490rpx; */
 	/* background-color: #FFFFFF; */
 }
-.yuan{
+.yuan {
 	height: 12rpx;
 	width: 12rpx;
 	margin-left: 280rpx;
 	margin-top: 40rpx;
 	background-color: #000;
 }
-.circle{
-margin-left: 20rpx;
+.circle {
+	margin-left: 20rpx;
 }
-.jingpin{
+.jingpin {
 	font-size: 30rpx;
 	margin-top: 26rpx;
 	margin-left: 20rpx;
 }
-.shafa{
+.shafa {
 	height: 300rpx;
 	width: 350rpx;
 	margin-top: 30rpx;
 	margin-left: 20rpx;
 }
-.heng{
+.heng {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -58,37 +66,37 @@ margin-left: 20rpx;
 	-webkit-flex-direction: row;
 	        flex-direction: row;
 }
-.baidi3{
+.baidi3 {
 	height: 195rpx;
 	width: 350rpx;
 	background-color: #FFFFFF;
 	margin-left: 20rpx;
 }
-.deng{
+.deng {
 	font-size: 23rpx;
 	padding-top: 20rpx;
 	margin-left: 20rpx;
 }
-.ziwaixian{
+.ziwaixian {
 	font-size: 17rpx;
 	margin-top: 15rpx;
 	margin-left: 20rpx;
 	color: #949494;
 }
-.rmb2{
+.rmb2 {
 	font-size: 24rpx;
 	margin-top: 28rpx;
 	margin-left: 21rpx;
 	color: #FF0D2E;
 }
-.zi{
+.zi {
 	z-index: 100;
 	font-size: 28rpx;
-	margin-top: 10rpx; 
+	margin-top: 10rpx;
 	margin-left: 10rpx;
 	display: block;
 }
-.zi1{
+.zi1 {
 	font-size: 26rpx;
 	color: #989898;
 	margin-top: 25rpx;
@@ -97,69 +105,69 @@ margin-left: 20rpx;
 
 /* 底部分享 */
 .uni-share {
-		background: #fff;
+	background: #fff;
 }
 .uni-share-title {
-		line-height: 60rpx;
-		font-size: 24rpx;
-		padding: 15rpx 0;
-		text-align: center;
+	line-height: 60rpx;
+	font-size: 24rpx;
+	padding: 15rpx 0;
+	text-align: center;
 }
 .uni-share-content {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-flex-wrap: wrap;
-		        flex-wrap: wrap;
-		padding: 15px;
-		width: 100%;
-		-webkit-justify-content: space-around;
-		        justify-content: space-around;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	padding: 15px;
+	width: 100%;
+	-webkit-justify-content: space-around;
+	        justify-content: space-around;
 }
 .uni-share-content-box {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		-webkit-flex-direction: column;
-		        flex-direction: column;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		width: 25%;
-		box-sizing: border-box;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	width: 25%;
+	box-sizing: border-box;
 }
 .uni-share-content-image {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		        justify-content: center;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		        align-items: center;
-		width: 60rpx;
-		height: 60rpx;
-		overflow: hidden;
-		border-radius: 10rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	width: 60rpx;
+	height: 60rpx;
+	overflow: hidden;
+	border-radius: 10rpx;
 }
 .uni-share-content-image .image {
-		width: 100%;
-		height: 100%;
+	width: 100%;
+	height: 100%;
 }
 .uni-share-content-text {
-		font-size: 26rpx;
-		color: #333;
-		padding-top: 5px;
-		padding-bottom: 10px;
+	font-size: 26rpx;
+	color: #333;
+	padding-top: 5px;
+	padding-bottom: 10px;
 }
 .uni-share-btn {
-		height: 90rpx;
-		line-height: 90rpx;
-		border-top: 1px #f5f5f5 solid;
-		text-align: center;
-		color: #666;
+	height: 90rpx;
+	line-height: 90rpx;
+	border-top: 1px #f5f5f5 solid;
+	text-align: center;
+	color: #666;
 }
 

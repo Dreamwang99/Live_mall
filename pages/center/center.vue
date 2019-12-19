@@ -186,6 +186,7 @@
 					bridge.call('uploadImages', "1");
 					bridge.register('uploadImagesCallback',function(res){
 						console.log(res);
+						console.log(this.userinfo);
 						this.userinfo.avatar = res
 						this.showHeader = false
 						this.showHeader = true

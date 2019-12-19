@@ -142,4 +142,16 @@
 	margin-left: 18rpx;
 	margin-top: 23rpx;
 }
+.kuaidiItem{
+	width: 90%;
+	margin: 0 auto 0;
+	padding-top: 50rpx;
+}
+.first{
+	color: #FF212C;
+}
+.date{
+	margin-top: 15rpx;
+	font-size: 0.8em;
+}
 

@@ -79,6 +79,7 @@
 <script>
 	import uniCountdown from '../../components/linnian-CountDown/uni-countdown.vue';
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
+	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		components: {
 			uniPopup,

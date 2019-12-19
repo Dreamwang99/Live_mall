@@ -63,10 +63,10 @@
 			</view>
 			<view class="xian2" v-show="shenqing==1">
 				<view class="middle">
-					<textarea class="yijian" type="text" v-model="refund_reason" placeholder="说说您的意见吧!" value=""></textarea>
+					<textarea class="yijian" type="text" v-model="refund_reason" placeholder="请填写退款原因" value=""></textarea>
 				</view>
 				<view class="beijing3">
-					<view class="tijiao" type="primary" @tap="TuiKuan">提交</view>
+					<button class="tijiao" type="warn" @tap="TuiKuan">提交</button>
 				</view>
 			</view>
 		</view>
@@ -132,6 +132,13 @@
 						title:res.msg,
 						icon: 'none'
 					})
+					if(res.code==1){
+						setTimeout(function(){
+							uni.navigateTo({
+								url: '../dingdan/dingdan?tbIndex=4'
+							})
+						},1500)
+					}
 				})
 			}
 		}
@@ -453,5 +460,10 @@
 	.biao {
 		width: 193rpx;
 		height: 193rpx;
+	}
+	
+	.yijian{
+		width: 80%;
+		margin-left: 10%;
 	}
 </style>
