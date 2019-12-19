@@ -3,7 +3,7 @@
 		<view class="ms">
 			<view class="main">
 				<view class="mLeft" @tap="uploadVideo">
-					<image v-if="show" :src="getImages" mode=""></image>
+					<image v-if="show" :src="getInfo.thumb" mode=""></image>
 				</view>
 				<view class="mRight">
 					<textarea placeholder="添加视频描述~" @input="getNums" maxlength="50" />
@@ -25,7 +25,10 @@
 		data() {
 			return {
 				getFontsNums : 0,
-				getImages : '',
+				getInfo : {
+					thumb : "",
+					videoUrl : ""
+				},
 				show : true,
 				longitude : "",
 				latitude : "",
@@ -61,7 +64,8 @@
 				bridge.call('uploadVideo', "0");
 				bridge.register('uploadVideoCallback',(res)=>{
 					console.log(res);
-					this.getImages = res
+					this.getInfo.thumb = JSON.parse(res).thumb
+					this.getInfo.videoUrl = JSON.parse(res).videoUrl
 					this.show = false
 					this.show = true
 				});
@@ -71,8 +75,8 @@
 					uid : uni.getStorageSync('id'),
 					token : uni.getStorageSync('token'),
 					title : "",
-					thumb : "",
-					href : "",
+					thumb : this.getInfo.thumb,
+					href : this.getInfo.videoUrl,
 					lat : this.latitude,
 					lng : this.longitude,
 					city : this.city

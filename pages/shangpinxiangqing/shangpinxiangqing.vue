@@ -145,6 +145,7 @@
 	</view>
 </template>
 
+
 <script>
 	let a = []
 	import add from '@/components/add.vue'
@@ -315,9 +316,10 @@
 				}
 			},
 			backnext() {
+				bridge.call('navBack', "页面返回");
 				uni.navigateBack({
-			
 				})
+				console.log('back')
 			},
 			// 拼团
 			openTuan() {

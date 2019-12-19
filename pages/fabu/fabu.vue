@@ -49,10 +49,10 @@
 	.xiangqing {
 		color: #C0C0C0;
 		font-size: 22rpx;
-		margin-left: 10rpx;
-		margin-top: 10rpx;
-		padding-bottom: 30rpx;
-		height: 32%;
+		width: 500rpx;
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
 	}
 
 	.logo1 {
@@ -67,7 +67,8 @@
 		flex-direction: row;
 		background: #fff;
 		height: 213rpx;
-		padding: 20rpx 30rpx 0 30rpx;
+		align-items: center;
+		padding-left: 20rpx;
 	}
 
 	.list1 {
@@ -77,17 +78,20 @@
 
 	.xiaomi {
 		font-size: 24rpx;
+		width: 300rpx;
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
 	}
 	.bottom{
+		height: 150rpx;
 		display: flex;
 		flex-direction: column;
-		align-items: stretch;
-		
+		justify-content: space-around;
+		margin-left: 10rpx;
 	}
 	.prise {
 		color: #ff0d2e;
 		font-size: 32rpx;
-		margin-left: 10rpx;
-		margin-top: 10rpx;
 	}
 </style>

@@ -38,7 +38,6 @@
 </template>
 
 <script>
-	import bridge from '@/common/unfile/unfile.js';
 	export default {
 		data() {
 			return {
@@ -86,12 +85,6 @@
 				uni.navigateBack({
 					delta: 1
 				})
-			},
-			uploadVideo(){
-				bridge.call('uploadVideo', "上传视频");
-				bridge.register('uploadVideoCallback',function(res){
-					console.log(res)
-				});
 			},
 			GetMyVideo(){
 				console.log(this.pages);

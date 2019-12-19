@@ -1,5 +1,22 @@
 <template>
 	<view>
+		<view class="topNav">
+			<view class="topNavSpace"></view>
+			<view class="topNavMain">
+				<view class="tn-left" @tap="navBack()">
+					<image src="/static/icon/fanhui.png" mode=""></image>
+				</view>
+				<view class="tn-name">
+					国外专区
+				</view>
+				<view class="tn-right" @tap="shareWeChat()">
+					<view class="tr-icon">
+						<image src="/static/dianputuijian/iocn-87-fx.png" mode=""></image>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="topNavSpace"></view>
 		<view class="beijing1">
 			<view class="beijing" :style="{ backgroundImage: 'url(' + '/static/mizhihaohuo/bg-99-top.png' + ')' }">
 				<view style="height: 140rpx;"></view>
@@ -23,7 +40,7 @@
 		<uni-popup ref="share" type="bottom" :custom="true" @change="change">
 			<view class="uni-share">
 				<view class="uni-share-content">
-					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box">
+					<view v-for="(item, index) in bottomData" :key="index" class="uni-share-content-box" @tap="shareTypes(item.text)">
 						<view class="uni-share-content-image">
 							<image :src="item.icon" class="image" />
 						</view>
@@ -38,70 +55,88 @@
 
 <script>
 	import uniPopup from '@/components/uni-popup/uni-popup.vue';
-export default {
-	components:{
-		uniPopup,
-	},
-	data() {
-		return {
-			bottomData: [{
-					icon: '/static/zhuye/icon_wx.png',
-					text: '微信好友'
-				},
-				{
-					icon: '/static/zhuye/icon-pyq.png',
-					text: '朋友圈'
-				}
-			],
-			pages: 1,
-			goodslist: []
-		};
-	},
-	onReachBottom(){
-		this.pages ++
-		this.getguowaiList()
-	},
-	onNavigationBarButtonTap() {
-		this.$refs.share.open()
-	},
-	onLoad() {
-		this.getguowaiList()
-	},
-	methods: {
-		goDetail(item){
-			uni.navigateTo({
-				url:'../shangpinxiangqing/shangpinxiangqing?id='+item.id
-			})
+	import bridge from '@/common/unfile/unfile.js';
+	export default {
+		components:{
+			uniPopup,
 		},
-		change(e){
-			console.log(e.show);
-		},
-		cancel(type) {
-			this.$refs[type].close()
-		},
-		getguowaiList(){
-			this.request.getShopFourList({
-				token: uni.getStorageSync('token'),
-				page: this.pages,
-				size: 4,
-				type: 5
-			}).then(res =>{
-				console.log(res)
-				if(res.data.length==0){
-					if(this.page>1){
-						this.pages--
+		data() {
+			return {
+				bottomData: [{
+						icon: '/static/zhuye/icon_wx.png',
+						text: '微信好友'
+					},
+					{
+						icon: '/static/zhuye/icon-pyq.png',
+						text: '朋友圈'
 					}
-					uni.showToast({
-						title: "没有更多了",
-						icon: "none",
+				],
+				pages: 1,
+				goodslist: []
+			};
+		},
+		onReachBottom(){
+			this.pages ++
+			this.getguowaiList()
+		},
+		onLoad() {
+			this.getguowaiList()
+		},
+		methods: {
+			shareWeChat() {
+				this.$refs.share.open()
+			},
+			goDetail(item){
+				uni.navigateTo({
+					url:'../shangpinxiangqing/shangpinxiangqing?id='+item.id
+				})
+			},
+			shareTypes(types){
+				var shareInfo = new Object();
+				shareInfo.title = "直播分享";
+				shareInfo.describe = "快来观看我的直播";
+				shareInfo.linkUrl = "https://www.baidu.com/"
+				if(types === "微信好友"){
+					bridge.call('shareWeChatFriends', shareInfo);
+					bridge.register('shareWeChatFriendsCallback',(res)=>{
+						console.log(res);
 					});
 				}else{
-					this.goodslist = this.goodslist.concat(res.data)
+					bridge.call('shareWeChatCircle', shareInfo);
+					bridge.register('shareWeChatCircleCallback',(res)=>{
+						console.log(res);
+					});
 				}
-			})
-		},
-	}
-};
+			},
+			change(e){
+				console.log(e.show);
+			},
+			cancel(type) {
+				this.$refs[type].close()
+			},
+			getguowaiList(){
+				this.request.getShopFourList({
+					token: uni.getStorageSync('token'),
+					page: this.pages,
+					size: 4,
+					type: 5
+				}).then(res =>{
+					console.log(res)
+					if(res.data.length==0){
+						if(this.page>1){
+							this.pages--
+						}
+						uni.showToast({
+							title: "没有更多了",
+							icon: "none",
+						});
+					}else{
+						this.goodslist = this.goodslist.concat(res.data)
+					}
+				})
+			},
+		}
+	};
 </script>
 
 <style>
