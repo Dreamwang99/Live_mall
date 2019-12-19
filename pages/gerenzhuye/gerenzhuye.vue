@@ -75,9 +75,8 @@
 				otheruid:''
 			};
 		},
-		onLoad() {
-			this.getpersonalhomepage()//获取移动端返回信息
-			console.log(111,this.otheruid)
+		onLoad(options) {
+			this.otheruid =options.uid
 			this.getvideolist()
 			this.getMyfans()
 			this.getLiverecord()
@@ -88,17 +87,9 @@
 				bridge.call('navBack', "页面返回");
 				return true;	
 			},
-			getpersonalhomepage(){//获取移动端返回信息
-				bridge.register('personalHomePageCallback', function(result) {
-					console.log(result)
-					console.log(JSON.parse(result))
-					console.log(JSON.parse(result).uid)
-					this.otheruid =JSON.parse(result).uid
-				})
-			},
 			getvideolist() {//确认
 				this.request.getmyvideo({
-					uid: 22807,
+					uid: this.otheruid,
 					token:uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res);
@@ -110,7 +101,7 @@
 			},
 			getLiverecord(){//确认111
 				this.request.getLivere({
-					touid: 22807
+					touid: this.otheruid
 				}).then(res => {
 					console.log(res);
 					this.arr = res.data.info
@@ -122,7 +113,7 @@
 			getMyfans(){//确认1111
 				this.request.getMyFans({
 					token:uni.getStorageSync('token'),
-					user_id:22807
+					user_id:this.otheruid
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
@@ -131,7 +122,7 @@
 			cancel1() {//没问题111
 				this.request.getAttent({
 					uid: uni.getStorageSync('id'),
-					touid: 22807
+					touid: this.otheruid
 				}).then(res => {
 					console.log(res);
 				})

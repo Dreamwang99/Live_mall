@@ -188,7 +188,7 @@ export default {
 }
 .baidi {
 	position: absolute;
-	height: 325rpx;
+	min-height: 325rpx;
 	width: 710rpx;
 	background-color: #ffffff;
 	margin-top: 120rpx;
@@ -286,29 +286,32 @@ export default {
 .shafa{
 	height: 300rpx;
 	width: 350rpx;
-	margin-top: 30rpx;
+	margin-top: 10rpx;
 	margin-left: 20rpx;
 }
 .baidi3{
-	height: 155rpx;
+	min-height: 100rpx;
 	width: 350rpx;
 	background-color: #FFFFFF;
 	margin-left: 20rpx;
 }
 .deng{
 	font-size: 23rpx;
-	margin-top: 20rpx;
+	padding-top: 10rpx;
 	margin-left: 20rpx;
+	width: 300rpx;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }
 .ziwaixian{
 	font-size: 17rpx;
-	margin-top: 15rpx;
 	margin-left: 20rpx;
+	margin-top: 10rpx;
 	color: #949494;
 }
 .rmb2{
 	font-size: 24rpx;
-	margin-top: 28rpx;
 	margin-left: 21rpx;
 	color: #FF0D2E;
 }

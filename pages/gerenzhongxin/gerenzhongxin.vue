@@ -423,7 +423,9 @@
 		font-size: 34rpx;
 		text-align: center;
 		color: #fff;
-		margin: 40rpx auto;
+		margin-top: 20rpx;
+		margin-left: 20rpx;
+		margin-bottom: 300rpx;
 		/* margin: 142rpx auto; */
 	}
 </style>
