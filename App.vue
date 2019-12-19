@@ -47,4 +47,10 @@
 		white-space: nowrap;
 		overflow: hidden;
 	}
+	.JGandXL {
+		display: flex;
+		align-items: center;
+		padding: 10rpx 10rpx 20rpx 10rpx;
+		height: 70rpx;
+	}
 </style>

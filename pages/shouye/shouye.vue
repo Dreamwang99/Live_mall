@@ -113,9 +113,9 @@
 							<image class="hezi1" :src='item.logo'></image>
 							<view class="baidi1">
 								<view class="spname">{{item.title}}</view>
-								<view class="heng9">
+								<view class="JGandXL">
 									<view class="jiage">￥{{item.price_selling}}</view>
-									<view class="renshu">{{item.number_sales}}人付款</view>
+									<view class="xiaoliang">{{item.number_sales}}人付款</view>
 								</view>
 							</view>
 						</view>
@@ -233,7 +233,7 @@
 </template>
 
 <script>
-	// import io from '../../common/weapp.socket.io/dist/weapp.socket.io.js'
+	import io from '../../common/weapp.socket.io/dist/weapp.socket.io.js'
 	import uniNoticeBar from '@/components/uni-notice-bar/uni-notice-bar.vue'
 	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
 	import bridge from '@/common/unfile/unfile.js';
@@ -1747,13 +1747,7 @@
 
 	}
 
-	.heng9 {
-		display: flex;
-		align-items: center;
-		padding: 10rpx 10rpx 20rpx 10rpx;
-	}
-
-	.renshu {
+	.xiaoliang {
 		color: #ADADAD;
 		font-size: 18rpx;
 		margin-left: 29rpx;
