@@ -108,18 +108,19 @@
 						</view>
 						<image class="tupian" :src="advertarr.image" @tap="sp(advertarr.shop_id)"></image>
 					</view>
-					<view class="shangpin">
-						<view class="goods" v-for="(item,index) in remaisc" :key='index' @tap="sp(item.id)">
-							<image class="hezi1" :src='item.logo'></image>
-							<view class="baidi1">
-								<view class="spname">{{item.title}}</view>
-								<view class="heng9">
-									<view class="jiage">￥{{item.price_selling}}</view>
-									<view class="renshu">{{item.number_sales}}人付款</view>
+					<view class="goodsMs">
+						<view class="gm-item" v-for="(item,index) in remaisc" :key='index' @tap="sp(item.id)">
+							<view class="gi-images">
+								<image :src='item.logo'></image>
+							</view>
+							<view class="gi-desc">
+								<view class="gd-name">{{item.title}}</view>
+								<view class="gd-info">
+									<view class="gi-price">￥{{item.price_selling}}</view>
+									<view class="gi-sales">{{item.number_sales}}人付款</view>
 								</view>
 							</view>
 						</view>
-
 					</view>
 				</view>
 				<view class="shangjia" v-if="b === 1">
@@ -892,7 +893,7 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.shaixuan_title {
 		width: 100%;
 		padding: 20rpx 30rpx;
@@ -1159,7 +1160,7 @@
 	}
 
 	.goods {
-		width: 335rpx;
+		width: 48%;
 		background: #fff;
 		margin: 5rpx;
 	}
@@ -1181,8 +1182,9 @@
 	}
 
 	.shangpin {
-		width: 690rpx;
-		margin: 10rpx auto;
+		width: 94%;
+		margin: 20rpx auto 0;
+		padding-bottom: 20rpx;
 		display: flex;
 		flex-wrap: wrap;
 		margin-bottom: 100rpx;

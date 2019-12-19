@@ -36,16 +36,7 @@
 <style lang="scss">
 	/*每个页面公共css */
 	@import "colorui/main.css";
-	.spname {
-		font-size: 22rpx;
-		margin-left: 10rpx;
-		width: 100%;
-		height: 50rpx;
-		padding-top: 10rpx;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
-	}
+	// 导航头
 	.topNav{
 		width: 100%;
 		height: 130rpx;
@@ -95,5 +86,59 @@
 	}
 	.topNavSpace{
 		// height: 130rpx;
+	}
+	// 商品列表
+	.goodsMs{
+		width: 92%;
+		margin: 20rpx auto 100rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		.gm-item{
+			width: 49%;
+			height: 400rpx;
+			margin-bottom: 16rpx;
+			background-color: #FFFFFF;
+			border-radius: 6rpx;
+			box-shadow: 5rpx 5rpx 10rpx #E0E0E0;
+			overflow: hidden;
+			.gi-images{
+				width: 100%;
+				height: 300rpx;
+				image{
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.gi-desc{
+				width: 94%;
+				margin: 0 auto;
+				.gd-name{
+					height: 50rpx;
+					font-size: 24rpx;
+					line-height: 50rpx;
+					overflow: hidden;
+				}
+				.gd-info{
+					height: 50rpx;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					.gi-price{
+						height: 50rpx;
+						line-height: 50rpx;
+						font-size: 26rpx;
+						color: #F13420;
+					}
+					.gi-sales{
+						height: 50rpx;
+						line-height: 50rpx;
+						font-size: 22rpx;
+						color: #999999;
+					}
+				}
+			}
+		}
 	}
 </style>
