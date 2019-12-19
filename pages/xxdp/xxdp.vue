@@ -416,6 +416,12 @@
 						icon:'none'
 					})
 					return false
+				}else if(this.tPeopleNums === 0){
+					uni.showToast({
+						title:"请选择拼团人数",
+						icon:'none'
+					})
+					return false
 				}
 				uni.navigateTo({
 					url:'/pages/dingdantijiao/dingdantijiao?goods_type='+'4'+"&goods_spec="+this.spec+"&id="+this.goods_id+"&tPeopleNums="+this.tPeopleNums+"&activityid="+this.assembleInfo.id+"&types="+"开团"
@@ -468,7 +474,18 @@
 			},
 			nowboy(e,nums,idx){
 				console.log(e);
-				this.showmsgdetial = true
+				if(e === 0){
+					if(!this.adressInfo.id){
+						uni.showToast({
+							title:"此商品不能拼团哦",
+							icon:'none'
+						})
+					}else{
+						this.showmsgdetial = true
+					}
+				}else{
+					this.showmsgdetial = true
+				}
 				this.nowboyor = e
 				if(e === 2){
 					this.cTid = idx
@@ -487,6 +504,7 @@
 				this.getPrice = ""
 				this.isChoseColor = ""
 				this.isChoseSize = ""
+				this.tPeopleNums = 0
 				this.specifications.forEach((item,index)=>{
 					item.list.forEach((i,idx)=>{
 						i.isChose = false
