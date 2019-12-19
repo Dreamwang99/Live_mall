@@ -33,10 +33,9 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
 	@import "colorui/main.css";
-	
 	.spname {
 		font-size: 22rpx;
 		margin-left: 10rpx;
@@ -46,5 +45,55 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
+	}
+	.topNav{
+		width: 100%;
+		height: 130rpx;
+		position: fixed;
+		top: 0;
+		z-index: 999;
+		.topNavSpace{
+			height: 40rpx;
+		}
+		.topNavMain{
+			width: 94%;
+			height: 90rpx;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.tn-left{
+				height: 80rpx;
+				width: 15%;
+				image{
+					width: 15rpx;
+					height: 28rpx;
+					margin-top: 26rpx;
+				}
+			}
+			.tn-name{
+				width: 70%;
+				height: 80rpx;
+				line-height: 80rpx;
+				text-align: center;
+				color: #FFFFFF;
+				font-size: 30rpx;
+			}
+			.tn-right{
+				width: 15%;
+				height: 50rpx;
+				.tr-icon{
+					width: 100%;
+					text-align: center;
+					image{
+						width: 40rpx;
+						height: 40rpx;
+					}
+				}
+			}
+		}
+	}
+	.topNavSpace{
+		// height: 130rpx;
 	}
 </style>

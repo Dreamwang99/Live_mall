@@ -592,19 +592,9 @@
 			"path": "pages/guowaizhuanqu/guowaizhuanqu",
 			"style": {
 				"navigationBarTitleText": "国外专区",
-				"navigationBarTextStyle": "white",
-				"transparentTitle": "always"
-				// "app-plus": {
-				// 	"titleNView": {
-				// 		"buttons": [{
-				// 			"text": "\ue658",
-				// 			"fontSrc": "/static/mizhihaohuo/iconfont.ttf",
-				// 			"fontSize": "30rpx",
-				// 			"color": "#FFFFFF"
-
-				// 		}]
-				// 	}
-				// }
+				"app-plus":{
+					"titleNView":false
+				}
 			}
 		}, {
 			"path": "pages/shengqianzhuanqu/shengqianzhuanqu",

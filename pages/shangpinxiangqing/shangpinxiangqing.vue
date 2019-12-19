@@ -319,7 +319,7 @@
 				bridge.call('navBack', "页面返回");
 				uni.navigateBack({
 				})
-				console.log('back')	
+				console.log('back')
 			},
 			// 拼团
 			openTuan() {
