@@ -1,9 +1,27 @@
 <template>
 	<view class="beijing uni-fle">
-		<view class="left">
+		<view v-for="(item,index) in showlist" :key="index">
+			<image class="tu2" :src="item.image" mode="aspectFill"></image>
+			<!-- <image :class="index==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image> -->
+			<view class="baidi">
+				<view class="xjhao">
+					{{item.content}}
+				</view>
+				<view class="heng ">
+					<image class="tx" :src="item.avatar" mode=""></image>
+					<view class="fs">
+						{{item.user_nicename}}
+					</view>
+					<view class="fen">
+						{{item.create_time}}
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- <view class="left">
 			<view v-for="(item,index) in showlist1" :key="index">
 				<image class="tu2" :src="item.image" mode="aspectFill"></image>
-				<!-- <image :class="index==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image> -->
+				<image :class="index==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image>
 				<view class="baidi">
 					<view class="xjhao">
 						{{item.content}}
@@ -23,7 +41,7 @@
 		<view class="right">
 			<view v-for="(item,index) in showlist2" :key="index">
 				<image class="tu2" :src="item.image" mode="aspectFill"></image>
-				<!-- <image :class="index%2==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image> -->
+				<image :class="index%2==0?'tu':'tu2'" :src="item.image" mode="aspectFill"></image>
 				<view class="baidi">
 					<view class="xjhao">
 						{{item.content}}
@@ -39,7 +57,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -49,6 +67,7 @@
 			return {
 				shopid:'',
 				token: uni.getStorageSync('token'),
+				showlist: [],
 				showlist1: [],
 				showlist2: [],
 				page: 1,
@@ -80,6 +99,7 @@
 						if(res.data.buy[i].create_time){
 							res.data.buy[i].create_time = res.data.buy[i].create_time.slice(0,10)
 						}
+						this.showlist = res.data.buy
 						if(i%2==1){
 							list1 = list1.concat(res.data.buy[i])
 						}else{

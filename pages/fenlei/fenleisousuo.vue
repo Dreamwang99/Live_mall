@@ -5,12 +5,18 @@
 		</view>
 		<view class="tax_control">
 		</view>
-		<view class="classify">
-			<view class="search_result" v-for="(list,index) in childKindsInfo" :key='index' @tap="cart(list.id)">
-				<image :src="list.logo" mode="" class="search_resultimg"></image>
-				<view class="searchtext">{{list.title}}</view>
-				<view class="searchcity">{{list.introduction}}</view>
-				<view class="searchmoney">￥{{list.price_selling}}</view>
+		<view class="goodsMs">
+			<view class="gm-item" v-for="(list,index) in childKindsInfo" :key='index' @tap="cart(list.id)">
+				<view class="gi-images">
+					<image :src='list.logo'></image>
+				</view>
+				<view class="gi-desc">
+					<view class="gd-name">{{list.title}}</view>
+					<view class="gd-intro">{{list.introduction}}</view>
+					<view class="gd-info">
+						<view class="gi-price">￥{{list.price_selling}}</view>
+					</view>
+				</view>
 			</view>
 		</view>
 	</view>

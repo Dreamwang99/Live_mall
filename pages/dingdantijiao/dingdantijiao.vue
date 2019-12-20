@@ -348,10 +348,10 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -372,10 +372,10 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',

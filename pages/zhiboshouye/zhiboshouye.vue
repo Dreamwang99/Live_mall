@@ -44,8 +44,8 @@
 						<!-- <view class="xh">{{list.userinfo.user_nicename}}</view> -->
 						<view class="lower">
 							<view class="xh1">{{list.title}}</view>
-							<image class="xh2" src="/static/dpshoucang/iocn-47-rs.png" mode=""></image>
-							<view class="xh3">{{list.watch_ok}}</view>
+							<image class="xh2" src="/static/dpshoucang/iocn-46-bf.png" mode=""></image>
+							<view class="xh3">{{list.views}}</view>
 						</view>
 					</view>
 				</view>

@@ -1676,7 +1676,8 @@
 
 	.jinru {
 		height: 35rpx;
-		width: 140rpx;
+		// width: 140rpx;
+		padding: 0 10rpx;
 		line-height: 35rpx;
 		text-align: center;
 		background-color: rgba(0, 0, 0, 0.56);

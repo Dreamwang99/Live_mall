@@ -135,8 +135,8 @@
 					result: "请输入店铺地址"
 				},
 				detailAdress: "详细地址",
-				longitude: '',
-				latitude: '',
+				longitude: 1,
+				latitude: 1,
 				type_top:'',
 				current:0
 			}
@@ -469,10 +469,8 @@
 					city: this.market,
 					area: this.district,
 					address: this.detailAdress,
-					// longitude:this.longitude,
-					// latitude:this.latitude,
-					longitude: 1,
-					latitude: 1,
+					longitude:this.longitude,
+					latitude:this.latitude,
 					business_type: this.type_top,
 				}).then(res => {
 					console.log(res)

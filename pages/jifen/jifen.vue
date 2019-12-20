@@ -117,6 +117,7 @@
 		color: red;
 		font-size: 28rpx;
 		margin-right: 69rpx;
+		width: 50rpx;
 	}
 
 	.beijing {

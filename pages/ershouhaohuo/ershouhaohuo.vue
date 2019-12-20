@@ -49,8 +49,8 @@
 	export default {
 		data() {
 			return {
-				longitude: "",
-				latitude: "",
+				longitude: 1,
+				latitude: 1,
 				userToken: "",
 				list: [],
 				b: 0,
@@ -117,8 +117,8 @@
 			getlist(res) {
 				this.request.getSecond({
 					token: uni.getStorageSync('token'),
-					longitude: '117.08360080468172',
-					latitude: '36.6841484793522'
+					longitude: this.longitude,
+					latitude: this.latitude
 				}).then(res => {
 					console.log(res)
 					this.list = res.data
