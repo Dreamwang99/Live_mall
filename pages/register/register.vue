@@ -35,8 +35,8 @@
 	export default {
 		data() {
 			return {
-				phoneNumber: '16696370624',
-				passwd: 'g123456',
+				phoneNumber: '15044444444',
+				passwd: '123456',
 				weixinId: ""
 			}
 		},
