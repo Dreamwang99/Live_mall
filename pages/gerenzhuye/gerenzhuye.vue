@@ -24,7 +24,7 @@
 		<view style="height: 4rpx;background-color: #F5F5F5;margin-top: 10rpx;"></view>
 		<view class="classify" v-show="num === 0">
 			<view class="heng" v-for="(detali,index) in detalis" :key='index'>
-				<view class="tu"  :style="{ backgroundImage: 'url(' + detali.thumb + ')' }">
+				<view class="tu"  :style="{ backgroundImage: 'url(' + detali.thumb + ')' }" @tap="goshipin(detali)">
 					<view class="xiaohei">{{goodslist.user_nicename}}</view>
 					<view class="heng">
 						<view class="paimeishi">{{detali.title}}</view>
@@ -36,7 +36,7 @@
 		</view>
 		<view class="classify" v-show="num === 1">
 			<view class="heng" v-for="(list,index) in arr" :key='index'>
-				<view class="tu" :style="{ backgroundImage: 'url(' + list.thumb + ')' }">
+				<view class="tu" :style="{ backgroundImage: 'url(' + list.thumb + ')' }" @tap="gozhibo(list)">
 					<view class="xiaohei">@{{userlist.user_nicename}}</view>
 					<view class="heng">
 						<view class="paimeishi">{{list.title}}</view>
@@ -82,6 +82,20 @@
 			this.getLiverecord()
 		},
 		methods: {
+			goshipin(info){
+				console.log(info);
+				bridge.call('intoVideoPlay', info);
+				bridge.register('intoVideoPlayCallback',function(res){
+					console.log(res);
+				});
+			},
+			gozhibo(info){
+				console.log(info);
+				bridge.call('intoVideoPlay', info);
+				bridge.register('intoVideoPlayCallback',function(res){
+					console.log(res);
+				});
+			},
 			navback(){
 				console.log('back')
 				bridge.call('navBack', "页面返回");
