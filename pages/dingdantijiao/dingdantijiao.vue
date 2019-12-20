@@ -261,10 +261,13 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -285,10 +288,13 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -348,10 +354,13 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -372,10 +381,13 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -438,10 +450,13 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -463,10 +478,13 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -525,10 +543,13 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -549,10 +570,13 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -615,10 +639,13 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -640,10 +667,13 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -703,10 +733,13 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -726,10 +759,13 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									uni.showToast({
-										title:'支付失败',
-										icon:'none'
-									})
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -790,6 +826,26 @@
 								// this.alipaydetial(res.data.paydata.split('&amp;').join('&'))
 								bridge.call('alipay', res.data.paydata.split('&amp;').join('&'))
 								bridge.register('alipaycallback', function(result) {
+									console.log(result)
+									if(result*1 === 0){
+										// uni.showToast({
+										// 	title:'支付失败',
+										// 	icon:'none'
+										// })
+										uni.reLaunch({
+											url: '../dingdan/dingdan?tbIndex=0'
+										});
+									}else if(result*1 === 1){
+										uni.showToast({
+											title:'支付成功',
+											icon:'none'
+										})
+										setTimeout(function(){
+											uni.redirectTo({
+												url: '../dingdan/dingdan'
+											});
+										},1500)
+									}
 								})
 							}else if(this.paytype == 'wechat'){
 								console.log(22)
@@ -798,6 +854,26 @@
 								console.log(res.data.paydata)
 								bridge.call('wxpay', res.data.paydata)//微信
 								bridge.register('wxpaycallback', function(result) {
+									console.log(result)
+									if(result*1 === 0){
+										// uni.showToast({
+										// 	title:'支付失败',
+										// 	icon:'none'
+										// })
+										uni.reLaunch({
+											url: '../dingdan/dingdan?tbIndex=0'
+										});
+									}else if(result*1 === 1){
+										uni.showToast({
+											title:'支付成功',
+											icon:'none'
+										})
+										setTimeout(function(){
+											uni.redirectTo({
+												url: '../dingdan/dingdan'
+											});
+										},1500)
+									}
 								})
 								// uni.requestPayment({
 								//     provider: 'wxpay',
