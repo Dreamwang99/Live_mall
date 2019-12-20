@@ -37,11 +37,19 @@
 	/*每个页面公共css */
 	@import "colorui/main.css";
 	.spname {
-		font-size: 22rpx;
-		margin-left: 10rpx;
-		width: 100%;
-		height: 50rpx;
-		padding-top: 10rpx;
+		// font-size: 22rpx;
+		// margin-left: 10rpx;
+		// width: 96%;
+		// height: 50rpx;
+		// padding-top: 10rpx;
+		// text-overflow: ellipsis;
+		// white-space: nowrap;
+		// overflow: hidden;
+		width: 94%;
+		height: 60rpx;
+		margin: 0 auto;
+		line-height: 60rpx;
+		font-size: 28rpx;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;

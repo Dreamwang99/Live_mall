@@ -57,7 +57,8 @@
 					<image class="shafa" :src="item.logo" mode=""></image>
 					<view class="baidi3">
 						<view style="height: 20rpx;"></view>
-						<view class="deng">{{item.title}}</view>
+						<view class="spname">{{item.title}}</view>
+						<!-- <view class="deng">{{item.title}}</view> -->
 						<view class="ziwaixian">{{item.introduction}}</view>
 						<view class="rmb2">￥{{item.price}}</view>
 					</view>
@@ -499,8 +500,9 @@
 	}
 
 	.ziwaixian {
+		height: 40rpx;
 		font-size: 17rpx;
-		margin-top: 15rpx;
+		/* margin-top: 15rpx; */
 		margin-left: 20rpx;
 		color: #949494;
 		text-overflow: ellipsis;
@@ -510,7 +512,7 @@
 
 	.rmb2 {
 		font-size: 24rpx;
-		margin-top: 28rpx;
+		/* margin-top: 28rpx; */
 		margin-left: 21rpx;
 		color: #ff0d2e;
 	}
