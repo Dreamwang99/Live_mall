@@ -108,7 +108,6 @@
 						</view>
 						<image class="tupian" :src="advertarr.image" @tap="sp(advertarr.shop_id)"></image>
 					</view>
-<<<<<<< HEAD
 					<view class="goodsMs">
 						<view class="gm-item" v-for="(item,index) in remaisc" :key='index' @tap="sp(item.id)">
 							<view class="gi-images">
@@ -119,16 +118,6 @@
 								<view class="gd-info">
 									<view class="gi-price">￥{{item.price_selling}}</view>
 									<view class="gi-sales">{{item.number_sales}}人付款</view>
-=======
-					<view class="shangpin">
-						<view class="goods" v-for="(item,index) in remaisc" :key='index' @tap="sp(item.id)">
-							<image class="hezi1" :src='item.logo'></image>
-							<view class="baidi1">
-								<view class="spname">{{item.title}}</view>
-								<view class="JGandXL">
-									<view class="jiage">￥{{item.price_selling}}</view>
-									<view class="xiaoliang">{{item.number_sales}}人付款</view>
->>>>>>> chen
 								</view>
 							</view>
 						</view>

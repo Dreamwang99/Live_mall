@@ -2,7 +2,7 @@
 	<view>
 		<view class="topNav">
 			<view class="topNavSpace"></view>
-			<view class="topNavMain">
+			<!-- <view class="topNavMain">
 				<view class="tn-left" @tap="navBack()">
 					<image src="/static/icon/fanhui.png" mode=""></image>
 				</view>
@@ -14,7 +14,7 @@
 						<image src="/static/dianputuijian/iocn-87-fx.png" mode=""></image>
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<view class="topNavSpace"></view>
 		<view class="beijing1">
