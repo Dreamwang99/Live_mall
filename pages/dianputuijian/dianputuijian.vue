@@ -99,8 +99,8 @@
 					}
 				],
 				order: 'sales',
-				longitude: '',
-				latitude: '',
+				longitude: 1,
+				latitude: 1,
 			}
 		},
 		// onNavigationBarButtonTap() {
@@ -146,8 +146,8 @@
 				this.request.getMerchantsList({
 					page: 1,
 					num: 4,
-					longitude: 1,
-					latitude: 0,
+					longitude: this.longitude,
+					latitude: this.latitude,
 					order: order,
 					is_index: 1,
 				}).then(res => {

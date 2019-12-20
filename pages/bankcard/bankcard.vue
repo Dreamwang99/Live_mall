@@ -59,7 +59,17 @@
 					bank: this.bank,
 					account: this.cardno
 				}).then(res =>{
-					console.log(res);
+					uni.showToast({
+						title: res.msg,
+						icon: 'none'
+					})
+					if(res.code==1){
+						setTimeout(function(){
+							uni.navigateBack({
+								
+							})
+						},1500)
+					}
 				})
 			}
 		}
