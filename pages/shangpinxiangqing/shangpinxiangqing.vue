@@ -32,7 +32,7 @@
 			</view>
 			<view class="pepershow">
 				<view class="showbox">
-					<view class="showtilte" v-if="buylist.count == undefined">买家秀（0}）</view>
+					<view class="showtilte" v-if="buylist.count == undefined">买家秀(0)</view>
 					<view class="showtilte" v-else>买家秀（{{buylist.count}}）</view>
 					<view class="backbox">
 						<view class="showtowtilte" @tap="quanbusolo">查看全部</view>

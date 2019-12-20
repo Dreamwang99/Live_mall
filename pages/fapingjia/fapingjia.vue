@@ -98,24 +98,29 @@
 					token: uni.getStorageSync('token'),
 					business_order_no: this.business_order_no
 				}).then(res => {
-					this.detail = res.data
-					for(var i=0;i<res.data.goods_list.length;i++){
-						this.arr.push({
-							goods_logo:res.data.goods_list[i].goods_logo,
-							goods_title:res.data.goods_list[i].goods_title,
-							shop_id:res.data.goods_list[i].goods_id,
-							bargain_id:res.data.goods_list[i].goods_spec,
-							store:this.store,
-							shop:this.shop,
-							logistics:this.logistics,
-							content:this.content,
-							common_image:'',
-							business_id:this.detail.business_id,
-							
+					console.log(res);
+					if(res.code === 1){
+						this.detail = res.data
+						for(var i=0;i<res.data.goods_list.length;i++){
+							this.arr.push({
+								goods_logo:res.data.goods_list[i].goods_logo,
+								goods_title:res.data.goods_list[i].goods_title,
+								shop_id:res.data.goods_list[i].goods_id,
+								bargain_id:res.data.goods_list[i].goods_spec,
+								store:this.store,
+								shop:this.shop,
+								logistics:this.logistics,
+								content:this.content,
+								common_image:'',
+								business_id:this.detail.business_id,
+							})
+						}
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
 						})
 					}
-					console.log("cwjjj"+JSON.stringify(this.arr))
-					// this.arr = res.data.goods_list
 				})
 			},
 			onChange1(e) {
