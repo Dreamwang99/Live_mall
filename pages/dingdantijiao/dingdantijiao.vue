@@ -91,7 +91,7 @@
 					<view class="se" style="margin-top: 40rpx;">下单时间</view>
 					<view class="se time">{{nowdate}}</view>
 				</view>
-				<view class="heng">
+				<view class="heng" v-if="postage != ''">
 					<view class="se" style="margin-top: 43rpx;">配送费</view>
 					<view class="se mianyou" v-if="postage == '0.00'">快递免邮</view>
 					<view class="se mianyou" v-else>运费:{{postage}}元</view>
