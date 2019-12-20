@@ -179,7 +179,7 @@
 			this.ershouids = options.ershouid
 			this.addnumber = options.number
 			this.tPeopleNums = options.tPeopleNums
-			this.activityid = options.activityid
+			this.activeid = options.activityid
 			this.activeid = options.activeid
 			this.types = options.types
 			console.log(this.id)
@@ -625,8 +625,8 @@
 										icon:'none'
 									})
 									setTimeout(function(){
-										uni.redirectTo({
-											url:'/pages/pintuanxq/pintuanxq'
+										uni.navigateTo({
+											url:"/pages/xinxitongzhi/xinxitongzhi"
 										});
 									},1500)
 								}
@@ -650,8 +650,8 @@
 										icon:'none'
 									})
 									setTimeout(function(){
-										uni.redirectTo({
-											url:'/pages/pintuanxq/pintuanxq'
+										uni.navigateTo({
+											url:"/pages/xinxitongzhi/xinxitongzhi"
 										});
 									},1500)
 								}
@@ -959,6 +959,7 @@
 				group_people_num : this.tPeopleNums
 			}).then(res => {
 				console.log(res)
+				this.activityid = res.data.cartList.activity_goods_id
 				this.ass = res.data.cartList
 				this.postage = res.data.cartList.price_express//邮费
 			})
