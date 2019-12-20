@@ -7,11 +7,11 @@
 					<view class="guowai">省钱专区</view>
 					<view class="xianhuo">精 品 商 品 等 你 来 拿</view>
 				</view>
-				<view class="heng baidi" v-for="(item,idx) in goodslist" :key="idx" @tap="goDetail(item)">
+				<view class="baidi" v-for="(item,idx) in goodslist" :key="idx" @tap="goDetail(item)">
 					<image class="shafa" :src="item.image" mode=""></image>
-					<view >
+					<view class="textitem">
 						<view class="deng">{{item.title}}</view>
-						<view class="ziwaixian">{{item.introduction}}</view>
+						<view class="ziwaixian">{{item.introduction || '商品介绍'}}</view>
 						<view class="rmb2">优惠￥{{item.price_selling}}</view>
 						<view class="heng">
 							<view class="yuanjia">原价￥{{item.price_market}}</view>
@@ -128,8 +128,13 @@ export default {
 }
 
 .heng {
+	/* display: flex;
+	flex-direction: row; */
+	width: 94%;
+	height: 50rpx;
 	display: flex;
-	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 }
 
 
@@ -152,6 +157,8 @@ export default {
 	margin-left: 10rpx;
 }
 .baidi{
+	display: flex;
+	flex-direction: row;
 	height: 238rpx;
 	width: 710rpx;
 	background-color: #FFFFFF;
@@ -159,19 +166,25 @@ export default {
 	margin-top: 26rpx;
 }
 .deng{
+	height: 50rpx;
+	line-height: 50rpx;
 	font-size: 28rpx;
-	margin-top: 28rpx;
+	margin-top: 18rpx;
 	margin-left: 10rpx;
+	overflow: hidden;
 }
 .ziwaixian{
 	font-size: 20rpx;
-	margin-top: 25rpx;
+	height: 50rpx;
+	line-height: 50rpx;
 	margin-left: 10rpx;
 	color: #949494;
+	overflow: hidden;
 }
 .rmb2{
+	height: 50rpx;
+	line-height: 50rpx;
 	font-size: 28rpx;
-	margin-top: 28rpx;
 	margin-left: 10rpx;
 	color: #FF0D2E;
 }
@@ -186,8 +199,14 @@ export default {
 	color: #FFFFFF;
 	text-align: center;
 }
+.textitem{
+	width: 70%;
+	margin: 0 auto;
+	height: 50rpx;
+	line-height: 50rpx;
+}
 .yuanjia{
-	margin-top: 28rpx;
+	/* margin-top: 28rpx; */
 	font-size: 22rpx;
 	color: #949494;
 	margin-left: 10rpx;
@@ -195,8 +214,8 @@ export default {
 .liji{
 	height:38rpx ;
 	width: 145rpx;
-	margin-top: 22rpx;
-	margin-left: 225rpx;
+	/* margin-top: 22rpx; */
+	/* margin-left: 225rpx; */
 	background-color: #F13320;
 	border-radius: 30rpx;
 	font-size: 20rpx;

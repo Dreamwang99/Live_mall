@@ -304,13 +304,15 @@
 		font-size: 29rpx;
 		margin-left: 35%;
 		margin-top: 0rpx;
+		overflow: hidden;
 	}
 
 	.zi1 {
-		width: 1005;
+		width: 94%;
 		font-size: 26rpx;
 		margin-left: 15rpx;
 		margin-top: 15rpx;
+		overflow: hidden;
 	}
 
 	.zi2 {

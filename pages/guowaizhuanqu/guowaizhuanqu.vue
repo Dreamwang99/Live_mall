@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<view class="topNav">
+		<!-- <view class="topNav">
 			<view class="topNavSpace"></view>
-			<!-- <view class="topNavMain">
+			<view class="topNavMain">
 				<view class="tn-left" @tap="navBack()">
 					<image src="/static/icon/fanhui.png" mode=""></image>
 				</view>
@@ -14,8 +14,8 @@
 						<image src="/static/dianputuijian/iocn-87-fx.png" mode=""></image>
 					</view>
 				</view>
-			</view> -->
-		</view>
+			</view>
+		</view> -->
 		<view class="topNavSpace"></view>
 		<view class="beijing1">
 			<view class="beijing" :style="{ backgroundImage: 'url(' + '/static/mizhihaohuo/bg-99-top.png' + ')' }">
@@ -24,14 +24,17 @@
 					<view class="guowai">国外专区</view>
 					<view class="xianhuo">现 货 疯 抢 精 品 盛 惠</view>
 				</view>
-				
-				<view class="heng">
-					<view v-for="(item,idx) in goodslist" :key="idx" @tap="goDetail(item)">
-						<image class="shafa" :src="item.image" mode=""></image>
-						<view class="baidi3">
-							<view class="deng">{{item.title}}</view>
-							<view class="ziwaixian">{{item.introduction}}</view>
-							<view class="rmb2">￥{{item.price_selling}}</view>
+				<view class="goodsMs">
+					<view class="gm-item" v-for="(item,idx) in goodslist" :key="idx" @tap="goDetail(item)">
+						<view class="gi-images">
+							<image :src="item.image" mode=""></image>
+						</view>
+						<view class="gi-desc">
+							<view class="gd-name">{{item.title}}</view>
+							<view class="gd-intro">{{item.introduction}}</view>
+							<view class="gd-info">
+								<view class="gi-price">￥{{item.price_selling}}</view>
+							</view>
 						</view>
 					</view>
 				</view>

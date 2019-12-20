@@ -8,12 +8,14 @@
 			 :autoplay="true" interval="5000" duration="500" @change="cardSwiper">
 				<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''" @tap="goDetail(item)">
 					<view class="swiper-item">
-						<image class="tu" :src="item.image" mode="aspectFill"></image>
+						<view class="gi-images">
+							<image class="tu" :src="item.image" mode="aspectFill"></image>
+						</view>
 						<view class="back_ground">
 							<view class="zi">{{item.title}}</view>
 							<view class="heng">
 								<image class="tx" :src="item.logo" mode="aspectFit"></image>
-								<view class="zi1">{{item.introduction}}</view>
+								<view class="zi1">{{item.introduction || '店铺名称'}}</view>
 							</view>
 						</view>
 					</view>
@@ -25,13 +27,19 @@
 				<view class="jingpin">精品好货</view>
 				<view class="yuan circle"></view>
 			</view>
-			<view class="heng">
-				<view v-for="(goods,ind_x) in list" :key="ind_x" @tap="goDetail(goods)">
-					<image class="shafa" :src="goods.image || goods.img" mode=""></image>
-					<view class="baidi3">
-						<view class="deng">{{goods.title}}</view>
-						<view class="ziwaixian">{{goods.introduction}}</view>
-						<view class="rmb2">￥{{goods.price_selling || '价格'}}</view>
+			<view class="goodsMs">
+				<view class="gm-item" v-for="(goods,ind_x) in list" :key="ind_x" @tap="goDetail(goods)">
+					<view class="gi-images">
+						<image :src='goods.image'></image>
+					</view>
+					<!-- <image class="shafa" :src="goods.image || goods.img" mode=""></image> -->
+					<view class="gi-desc">
+						<view class="gd-name">{{goods.title}}</view>
+						<view class="gd-intro">{{goods.introduction}}</view>
+						<view class="gd-info">
+							<view class="gi-price">￥{{goods.price_selling || '价格'}}</view>
+							<!-- <view class="gi-sales">{{item.number_sales}}人付款</view> -->
+						</view>
 					</view>
 				</view>
 			</view>
@@ -74,28 +82,7 @@
 					}
 				],
 				list: [],
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					url: '/static/mizhihaohuo/img-101-pp.png',
-					title: "Yeelight灭蚊灯紫外线精准诱蚊",
-					name: "李二狗",
-					img: '/static/mizhihaohuo/icon-97-touxiang.png'
-				}, {
-					id: 1,
-					type: 'image',
-					url: '/static/mizhihaohuo/img-101-pp.png',
-					title: "Yeelight灭蚊灯紫外线精准诱蚊",
-					name: "李二狗",
-					img: '/static/mizhihaohuo/icon-97-touxiang.png'
-				}, {
-					id: 2,
-					type: 'image',
-					url: '/static/mizhihaohuo/img-101-pp.png',
-					title: "Yeelight灭蚊灯紫外线精准诱蚊",
-					name: "李二狗",
-					img: '/static/mizhihaohuo/icon-97-touxiang.png'
-				}],
+				swiperList: [],
 				dotStyle: false,
 				towerStart: 0,
 				direction: '',
@@ -219,7 +206,7 @@
 	}
 	
 	.tu {
-		height: 300rpx;
+		height: 250rpx;
 	}
 
 	.back_ground{
@@ -281,6 +268,7 @@
 	.heng {
 		display: flex;
 		flex-direction: row;
+		align-items: center;
 	}
 
 	.baidi3 {
