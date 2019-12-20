@@ -29,12 +29,18 @@
 			<view class="dianpu_bottom">
 				<view v-for="(item,index) in titles" :key="index" :class="item.status?'chooose':'nochoose'" @tap="choose(index)">{{item.name}}</view>
 			</view>
-			<view class="all">
-				<view class="all_goods" v-for="(g_list,index) in allgoods" :key="index" @tap="godetail(g_list)">
-					<image :src="g_list.logo"></image>
-					<view class="name">{{g_list.title}}</view>
-					<view class="detail">{{g_list.introduction}}</view>
-					<view class="price">¥{{g_list.price_selling.price}}</view>
+			<view class="goodsMs">
+				<view class="gm-item" v-for="(g_list,index) in allgoods" :key="index" @tap="godetail(g_list)">
+					<view class="gi-images">
+						<image :src="g_list.logo"></image>
+					</view>
+					<view class="gi-desc">
+						<view class="gd-name">{{g_list.title}}</view>
+						<view class="gd-intro">{{g_list.introduction}}</view>
+						<view class="gd-info">
+							<view class="gi-price">¥{{g_list.price_selling.price}}</view>
+						</view>
+					</view>
 				</view>
 			</view>
 		</view>

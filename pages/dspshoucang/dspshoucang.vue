@@ -401,6 +401,7 @@
 	.xm3 {
 		font-size: 22rpx;
 		padding: 10rpx 0;
+		overflow: hidden;
 	}
 
 	.xm4 {

@@ -18,13 +18,17 @@
 				<image class="sxtu" src="../../static/ershou/iocn-63-sx.png" mode=""></image>
 			</view> -->
 		</view>
-		<view class="flex_wrap" v-if="b==0">
-			<view class="ershou_img" v-for="(item,index) in list" :key="index" @click="shop(item)">
-				<image class="shafa" :src="item.image[0]" mode=""></image>
-				<view class="miewen">
-					<view class="miewendeng">{{item.title}}</view>
-					<view class="ziwaixian">{{item.keyword}}</view>
-					<view class="rmb">￥{{item.price}}</view>
+		<view class="goodsMs" v-if="b==0">
+			<view class="gm-item" v-for="(item,index) in list" :key="index" @click="shop(item)">
+				<view class="gi-images">
+					<image :src="item.image[0]" mode=""></image>
+				</view>
+				<view class="gi-desc">
+					<view class="gd-name">{{item.title}}</view>
+					<view class="gd-intro">{{item.keyword}}</view>
+					<view class="gd-info">
+						<view class="gi-price">￥{{item.price}}</view>
+					</view>
 				</view>
 			</view>
 		</view>
