@@ -155,7 +155,9 @@
 			},
 			choose(index) {
 				if(index==2){
-					
+					uni.navigateTo({
+						url:'../kefu2/kefu2'
+					})
 				}
 				for (let i = 0; i < this.titles.length; i++) {
 					if (index == i) {
