@@ -242,7 +242,7 @@ const getUserComplain = (params) => ajax(BASE_URL + '/index/getUserComplain', pa
 // 获取充值积分
 const getBalance = (params) => ajax(BASE_URL1 + 'User.GetBalance', params)
 // 充值积分 --- 支付宝支付
-const getAliOrder = (params) => ajax(BASE_URL1 + 'Charge.GetAliOrder', params)
+const rechargeJiFenOrder = (params) => ajax(BASE_URL + '/bargain/rechargeJiFenOrder', params)
 // 充值积分 --- 微信支付
 const getWxOrder = (params) => ajax(BASE_URL1 + 'Charge.GetWxOrder', params)
 // 上传视频
@@ -398,7 +398,7 @@ export default {
 	getLiveBusinessShopList,	// 开播 --- 获取商品列表
 	getUserComplain,	// 用户投诉建议
 	getBalance,	// 获取守护列表
-	getAliOrder,	// 充值积分 --- 支付宝支付
+	rechargeJiFenOrder,	// 充值积分 --- 支付宝支付
 	getWxOrder,		// 充值积分 --- 微信支付
 	setVideo,		// 上传视频
 	
