@@ -162,7 +162,12 @@
 					</view>
 				</view>
 				<view class="shipin_top" v-if="b === 2">
-					<image class="banner" src="../../static/shouye/banner-82-.png" mode=""></image>
+					<swiper class="chufang" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+						<swiper-item v-for="(item,index) in vedioBannerList" :key="index" @tap="goodsdetails(item.goods_id)">
+							<image class="banner" :src="item.url"></image>
+						</swiper-item>
+					</swiper>
+					<!-- <image class="banner" src="../../static/shouye/banner-82-.png" mode=""></image> -->
 					<view class="shipinList">
 						<view class="shipin" v-for="(item,index) in shipin" :key="index" @tap="intoVideo(item)">
 							<view class="beijing" :style="{ backgroundImage: 'url(' + item.thumb_s + ')' }">
@@ -450,6 +455,7 @@
 				token: uni.getStorageSync('token'),
 				BannerList: '',
 				gerenBannerList: '',
+				vedioBannerList: '',
 				mianfeiBannerList: '',
 				advertarr: '', //获取商城广告位
 				annunciate:'', //通告栏的走马灯
@@ -480,6 +486,12 @@
 			// this.getMerchantsshoplist(this.order)
 		},
 		onLoad() {
+			//判断登陆状态
+			bridge.register('determineLandingStatus',function(res){
+				uni.reLaunch({
+					url:'/pages/register/register'
+				})
+			});
 			// 建立一个socket连接
 			const socket = (this.socket = io('http://zhibo.a2w0m.cn:19967'));
 			// 客户端socket.on()监听的事件：
@@ -573,8 +585,11 @@
 					console.log(res)
 					switch(ty){
 						case 1: this.BannerList = res.data;break;
-						case 4: this.gerenBannerList = res.data;break;
+						case 3: this.vedioBannerList = res.data;break;
 						case 5: this.mianfeiBannerList = res.data;break;
+						// case 5: this.vedioBannerList = res.data;break;
+						// case 4: this.mianfeiBannerList = res.data;break;
+						case 4: this.gerenBannerList = res.data;break;
 					}
 				})
 			},
@@ -865,6 +880,7 @@
 				switch(index){
 					case 0: this.getBanner(1);break;
 					case 1: this.getBanner(4);break;
+					case 2: this.getBanner(3);break;
 					case 3: this.getBanner(5);break;
 				}
 				for (let i = 0; i < this.list.length; i++) {
@@ -1124,6 +1140,7 @@
 	}
 
 	.tidaikuan {
+		height: 30rpx;
 		font-size: 16rpx;
 		margin-top: 8rpx;
 		margin-left: 10rpx;

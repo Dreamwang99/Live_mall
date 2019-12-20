@@ -122,7 +122,7 @@
 			};
 		},
 		onLoad() {
-			this.getBaseInfo()
+			// this.getBaseInfo()
 		},
 		onShow() {
 			this.getBaseInfo()
@@ -137,6 +137,7 @@
 					console.log(res)
 					console.log(res.data.info)
 					this.userinfo = res.data.info[0]
+					uni.setStorageSync('userInformation', this.userinfo)
 				})
 			},
 			gengduo(index) {

@@ -8,16 +8,18 @@
 				</view>
 			</view>
 			<view class="pj" @tap="change1(index)">
+			<!-- <view class="pj" @tap="change1(index)"> -->
 				<view class="dp">店铺评价</view>
-				<uni-rate :value="item.store" :margin="6" @changestar="onChange1" :size="22" :is-fill="false" color="#bbb" active-color="red" />
+				<uni-rate :value="item.store" :margin="6" @change="onChange1" :size="22" :is-fill="false" color="#bbb" active-color="red" />
+				<!-- <uni-rate :value="item.store" :margin="6" @changestar="onChange1" :size="22" :is-fill="false" color="#bbb" active-color="red" /> -->
 			</view>
 			<view class="pj" @tap="change2(index)">
 				<view class="dp">商品评价</view>
-				<uni-rate :value="item.shop" :margin="6" @changestar="onChange2" :size="22" :is-fill="false" color="#bbb" active-color="red" />
+				<uni-rate :value="item.shop" :margin="6" @change="onChange2" :size="22" :is-fill="false" color="#bbb" active-color="red" />
 			</view>
 			<view class="pj" @tap="change3(index)">
 				<view class="dp">物流评价</view>
-				<uni-rate :value="item.logistics" :margin="6" @changestar="onChang3" :size="22" :is-fill="false" color="#bbb"
+				<uni-rate :value="item.logistics" :margin="6" @change="onChang3" :size="22" :is-fill="false" color="#bbb"
 				 active-color="red" />
 			</view>
 			<view class="xian"></view>
@@ -125,25 +127,27 @@
 			},
 			onChange1(e) {
 				this.store=e.value
-				// this.arr.store=e.value
 			},
 			change1(index){
 				this.arr[index].store=this.store
-				console.log("veve"+JSON.stringify(this.arr))
+				console.log(this.arr[index].store)
+				// console.log("veve"+JSON.stringify(this.arr))
 			},
 			onChange2(e) {
 				this.shop=e.value
 			},
 			change2(index){
 				this.arr[index].shop=this.shop
-				console.log("veve"+JSON.stringify(this.arr))
+				console.log(this.arr[index].shop)
+				// console.log("veve"+JSON.stringify(this.arr))
 			},
 			onChang3(e) {
 				this.logistics=e.value
 			},
 			change3(index){
 				this.arr[index].logistics=this.logistics
-				console.log("veve"+JSON.stringify(this.arr))
+				console.log(this.arr[index].logistics)
+				// console.log("veve"+JSON.stringify(this.arr))
 			},
 			updataPic(index){
 					let _this = this

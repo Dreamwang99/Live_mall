@@ -125,6 +125,12 @@
 			}
 		},
 		onLoad() {
+			//判断登陆状态
+			bridge.register('determineLandingStatus',function(res){
+				uni.reLaunch({
+					url:'/pages/register/register'
+				})
+			});
 			// this.getInfo()
 			this.getLiveKinds()
 			// this.getLive()

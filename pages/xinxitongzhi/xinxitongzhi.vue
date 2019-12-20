@@ -34,10 +34,14 @@
 				list: []
 			}
 		},
+		onNavigationBarButtonTap() {
+			this.removeList()
+		},
 		onLoad() {
 			this.getmsglist()
 		},
 		methods: {
+			//3拼团信息 4秒杀 5砍价
 			getmsglist(){
 				this.request.getMessageList({
 					token: this.token
@@ -46,8 +50,10 @@
 					console.log(res);
 				})
 			},
+			//去详情
 			gogogo(e){
 				console.log(e);
+				//3拼团信息 4秒杀 5砍价
 				switch(e.type){
 					case 5:
 						uni.navigateTo({
@@ -55,6 +61,18 @@
 						})
 						break;
 				}
+			},
+			//清空信息列表
+			removeList(){
+				this.request.delMessageList({
+					token: this.token
+				}).then(res =>{
+					uni.showToast({
+						title: res.msg,
+						icon: 'none'
+					})
+					this.getmsglist()
+				})
 			}
 		}
 	}

@@ -20,10 +20,10 @@
 			</view>
 			<view class="dianpu_bottom">
 				<view class="shipin_bottom">
-					{{fensi}}粉丝
+					{{userinfo.fans}}粉丝
 				</view>
 				<view style="padding-left: 20rpx;">
-					{{guanzhu}}关注
+					{{userinfo.follows}}关注
 				</view>
 			</view>
 		</view>

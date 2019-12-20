@@ -459,7 +459,16 @@
 			"path": "pages/xinxitongzhi/xinxitongzhi",
 			"style": {
 				"navigationBarTitleText": "信息通知",
-				"navigationBarBackgroundColor": "#FFFFFF"
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+				
+							"fontSize": "23rpx",
+							"text": "清空 "
+						}]
+					}
+				}
 			}
 		}
 

@@ -267,6 +267,8 @@ const createOrder = (params) => ajax(BASE_URL + '/Bargain/createOrder', params)
 const getBanner = (params) => ajax(BASE_URL + '/banner/getBanner', params)
 //购物车批量删除
 const deleteCart = (params) => ajax(BASE_URL + '/index/deleteCart', params)
+//清空消息列表
+const delMessageList = (params) => ajax(BASE_URL + '/index/getDelMessageList', params)
 
 
 
@@ -412,4 +414,5 @@ export default {
 	createOrder, //砍价生成订单
 	getBanner, //获取banner
 	deleteCart, //购物车批量删除
+	delMessageList, //清空消息列表
 }
