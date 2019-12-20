@@ -42,7 +42,7 @@
 		</view>
 		<view style="background-color: #FFF;">
 			<input class="name" type="text" v-model="detailAdress" placeholder="请输入店铺详细地址"></input>
-			<view class="name" type="text" @click="getadress()">{{detailAdress}}</view>
+			<!-- <view class="name" type="text" @click="getadress()">{{detailAdress}}</view> -->
 		</view>
 		<view class="shangchuan">
 			<text class="shenfen">请上传营业执照</text>
@@ -53,7 +53,7 @@
 				<image class="xiangji" style="height: 100rpx;" :src="b?'/static/ruzhu/iocn-26-scyezz.png':''"></image>
 			</view>
 		</view>
-		<view class="denglu" @click="publish()">确认发布</view>
+		<view class="denglu" @click="publish()">确认入驻</view>
 		<view class="fixed" v-if="maskShow">
 			<view class="maskB" @tap="quxiao()"></view>
 			<view class="mask">
@@ -134,14 +134,15 @@
 				resultInfo: {
 					result: "请输入店铺地址"
 				},
-				detailAdress: "详细地址",
-				longitude: 1,
-				latitude: 1,
+				detailAdress: "",
+				longitude: '',
+				latitude: '',
 				type_top:'',
 				current:0
 			}
 		},
 		onLoad() {
+			this.getadress();
 		},
 		methods: {
 			quxiao() {
@@ -240,7 +241,7 @@
 					this.frontImage = res
 					this.showA = false
 					this.showA = true
-					console.log("成功");
+					console.log("获得的图片路径为："+ this.frontImage);
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -258,12 +259,12 @@
 			/* 点击上传身份证背面照片 */
 			updata_back() {
 				bridge.call('uploadImages', "0");
-				bridge.register('uploadImagesCallback',function(res){
+				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res)
 					this.back_image = res
 					this.showB = false
 					this.showB = true
-					console.log("成功");
+					console.log("获得的图片路径为："+ this.back_image);
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -323,12 +324,12 @@
 			//上传手持身份证图片文件
 			updata_Peo() {
 				bridge.call('uploadImages', "0");
-				bridge.register('uploadImagesCallback',function(res){
+				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res)
 					this.peoson_image = res
 					this.showC = false
 					this.showC = true
-					console.log("成功");
+					console.log("获得的图片路径为："+ this.peoson_image);
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -367,12 +368,12 @@
 			/* 上传logo */
 			logo_pic() {
 				bridge.call('uploadImages', "0");
-				bridge.register('uploadImagesCallback',function(res){
+				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res)
 					this.logo = res
 					this.showD = false
 					this.showD = true
-					console.log("成功");
+					console.log("获得的图片路径为："+ this.logo);
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -413,12 +414,12 @@
 			/* 上传执照 */
 			licens_pic() {
 				bridge.call('uploadImages', "0");
-				bridge.register('uploadImagesCallback',function(res){
+				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res)
 					this.license = res
 					this.showE = false
 					this.showE = true
-					console.log("成功");
+					console.log("获得的图片路径为："+ this.license);
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -474,10 +475,26 @@
 					business_type: this.type_top,
 				}).then(res => {
 					console.log(res)
-					if (res.data.code == 1) {
-						uni.navigateTo({
-							url: '../verify/verify'
+					if (res.code === 1) {
+						uni.showToast({
+							title:"提交成功,请支付",
+							icon:'none'
 						})
+						setTimeout(()=>{
+							this.request.getCheck({
+								token : uni.getStorageSync('token'),
+								pay_type : 'alipay'
+							}).then(res=>{
+								console.log(res);
+							})
+						})
+						// uni.showToast({
+						// 	title:res.msg,
+						// 	icon:'none'
+						// })
+						// uni.navigateTo({
+						// 	url: '../verify/verify'
+						// })
 					} else {
 						uni.showToast({
 							title: res.msg,
