@@ -278,7 +278,7 @@
 		onLoad(options) {
 			this.goods_id = options.goods_id
 			this.getLocation();
-			this.getGoodsDetails();
+			// this.getGoodsDetails();
 			this.getComments();
 		},
 		methods: {
