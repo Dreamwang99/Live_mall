@@ -9,17 +9,17 @@
 			<view class="middle">
 				<view style="display: flex;">
 					<text class="time">{{item.create_time}}</text>
-					<text class="time">规格：{{item.bargain_id}}</text>
+					<text class="spec">规格：{{item.bargain_id}}</text>
 				</view>
 				<text class="haokan">{{item.content}}</text>
 				<view class="ping_tu">
 					<view v-for="(imgs,index) in item.common_image" :key="index">
-						<image class="tupian" :src="imgs"></image>
+						<image class="tupian" :src="imgs" v-if="imgs !=''" mode="widthFix" ></image>
 					</view>
 				</view>
 			</view>
 			<view class="heng1">
-				<image class="logo1" :src="item.image"></image>
+				<image class="logo1" :src="item.image" v-if="item.image != ''" mode="widthFix"></image>
 				<view>
 					<view class="xiaomi">{{item.title}}</view>
 					<text class="prise">￥{{item.price_selling}}</text>
@@ -136,6 +136,7 @@
 		width: 100rpx;
 		margin-left: 29rpx;
 		margin-top: 22rpx;
+		border-radius: 10rpx;
 	}
 
 	.delete {
@@ -155,15 +156,17 @@
 	.li {
 		margin-left: 50rpx;
 		margin-right: auto;
-		font-size: 27rpx;
+		font-size: 30rpx;
 		margin-top: 57rpx;
 		margin-left: 37rpx;
+		font-weight: 800;
 	}
 
 	.tupian {
 		height: 163rpx;
 		width: 227rpx;
 		margin: 23rpx 5rpx 5rpx 5rpx;
+		border-radius: 10rpx;
 	}
 
 	.logo1 {
@@ -172,6 +175,7 @@
 		margin-top: 20rpx;
 		margin-left: 29rpx;
 		margin-right: 25rpx;
+		border-radius: 10rpx;
 	}
 
 	.middle {
@@ -182,15 +186,25 @@
 
 	.xiaomi {
 		margin-top: 25rpx;
-		font-size: 22rpx;
+		font-size: 25rpx;
 		margin-bottom: 20rpx;
 	}
 
 	.haokan {
 		margin-left: 29rpx;
-		font-size: 25rpx;
+		font-size: 30rpx;
+		color: #000000;
 	}
-
+	.spec{
+		margin-left: 29rpx;
+		line-height: 62rpx;
+		font-size: 20rpx;
+		color: #999999;
+		width: 370rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
 	.time {
 		margin-left: 29rpx;
 		line-height: 62rpx;
@@ -205,7 +219,7 @@
 
 	.prise {
 		color: red;
-		font-size: 19rpx;
+		font-size: 25rpx;
 		margin-top: 40rpx;
 
 	}
@@ -257,7 +271,9 @@
 		border-left: 1px solid #eee;
 		color: red;
 	}
-
+	.sssssss{
+		min-height: 10rpx;background: #007AFF;
+	}
 	.ping_tu {
 		display: flex;
 		margin-left: 29rpx;
