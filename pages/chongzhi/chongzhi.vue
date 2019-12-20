@@ -87,7 +87,7 @@
 			sure() {
 				console.log(this.payTypes);
 				if (this.payTypes === "支付宝") {
-					this.request.getAliOrder({
+					this.request.rechargeJiFenOrder({
 						uid: uni.getStorageSync('id'),
 						changeid: this.buyTypes.id,
 						coin: this.buyTypes.coin,

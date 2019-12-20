@@ -244,10 +244,23 @@
 		methods: {
 			// 立即购买
 			buyNow() {
-				if (this.showToasts()) {
-					uni.navigateTo({
-						url: "/pages/dingdantijiao/dingdantijiao?goods_type="+"0"+"&id="+this.shopid+"&goods_spec="+this.specs+"&specid="+this.getInfos.id+"&number="+this.number
-					})
+				if(this.goodsdata.specs.length === 1){
+					if(!this.specs){
+						uni.showToast({
+							title:"请选择规格",
+							icon:'none'
+						})
+					}else{
+						uni.navigateTo({
+							url: "/pages/dingdantijiao/dingdantijiao?goods_type="+"0"+"&id="+this.shopid+"&goods_spec="+this.specs+"&number="+this.number
+						})
+					}
+				}else if(this.goodsdata.specs.length === 2){
+					if (this.showToasts()) {
+						uni.navigateTo({
+							url: "/pages/dingdantijiao/dingdantijiao?goods_type="+"0"+"&id="+this.shopid+"&goods_spec="+this.specs+"&number="+this.number
+						})
+					}
 				}
 			},
 			// 加入购物车
@@ -488,6 +501,8 @@
 						}
 					});
 				}
+				console.log(this.goodsdata.specs.length)
+				
 			},
 			getdetial() {
 				bridge.register('getShopDetialBack', function(result) {
@@ -508,6 +523,8 @@
 								j.isChose = false
 							})
 						})
+						this.getInfos.number_stock = res.data.number_stock - res.data.number_sales
+						this.getInfos.price_selling = res.data.shop_price
 						this.colorbox = res.data.specs
 						this.goodsparameter = res.data.specs //商品参数
 						this.goodsdata = res.data //商品所有数据
@@ -605,13 +622,25 @@
 								j.isChose = true
 								if (index === 0) {
 									this.isChoseColor = j.name
-									if (!this.isChoseSize) {} else {
-										this.getNormalPrice()
+									if(this.goodsdata.specs.length === 1){
+										this.getInfos.price_selling = this.goodsdata.shop_price
+										this.getInfos.number_stock = this.goodsdata.number_stock - this.goodsdata.number_sales
+										this.specs = this.goodsdata.lists[0][0].key
+									}else if(this.goodsdata.specs.length === 2){
+										if (!this.isChoseSize) {} else {
+											this.getNormalPrice()
+										}
 									}
 								} else {
 									this.isChoseSize = j.name
-									if (!this.isChoseColor) {} else {
-										this.getNormalPrice()
+									if(this.goodsdata.specs.length === 1){
+										this.getInfos.price_selling = this.goodsdata.shop_price
+										this.getInfos.number_stock = this.goodsdata.number_stock - this.goodsdata.number_sales
+										this.specs = this.goodsdata.lists[0][0].key
+									}else if(this.goodsdata.specs.length === 2){
+										if (!this.isChoseColor) {} else {
+											this.getNormalPrice()
+										}
 									}
 								}
 							} else {
@@ -630,8 +659,8 @@
 				this.isChoseSize = ""
 				this.specs = ""
 				this.getInfos.id = ""
-				this.getInfos.price_selling = ""
-				this.getInfos.number_stock = ""
+				this.getInfos.price_selling = this.goodsdata.shop_price
+				this.getInfos.number_stock = this.goodsdata.number_stock - this.goodsdata.number_sales
 				this.colorbox.forEach((i) => {
 					i.list.forEach((j) => {
 						j.isChose = false

@@ -82,7 +82,7 @@
 					city : this.city
 				}).then(res=>{
 					console.log(res);
-					if(res.code === 0){
+					if(res.data.code === 0){
 						uni.showToast({
 							title:"上传成功",
 							icon:'none'
@@ -94,7 +94,7 @@
 						},2000)
 					}else{
 						uni.showToast({
-							title:res.msg,
+							title:res.data.msg,
 							icon:'none'
 						})
 					}
