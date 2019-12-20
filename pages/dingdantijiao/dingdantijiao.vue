@@ -179,7 +179,7 @@
 			this.ershouids = options.ershouid
 			this.addnumber = options.number
 			this.tPeopleNums = options.tPeopleNums
-			this.activeid = options.activityid
+			this.activityid = options.activityid
 			this.activeid = options.activeid
 			this.types = options.types
 			console.log(this.id)
@@ -348,10 +348,10 @@
 							bridge.register('alipaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									// uni.showToast({
-									// 	title:'支付失败',
-									// 	icon:'none'
-									// })
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -372,10 +372,10 @@
 							bridge.register('wxpaycallback', function(result) {
 								console.log(result)
 								if(result*1 === 0){
-									// uni.showToast({
-									// 	title:'支付失败',
-									// 	icon:'none'
-									// })
+									uni.showToast({
+										title:'支付失败',
+										icon:'none'
+									})
 								}else if(result*1 === 1){
 									uni.showToast({
 										title:'支付成功',
@@ -625,8 +625,8 @@
 										icon:'none'
 									})
 									setTimeout(function(){
-										uni.navigateTo({
-											url:"/pages/xinxitongzhi/xinxitongzhi"
+										uni.redirectTo({
+											url:'/pages/pintuanxq/pintuanxq'
 										});
 									},1500)
 								}
@@ -650,8 +650,8 @@
 										icon:'none'
 									})
 									setTimeout(function(){
-										uni.navigateTo({
-											url:"/pages/xinxitongzhi/xinxitongzhi"
+										uni.redirectTo({
+											url:'/pages/pintuanxq/pintuanxq'
 										});
 									},1500)
 								}
@@ -959,7 +959,6 @@
 				group_people_num : this.tPeopleNums
 			}).then(res => {
 				console.log(res)
-				this.activityid = res.data.cartList.activity_goods_id
 				this.ass = res.data.cartList
 				this.postage = res.data.cartList.price_express//邮费
 			})
