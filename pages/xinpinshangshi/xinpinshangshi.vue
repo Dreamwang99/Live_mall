@@ -208,23 +208,25 @@ export default {
 .heng {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 }
 .xinpin {
 	font-size: 28rpx;
-	margin-top: 21rpx;
+	margin-top: 10rpx;
+	margin-bottom: 10rpx;
 	margin-left: 12rpx;
 }
 .hyp1 {
 	margin-left: 470rpx;
 	height: 14rpx;
 	width: 14rpx;
-	margin-top: 45rpx;
+	/* margin-top: 45rpx; */
 }
 .hyp {
 	font-size: 14rpx;
 	color: #ff212c;
 	margin-left: 12rpx;
-	margin-top: 34rpx;
+	/* margin-top: 34rpx; */
 }
 .hezi {
 	height: 159rpx;

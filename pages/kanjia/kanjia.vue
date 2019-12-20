@@ -212,7 +212,7 @@
 				var shareInfo = new Object();
 				shareInfo.title = "砍价分享";
 				shareInfo.describe = "快来帮我砍价吧";
-				shareInfo.linkUrl = "http://kanjia.a2w0m.cn?activid="+this.activeid+"&openid="+this.openid
+				shareInfo.linkUrl = "http://kanjia.a2w0m.cn/#/?activid="+this.activeid+"&openid="+this.openid
 				if(types === "微信好友"){
 					bridge.call('shareWeChatFriends', shareInfo);
 					bridge.register('shareWeChatFriendsCallback',(res)=>{
