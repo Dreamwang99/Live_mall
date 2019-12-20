@@ -116,7 +116,7 @@
 			};
 		},
 		onLoad(options) {
-			this.activityId = options.activityid
+			this.activeid = options.activeid
 			this.getOpenTInfo();
 			//我的项目中只赋值一次, 所以直接设为true了
 			this.reset = !this.reset;
@@ -128,7 +128,7 @@
 			getOpenTInfo(){
 				this.request.getGroupPurchase({
 					token : uni.getStorageSync('token'),
-					activity_id : this.activityId
+					activity_id : this.activeid
 				}).then(res=>{
 					console.log(res);
 					if(res.code === 1){
@@ -178,7 +178,7 @@
 				var shareInfo = new Object();
 				shareInfo.title = "拼团分享";
 				shareInfo.describe = "快来参加我的团";
-				shareInfo.linkUrl = "http://pintuan.a2w0m.cn?goodsId="+this.getInfo.goods_id+"&activityId="+this.getInfo.id
+				shareInfo.linkUrl = "http://pintuan.a2w0m.cn?goodsId="+this.getInfo.goods_id+"&activityId="+this.activeid
 				if(types === "微信好友"){
 					bridge.call('shareWeChatFriends', shareInfo);
 					bridge.register('shareWeChatFriendsCallback',(res)=>{

@@ -312,6 +312,8 @@
 						this.assembleInfo = res.data.assemble
 						this.showVideoInfo = res.data.video
 						this.adressInfo = res.data.business
+						this.getPrice = res.data.goods.list[0].price_selling
+						this.getNums = res.data.goods.list[0].number_stock - res.data.goods.list[0].number_sales
 						this.allInfo = JSON.parse(res.data.goods.lists)
 						var getInfo = JSON.parse(res.data.goods.specs)
 						getInfo.forEach((item,index)=>{
@@ -504,8 +506,10 @@
 				this.showmsgdetial = false
 				this.current_j = -1
 				this.nowboyor = -1
-				this.getPrice = ""
-				this.getNums = ""
+				// this.getPrice = ""
+				// this.getNums = ""
+				this.getPrice = this.goodsInfo.list[0].price_selling
+				this.getNums = this.goodsInfo.list[0].number_stock - res.data.goods.list[0].number_sales
 				this.isChoseColor = ""
 				this.isChoseSize = ""
 				this.tPeopleNums = 0
