@@ -247,6 +247,8 @@ const rechargeJiFenOrder = (params) => ajax(BASE_URL + '/bargain/rechargeJiFenOr
 const getWxOrder = (params) => ajax(BASE_URL1 + 'Charge.GetWxOrder', params)
 // 上传视频
 const setVideo = (params) => ajax(BASE_URL1 + 'Video.SetVideo', params)
+// 商家入驻
+const getCheck = (params) => ajax(BASE_URL + '/Business/getCheck', params)
 
 
 
@@ -403,6 +405,7 @@ export default {
 	rechargeJiFenOrder,	// 充值积分 --- 支付宝支付
 	getWxOrder,		// 充值积分 --- 微信支付
 	setVideo,		// 上传视频
+	getCheck,		// 商家入驻
 	
 	
 	//陈
