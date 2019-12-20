@@ -1063,6 +1063,7 @@
 	}
 
 	.bbbbb {
+		margin-left: 20rpx;
 		display: flex;
 		flex-direction: column;
 	}

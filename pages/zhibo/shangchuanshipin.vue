@@ -82,6 +82,22 @@
 					city : this.city
 				}).then(res=>{
 					console.log(res);
+					if(res.code === 0){
+						uni.showToast({
+							title:"上传成功",
+							icon:'none'
+						})
+						setTimeout(()=>{
+							uni.redirectTo({
+								url:'/pages/zhibo/zhibo'
+							})
+						},2000)
+					}else{
+						uni.showToast({
+							title:res.msg,
+							icon:'none'
+						})
+					}
 				})
 			}
 		}
