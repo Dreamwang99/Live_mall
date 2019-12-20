@@ -117,6 +117,13 @@
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
+					this.isShow =res.data.fans
+					console.log(this.isShow)
+					if(this.isShow*1 ===0){
+						this.show=true
+					}else if(this.isShow*1 ===1){
+						this.show=false
+					}
 				})
 			},
 			cancel1() {//没问题111
@@ -125,6 +132,8 @@
 					touid: this.otheruid
 				}).then(res => {
 					console.log(res);
+					this.getMyfans()
+					
 				})
 				this.show = !this.show
 			},
