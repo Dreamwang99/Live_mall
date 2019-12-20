@@ -131,7 +131,7 @@
 				<image :src="goodsInfo.logo" mode="" class="shopmsg1img"></image>
 				<view class="shoppircebox">
 					<view class="pricetitle">￥{{getPrice}}</view>
-					<view class="repertory">库存118件</view>
+					<view class="repertory">库存{{getNums}}件</view>
 				</view>
 			</view>
 			<view class="shopmsg2">{{goodsInfo.title}}</view>
@@ -227,6 +227,7 @@
 				cTid : 0,
 				current_j : -1,
 				getPrice : "",
+				getNums : "",
 				showmsgdetial: false,
 				shopmsg:'',
 				colorbox:'',
@@ -349,6 +350,7 @@
 						}).then(res=>{
 							console.log(res);
 							if(res.code === 1){
+								this.getNums = res.data.number_stock
 								if(this.current_j === 0){
 									this.getPrice = res.data.group_price_three
 								}else if(this.current_j === 1){
@@ -369,6 +371,7 @@
 							console.log(res);
 							if(res.code === 1){
 								this.getPrice = res.data.price_selling
+								this.getNums = res.data.number_stock - res.data.number_sales
 							}else{
 								uni.showToast({
 									title:res.msg,
@@ -502,6 +505,7 @@
 				this.current_j = -1
 				this.nowboyor = -1
 				this.getPrice = ""
+				this.getNums = ""
 				this.isChoseColor = ""
 				this.isChoseSize = ""
 				this.tPeopleNums = 0
