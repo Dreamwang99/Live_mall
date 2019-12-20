@@ -301,9 +301,12 @@
 	}
 
 	.zi {
+		width: 180rpx;
 		font-size: 29rpx;
 		margin-left: 35%;
 		margin-top: 0rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		overflow: hidden;
 	}
 
@@ -312,6 +315,8 @@
 		font-size: 26rpx;
 		margin-left: 15rpx;
 		margin-top: 15rpx;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		overflow: hidden;
 	}
 
