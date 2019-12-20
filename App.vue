@@ -97,7 +97,6 @@
 		flex-wrap: wrap;
 		.gm-item{
 			width: 49%;
-			height: 400rpx;
 			margin-bottom: 16rpx;
 			background-color: #FFFFFF;
 			border-radius: 6rpx;
@@ -117,6 +116,13 @@
 				.gd-name{
 					height: 50rpx;
 					font-size: 24rpx;
+					line-height: 50rpx;
+					overflow: hidden;
+				}
+				.gd-intro{
+					height: 50rpx;
+					font-size: 22rpx;
+					color: #666666;
 					line-height: 50rpx;
 					overflow: hidden;
 				}

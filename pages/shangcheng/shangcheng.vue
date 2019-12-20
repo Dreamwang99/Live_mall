@@ -42,7 +42,7 @@
 					<view class="pingtai">平台直推</view>
 				</view>
 				<view class="heng">
-					<view v-for="(item,idx) in ptztlist" @tap="goDetail(item)">
+					<view v-for="(item,idx) in ptztlist" :key="idx" @tap="goDetail(item)">
 						<image class="hezi" :src="item.image" mode=""></image>
 						<view class="heng">
 							<view class="rmb">￥{{item.price_selling}}</view>
@@ -52,15 +52,20 @@
 					</view>
 				</view>
 			</view>
-			<view class="goodsheng">
-				<view class="goodslist" v-for="(item,index) in goods" :key="index" @click="goDetail(item)">
-					<image class="shafa" :src="item.logo" mode=""></image>
-					<view class="baidi3">
-						<view style="height: 20rpx;"></view>
-						<view class="spname">{{item.title}}</view>
-						<!-- <view class="deng">{{item.title}}</view> -->
-						<view class="ziwaixian">{{item.introduction}}</view>
-						<view class="rmb2">￥{{item.price}}</view>
+			<view class="goodsMs">
+				<view class="gm-item" v-for="(item,index) in goods" :key='index' @click="goDetail(item)">
+					<view class="gi-images">
+						<image :src='item.logo'></image>
+					</view>
+					<view class="gi-desc">
+						<view class="gd-name">{{item.title}}</view>
+						<view class="gd-intro">
+							{{item.introduction}}
+						</view>
+						<view class="gd-info">
+							<view class="gi-price">￥{{item.price}}</view>
+							<!-- <view class="gi-sales">{{item.number_sales}}人付款</view> -->
+						</view>
 					</view>
 				</view>
 			</view>
