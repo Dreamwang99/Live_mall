@@ -167,7 +167,7 @@
 								})
 								setTimeout(function(){
 									uni.redirectTo({
-										url: '../dingdan/dingdan'
+										url: '../dingdan/dingdan?tbIndex=1'
 									});
 								},1500)
 							}
@@ -191,7 +191,7 @@
 								})
 								setTimeout(function(){
 									uni.redirectTo({
-										url: '../dingdan/dingdan'
+										url: '../dingdan/dingdan?tbIndex=1'
 									});
 								},1500)
 							}

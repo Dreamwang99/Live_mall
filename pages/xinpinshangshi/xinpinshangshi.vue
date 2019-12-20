@@ -47,14 +47,18 @@
 					<view class="jingpin">精品好货</view>
 					<image class="yuan" style="margin-left: 20rpx;" src="../../static/mizhihaohuo/iocn-97-yuan.png" mode=""></image>
 				</view>
-				<view class="heng">
-					<view v-for="(item,idx) in newgoodslist" :key="idx" @tap="goDetail(item)">
-						<image class="shafa" :src="item.image" mode=""></image>
-						<view class="baidi3">
-							<view class="deng">{{item.title}}</view>
-							<view class="ziwaixian">{{item.introduction}}</view>
-								<view class="rmb2">￥{{item.price_selling || '价格'}}</view>
+				<view class="goodsMs">
+					<view class="gm-item" v-for="(item,idx) in newgoodslist" :key="idx" @tap="goDetail(item)">
+						<view class="gi-images">
+							<image :src="item.image" mode=""></image>
+						</view>
+						<view class="gi-desc">
+							<view class="gd-name">{{item.title}}</view>
+							<view class="gd-intro">{{item.introduction}}</view>
+							<view class="gd-info">
+								<view class="gi-price">￥{{item.price_selling}}</view>
 							</view>
+						</view>
 					</view>
 				</view>
 			</view>
