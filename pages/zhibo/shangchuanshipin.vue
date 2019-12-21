@@ -6,7 +6,7 @@
 					<image v-if="show" :src="getInfo.thumb" mode=""></image>
 				</view>
 				<view class="mRight">
-					<textarea placeholder="添加视频描述~" @input="getNums" maxlength="50" />
+					<textarea placeholder="添加视频描述~" v-model="getDescs" @input="getNums" maxlength="50" />
 				</view>
 			</view>
 			<view class="mNums">
@@ -32,7 +32,8 @@
 				show : true,
 				longitude : "",
 				latitude : "",
-				city : ""
+				city : "",
+				getDescs : ""
 			}
 		},
 		methods: {
@@ -74,7 +75,7 @@
 				this.request.setVideo({
 					uid : uni.getStorageSync('id'),
 					token : uni.getStorageSync('token'),
-					title : "",
+					title : this.getDescs,
 					thumb : this.getInfo.thumb,
 					href : this.getInfo.videoUrl,
 					lat : this.latitude,

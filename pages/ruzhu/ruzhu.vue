@@ -207,7 +207,6 @@
 						this.latitude = res.latitude
 					}
 				});
-
 			},
 			/* 弹窗 */
 			bottom() {
@@ -224,7 +223,6 @@
 				this.$refs.luPopupWrapper.show();
 			},
 			/* 点击确定 */
-
 			/* 选择经营类型 */
 			chooseType(item, index) {
 				this.tabIndex = index;

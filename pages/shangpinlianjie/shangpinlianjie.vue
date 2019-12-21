@@ -74,8 +74,8 @@
 			},
 			makeSure(){
 				uni.setStorageSync("choseGoodsId",this.choseGoodsId);
-				uni.redirectTo({
-					url:'/pages/zhiboshezhi/zhiboshezhi'
+				uni.navigateBack({
+					delta: 1
 				})
 			}
 		}
