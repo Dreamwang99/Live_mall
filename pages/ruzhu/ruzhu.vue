@@ -184,28 +184,11 @@
 			},
 			/* 获取地址 具体*/
 			getadress() {
-				uni.getLocation({
-					type: 'gcj02', //返回可以用于uni.openLocation的经纬度
-					success: function(res) {
-						const latitude = res.latitude;
-						const longitude = res.longitude;
-						uni.openLocation({
-							latitude: latitude,
-							longitude: longitude,
-							success: function() {
-								console.log('success');
-							}
-						});
-					}
-				});
-				uni.getLocation({
-					type: 'wgs84',
-					success: function(res) {
-						console.log('当前位置的经度：' + res.longitude);
-						console.log('当前位置的纬度：' + res.latitude);
-						this.longitude = res.longitude
-						this.latitude = res.latitude
-					}
+				bridge.call('getLocationS', "请求经纬度");
+				bridge.register('getLocationSCallBack',(res)=>{
+					console.log(res)
+					console.log(JSON.parse(res).longitude)//经度
+					console.log(JSON.parse(res).latitude)//纬度
 				});
 			},
 			/* 弹窗 */

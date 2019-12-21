@@ -25,7 +25,7 @@
 		<view class="classify" v-show="num === 0">
 			<view class="heng" v-for="(detali,index) in detalis" :key='index'>
 				<view class="tu"  :style="{ backgroundImage: 'url(' + detali.thumb + ')' }" @tap="goshipin(detali)">
-					<view class="xiaohei">{{goodslist.user_nicename}}</view>
+					<view class="xiaohei">@{{goodslist.user_nicename}}</view>
 					<view class="heng">
 						<view class="paimeishi">{{detali.title}}</view>
 						<image class="bf" src="../../static/gerenzhongxin/iocn-59-bf.png" mode=""></image>
@@ -103,7 +103,7 @@
 			},
 			getvideolist() {//确认
 				this.request.getmyvideo({
-					uid: this.otheruid,
+					uid: 21788,
 					token:uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res);
@@ -115,7 +115,7 @@
 			},
 			getLiverecord(){//确认111
 				this.request.getLivere({
-					touid: this.otheruid
+					touid: 21788
 				}).then(res => {
 					console.log(res);
 					this.arr = res.data.info
@@ -127,11 +127,11 @@
 			getMyfans(){//确认1111
 				this.request.getMyFans({
 					token:uni.getStorageSync('token'),
-					user_id:this.otheruid
+					user_id:21788
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
-					this.isShow =res.data.fans
+					this.isShow =res.data.isfollow
 					console.log(this.isShow)
 					if(this.isShow*1 ===0){
 						this.show=true
@@ -141,15 +141,16 @@
 				})
 			},
 			cancel1() {//没问题111
-				this.request.getAttent({
-					uid: uni.getStorageSync('id'),
-					touid: this.otheruid
+				this.request.addcollect({
+					token:uni.getStorageSync('token'),
+					content_id: 21788,
+					type:5
 				}).then(res => {
 					console.log(res);
 					this.getMyfans()
 					
 				})
-				this.show = !this.show
+				
 			},
 			sel_nav(i) {
 				console.log(i)
