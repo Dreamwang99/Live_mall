@@ -88,7 +88,7 @@
 					},
 					{
 						urlimage: '/static/gerenzhongxin/iocn-50-sqrz.png',
-						name: '申请入住'
+						name: '申请入驻'
 					},
 					{
 						urlimage: '/static/gerenzhongxin/iocn-50-zb.png',

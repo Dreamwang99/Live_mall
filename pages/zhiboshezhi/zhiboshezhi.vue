@@ -136,7 +136,6 @@
 					url:'/pages/register/register'
 				})
 			});
-			this.choseGoodsId = uni.getStorageSync("choseGoodsId");
 		},
 		methods: {
 			choose(){
@@ -247,6 +246,7 @@
 				})
 			},
 			startLive(){
+				this.choseGoodsId = uni.getStorageSync("choseGoodsId");
 				if(!this.choseGoodsId){
 					uni.showToast({
 						title:"未选择商品列表",
@@ -263,7 +263,7 @@
 					createLiveObject.goods_id = this.choseGoodsId;
 					bridge.call('startLive',createLiveObject);
 					this.request.createMyLive({
-						id : uni.getStorageSync("id"),
+						uid : uni.getStorageSync("id"),
 						token : uni.getStorageSync('token'),
 						thumb : this.thumb,
 						title : this.chihuo,
@@ -280,7 +280,7 @@
 							})
 						}else{
 							uni.showToast({
-								title:res.data.msg,
+								title:res.msg,
 								icon:'none'
 							})
 						}
