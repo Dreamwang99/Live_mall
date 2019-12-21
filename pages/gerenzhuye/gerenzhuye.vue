@@ -103,7 +103,7 @@
 			},
 			getvideolist() {//确认
 				this.request.getmyvideo({
-					uid: 21788,
+					uid: this.otheruid,
 					token:uni.getStorageSync('token')
 				}).then(res => {
 					console.log(res);
@@ -115,7 +115,7 @@
 			},
 			getLiverecord(){//确认111
 				this.request.getLivere({
-					touid: 21788
+					touid: this.otheruid
 				}).then(res => {
 					console.log(res);
 					this.arr = res.data.info
@@ -127,7 +127,7 @@
 			getMyfans(){//确认1111
 				this.request.getMyFans({
 					token:uni.getStorageSync('token'),
-					user_id:21788
+					user_id:this.otheruid
 				}).then(res => {
 					console.log(res);
 					this.userlist = res.data
@@ -143,7 +143,7 @@
 			cancel1() {//没问题111
 				this.request.addcollect({
 					token:uni.getStorageSync('token'),
-					content_id: 21788,
+					content_id: this.otheruid,
 					type:5
 				}).then(res => {
 					console.log(res);
