@@ -499,32 +499,7 @@
 			socket.on('connect', () => {
 				console.log('连接成功');
 				console.log(socket.connected); // true
-				// 接受到新消息
-				socket.on('broadcastingListen', d => {
-					console.log(JSON.parse(d))
-					console.log(JSON.parse(d).msg[0]._method_)
-					if(JSON.parse(d).msg[0]._method_ == 'systemfireworks'){
-						console.log(JSON.parse(d).msg[0].ct.content)//内容
-						var arr = [];
-						var str = JSON.parse(d).msg[0].ct.content;
-						for( var i=0; i<=2 ;i++){
-							console.log(i)
-							arr.push(str)
-						}
-						setInterval(()=> {
-							//轮播每次四秒
-							console.log('每隔4秒钟执行一次')
-							if(arr.length>0){
-								this.annunciate =arr.pop()
-								console.log(this.annunciate)
-								console.log('已重新赋值当前arr长度为:',arr.length)
-							}else{
-								this.annunciate= ''
-								console.log('当前长度为0,轮播取消赋值')
-							}
-						},4000)
-					}
-				});
+				
 			});
 			// 正在连接
 			socket.on('connecting', d => {
@@ -564,7 +539,37 @@
 			socket.on('pong', (timeout) => {
 				console.log('pong',timeout)
 			});
-			
+			// 接受到新消息
+			socket.on('broadcastingListen', d => {
+				console.log(JSON.parse(d))
+				console.log(JSON.parse(d).msg[0]._method_)
+				if(JSON.parse(d).msg[0]._method_ == 'systemfireworks'){
+					console.log(JSON.parse(d).msg[0].ct.content)//内容
+					var arr = [];
+					var str = JSON.parse(d).msg[0].ct.content;
+					for( var i=0; i<=2 ;i++){
+						console.log(i)
+						arr.push(str)
+					}
+					// setInterval(()=> {
+					// 	//轮播每次四秒
+					// 	console.log('每隔4秒钟执行一次')
+					// 	if(arr.length>=0){
+					// 		this.annunciate =arr.pop()
+					// 		console.log(this.annunciate)
+					// 		console.log('已重新赋值当前arr长度为:',arr.length)
+					// 	}else{
+					// 		this.annunciate= ''
+					// 		console.log('当前长度为0,轮播取消赋值')
+					// 	}
+					// },4000)
+					setInterval(()=> {
+						console.log('下一圈了')
+							this.annunciate =arr.pop()
+							console.log(this.annunciate)
+					},4000)
+				}
+			});
 			this.getgoodsList()
 			this.getviedioList()
 			this.getlist1()
