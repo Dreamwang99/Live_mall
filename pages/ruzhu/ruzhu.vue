@@ -189,6 +189,8 @@
 					console.log(res)
 					console.log(JSON.parse(res).longitude)//经度
 					console.log(JSON.parse(res).latitude)//纬度
+					this.longitude = JSON.parse(res).longitude
+					this.latitude = JSON.parse(res).latitude
 				});
 			},
 			/* 弹窗 */
