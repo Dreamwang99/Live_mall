@@ -3,8 +3,8 @@
 		<view style="background: #fff;">
 			<view class="headimg">
 				<text class="touxiang">头像</text>
-				<view style="display: flex;" @tap="togglePopup('bottom', 'album')">
-					<image v-if="showHeader" class="logo1" :src="userinfo.avatar"></image>
+				<view v-if="showHeader" style="display: flex;" @tap="togglePopup('bottom', 'album')">
+					<image class="logo1" :src="userinfo.avatar"></image>
 					<view class="jr"><img style="height: 32rpx;width: 16rpx;" src="/static/center/iocn-jinru.png" /></view>
 				</view>
 			</view>
@@ -176,20 +176,21 @@
 				console.log(e);
 				if(e === 'camera'){
 					bridge.call('uploadByPhotograph', "1");
-					bridge.register('uploadByPhotographCallback',function(res){
+					bridge.register('uploadByPhotographCallback',(res)=>{
 						console.log(res);
 						this.userinfo.avatar = res
 						this.showHeader = false
 						this.showHeader = true
+						console.log("头像路径为："+this.userinfo.avatar);
 					});
 				}else if(e === 'album'){
 					bridge.call('uploadImages', "1");
-					bridge.register('uploadImagesCallback',function(res){
+					bridge.register('uploadImagesCallback',(res)=>{
 						console.log(res);
-						console.log(this.userinfo);
 						this.userinfo.avatar = res
 						this.showHeader = false
 						this.showHeader = true
+						console.log("头像路径为："+this.userinfo.avatar);
 					});
 				}
 				// let sourceType = e

@@ -67,6 +67,32 @@
 				</view>
 			</view>
 		</view>
+		<uni-popup ref="payKinds" type="bottom" :custom="true">
+			<view class="payMs">
+				<view class="pm-title">
+					选择支付方式
+				</view>
+				<view class="pm-stype">
+					<view class="ps-item" v-for="(p,p_idx) in payList" :key="p_idx" @tap="chosePay(p_idx)">
+						<view class="pi-left">
+							<view class="pl-icon">
+								<image :src="p.icon" mode=""></image>
+							</view>
+							<view class="pl-fonts">
+								{{p.name}}
+							</view>
+						</view>
+						<view class="pi-right">
+							<image v-if="p.isChose" src="/static/shouhuodizhi/iocn-27-gou.png" mode=""></image>
+							<image v-else src="/static/zhibo/iocn-4-wgx.png" mode=""></image>
+						</view>
+					</view>
+				</view>
+				<view class="pm-btn" @tap="surePay()">
+					确定
+				</view>
+			</view>
+		</uni-popup>
 		<w-picker mode="region" :defaultVal="['浙江省','杭州市','滨江区']" :areaCode="['33','3301','330108']" :hideArea="false"
 		 @confirm="onConfirm" ref="region"></w-picker>
 	</view>
@@ -105,6 +131,19 @@
 				top: "10rpx",
 				a: true,
 				b: true,
+				payList : [
+					{
+						icon : '/static/zhibo/iocn-105-zfb.png',
+						name : '支付宝',
+						isChose : true
+					},
+					{
+						icon : '/static/zhibo/iocn-105-wx.png',
+						name : '微信',
+						isChose : false
+					}
+				],
+				paysKinds : "支付宝",
 				classify: "请输入经营类型",
 				classifyy: "",
 				logo: '../../static/ruzhu/iocn-26-tj.png',
@@ -147,6 +186,16 @@
 		methods: {
 			quxiao() {
 				this.maskShow = false
+			},
+			chosePay(idx){
+				this.payList.forEach((item,index)=>{
+					if(idx === index){
+						item.isChose = true
+						this.paysKinds = item.name
+					}else{
+						item.isChose = false
+					}
+				})
 			},
 			closeCallback() {
 				console.log(123);
@@ -464,12 +513,8 @@
 							icon:'none'
 						})
 						setTimeout(()=>{
-							this.request.getCheck({
-								token : uni.getStorageSync('token'),
-								pay_type : 'alipay'
-							}).then(res=>{
-								console.log(res);
-							})
+							this.$refs.payKinds.open();
+							
 						})
 						// uni.showToast({
 						// 	title:res.msg,
@@ -485,16 +530,155 @@
 						});
 					}
 				})
+			},
+			surePay(){
+				if(this.paysKinds === "支付宝"){
+					this.request.getCheck({
+						token : uni.getStorageSync('token'),
+						pay_type : 'alipay'
+					}).then(res=>{
+						console.log(res);
+						if(res.code === 1){
+							bridge.call('alipay', res.data.paydata)
+							bridge.register('alipaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url:'/pages/shouye/shouye'
+										});
+									},1500)
+								}
+							})
+						}else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					})
+				}else if(this.paysKinds === "微信"){
+					this.request.getCheck({
+						token : uni.getStorageSync('token'),
+						pay_type : 'wechat'
+					}).then(res=>{
+						console.log(res);
+						if(res.code === 1){
+							bridge.call('wxpay', res.data.paydata)//微信
+							bridge.register('wxpaycallback', function(result) {
+								console.log(result)
+								if(result*1 === 0){
+									// uni.showToast({
+									// 	title:'支付失败',
+									// 	icon:'none'
+									// })
+									uni.reLaunch({
+										url: '../dingdan/dingdan?tbIndex=0'
+									});
+								}else if(result*1 === 1){
+									uni.showToast({
+										title:'支付成功',
+										icon:'none'
+									})
+									setTimeout(function(){
+										uni.redirectTo({
+											url:'/pages/shouye/shouye'
+										});
+									},1500)
+								}
+							})
+						}else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					})
+				}
 			}
 		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 	page {
 		background-color: #F5F5F5;
 	}
-
+	
+	.payMs{
+		height: 360rpx;
+		background-color: #FFFFFF;
+		.pm-title{
+			height: 80rpx;
+			line-height: 80rpx;
+			text-align: center;
+			font-size: 30rpx;
+		}
+		.pm-stype{
+			width: 90%;
+			margin: 0 auto;
+			.ps-item{
+				height: 80rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				.pi-left{
+					height: 60rpx;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					.pl-icon{
+						width: 40rpx;
+						height: 40rpx;
+						image{
+							width: 100%;
+							height: 100%;
+						}
+					}
+					.pl-fonts{
+						height: 40rpx;
+						line-height: 40rpx;
+						font-size: 28rpx;
+						margin-left: 20rpx;
+					}
+				}
+				.pi-right{
+					width: 60rpx;
+					height: 60rpx;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					image{
+						width: 30rpx;
+						height: 30rpx;
+					}
+				}
+			}
+		}
+		.pm-btn{
+			width: 90%;
+			height: 80rpx;
+			line-height: 80rpx;
+			margin: 20rpx auto 0;
+			text-align: center;
+			background-color: red;
+			border-radius: 40rpx;
+			color: #FFFFFF;
+			font-size: 34rpx;
+		}
+	}
 	.list {
 		height: 60rpx;
 		width: 500rpx;

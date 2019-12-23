@@ -76,7 +76,7 @@
 				</view>
 				<view class="kuang heng">
 					<input placeholder="请输入禁用词汇" v-model="jinyongg" placeholder-class="chihuo1" style="height: 80rpx;"> </input>
-					<image class="cha" src="../../static/dsp/icon-55-cha.png" mode=""></image>
+					<image class="cha" @tap="clearJY()" src="../../static/dsp/icon-55-cha.png" mode=""></image>
 				</view>
 				<view class="bottom">
 					<view @tap="cancel3()" class="quxiao">取消</view>
@@ -142,10 +142,12 @@
 				bridge.call('uploadImages', "0");
 				bridge.register('uploadImagesCallback',(res)=>{
 					console.log(res);
-					this.thumb = res
-					this.showAgain = false
-					this.showAgain = true
-					console.log("成功")
+					if(!res){}else{
+						this.thumb = res
+						this.showAgain = false
+						this.showAgain = true
+						console.log("图片："+ this.thumb)
+					}
 				});
 				// let _this = this
 				// uni.chooseImage({
@@ -183,6 +185,9 @@
 			togglePopup(type, open) {
 				this.type = type
 				this.$refs[open].open()
+			},
+			clearJY(){
+				this.jinyongg = ""
 			},
 			cancel(type) {
 				this.$refs[type].close()
