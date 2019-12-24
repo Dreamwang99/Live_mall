@@ -589,12 +589,10 @@
 				}).then(res => {
 					console.log(res)
 					switch(ty){
-						case 1: this.BannerList = res.data;break;
-						case 3: this.vedioBannerList = res.data;break;
-						case 5: this.mianfeiBannerList = res.data;break;
-						// case 5: this.vedioBannerList = res.data;break;
-						// case 4: this.mianfeiBannerList = res.data;break;
-						case 4: this.gerenBannerList = res.data;break;
+						case 2: this.BannerList = res.data;break;
+						case 3: this.gerenBannerList = res.data;break;
+						case 4: this.mianfeiBannerList = res.data;break;
+						case 5: this.vedioBannerList = res.data;break;
 					}
 				})
 			},
@@ -617,7 +615,7 @@
 				this.list[0].a = false
 				this.list[3].a = true;
 				this.b = 3
-				this.getBanner(5)
+				this.getBanner(4)
 			},
 			//热卖商城商品
 			getgoodsList(){
@@ -883,10 +881,10 @@
 			},
 			cancel(index) {
 				switch(index){
-					case 0: this.getBanner(1);break;
-					case 1: this.getBanner(4);break;
-					case 2: this.getBanner(3);break;
-					case 3: this.getBanner(5);break;
+					case 0: this.getBanner(2);break;
+					case 1: this.getBanner(3);break;
+					case 2: this.getBanner(5);break;
+					case 3: this.getBanner(4);break;
 				}
 				for (let i = 0; i < this.list.length; i++) {
 					if (index == i) {
@@ -1146,11 +1144,13 @@
 
 	.tidaikuan {
 		height: 30rpx;
+		line-height: 30rpx;
 		font-size: 16rpx;
 		margin-top: 8rpx;
 		margin-left: 10rpx;
 		margin-right: 10rpx;
 		white-space: pre-line;
+		overflow: hidden;
 	}
 
 	.cent {
@@ -1169,6 +1169,8 @@
 		font-size: 16rpx;
 		margin-top: 22rpx;
 		margin-left: 10rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.sousuo {
